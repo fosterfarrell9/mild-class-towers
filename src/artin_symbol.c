@@ -23,6 +23,7 @@
 #include <pari/pari.h>
 #include "../headers/artin_symbol.h"
 #include "../headers/misc_functions.h"
+#include "pari_internal.h"
 
 // Debug macros
 #define MY_DEBUGLEVEL 0

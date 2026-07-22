@@ -25,6 +25,7 @@
 #include <pari/pari.h>
 #include <stdio.h>
 #include <time.h>
+#include <stdlib.h>
 
 #define ANSI_COLOR_RED     "\x1b[31m"
 #define ANSI_COLOR_GREEN   "\x1b[32m"
@@ -52,6 +53,14 @@ GEN compute_my_relations(long i, GEN args);
 int
 main (int argc, char *argv[])	  
 {
+    if (argc != 3) {
+        fprintf(stderr,
+                "Usage: %s <prime p> <defining polynomial>\n"
+                "Example: %s 3 \"x^2+4027\"\n",
+                argv[0], argv[0]);
+        return EXIT_FAILURE;
+    }
+
     printf(ANSI_COLOR_YELLOW "\n---------------------------------------------------------------------------------------------------------\nStarting program: Massey products\n---------------------------------------------------------------------------------------------------------\n\n" ANSI_COLOR_RESET);
 
     // Start timer (actual time)

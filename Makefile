@@ -10,11 +10,11 @@ HEADERDIR = headers
 # Compiler.
 CC = clang
 
-# Compiler flags. The variable $PARI must be set to the PARI/GP installation directory.
-CPPFLAGS = -I. -I$(HEADERDIR) -I$(PARI)/GPDIR/include 
-CFLAGS = -O3 -Wall -Wunused-function -fno-strict-aliasing -fomit-frame-pointer -pipe -flto=thin -march=native -pthread -g
-LDFLAGS = -Wl,-O3 -pthread
-LIBS = -L$(PARI)/GPDIR/lib -lpari -lm 
+# Compiler flags. PARI should point to the installation prefix.
+CPPFLAGS = -I. -I$(HEADERDIR) -I$(PARI)/include
+CFLAGS = -O3 -Wall -Wunused-function -fno-strict-aliasing -fomit-frame-pointer -pipe -march=native -pthread -g
+LDFLAGS = -Wl,-O3 -Wl,-rpath,$(PARI)/lib -pthread
+LIBS = -L$(PARI)/lib -lpari -lm
 #STATIC = -static
 
 # Source files
