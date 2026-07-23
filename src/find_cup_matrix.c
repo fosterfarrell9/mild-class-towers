@@ -22,10 +22,12 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <pari/pari.h>
 #include "../headers/find_cup_matrix.h"
 #include "../headers/artin_symbol.h"
 #include "../headers/misc_functions.h"
+#include "../headers/secondary_norm.h"
 
 // Debug macros
 #define ANSI_COLOR_RED     "\x1b[31m"
@@ -38,6 +40,79 @@
 #define MY_DEBUGLEVEL 0
 #define DEBUG_PRINT(level, ...) \
     do { if (MY_DEBUGLEVEL >= (level)) pari_printf(__VA_ARGS__); } while (0)
+
+static int
+my_diagnostics_enabled(void)
+{
+    const char *value = getenv("MASSEY_DIAGNOSTICS");
+    return value && strcmp(value, "1") == 0;
+}
+
+static void
+my_diagnostic_fail(const char *message)
+{
+    fprintf(stderr, "MASSEY_DIAGNOSTICS failure: %s\n", message);
+    exit(EXIT_FAILURE);
+}
+
+/* [c, A, lambda, u, x_H90, c_over_x, D_scale] */
+static GEN
+my_extension_diagnostic(GEN K_ext, GEN K, GEN p, GEN H, long k)
+{
+    pari_sp av = avma;
+    GEN Labs = gmael(K_ext, k, 1);
+    GEN Lrel = gmael(K_ext, k, 2);
+    GEN sigma_H90 = gmael(K_ext, k, 3);
+
+    /* Complete Lrel with its absolute nf before calling rnfcycaut. */
+    (void)rnfidealup0(Lrel, idealhnf0(K, gen_1, NULL), 1);
+
+    GEN c = my_subgroup_character(K, H, p);
+    GEN A = zerocol(glength(c));
+    GEN cyc = bnf_get_cyc(K), generators = bnf_get_gen(K);
+    long i, j = 1, first = 0, p_int = itos(p);
+
+    for (i = 1; i < lg(cyc); ++i)
+        if (dvdii(gel(cyc, i), p))
+        {
+            long value = my_Artin_symbol(
+                Labs, Lrel, K, gel(generators, i), p_int);
+            gel(A, j) = stoi((value % p_int + p_int) % p_int);
+            if (!first && signe(gel(c, j))) first = j;
+            ++j;
+        }
+
+    if (!first)
+        my_diagnostic_fail("normalized subgroup character is zero");
+    GEN lambda = Fp_div(gel(A, first), gel(c, first), p);
+    if (!signe(lambda))
+        my_diagnostic_fail("Artin character is zero");
+    for (i = 1; i < lg(c); ++i)
+        if (!equalii(gel(A, i), Fp_mul(lambda, gel(c, i), p)))
+            my_diagnostic_fail("Artin character is not a scalar multiple of subgroup character");
+
+    long u_long = my_sigma_exponent(Labs, Lrel, sigma_H90, p);
+    GEN u = stoi(u_long);
+    GEN u_inverse = Fp_inv(u, p);
+    GEN x_H90 = cgetg(lg(A), t_COL);
+    for (i = 1; i < lg(A); ++i)
+        gel(x_H90, i) = Fp_mul(u_inverse, gel(A, i), p);
+
+    GEN c_over_x = Fp_div(u, lambda, p);
+    GEN D_scale = Fp_sqr(c_over_x, p);
+    GEN result = mkvecn(7, c, A, lambda, u, x_H90, c_over_x, D_scale);
+
+    pari_printf("\nMASSEY_DIAGNOSTICS extension k=%ld\n", k);
+    pari_printf("  subgroup H_k = %Ps\n", H);
+    pari_printf("  subgroup character line c_k = %Ps\n", gtovec(c));
+    pari_printf("  Artin character A_k = %Ps\n", gtovec(A));
+    pari_printf("  lambda_k = %Ps\n", lambda);
+    pari_printf("  sigma exponent u_k = %Ps\n", u);
+    pari_printf("  H90 character x_H90,k = %Ps\n", gtovec(x_H90));
+    pari_printf("  scale c_k / x_H90,k = %Ps\n", c_over_x);
+    pari_printf("  D scaling factor = %Ps\n", D_scale);
+    return gerepilecopy(av, result);
+}
 
 //-----------------------------------------------------------------------------
 
@@ -441,16 +516,31 @@ int my_relations (GEN K_ext, GEN K, GEN p, int p_int, int p_rk, GEN Ja_vect, int
 
 
 
-int my_massey_matrix (GEN K_ext, GEN K, GEN p, int p_int, int p_rk, GEN Ja_vect, int r_rk, int n)
+int my_massey_matrix (GEN K_ext, GEN K, GEN p, int p_int, int p_rk, GEN Ja_vect, int r_rk, GEN best_subgroups, int n)
 {
-    GEN NIpJ, I_rel, Labs, Lrel, Labs_cup, Lrel_cup, Lbnr_cup, sigma_cup, I_prime_vect;
+    GEN NI, NIpJ, I_rel, Labs, Lrel, Labs_cup, Lrel_cup, Lbnr_cup, sigma_cup, I_prime_vect;
     int nr_col = p_rk*p_rk;
     int nr_row = r_rk;
     GEN massey_matrix = zerovec(nr_row);
+    int diagnostics = my_diagnostics_enabled() && p_int > 3 && n == 2;
+    int scaling_test = diagnostics && p_int == 5;
+    GEN diagnostic_data = NULL;
     
     int i, j, k;
     for (j=1; j<(nr_row+1); ++j) {
         gel(massey_matrix, j) = zerovec(nr_col);
+    }
+
+    if (diagnostics)
+    {
+        if (glength(best_subgroups) != p_rk)
+            my_diagnostic_fail("selected subgroup count does not equal p-rank");
+        diagnostic_data = zerovec(p_rk);
+        pari_printf("\nMASSEY_DIAGNOSTICS triple-product normalization\n");
+        for (i = 1; i <= p_rk; ++i)
+            gel(diagnostic_data, i) =
+                my_extension_diagnostic(K_ext, K, p,
+                                        gel(best_subgroups, i), i);
     }
 
     //DEBUG_PRINT(1, "cup_mat: %Ps\n\n", cup_matrix);
@@ -468,18 +558,143 @@ int my_massey_matrix (GEN K_ext, GEN K, GEN p, int p_int, int p_rk, GEN Ja_vect,
         DEBUG_PRINT(1, "I'_vect found\n\n");
         //--------------------------------------------------------------------------------
 
+        GEN sigma_squared = NULL, I_prime_vect_sigma2 = NULL;
+        GEN x_sigma2 = NULL, expected_factor = NULL;
+        if (scaling_test)
+        {
+            sigma_squared = my_automorphism_power_checked(
+                Labs_cup, Lrel_cup, K, sigma_cup, 2, p);
+
+            GEN A_i = gmael(diagnostic_data, i, 2);
+            GEN x_sigma = gmael(diagnostic_data, i, 5);
+            GEN u_i = gmael(diagnostic_data, i, 4);
+            GEN two = stoi(2);
+            GEN inverse_two = Fp_inv(two, p);
+            long u_sigma2_long =
+                my_sigma_exponent(Labs_cup, Lrel_cup,
+                                  sigma_squared, p);
+            GEN u_sigma2 = stoi(u_sigma2_long);
+            GEN expected_u_sigma2 = Fp_mul(two, u_i, p);
+            if (!equalii(u_sigma2, expected_u_sigma2))
+                my_diagnostic_fail(
+                    "sigma squared has the wrong exponent relative to sigma_Artin");
+
+            x_sigma2 = cgetg(lg(A_i), t_COL);
+            for (long coordinate = 1;
+                 coordinate < lg(A_i); ++coordinate)
+                gel(x_sigma2, coordinate) =
+                    Fp_mul(Fp_inv(u_sigma2, p),
+                           gel(A_i, coordinate), p);
+
+            for (long coordinate = 1;
+                 coordinate < lg(x_sigma); ++coordinate)
+                if (!equalii(
+                        gel(x_sigma2, coordinate),
+                        Fp_mul(inverse_two,
+                               gel(x_sigma, coordinate), p)))
+                    my_diagnostic_fail(
+                        "sigma squared character does not scale by 2^(-1)");
+
+            expected_factor = Fp_sqr(inverse_two, p);
+            if (!equaliu(expected_factor, 4))
+                my_diagnostic_fail(
+                    "p=5 sigma-squared expected factor is not 4");
+
+            pari_printf(
+                "\nMASSEY_DIAGNOSTICS H90 scaling setup i=%d\n", i);
+            pari_printf("  sigma power a = 2\n");
+            pari_printf("  sigma^2 exponent relative to sigma_Artin = %Ps\n",
+                        u_sigma2);
+            pari_printf("  x_sigma = %Ps\n", gtovec(x_sigma));
+            pari_printf("  x_sigma2 = %Ps\n", gtovec(x_sigma2));
+            pari_printf("  character scale = %Ps\n", inverse_two);
+            pari_printf("  expected D factor a^(-2) = %Ps\n",
+                        expected_factor);
+
+            I_prime_vect_sigma2 =
+                my_H90_vect_2(
+                    Labs_cup, Lrel_cup, Lbnr_cup, K, sigma_squared,
+                    Ja_vect, p, n);
+        }
+
         for (j=1; j<r_rk+1; ++j) {
             // evaluate cup on j:th basis class (a,J) 
             // DEBUG_PRINT(1, "I'_vect[%d]: %Ps\n\n", j, gel(I_prime_vect, j));
             // DEBUG_PRINT(1, "j=[%d]\n\n", j);
             I_rel = rnfidealabstorel(Lrel_cup, gel(I_prime_vect, j));
+            NI = rnfidealnormrel(Lrel_cup, I_rel);
             //DEBUG_PRINT(1, "I, %d to rel\n\n", j);
             
             if (p_int == 3) {
-                NIpJ = idealmul(K, gel(gel(Ja_vect, j),2), rnfidealnormrel(Lrel_cup, I_rel));
+                NIpJ = idealmul(K, gel(gel(Ja_vect, j),2), NI);
             }
             else {
-                NIpJ = rnfidealnormrel(Lrel_cup, I_rel);
+                NIpJ = NI;
+            }
+
+            GEN D_H90 = NULL;
+            if (diagnostics)
+            {
+                GEN class_exp = bnfisprincipal0(K, NI, 0);
+                D_H90 = my_p_relevant_coordinates(K, class_exp, p);
+                pari_printf("\nMASSEY_DIAGNOSTICS norm i=%d, j=%d\n", i, j);
+                pari_printf("  matrix row=%d, H90 x-index=%d\n", j, i);
+                pari_printf("  I'_absolute = %Ps\n", gel(I_prime_vect, j));
+                pari_printf("  norm ideal NI = %Ps\n", NI);
+                pari_printf("  norm class D_H90(e_j) = %Ps\n", gtovec(D_H90));
+            }
+
+            if (scaling_test)
+            {
+                GEN I_rel_sigma2 =
+                    rnfidealabstorel(
+                        Lrel_cup, gel(I_prime_vect_sigma2, j));
+                GEN NI_sigma2 =
+                    rnfidealnormrel(Lrel_cup, I_rel_sigma2);
+                GEN class_exp_sigma2 =
+                    bnfisprincipal0(K, NI_sigma2, 0);
+                GEN D_sigma2 =
+                    my_p_relevant_coordinates(
+                        K, class_exp_sigma2, p);
+                GEN expected = cgetg(lg(D_H90), t_COL);
+
+                for (long coordinate = 1;
+                     coordinate < lg(D_H90); ++coordinate)
+                {
+                    gel(expected, coordinate) =
+                        Fp_mul(expected_factor,
+                               gel(D_H90, coordinate), p);
+                    if (!equalii(gel(D_sigma2, coordinate),
+                                 gel(expected, coordinate)))
+                    {
+                        pari_printf(
+                            "\nMASSEY_DIAGNOSTICS H90 scaling mismatch "
+                            "i=%d, j=%d\n", i, j);
+                        pari_printf("  sigma = %Ps\n", sigma_cup);
+                        pari_printf("  sigma^2 = %Ps\n", sigma_squared);
+                        pari_printf("  D_sigma = %Ps\n",
+                                    gtovec(D_H90));
+                        pari_printf("  D_sigma2 = %Ps\n",
+                                    gtovec(D_sigma2));
+                        pari_printf("  expected factor = %Ps\n",
+                                    expected_factor);
+                        pari_printf("  expected = %Ps\n",
+                                    gtovec(expected));
+                        my_diagnostic_fail(
+                            "independent H90 sigma-squared norm class "
+                            "does not have the expected scaling");
+                    }
+                }
+
+                pari_printf(
+                    "\nMASSEY_DIAGNOSTICS H90 scaling test i=%d, j=%d\n",
+                    i, j);
+                pari_printf("  a = 2\n");
+                pari_printf("  D_sigma = %Ps\n", gtovec(D_H90));
+                pari_printf("  D_sigma2 = %Ps\n", gtovec(D_sigma2));
+                pari_printf("  expected = %Ps * D_sigma = %Ps\n",
+                            expected_factor, gtovec(expected));
+                pari_printf("  OK\n");
             }
             
             
@@ -489,7 +704,39 @@ int my_massey_matrix (GEN K_ext, GEN K, GEN p, int p_int, int p_rk, GEN Ja_vect,
                 Labs = gel(gel(K_ext, k), 1);
                 Lrel = gel(gel(K_ext, k), 2);
                 
-                gmael2(massey_matrix, j, p_rk*(i-1)+k) = stoi(my_Artin_symbol(Labs, Lrel, K, idealred(K,NIpJ), p_int)%p_int);
+                long column = p_rk*(i-1)+k;
+                long old_value =
+                    my_Artin_symbol(Labs, Lrel, K,
+                                    idealred(K,NIpJ), p_int) % p_int;
+                gmael2(massey_matrix, j, column) = stoi(old_value);
+
+                if (diagnostics)
+                {
+                    GEN A_k = gmael(diagnostic_data, k, 2);
+                    long new_value = 0;
+                    for (long coordinate = 1;
+                         coordinate < lg(D_H90); ++coordinate)
+                    {
+                        long a = umodiu(gel(A_k, coordinate), p_int);
+                        long d = umodiu(gel(D_H90, coordinate), p_int);
+                        new_value =
+                            (new_value + (a * d) % p_int) % p_int;
+                    }
+                    long direct_value =
+                        my_Artin_symbol(Labs, Lrel, K, NI, p_int) % p_int;
+                    old_value = (old_value + p_int) % p_int;
+                    direct_value = (direct_value + p_int) % p_int;
+                    if (old_value != direct_value ||
+                        old_value != new_value)
+                        my_diagnostic_fail(
+                            "Artin symbol does not equal character dot norm class");
+                    pari_printf(
+                        "  eval k=%d, j=%d: x=%d, y=%d, row=%d, column=%ld, "
+                        "class=%Ps, Artin=%ld, dot=%ld, matrix=%Ps, OK\n",
+                        k, j, i, k, j, column, gtovec(D_H90),
+                        old_value, new_value,
+                        gmael2(massey_matrix, j, column));
+                }
                 DEBUG_PRINT(1, ANSI_COLOR_GREEN "End: [%d,%d,%d]\n\n" ANSI_COLOR_RESET, i,j,k);
                 //DEBUG_PRINT(1, "ev_j(x_ix_k): %Ps\n\n", stoi(smodis(my_Artin_symbol(Labs, Lrel, K, NIpJ, p_int, sigma), p_int)));
             }
@@ -595,10 +842,10 @@ int my_massey_matrix (GEN K_ext, GEN K, GEN p, int p_int, int p_rk, GEN Ja_vect,
     return mat_rk;
 } 
 
-void my_print_massey(GEN K_ext, GEN K, GEN p, int p_int, int p_rk, GEN Ja_vect, int r_rk) {
+void my_print_massey(GEN K_ext, GEN K, GEN p, int p_int, int p_rk, GEN Ja_vect, int r_rk, GEN best_subgroups) {
     int rk_3_fold, rk_5_fold;
     DEBUG_PRINT(1, "\nSTART: 3-fold\n\n");
-    rk_3_fold = my_massey_matrix(K_ext, K, p, p_int, p_rk, Ja_vect, r_rk, 2);
+    rk_3_fold = my_massey_matrix(K_ext, K, p, p_int, p_rk, Ja_vect, r_rk, best_subgroups, 2);
     DEBUG_PRINT(1, "rk_3_fold: %d\n", rk_3_fold);
 
 
@@ -608,15 +855,14 @@ void my_print_massey(GEN K_ext, GEN K, GEN p, int p_int, int p_rk, GEN Ja_vect, 
     if (rk_3_fold==0)
     {
         DEBUG_PRINT(1, "\nSTART: 5-fold\n\n");
-        rk_5_fold = my_massey_matrix(K_ext, K, p, p_int, p_rk, Ja_vect, r_rk, 4);
+        rk_5_fold = my_massey_matrix(K_ext, K, p, p_int, p_rk, Ja_vect, r_rk, best_subgroups, 4);
         DEBUG_PRINT(1, "rk_5_fold: %d\n", rk_5_fold);
         if (rk_5_fold==0)
         {
             pari_printf("\nSTART: 7-fold\n\n");
-            my_massey_matrix(K_ext, K, p, p_int, p_rk, Ja_vect, r_rk, 6);
+            my_massey_matrix(K_ext, K, p, p_int, p_rk, Ja_vect, r_rk, best_subgroups, 6);
         }
     }
         
     
 }
-
