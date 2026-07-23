@@ -6,3 +6,11 @@ The program originates from the mathematics article <a href="https://www.degruyt
 
 To run the main program: ./massey p "pol(s)"
 where you replace pol(s) by a defining polynomial of the number field K in the variable s, and replace p by a prime number dividing the class number. 
+
+This repository is based on Eric Ahlqvist's Massey-pari program, developed
+for the computations in Ahlqvist--Carlson, “Massey products in the étale
+cohomology of number fields.” The present version adds prescribed-character
+secondary norm computations, rank-three tensor and relation calculations, and
+the verification routines used in the accompanying work.
+
+See `REPRODUCING.md` for build and reproduction commands.
