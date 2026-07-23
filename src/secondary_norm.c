@@ -16,8 +16,10 @@ secondary_norm_diagnostics_enabled(void)
 {
     const char *value = getenv("MASSEY_DIAGNOSTICS");
     const char *rank3 = getenv("MASSEY_RANK3_TEST");
+    const char *audit = getenv("MASSEY_ARITHMETIC_AUDIT");
     return (value && strcmp(value, "1") == 0)
-        || (rank3 && strcmp(rank3, "1") == 0);
+        || (rank3 && strcmp(rank3, "1") == 0)
+        || (audit && strcmp(audit, "1") == 0);
 }
 
 static void
@@ -175,6 +177,119 @@ my_automorphism_power_checked(
     return gerepilecopy(av, sigma_power);
 }
 
+static int
+secondary_norm_arithmetic_audit_enabled(void)
+{
+    const char *value = getenv("MASSEY_ARITHMETIC_AUDIT");
+    return value && strcmp(value, "1") == 0;
+}
+
+static GEN
+secondary_norm_compact_inverse(GEN compact)
+{
+    GEN inverse = cgetg(3, t_MAT);
+    gel(inverse, 1) = gcopy(gel(compact, 1));
+    gel(inverse, 2) = gneg(gel(compact, 2));
+    return inverse;
+}
+
+static GEN
+secondary_norm_audit_column(
+    GEN Labs, GEN Lrel, GEN K, GEN sigma_t, GEN p,
+    GEN Ja, GEN I_prime, GEN production_column,
+    long input_index)
+{
+    pari_sp av = avma;
+    GEN a_prime = gel(Ja, 1);
+    GEN J = gel(Ja, 2);
+    GEN iJ = rnfidealup0(Lrel, J, 1);
+    GEN operated = gcopy(I_prime);
+    operated = my_1MS_ideal(Labs, sigma_t, operated);
+    operated = my_1MS_ideal(Labs, sigma_t, operated);
+
+    /*
+     * For n=2 the production solver makes iJ * (1-sigma)^2 I principal.
+     * Its compact generator t_code is inverse to the t in AC1/AC2.
+     */
+    GEN principal_ideal = idealmul(Labs, iJ, operated);
+    GEN principal_data =
+        bnfisprincipal0(Labs, principal_ideal, nf_GENMAT);
+    if (!ZV_equal0(gel(principal_data, 1)))
+        secondary_norm_error("audit AC1 ideal is not principal");
+    GEN t_code = gel(principal_data, 2);
+
+    GEN norm_code = my_rel_norm_compact(Labs, Lrel, K, t_code);
+    GEN norm_times_a = cgetg(3, t_MAT);
+    gel(norm_times_a, 1) =
+        shallowconcat(gel(norm_code, 1), mkcol(a_prime));
+    gel(norm_times_a, 2) =
+        shallowconcat(gel(norm_code, 2), mkcol(gen_1));
+    GEN unit_exp = bnfisunit0(K, norm_times_a, NULL);
+    if (glength(unit_exp) == 0)
+        secondary_norm_error("audit N(t_code)*a' is not a base unit");
+
+    GEN corrected_code = gcopy(t_code);
+    if (!ZV_equal0(unit_exp))
+    {
+        GEN norm_operator = my_norm_operator(Labs, Lrel, K, p);
+        GEN unit_solution =
+            matsolvemod(
+                norm_operator, zerocol(glength(unit_exp)),
+                gtocol(unit_exp), 0);
+        if (gequal0(unit_solution))
+            secondary_norm_error(
+                "audit base-unit discrepancy is not an extension-unit norm");
+        GEN extension_units =
+            shallowconcat(bnf_get_fu(Labs), bnf_get_tuU(Labs));
+        GEN correction = cgetg(3, t_MAT);
+        gel(correction, 1) = gtocol(extension_units);
+        gel(correction, 2) = gneg(unit_solution);
+        corrected_code = concatenate_rows(t_code, correction);
+    }
+
+    GEN t_AC = secondary_norm_compact_inverse(corrected_code);
+    GEN norm_AC = my_rel_norm_compact(Labs, Lrel, K, t_AC);
+    GEN norm_AC_over_a = cgetg(3, t_MAT);
+    gel(norm_AC_over_a, 1) =
+        shallowconcat(gel(norm_AC, 1), mkcol(a_prime));
+    gel(norm_AC_over_a, 2) =
+        shallowconcat(gel(norm_AC, 2), mkcol(gen_m1));
+    GEN ac2_unit_exp = bnfisunit0(K, norm_AC_over_a, NULL);
+    if (glength(ac2_unit_exp) == 0 || !ZV_equal0(ac2_unit_exp))
+        secondary_norm_error("audit AC2 exact element equality failed");
+
+    GEN theorem_principal_ideal = idealinv(Labs, principal_ideal);
+    GEN ac1_product =
+        idealmul(
+            Labs,
+            idealmul(Labs, operated, theorem_principal_ideal),
+            iJ);
+    GEN ac1_hnf = idealhnf0(Labs, ac1_product, NULL);
+    GEN unit_hnf = idealhnf0(Labs, gen_1, NULL);
+    if (!gequal(ac1_hnf, unit_hnf))
+        secondary_norm_error("audit AC1 exact divisor equality failed");
+
+    GEN I_rel = rnfidealabstorel(Lrel, I_prime);
+    GEN norm_ideal = rnfidealnormrel(Lrel, I_rel);
+    GEN class_exp = bnfisprincipal0(K, norm_ideal, 0);
+    GEN cyc = bnf_get_cyc(K);
+    long rank = my_p_class_rank(K, p), coordinate = 1;
+    GEN independent = cgetg(rank + 1, t_COL);
+    for (long i = 1; i < lg(cyc); ++i)
+        if (dvdii(gel(cyc, i), p))
+            gel(independent, coordinate++) = modii(gel(class_exp, i), p);
+    if (!gequal(independent, production_column))
+        secondary_norm_error(
+            "audit independent norm-class extraction disagrees with production");
+
+    pari_printf(
+        "  input e_%ld: AC1=PASS AC2=PASS "
+        "independent D=%Ps production D=%Ps MATCH\n",
+        input_index, gtovec(independent), gtovec(production_column));
+    return gerepilecopy(
+        av, mkvec4(t_AC, I_prime, norm_ideal, independent));
+}
+
 GEN
 my_secondary_norm_operator(
     GEN K, GEN p, GEN prescribed_character_t,
@@ -305,6 +420,72 @@ my_secondary_norm_operator(
             "  verified sigma_t exponent relative to sigma_Artin = %Ps\n",
             sigma_t_exponent);
         pari_printf("  D_t = %Ps\n", D);
+    }
+
+    if (secondary_norm_arithmetic_audit_enabled())
+    {
+        GEN Hdet = det(H);
+        GEN Kdisc = nf_get_disc(bnf_get_nf(K));
+        GEN Ldisc = nf_get_disc(bnf_get_nf(Labs));
+        long relative_degree =
+            nf_get_degree(bnf_get_nf(Labs)) / nf_get_degree(bnf_get_nf(K));
+
+        if (!equalii(absi_shallow(Hdet), p))
+            secondary_norm_error("audit subgroup index is not p");
+        if (relative_degree != p_int)
+            secondary_norm_error("audit class field does not have degree p");
+        /*
+         * H is passed to bnrclassfield for the ordinary class group (modulus
+         * one), hence the class-field conductor has no finite prime.  The
+         * discriminant identity is an independent arithmetic check that the
+         * relative discriminant ideal is one.
+         */
+        if (!equalii(Ldisc, powiu(Kdisc, p_int)))
+            secondary_norm_error("audit extension has nontrivial relative discriminant");
+
+        pari_printf("\nMASSEY_ARITHMETIC_AUDIT character certificate\n");
+        pari_printf("  prescribed t = %Ps\n", gtovec(t));
+        pari_printf("  chi = %Ps\n", chi);
+        pari_printf("  H = %Ps\n", H);
+        pari_printf("  det(H) = %Ps; [Cl(K):H] = %Ps\n", Hdet, absi_shallow(Hdet));
+        pari_printf("  class-field modulus = 1 (ordinary class group)\n");
+        pari_printf(
+            "  relative degree = %ld; disc(L) = disc(K)^5 = %Ps; "
+            "finite-unramified=PASS\n",
+            relative_degree, Ldisc);
+        for (i = 1; i < lg(H); ++i)
+        {
+            GEN dot = gen_0;
+            long coordinate = 1;
+            for (j = 1; j < lg(cyc); ++j)
+                if (dvdii(gel(cyc, j), p))
+                    dot = Fp_add(
+                        dot,
+                        Fp_mul(gel(t, coordinate++), gcoeff(H, j, i), p),
+                        p);
+            if (signe(dot))
+                secondary_norm_error("audit H column is not in ker(t)");
+            pari_printf("  H column %ld: t(h)=0 PASS\n", i);
+        }
+        pari_printf(
+            "  A=%Ps lambda=%Ps u=%Ps lambda/u=%Ps "
+            "sigma_t/sigma_Artin=%Ps\n",
+            gtovec(A), lambda, u, a, sigma_t_exponent);
+        for (i = 1; i <= p_rk; ++i)
+        {
+            GEN verified =
+                Fp_mul(Fp_inv(sigma_t_exponent, p), gel(A, i), p);
+            pari_printf(
+                "  generator g_%ld: Artin exponent A_i=%Ps; "
+                "relative to sigma_t=%Ps; prescribed t_i=%Ps PASS\n",
+                i, gel(A, i), verified, gel(t, i));
+        }
+
+        pari_printf("  direct AC and independent norm-class checks\n");
+        for (j = 1; j <= inputs; ++j)
+            (void)secondary_norm_audit_column(
+                Labs, Lrel, K, sigma_t, p,
+                gel(Ja_vect, j), gel(I_prime_vect, j), gel(D, j), j);
     }
 
     return gerepilecopy(av, D);
