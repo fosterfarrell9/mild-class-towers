@@ -574,6 +574,24 @@ main (int argc, char *argv[])
     D = nf_get_disc(bnf_get_nf(K));
     pari_printf("Discriminant: %Ps\n\n", D);
     pari_printf("Root discriminant: %Ps\n\n", gsqrtn(gabs(D, DEFAULTPREC), stoi(nf_get_degree(bnf_get_nf(K))), NULL, DEFAULTPREC));
+
+    const char *arithmetic_audit = getenv("MASSEY_ARITHMETIC_AUDIT");
+    if (arithmetic_audit && strcmp(arithmetic_audit, "1") == 0)
+    {
+        long certified = bnfcertify0(K, 0);
+        pari_printf("\nMASSEY_ARITHMETIC_AUDIT base BNF certification\n");
+        pari_printf("  PARI version = %Ps\n", pari_version());
+        pari_printf("  Cl(K) = %Ps\n", bnf_get_cyc(K));
+        pari_printf("  class number = %Ps\n", bnf_get_no(K));
+        pari_printf("  class-group generators = %Ps\n", bnf_get_gen(K));
+        pari_printf("  fundamental units = %Ps\n", bnf_get_fu(K));
+        pari_printf(
+            "  torsion unit order = %ld; torsion generator = %Ps\n",
+            bnf_get_tuN(K), bnf_get_tuU(K));
+        pari_printf("  bnfcertify(K), flag=0 = %ld\n", certified);
+        if (certified != 1)
+            pari_err(e_MISC, "full base-field BNF certification failed");
+    }
     
     //--------------------------------------------------
     // Check Galois
@@ -610,7 +628,6 @@ main (int argc, char *argv[])
     pari_printf("p-rank: %d --> This is the rank of H^1(X,Z/pZ) and H^2(X_fl, mu_p)\n\n", p_rk);
     //--------------------------------------------------
 
-    const char *arithmetic_audit = getenv("MASSEY_ARITHMETIC_AUDIT");
     if (arithmetic_audit && strcmp(arithmetic_audit, "1") == 0)
     {
         GEN audit_units_mod_p = my_find_units_mod_p(K, p);
