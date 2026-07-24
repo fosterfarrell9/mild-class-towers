@@ -25,6 +25,14 @@
 #include "../headers/misc_functions.h"
 #include "../headers/pari_internal.h"
 
+static int secondary_norm_exact_audit_required = 0;
+
+void
+my_secondary_norm_require_exact_audit(int required)
+{
+    secondary_norm_exact_audit_required = required != 0;
+}
+
 static int
 secondary_norm_diagnostics_enabled(void)
 {
@@ -195,7 +203,8 @@ static int
 secondary_norm_arithmetic_audit_enabled(void)
 {
     const char *value = getenv("MASSEY_ARITHMETIC_AUDIT");
-    return value && strcmp(value, "1") == 0;
+    return secondary_norm_exact_audit_required
+        || (value && strcmp(value, "1") == 0);
 }
 
 static FILE *secondary_norm_certificate_file = NULL;

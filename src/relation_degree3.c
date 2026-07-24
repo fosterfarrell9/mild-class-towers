@@ -10,6 +10,7 @@
  */
 
 #include <string.h>
+#include <stdlib.h>
 #include <pari/pari.h>
 #include "../headers/relation_degree3.h"
 
@@ -17,6 +18,8 @@
 #define REL_ROWS 3
 #define REL_WORDS 27
 #define REL_LIE_DIM 8
+
+static int rel_current_p = REL_P;
 
 static const char rel_letters[] = "abc";
 static const int rel_permutations[6][3] = {
@@ -27,15 +30,15 @@ static const int rel_permutations[6][3] = {
 static int
 rel_mod(int value)
 {
-    value %= REL_P;
-    return value < 0 ? value + REL_P : value;
+    value %= rel_current_p;
+    return value < 0 ? value + rel_current_p : value;
 }
 
 static int
 rel_inverse(int value)
 {
     value = rel_mod(value);
-    for (int candidate = 1; candidate < REL_P; ++candidate)
+    for (int candidate = 1; candidate < rel_current_p; ++candidate)
         if (rel_mod(value * candidate) == 1) return candidate;
     pari_err(e_MISC, "relation_degree3: attempted to invert zero");
     return 0;
@@ -1165,6 +1168,7 @@ my_run_relation_degree3_fixture(GEN fixture, GEN p)
         || glength(fixture) != REL_WORDS
         || lg(gel(fixture, 1)) != REL_ROWS + 1)
         pari_err(e_MISC, "relation_degree3: fixture must be 3 x 27 over F_5");
+    rel_current_p = REL_P;
 
     int T[REL_ROWS][REL_WORDS];
     for (int column = 0; column < REL_WORDS; ++column)
@@ -1619,6 +1623,7 @@ my_run_mild_certificate_fixture(GEN fixture, GEN p)
         || glength(fixture) != REL_WORDS
         || lg(gel(fixture, 1)) != REL_ROWS + 1)
         pari_err(e_MISC, "mild certificate: fixture must be 3 x 27 over F_5");
+    rel_current_p = REL_P;
     int T[REL_ROWS][REL_WORDS];
     for (int column = 0; column < REL_WORDS; ++column)
         for (int row = 0; row < REL_ROWS; ++row)
@@ -1805,4 +1810,172 @@ my_run_mild_certificate_fixture(GEN fixture, GEN p)
     pari_printf(
         "VERIFIED CERTIFICATE: leaders [cca,cbb,cba]; "
         "R3 strongly free; tower group mild; cd(G)=2\n");
+}
+
+static int
+rel_vector_weight(const int vector[3])
+{
+    return (vector[0] != 0) + (vector[1] != 0) + (vector[2] != 0);
+}
+
+static int
+rel_vector_compare(const void *left, const void *right)
+{
+    const int *x = left, *y = right;
+    int wx = rel_vector_weight(x), wy = rel_vector_weight(y);
+    if (wx != wy) return wx - wy;
+    for (int i = 0; i < 3; ++i)
+        if (x[i] != y[i]) return x[i] - y[i];
+    return 0;
+}
+
+int
+my_anick_words_combinatorially_free(GEN words)
+{
+    if ((typ(words) != t_VEC && typ(words) != t_COL)
+        || glength(words) != REL_ROWS)
+        pari_err_TYPE("Anick leading words", words);
+    int encoded[REL_ROWS];
+    for (int i = 0; i < REL_ROWS; ++i)
+    {
+        if (typ(gel(words, i + 1)) != t_INT)
+            pari_err_TYPE("Anick encoded word", gel(words, i + 1));
+        encoded[i] = itos(gel(words, i + 1));
+        if (encoded[i] < 0 || encoded[i] >= REL_WORDS)
+            pari_err_DOMAIN(
+                "Anick encoded word", "word", "outside", stoi(REL_WORDS),
+                gel(words, i + 1));
+    }
+    return rel_cf_degree3(encoded, REL_ROWS);
+}
+
+GEN
+my_find_strongly_free_witness(
+    GEN fixture, GEN p, long candidate_limit)
+{
+    pari_sp av = avma;
+    if (typ(p) != t_INT || !uisprime(itou(p)) || !mpodd(p))
+        pari_err_TYPE("strong-freeness search [odd prime]", p);
+    long prime = itos(p);
+    if (prime > 31)
+        pari_err(e_MISC, "strong-freeness search supports primes at most 31");
+    if (typ(fixture) != t_MAT || glength(fixture) != REL_WORDS
+        || lg(gel(fixture, 1)) != REL_ROWS + 1)
+        pari_err(e_MISC, "strong-freeness search requires a 3 x 27 matrix");
+    if (candidate_limit == 0)
+        pari_err(e_MISC, "strong-freeness candidate limit must be positive");
+
+    int previous_prime = rel_current_p;
+    rel_current_p = (int)prime;
+    int T[REL_ROWS][REL_WORDS];
+    for (int column = 0; column < REL_WORDS; ++column)
+        for (int row = 0; row < REL_ROWS; ++row)
+            T[row][column] =
+                (int)umodiu(gcoeff(fixture, row + 1, column + 1), prime);
+    if (rel_matrix_rank(REL_ROWS, REL_WORDS, T) != REL_ROWS)
+    {
+        rel_current_p = previous_prime;
+        return gerepilecopy(av, cgetg(1, t_VEC));
+    }
+
+    long vector_count = prime * prime * prime - 1;
+    int (*vectors)[3] =
+        malloc((size_t)vector_count * sizeof(*vectors));
+    if (!vectors) pari_err(e_MEM);
+    long at = 0;
+    for (int x = 0; x < prime; ++x)
+        for (int y = 0; y < prime; ++y)
+            for (int z = 0; z < prime; ++z)
+                if (x || y || z)
+                {
+                    vectors[at][0] = x;
+                    vectors[at][1] = y;
+                    vectors[at][2] = z;
+                    ++at;
+                }
+    qsort(vectors, (size_t)vector_count, sizeof(*vectors), rel_vector_compare);
+
+    long effective_limit = candidate_limit;
+    if (candidate_limit < 0)
+    {
+        long q = prime;
+        effective_limit =
+            (q * q * q - 1)
+            * (q * q * q - q)
+            * (q * q * q - q * q);
+    }
+    long candidates = 0;
+    int weights[3] = {1, 1, 1};
+    for (long a = 0; a < vector_count; ++a)
+        for (long b = 0; b < vector_count; ++b)
+            for (long c = 0; c < vector_count; ++c)
+            {
+                int M[3][3] = {
+                    {vectors[a][0], vectors[b][0], vectors[c][0]},
+                    {vectors[a][1], vectors[b][1], vectors[c][1]},
+                    {vectors[a][2], vectors[b][2], vectors[c][2]}
+                };
+                if (!rel_det3(M)) continue;
+                if (++candidates > effective_limit)
+                {
+                    free(vectors);
+                    rel_current_p = previous_prime;
+                    return gerepilecopy(av, cgetg(1, t_VEC));
+                }
+
+                int cubic[REL_WORDS][REL_WORDS];
+                int transformed[REL_ROWS][REL_WORDS];
+                rel_build_cubic_substitution(M, cubic);
+                rel_apply_cubic_substitution(T, cubic, transformed);
+                for (int permutation = 0; permutation < 6; ++permutation)
+                {
+                    int order[REL_WORDS], reduced[REL_ROWS][REL_WORDS];
+                    int operations[REL_ROWS][REL_ROWS], pivots[REL_ROWS];
+                    rel_make_order(
+                        rel_permutations[permutation], weights, order);
+                    rel_ordered_rref(
+                        transformed, order, reduced, operations, pivots);
+                    if (!rel_cf_degree3(pivots, REL_ROWS)) continue;
+
+                    GEN M_gen = zeromatcopy(3, 3);
+                    GEN U_gen = zeromatcopy(3, 3);
+                    GEN R_gen = zeromatcopy(REL_ROWS, REL_WORDS);
+                    GEN leaders = cgetg(REL_ROWS + 1, t_VEC);
+                    GEN variable_order = cgetg(4, t_VEC);
+                    for (int i = 0; i < 3; ++i)
+                    {
+                        for (int j = 0; j < 3; ++j)
+                        {
+                            gcoeff(M_gen, i + 1, j + 1) = stoi(M[i][j]);
+                            gcoeff(U_gen, i + 1, j + 1) =
+                                stoi(operations[i][j]);
+                        }
+                        char word[4];
+                        rel_word_string(pivots[i], word);
+                        gel(leaders, i + 1) = strtoGENstr(word);
+                        char letter[2] = {
+                            rel_letters[rel_permutations[permutation][i]], '\0'
+                        };
+                        gel(variable_order, i + 1) = strtoGENstr(letter);
+                    }
+                    for (int row = 0; row < REL_ROWS; ++row)
+                        for (int column = 0; column < REL_WORDS; ++column)
+                            gcoeff(R_gen, row + 1, column + 1) =
+                                stoi(reduced[row][column]);
+                    free(vectors);
+                    rel_current_p = previous_prime;
+                    GEN witness = cgetg(7, t_VEC);
+                    gel(witness, 1) = M_gen;
+                    gel(witness, 2) = U_gen;
+                    gel(witness, 3) = R_gen;
+                    gel(witness, 4) = leaders;
+                    gel(witness, 5) = variable_order;
+                    gel(witness, 6) = gen_1;
+                    return gerepilecopy(av, witness);
+                }
+            }
+
+    free(vectors);
+    rel_current_p = previous_prime;
+    return gerepilecopy(av, cgetg(1, t_VEC));
 }

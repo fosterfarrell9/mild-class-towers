@@ -58,6 +58,7 @@
 #include "../headers/secondary_norm.h"
 #include "../headers/massey_tensor.h"
 #include "../headers/relation_degree3.h"
+#include "../headers/example_pipeline.h"
 
 // Function prototype for parallel computation
 GEN compute_my_relations(long i, GEN args);
@@ -509,6 +510,25 @@ main (int argc, char *argv[])
                 "0,3,3,4,1,4,4,4,2,3,3,2,1,0,2,4,1,0,3,2,1,4,2,0,2,0,0;"
                 "0,1,0,3,2,3,0,2,0,1,1,0,2,0,4,2,2,1,0,0,0,3,4,3,0,1,0]");
         my_run_mild_certificate_fixture(fixture, stoi(5));
+        GEN generic_witness =
+            my_find_strongly_free_witness(fixture, stoi(5), 250000);
+        if (glength(generic_witness) == 0
+            || !equaliu(gel(generic_witness, 6), 1))
+            pari_err(e_MISC, "generic strong-freeness search regression failed");
+        GEN exhaustive_witness =
+            my_find_strongly_free_witness(fixture, stoi(5), -1);
+        if (glength(exhaustive_witness) == 0)
+            pari_err(e_MISC,
+                     "exhaustive GL strong-freeness configuration failed");
+        if (my_anick_words_combinatorially_free(
+                mkvec3(gen_0, gen_1, stoi(9))))
+            pari_err(e_MISC, "overlapping-word rejection regression failed");
+        pari_printf(
+            "GENERIC_STRONG_FREENESS_SEARCH PASS leaders=%Ps\n",
+            gel(generic_witness, 4));
+        pari_printf(
+            "EXHAUSTIVE_GL_CONFIGURATION PASS |GL_3(F_5)|=1488000\n");
+        pari_printf("ANICK_OVERLAP_REJECTION PASS\n");
         pari_close();
         return 0;
     }
@@ -527,12 +547,44 @@ main (int argc, char *argv[])
         return 0;
     }
 
-    if (argc != 3) {
+    int example_mode =
+        (argc == 5 || argc == 7)
+        && strcmp(argv[1], "--example-result") == 0;
+    int configured_limit =
+        example_mode && argc == 7
+        && strcmp(argv[3], "--strong-search-limit") == 0;
+    if ((!example_mode && argc != 3)
+        || (example_mode && argc == 7 && !configured_limit)
+        || (example_mode && !argv[2][0])) {
         fprintf(stderr,
                 "Usage: %s <prime p> <defining polynomial>\n"
+                "       %s --example-result <output.gp> "
+                "[--strong-search-limit <N|exhaustive>] "
+                "<prime p> <defining polynomial>\n"
                 "Example: %s 3 \"x^2+4027\"\n",
-                argv[0], argv[0]);
+                argv[0], argv[0], argv[0]);
         return EXIT_FAILURE;
+    }
+    int p_argument = example_mode ? (configured_limit ? 5 : 3) : 1;
+    int polynomial_argument = example_mode ? (configured_limit ? 6 : 4) : 2;
+    const char *example_output = example_mode ? argv[2] : NULL;
+    long strong_search_limit = 250000;
+    if (configured_limit)
+    {
+        if (strcmp(argv[4], "exhaustive") == 0)
+            strong_search_limit = -1;
+        else
+        {
+            char *end = NULL;
+            strong_search_limit = strtol(argv[4], &end, 10);
+            if (!argv[4][0] || !end || *end || strong_search_limit <= 0)
+            {
+                fprintf(stderr,
+                        "Strong-freeness limit must be a positive integer "
+                        "or 'exhaustive'.\n");
+                return EXIT_FAILURE;
+            }
+        }
     }
 
     printf(ANSI_COLOR_YELLOW "\n---------------------------------------------------------------------------------------------------------\nStarting program: Massey products\n---------------------------------------------------------------------------------------------------------\n\n" ANSI_COLOR_RESET);
@@ -563,11 +615,11 @@ main (int argc, char *argv[])
     GEN p, K, f, Kcyc, p_ClFld_pol, J_vect, Ja_vect, D, D_prime_vect;
 
     // Read the prime number p from arguments
-    p = gp_read_str(argv[1]);
-    p_int = atoi(argv[1]);
+    p = gp_read_str(argv[p_argument]);
+    p_int = atoi(argv[p_argument]);
     
     // Read the defining polynomial for K
-    f = gp_read_str(argv[2]);
+    f = gp_read_str(argv[polynomial_argument]);
     pari_printf("K pol: %Ps\n\n", f);
     
     //--------------------------------------------------
@@ -635,6 +687,22 @@ main (int argc, char *argv[])
     p_rk = lg(J_vect)-1;
     pari_printf("p-rank: %d --> This is the rank of H^1(X,Z/pZ) and H^2(X_fl, mu_p)\n\n", p_rk);
     //--------------------------------------------------
+
+    if (example_mode)
+    {
+        if (nf_get_degree(bnf_get_nf(K)) != 2
+            || nf_get_r2(bnf_get_nf(K)) != 1)
+            pari_err(e_MISC,
+                     "example pipeline requires an imaginary quadratic field");
+        GEN example_units_mod_p = my_find_units_mod_p(K, p);
+        Ja_vect =
+            my_find_Ja_vect(K, J_vect, p, example_units_mod_p);
+        (void)my_compute_example_result(
+            K, p, f, D, Ja_vect, D_prime_vect, example_output,
+            strong_search_limit);
+        pari_close();
+        return 0;
+    }
 
     if (arithmetic_audit && strcmp(arithmetic_audit, "1") == 0)
     {

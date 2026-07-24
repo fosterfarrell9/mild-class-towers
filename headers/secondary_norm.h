@@ -78,4 +78,12 @@ GEN my_secondary_norm_operator(
 GEN my_secondary_norm_basis_family(
     GEN K, GEN p, GEN Ja_vect, GEN D_prime_vect);
 
+/**
+ * Require exact auditing for subsequently computed secondary norms.
+ *
+ * The compact example pipeline uses this process-local switch so it cannot
+ * accept values produced only by relative-BNF candidate search.
+ */
+void my_secondary_norm_require_exact_audit(int required);
+
 #endif // SECONDARY_NORM_H
