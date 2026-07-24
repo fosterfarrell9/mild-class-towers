@@ -20,6 +20,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+/**
+ * @file misc_functions.c
+ * @brief Shared PARI, ideal, class-group, and cyclic-extension utilities.
+ *
+ * This legacy support layer contains representation conversions as well as
+ * searches for Hilbert-90/secondary-norm candidates.  In particular, routines
+ * using relative BNF/BNR data produce candidates; callers responsible for a
+ * proof or certificate must separately verify the resulting exact ideal
+ * identities.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -797,4 +808,3 @@ GEN my_best_subgroups(GEN K, long p_rank, GEN subgroups, GEN D_prime_vect) {
     DEBUG_PRINT(1, "\n--------------------------\nEnd: my_best_subgroups\n--------------------------\n\n");
     return result;
 }
-

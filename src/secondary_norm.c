@@ -1,5 +1,19 @@
 // MIT License
 
+/**
+ * @file secondary_norm.c
+ * @brief Prescribed-character secondary norm operators.
+ *
+ * For a character `x`, this module constructs its index-p kernel extension,
+ * normalizes the relative generator by exact Artin exponents, and searches the
+ * relative BNF for `(a',J)` data before extracting a base-field norm class.
+ * When the arithmetic audit is enabled, the two defining ideal identities are
+ * checked independently.  The relative BNF is therefore a candidate-search
+ * device; exact AC1/AC2 checks form the proof-oriented audit boundary.
+ * Operator matrices store input basis vectors in columns and p-relevant
+ * class-group coordinates in rows.
+ */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>

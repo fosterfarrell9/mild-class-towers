@@ -1,5 +1,14 @@
 // MIT License
 
+/**
+ * @file relation_degree3.c
+ * @brief Degree-three relation fixtures and Anick strong-freeness tests.
+ *
+ * The module works entirely over F_5.  It constructs the verified fixture,
+ * performs ordered row reduction for candidate monomial orders, and checks
+ * combinatorial freeness of the resulting leading words.
+ */
+
 #include <string.h>
 #include <pari/pari.h>
 #include "../headers/relation_degree3.h"

@@ -20,6 +20,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+/**
+ * @file artin_symbol.c
+ * @brief Exact Artin-symbol computation for unramified cyclic extensions.
+ *
+ * A base ideal is factored in `K`, and each prime factor's exact relative
+ * Frobenius is computed against PARI's cyclic generator.  The returned exponent
+ * uses that generator's orientation; secondary-norm code performs any required
+ * prescribed-character normalization separately.
+ */
+
 #include <pari/pari.h>
 #include "../headers/artin_symbol.h"
 #include "../headers/misc_functions.h"
@@ -83,4 +93,3 @@ int my_Artin_symbol (GEN Labs, GEN Lrel, GEN K, GEN I_K, int p) {
     DEBUG_PRINT(1, "\n--------------------------------\nEnd: my_artin_symbol\n--------------------------------\n\n");
     return gc_int(av, Artin_symbol%p);
 }
-

@@ -1,5 +1,14 @@
 // MIT License
 
+/**
+ * @file massey_tensor.c
+ * @brief Pure finite-field reconstruction of degree-three Massey tensors.
+ *
+ * Quadratic secondary-norm values on basis vectors and pairwise sums are
+ * polarized, expanded in lexicographic word order, and contracted with
+ * characters.  No number-field search occurs in this layer.
+ */
+
 #include <pari/pari.h>
 #include "../headers/massey_tensor.h"
 

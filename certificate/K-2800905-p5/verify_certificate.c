@@ -1,3 +1,15 @@
+/**
+ * @file verify_certificate.c
+ * @brief Standalone exact verifier for the published arithmetic certificate.
+ *
+ * The verifier reconstructs each character kernel and stored cyclic extension,
+ * normalizes sigma to the prescribed character via exact Artin data, reconciles
+ * the relative and absolute models, checks AC1 and AC2, and independently
+ * recovers the asserted norm class.  It deliberately performs no relative
+ * BNF/BNR candidate search: every accepted entry follows the complete exact
+ * verification chain encoded in the certificate.
+ */
+
 #include <pari/pari.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -83,6 +95,7 @@ compact_quotient(GEN numerator, GEN denominator)
     return result;
 }
 
+/** Validate a stored character label/vector and return its matrix slot. */
 static long
 character_index_and_vector(
     const char *label, GEN stored, GEN p,
@@ -127,6 +140,7 @@ character_index_and_vector(
     return index;
 }
 
+/** Express PARI's relative cyclic generator in the absolute field basis. */
 static GEN
 relative_generator_as_absolute_automorphism(GEN Labs, GEN Lrel)
 {
@@ -139,6 +153,7 @@ relative_generator_as_absolute_automorphism(GEN Labs, GEN Lrel)
             gmul(rnf_get_k(Lrel), rnf_get_alpha(Lrel))));
 }
 
+/** Find an automorphism's exponent relative to a cyclic generator. */
 static long
 automorphism_exponent(
     GEN Labs, GEN generator, GEN automorphism, long order)
@@ -154,6 +169,10 @@ automorphism_exponent(
     return 0;
 }
 
+/**
+ * Compute base-class Artin exponents in both PARI's and stored sigma's
+ * orientations.
+ */
 static GEN
 artin_exponents_relative_to(
     GEN Labs, GEN Lrel, GEN K, GEN sigma, GEN p,
@@ -209,6 +228,7 @@ artin_exponents_relative_to(
     return normalized;
 }
 
+/** Prove that the extension is ker(character) and sigma realizes character. */
 static void
 verify_character_and_normalization(
     GEN Labs, GEN Lrel, GEN K, GEN sigma, GEN character, GEN p,
@@ -244,6 +264,7 @@ verify_character_and_normalization(
     }
 }
 
+/** Check that the stored absolute automorphism fixes K and has order five. */
 static void
 verify_automorphism(
     GEN Labs, GEN Lrel, GEN K, GEN sigma,
@@ -270,6 +291,7 @@ verify_automorphism(
         fail(label, column, "stored sigma does not have order 5");
 }
 
+/** Resolve the unit ambiguity in AC2 by reduction at the stored odd prime. */
 static void
 verify_modular_sign(
     GEN K, GEN compact, GEN ell, GEN prime,
@@ -310,6 +332,7 @@ verify_modular_sign(
         fail(label, column, "N(t_AC)/a' is not +1 modulo q");
 }
 
+/** Return the p-relevant coordinates of an ideal in PARI's class basis. */
 static GEN
 class_coordinates_mod_p(GEN K, GEN ideal, GEN p)
 {
@@ -327,6 +350,7 @@ class_coordinates_mod_p(GEN K, GEN ideal, GEN p)
     return result;
 }
 
+/** Read the GP expression without asking GP to execute a source file. */
 static GEN
 read_certificate(const char *path)
 {
@@ -359,6 +383,7 @@ main(int argc, char **argv)
         INIT_JMPm | INIT_SIGm | INIT_DFTm | INIT_noIMTm);
     paristack_setsize(1L << 30, 1L << 33);
 
+    /* Validate the certificate schema and certified base-field conventions. */
     GEN certificate = read_certificate(path);
     if (typ(certificate) != t_VEC || lg(certificate) != 8)
         fail(NULL, 0, "invalid top-level certificate schema");
@@ -408,6 +433,10 @@ main(int argc, char **argv)
     for (long i = 0; i < 9; ++i)
         matrices[i] = zeromatcopy(3, 3);
 
+    /*
+     * Verify every arithmetic entry independently before accepting its norm
+     * class as one column of a secondary-norm matrix.
+     */
     for (long entry_index = 1; entry_index < lg(entries); ++entry_index)
     {
         GEN entry = gel(entries, entry_index);
@@ -502,6 +531,7 @@ main(int argc, char **argv)
                     all_labels[character], column + 1,
                     "missing certificate entry");
 
+    /* Compare reconstructed matrices with the six published main values. */
     static const long expected[6][3][3] = {
         {{0,0,0},{0,3,3},{0,1,0}},
         {{0,0,4},{1,0,2},{2,0,4}},
@@ -524,6 +554,7 @@ main(int argc, char **argv)
         pari_printf("%s=PASS\n", matrix_labels[matrix]);
     }
 
+    /* Check the three redundant doubled-character homogeneity witnesses. */
     for (long matrix = 0; matrix < 3; ++matrix)
     {
         for (long column = 1; column <= 3; ++column)

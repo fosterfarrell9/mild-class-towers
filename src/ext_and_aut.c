@@ -20,6 +20,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+/**
+ * @file ext_and_aut.c
+ * @brief Build compatible relative/absolute extension models and automorphisms.
+ *
+ * The returned package includes relative BNF/BNR data used by later candidate
+ * searches.  Its cyclic automorphism is a model generator, not yet the
+ * prescribed-character normalization used by the secondary norm.
+ */
+
 #include <pari/pari.h>
 #include "../headers/ext_and_aut.h"
 #include "../headers/misc_functions.h"
@@ -121,4 +130,3 @@ GEN my_ext(GEN base, GEN base_clf, GEN p, int p_rk, GEN D_prime_vect)
     DEBUG_PRINT(1, "\n--------------------------\nEnd: my_ext\n--------------------------\n\n");
     return base_ext;
 }
-

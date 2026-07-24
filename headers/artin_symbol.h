@@ -25,17 +25,26 @@
 
 #include <pari/pari.h>
 
-//-------------------------------------------------------------------------------
-
-/*-------------- The Artin Symbol ---------------
-Let L/K be a Galois extension and let p be a prime in O_K which is unramified in L (in our case this holds for all primes in O_K since L/K is unramified). Choose a prime q in O_L lying above p. Then there is a unique element sigma_p in G_q:={sigma in Gal(L/K) : sigma(q)=q} such that sigma = (-)^N(p) when acting on the residue field k(q). 
-(1) If p is split in L, then G_q = {1} and k(q) = k(p) which means that (-)^N(p) = (-) = id and hence sigma_p = 1 (so 0 when identified with Z/pZ). 
-(2) Otherwise, since we assume L/K to be unramified of prime degree, the only other option is that p is inert in L and hence G_q=Gal(L/K). 
-The element sigma_p is independent of the choice of q since we assume L/K to be abelian. 
-
-Since k(q)^x is cyclic, it is enough to check that sigma_p(g) = g^N(p) for a generator g of k(q)^x.
-*/
-
+/**
+ * Compute the Artin exponent of a base-field ideal in a cyclic extension.
+ *
+ * The extension represented by `Lrel` is assumed cyclic, unramified, and of
+ * prime degree `p`.  The result identifies its Artin symbol with an exponent
+ * in Z/pZ relative to PARI's `rnfcycaut` generator.  The ideal is factored in
+ * the certified/search BNF `K`, and exact relative Frobenius exponents are
+ * added with their ideal-factorization multiplicities.
+ *
+ * This routine identifies the Artin character of an already constructed
+ * extension; it does not normalize the generator to a prescribed character.
+ * The caller performs that separate normalization.
+ *
+ * @param Labs Absolute BNF model compatible with `Lrel`.
+ * @param Lrel Relative cyclic extension over `K`.
+ * @param K Base-field BNF.
+ * @param I_K Base fractional ideal, normally in HNF.
+ * @param p Prime relative degree and modulus for the returned exponent.
+ * @return An integer representative of the Artin exponent modulo `p`.
+ */
 int my_Artin_symbol (GEN Labs, GEN Lrel, GEN K, GEN I_K, int p);
 
 #endif // ARTIN_SYMBOL_H

@@ -25,28 +25,35 @@
 
 #include <pari/pari.h>
 
-//-----------------------------------------------------------------------------
-
-//Defines a matrix over F_2 with index (i*k, j) corresponding to 
-//< x_i\cup x_k, (a_j, J_j)>
-
-//------------------------------------------------
-// Parallel version of my_relations
-//------------------------------------------------
-
-/*
-GP;install("compute_my_relations","Gp","./stdin.so");
-*/
-
-// Wrapper function for parallel computation
+/**
+ * Worker wrapper used by PARI's thread/closure interface.
+ *
+ * The argument bundle contains one extension and the shared base arithmetic;
+ * the return value is the relation contribution for worker index `i`.
+ */
 GEN compute_my_relations(long i, GEN args);
 
+/** Compute relation data in parallel across the selected extensions. */
 int my_relations_par(GEN K_ext, GEN K, GEN p, int p_rk, GEN Ja_vect, int r_rk);
 
+/**
+ * Compute cup-product relation matrices from Artin evaluations.
+ *
+ * Matrix columns are indexed by arithmetic inputs `(a_j,J_j)` and the row
+ * indexing is derived from ordered pairs of H^1 basis characters.
+ */
 int my_relations (GEN K_ext, GEN K, GEN p, int p_int, int p_rk, GEN Ja_vect, int r_rk);
 
+/**
+ * Compute higher Massey matrices for the selected subgroup/extension data.
+ *
+ * The long implementation combines ideal lifts, Artin symbols, and the
+ * defining-system depth `n`; it prints the research computation and returns a
+ * status code rather than a persistent matrix object.
+ */
 int my_massey_matrix (GEN K_ext, GEN K, GEN p, int p_int, int p_rk, GEN Ja_vect, int r_rk, GEN best_subgroups, int n);
 
+/** Print the Massey products and relation words used by the main program. */
 void my_print_massey(GEN K_ext, GEN K, GEN p, int p_int, int p_rk, GEN Ja_vect, int r_rk, GEN best_subgroups);
 
 #endif // FIND_CUP_MATRIX_H

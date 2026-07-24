@@ -25,11 +25,23 @@
 
 #include <pari/pari.h>
 
-//------------------------------------------------------------------------------
-/*
-Generates all extensions of base together with all necessary automorphisms 
-*/
-
+/**
+ * Build relative/absolute models for a list of class-field polynomials.
+ *
+ * Each output entry is `[Labs, Lrel, sigma, Lbnr]`.  `Labs` and `Lbnr` are
+ * relative-field BNF/BNR data used by the search routines; `Lrel` is the
+ * compatible relative model; and `sigma` is a nontrivial automorphism fixing
+ * the base field.  At this stage sigma is only a generator candidate.  The
+ * prescribed-character secondary-norm code later applies the paper's Artin
+ * normalization.
+ *
+ * @param base Base-field BNF/nf accepted by PARI's relative-field routines.
+ * @param base_clf Vector of relative class-field defining polynomials.
+ * @param p Expected prime relative degree.
+ * @param p_rk Number of extension entries to construct.
+ * @param D_prime_vect Auxiliary discriminant-prime data for `rnfpolredbest`.
+ * @return A stack-independent vector of four-component extension records.
+ */
 GEN my_ext(GEN base, GEN base_clf, GEN p, int p_rk, GEN D_prime_vect);
 
 #endif // EXT_AND_AUT_H

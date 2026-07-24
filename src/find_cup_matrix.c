@@ -20,6 +20,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+/**
+ * @file find_cup_matrix.c
+ * @brief Assemble cup-product, relation, and Massey-product matrices.
+ *
+ * This is the legacy arithmetic-to-relation pipeline.  Class-group generators
+ * index arithmetic inputs, relation rows encode the chosen presentation, and
+ * the secondary-norm interface supplies the degree-three contribution using
+ * its row-coordinate/column-input convention.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

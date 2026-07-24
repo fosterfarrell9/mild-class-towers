@@ -3,8 +3,9 @@
 
 #include <pari/pari.h>
 
-/*
- * Internal PARI functions used by the original Ahlqvist code.
+/**
+ * @file pari_internal.h
+ * @brief Declarations for non-public PARI routines required by this project.
  *
  * These are static in stock PARI 2.17.4 and therefore require
  * a locally patched libpari in which the corresponding `static`

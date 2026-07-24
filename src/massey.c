@@ -20,6 +20,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+/**
+ * @file massey.c
+ * @brief Command-line orchestration for the Massey-product computation.
+ *
+ * The driver initializes PARI and number-field data, constructs the relevant
+ * cup and higher-product matrices, and reports the resulting relation tests.
+ * Mathematical work is delegated to the focused arithmetic modules.
+ */
 
 #include <pthread.h>
 #include <pari/pari.h>
