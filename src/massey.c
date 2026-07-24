@@ -59,6 +59,7 @@
 #include "../headers/massey_tensor.h"
 #include "../headers/relation_degree3.h"
 #include "../headers/example_pipeline.h"
+#include "../headers/candidate_scanner.h"
 
 // Function prototype for parallel computation
 GEN compute_my_relations(long i, GEN args);
@@ -500,6 +501,13 @@ my_run_rank3_test(
 int
 main (int argc, char *argv[])	  
 {
+    if (argc > 1 && strcmp(argv[1], "--scan-candidates") == 0)
+        return my_candidate_scanner_main(argc, argv);
+    if (argc > 1 && strcmp(argv[1], "--candidate-inputs") == 0)
+        return my_candidate_inputs_main(argc, argv);
+    if (argc == 2 && strcmp(argv[1], "--candidate-self-test") == 0)
+        return my_candidate_scanner_self_test();
+
     const char *certificate_test = getenv("MASSEY_CERTIFICATE_TEST");
     if (certificate_test && strcmp(certificate_test, "1") == 0)
     {
