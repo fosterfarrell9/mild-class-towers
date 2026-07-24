@@ -1,0 +1,203 @@
+# Arithmetic certificate for \(K=\mathbf Q(\sqrt{-2800905})\), \(p=5\)
+
+This directory contains the public arithmetic certificate for the explicit
+example in *Secondary Norms, Triple Massey Products, and Mild Unramified
+\(p\)-Class Tower Groups*. It supports the six secondary-norm matrices for
+
+```text
+p = 5
+K = Q(s), s^2 + 2800905 = 0
+disc(K) = -11203620.
+```
+
+This is a machine-checkable certificate based on PARI's exact number-field
+arithmetic. It is not a formal proof and does not claim independence from
+PARI.
+
+## Files
+
+- `certificate.gp` is a textual, PARI-readable certificate. It contains 18
+  main entries (`a`, `b`, `c`, `a+b`, `a+c`, `b+c`, each at `e1`, `e2`,
+  `e3`) and nine doubled-character entries (`2a`, `2b`, `2c`).
+- `verify_certificate.c` is the standalone verifier.
+- `Makefile` builds only the verifier.
+
+The verifier does not run the search and does not construct a BNF for any
+degree-five relative field \(L_x/K\). In particular, successful verification
+does not require complete knowledge of \(\mathrm{Cl}(L_x)\) or
+\(O_{L_x}^{\times}\).
+
+## Logical separation
+
+The full Massey-pari computation is used only to find and export explicit
+objects:
+
+```text
+relative-field search
+    -> persisted I', compact t_AC, a', J, sigma, and q
+    -> standalone exact verifier.
+```
+
+The verifier follows this chain:
+
+```text
+certified base BNF
+    -> stored character vector and released label convention
+    -> exact Artin kernel identifies L_x/K
+    -> exact Artin exponents identify normalized sigma_x
+    -> (1-sigma)^2 I' (t_AC) i(J) = O_L
+    -> N(t_AC)/a' is a base-field unit
+    -> exact reduction at the stored odd prime proves the sign is +1
+    -> N(t_AC) = a'
+    -> certified base-field coordinates of [N(I')].
+```
+
+The AC1 orientation is the paper's orientation. The same uninverted \(I'\)
+used in AC1 is used in the ideal norm.
+
+For each entry the verifier also requires the stored relative and absolute
+polynomials to define the same concrete PARI model: the canonical absolute
+polynomial inside the reconstructed `rnf` must equal the polynomial used to
+construct the absolute `nf`. It requires every one of the nine character
+labels and three columns exactly once.
+
+## Building and verifying
+
+PARI 2.17.4 is required for the released representation and is checked by the
+verifier. As elsewhere in this repository, the PARI build must expose the
+exact internal `rnfcycaut`, `allauts`, and `cyclicrelfrob` routines declared in
+`headers/pari_internal.h`; the repository's documented local PARI build does
+so. From a clean checkout:
+
+```sh
+cd certificate/K-2800905-p5
+make PARI=/path/to/pari-prefix
+./verify_certificate certificate.gp
+```
+
+For the repository's documented local PARI installation:
+
+```sh
+make PARI=/home/denis/.local
+./verify_certificate certificate.gp
+```
+
+Successful output starts with:
+
+```text
+BASE_BNF_CERTIFIED=PASS
+```
+
+then reports `AC1=PASS`, `AC2=PASS`, and the norm class for all 27 entries,
+only after also reporting
+`FIELD_MODEL_COMPATIBILITY=PASS`, `ARTIN_CHARACTER=PASS`, and
+`SIGMA_NORMALIZATION=PASS`. It is followed by:
+
+```text
+D_a=PASS
+D_b=PASS
+D_c=PASS
+D_(a+b)=PASS
+D_(a+c)=PASS
+D_(b+c)=PASS
+D_(2a)=4D_a PASS
+D_(2b)=4D_b PASS
+D_(2c)=4D_c PASS
+
+CERTIFICATE VERIFIED
+```
+
+Any failed assertion names the affected character and column.
+
+## Certificate representation
+
+`certificate.gp` is one GP vector expression, split over lines for
+readability. It uses only textual GP encodings; it contains no raw PARI
+pointers or process-local memory layouts.
+
+The top-level schema is:
+
+```text
+[
+  format_version,
+  generator_PARI_VERSION_CODE,
+  p,
+  base_polynomial,
+  base_discriminant,
+  [class_cyclic_invariants, class_number, class_generators,
+   torsion_unit_order, torsion_unit_generator],
+  entries
+]
+```
+
+Each entry is:
+
+```text
+[
+  character_label,
+  column_number,
+  prescribed_character_vector,
+  relative_polynomial,
+  absolute_polynomial,
+  normalized_sigma_in_absolute_integral_basis,
+  a_prime_in_base_integral_basis,
+  J_as_base_ideal_HNF,
+  I_prime_as_absolute_ideal_HNF,
+  t_AC_as_[factor_column,signed_exponent_column],
+  rational_prime_ell,
+  prime_ideal_q_above_ell,
+  expected_norm_class_column_mod_5
+]
+```
+
+The base class coordinates are relative to the exact class-group generator
+HNFs stored in the header. The verifier recomputes and fully certifies the
+base BNF, then requires its cyclic invariants, class number, and generator
+HNFs to match that convention.
+
+The released character convention on those three certified \(5\)-relevant
+class-group generators is:
+
+```text
+a=[1,0,0]    b=[0,1,0]    c=[0,0,1]
+a+b=[1,1,0]  a+c=[1,0,1]  b+c=[0,1,1]
+2a=[2,0,0]   2b=[0,2,0]   2c=[0,0,2]
+```
+
+The verifier computes exact Artin symbols of the three base generators in the
+stored extension. Relative to PARI's exact cyclic relative generator, their
+exponent vector must span precisely the line of the stored character. The
+verifier then identifies the stored sigma as an exact power of that relative
+generator and requires the Artin exponent vector relative to stored sigma to
+equal the character vector coordinate-for-coordinate. Thus a different
+nontrivial power of sigma is rejected even though it still fixes \(K\) and has
+order five.
+
+Absolute ideal matrices and basis columns are interpreted using `nfinit` of
+the stored absolute polynomial. Relative objects are interpreted using
+`rnfinit` of the stored relative polynomial over the certified base field.
+The canonical `rnf_get_polabs` polynomial is required to equal the stored
+absolute polynomial before either model is used for cross-model conversions.
+The compact element is never expanded: its principal ideal is reconstructed
+with `famat_idealfactor` and `idealfactorback`, and its residue is evaluated
+factor by factor using exact finite-field exponentiation.
+
+## Regenerating the certificate
+
+Regeneration intentionally invokes the full search and is separate from
+verification:
+
+```sh
+make PARI=/home/denis/.local
+MASSEY_ARITHMETIC_AUDIT=1 \
+MASSEY_CERTIFICATE_EXPORT=certificate/K-2800905-p5/certificate.gp \
+./build/massey 5 's^2+2800905'
+```
+
+The exporter writes an entry only after the existing arithmetic audit has
+checked AC1, AC2, and the independently extracted norm class. Regeneration is
+expensive; verification from the persisted certificate is the intended
+public workflow.
+
+The hardening checks use fields already present in format version 1.
+`certificate.gp` therefore did not require regeneration.

@@ -184,6 +184,84 @@ secondary_norm_arithmetic_audit_enabled(void)
     return value && strcmp(value, "1") == 0;
 }
 
+static FILE *secondary_norm_certificate_file = NULL;
+static int secondary_norm_certificate_first_entry = 1;
+
+static void
+secondary_norm_certificate_close(void)
+{
+    if (!secondary_norm_certificate_file) return;
+    fputs("\n]]\n", secondary_norm_certificate_file);
+    fclose(secondary_norm_certificate_file);
+    secondary_norm_certificate_file = NULL;
+}
+
+static const char *
+secondary_norm_character_label(GEN t)
+{
+    static const long coordinates[][3] = {
+        {1, 0, 0}, {0, 1, 0}, {0, 0, 1},
+        {1, 1, 0}, {1, 0, 1}, {0, 1, 1},
+        {2, 0, 0}, {0, 2, 0}, {0, 0, 2}
+    };
+    static const char *labels[] = {
+        "a", "b", "c", "a+b", "a+c", "b+c", "2a", "2b", "2c"
+    };
+
+    for (long row = 0; row < 9; ++row)
+    {
+        int equal = 1;
+        for (long column = 1; column <= 3; ++column)
+            if (!equaliu(gel(t, column), coordinates[row][column - 1]))
+            {
+                equal = 0;
+                break;
+            }
+        if (equal) return labels[row];
+    }
+    secondary_norm_error("certificate exporter received an unknown character");
+    return NULL;
+}
+
+static void
+secondary_norm_certificate_export(
+    GEN Labs, GEN Lrel, GEN K, GEN sigma_t, GEN p, GEN prescribed_t,
+    GEN a_prime, GEN J, GEN I_prime, GEN t_AC, GEN ell, GEN prime,
+    GEN independent, long input_index)
+{
+    const char *path = getenv("MASSEY_CERTIFICATE_EXPORT");
+    if (!path || !*path) return;
+
+    if (!secondary_norm_certificate_file)
+    {
+        secondary_norm_certificate_file = fopen(path, "w");
+        if (!secondary_norm_certificate_file)
+            pari_err_FILE("MASSEY_CERTIFICATE_EXPORT", path);
+        if (atexit(secondary_norm_certificate_close) != 0)
+            secondary_norm_error("could not register certificate finalizer");
+        pari_fprintf(
+            secondary_norm_certificate_file,
+            "[1,%ld,%Ps,%Ps,%Ps,"
+            "[%Ps,%Ps,%Ps,%ld,%Ps],\n[",
+            (long)PARI_VERSION_CODE, p,
+            nf_get_pol(bnf_get_nf(K)), nf_get_disc(bnf_get_nf(K)),
+            bnf_get_cyc(K), bnf_get_no(K), bnf_get_gen(K),
+            bnf_get_tuN(K), bnf_get_tuU(K));
+    }
+
+    if (!secondary_norm_certificate_first_entry)
+        fputs(",\n", secondary_norm_certificate_file);
+    secondary_norm_certificate_first_entry = 0;
+
+    pari_fprintf(
+        secondary_norm_certificate_file,
+        "[\"%s\",%ld,%Ps,%Ps,%Ps,%Ps,%Ps,%Ps,%Ps,%Ps,%Ps,%Ps,%Ps]",
+        secondary_norm_character_label(prescribed_t), input_index,
+        prescribed_t, rnf_get_pol(Lrel), nf_get_pol(bnf_get_nf(Labs)),
+        sigma_t, a_prime, J, I_prime, t_AC, ell, prime, independent);
+    fflush(secondary_norm_certificate_file);
+}
+
 static GEN
 secondary_norm_compact_inverse(GEN compact)
 {
@@ -259,7 +337,7 @@ secondary_norm_compact_modular_sign(GEN K, GEN compact)
 static GEN
 secondary_norm_audit_column(
     GEN Labs, GEN Lrel, GEN K, GEN sigma_t, GEN p,
-    GEN Ja, GEN I_prime, GEN production_column,
+    GEN prescribed_t, GEN Ja, GEN I_prime, GEN production_column,
     long input_index)
 {
     pari_sp av = avma;
@@ -392,6 +470,9 @@ secondary_norm_audit_column(
         "residue(+1)=%Ps residue(-1)=%Ps unit_coordinates=%Ps\n",
         ell, prime, residue, residue_one, residue_minus_one,
         ac2_unit_exp);
+    secondary_norm_certificate_export(
+        Labs, Lrel, K, sigma_t, p, prescribed_t,
+        a_prime, J, I_prime, t_AC, ell, prime, independent, input_index);
     return gerepilecopy(
         av, mkvec4(t_AC, I_prime, norm_ideal, independent));
 }
@@ -591,7 +672,7 @@ my_secondary_norm_operator(
         for (j = 1; j <= inputs; ++j)
             (void)secondary_norm_audit_column(
                 Labs, Lrel, K, sigma_t, p,
-                gel(Ja_vect, j), gel(I_prime_vect, j), gel(D, j), j);
+                t, gel(Ja_vect, j), gel(I_prime_vect, j), gel(D, j), j);
     }
 
     return gerepilecopy(av, D);
