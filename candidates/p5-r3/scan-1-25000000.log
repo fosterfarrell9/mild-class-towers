@@ -1,0 +1,212 @@
+PRODUCTION_SCAN_START git_commit=63712194dfdcfe59f803d41d2df833d431bcc209
+COMMAND ./build/massey --scan-candidates --prime 5 --rank 3 --min-abs-disc 1 --max-abs-disc 25000000 --checkpoint-every 1000000 --progress-seconds 10 --output candidates/p5-r3/scan-1-25000000.gp
+SCAN_START p=5 rank=3 min_abs=1 max_abs=25000000 checkpoint_every=1000000 progress_seconds=10 PARI=[2, 17, 4]
+SCAN_PROGRESS |D|=0 percent=0.00 fundamental=0 candidates=0 elapsed=00:00:00 rate=0.00_abs_disc/s
+SCAN_PROGRESS |D|=250000 percent=1.00 fundamental=75988 candidates=0 elapsed=00:00:10 rate=24963.02_abs_disc/s
+SCAN_PROGRESS |D|=460000 percent=1.84 fundamental=139822 candidates=0 elapsed=00:00:20 rate=22909.47_abs_disc/s
+SCAN_PROGRESS |D|=670000 percent=2.68 fundamental=203644 candidates=0 elapsed=00:00:30 rate=21925.15_abs_disc/s
+SCAN_PROGRESS |D|=860000 percent=3.44 fundamental=261414 candidates=0 elapsed=00:00:40 rate=21144.46_abs_disc/s
+CHECKPOINT |D|=1000000 fundamental=303968 candidates=0 elapsed=48.256
+SCAN_PROGRESS |D|=1050000 percent=4.20 fundamental=319169 candidates=0 elapsed=00:00:50 rate=20614.13_abs_disc/s
+SCAN_PROGRESS |D|=1240000 percent=4.96 fundamental=376926 candidates=0 elapsed=00:01:01 rate=20153.96_abs_disc/s
+SCAN_PROGRESS |D|=1410000 percent=5.64 fundamental=428590 candidates=0 elapsed=00:01:11 rate=19625.05_abs_disc/s
+SCAN_PROGRESS |D|=1580000 percent=6.32 fundamental=480245 candidates=0 elapsed=00:01:21 rate=19278.76_abs_disc/s
+SCAN_PROGRESS |D|=1740000 percent=6.96 fundamental=528887 candidates=0 elapsed=00:01:32 rate=18899.14_abs_disc/s
+SCAN_PROGRESS |D|=1910000 percent=7.64 fundamental=580575 candidates=0 elapsed=00:01:42 rate=18690.20_abs_disc/s
+CHECKPOINT |D|=2000000 fundamental=607931 candidates=0 elapsed=107.676
+SCAN_PROGRESS |D|=2080000 percent=8.32 fundamental=632242 candidates=0 elapsed=00:01:52 rate=18451.83_abs_disc/s
+SCAN_PROGRESS |D|=2250000 percent=9.00 fundamental=683931 candidates=0 elapsed=00:02:03 rate=18280.02_abs_disc/s
+SCAN_PROGRESS |D|=2420000 percent=9.68 fundamental=735600 candidates=0 elapsed=00:02:13 rate=18094.85_abs_disc/s
+SCAN_PROGRESS |D|=2580000 percent=10.32 fundamental=784246 candidates=0 elapsed=00:02:24 rate=17909.60_abs_disc/s
+SCAN_PROGRESS |D|=2750000 percent=11.00 fundamental=835905 candidates=0 elapsed=00:02:34 rate=17791.15_abs_disc/s
+SCAN_PROGRESS |D|=2910000 percent=11.64 fundamental=884539 candidates=0 elapsed=00:02:44 rate=17675.25_abs_disc/s
+CHECKPOINT |D|=3000000 fundamental=911878 candidates=0 elapsed=170.116
+SCAN_PROGRESS |D|=3080000 percent=12.32 fundamental=936203 candidates=0 elapsed=00:02:55 rate=17596.87_abs_disc/s
+SCAN_PROGRESS |D|=3230000 percent=12.92 fundamental=981788 candidates=0 elapsed=00:03:05 rate=17418.41_abs_disc/s
+SCAN_PROGRESS |D|=3390000 percent=13.56 fundamental=1030427 candidates=0 elapsed=00:03:16 rate=17294.44_abs_disc/s
+SCAN_PROGRESS |D|=3550000 percent=14.20 fundamental=1079064 candidates=0 elapsed=00:03:26 rate=17185.68_abs_disc/s
+SCAN_PROGRESS |D|=3710000 percent=14.84 fundamental=1127700 candidates=0 elapsed=00:03:36 rate=17103.52_abs_disc/s
+SCAN_PROGRESS |D|=3860000 percent=15.44 fundamental=1173293 candidates=0 elapsed=00:03:47 rate=16971.36_abs_disc/s
+CHECKPOINT |D|=4000000 fundamental=1215854 candidates=0 elapsed=236.575
+SCAN_PROGRESS |D|=4020000 percent=16.08 fundamental=1221937 candidates=0 elapsed=00:03:57 rate=16898.70_abs_disc/s
+SCAN_PROGRESS |D|=4170000 percent=16.68 fundamental=1267529 candidates=0 elapsed=00:04:08 rate=16795.56_abs_disc/s
+SCAN_PROGRESS |D|=4310000 percent=17.24 fundamental=1310087 candidates=0 elapsed=00:04:18 rate=16680.79_abs_disc/s
+SCAN_PROGRESS |D|=4460000 percent=17.84 fundamental=1355674 candidates=0 elapsed=00:04:28 rate=16587.21_abs_disc/s
+SCAN_PROGRESS |D|=4620000 percent=18.48 fundamental=1404296 candidates=0 elapsed=00:04:39 rate=16533.03_abs_disc/s
+SCAN_PROGRESS |D|=4780000 percent=19.12 fundamental=1452937 candidates=0 elapsed=00:04:49 rate=16489.37_abs_disc/s
+SCAN_PROGRESS |D|=4930000 percent=19.72 fundamental=1498538 candidates=0 elapsed=00:05:00 rate=16418.65_abs_disc/s
+CHECKPOINT |D|=5000000 fundamental=1519802 candidates=0 elapsed=305.514
+SCAN_PROGRESS |D|=5070000 percent=20.28 fundamental=1541093 candidates=0 elapsed=00:05:10 rate=16335.09_abs_disc/s
+SCAN_PROGRESS |D|=5220000 percent=20.88 fundamental=1586672 candidates=0 elapsed=00:05:21 rate=16260.95_abs_disc/s
+SCAN_PROGRESS |D|=5370000 percent=21.48 fundamental=1632287 candidates=0 elapsed=00:05:31 rate=16201.92_abs_disc/s
+SCAN_PROGRESS |D|=5520000 percent=22.08 fundamental=1677879 candidates=0 elapsed=00:05:41 rate=16161.31_abs_disc/s
+SCAN_PROGRESS |D|=5670000 percent=22.68 fundamental=1723483 candidates=0 elapsed=00:05:51 rate=16113.93_abs_disc/s
+SCAN_PROGRESS |D|=5830000 percent=23.32 fundamental=1772121 candidates=0 elapsed=00:06:02 rate=16080.49_abs_disc/s
+SCAN_PROGRESS |D|=5980000 percent=23.92 fundamental=1817725 candidates=0 elapsed=00:06:12 rate=16050.43_abs_disc/s
+CHECKPOINT |D|=6000000 fundamental=1823801 candidates=0 elapsed=373.920
+SCAN_PROGRESS |D|=6130000 percent=24.52 fundamental=1863320 candidates=0 elapsed=00:06:23 rate=16000.66_abs_disc/s
+SCAN_PROGRESS |D|=6270000 percent=25.08 fundamental=1905870 candidates=0 elapsed=00:06:33 rate=15947.21_abs_disc/s
+SCAN_PROGRESS |D|=6410000 percent=25.64 fundamental=1948425 candidates=0 elapsed=00:06:43 rate=15892.78_abs_disc/s
+SCAN_PROGRESS |D|=6560000 percent=26.24 fundamental=1994015 candidates=0 elapsed=00:06:53 rate=15863.88_abs_disc/s
+SCAN_PROGRESS |D|=6710000 percent=26.84 fundamental=2039603 candidates=0 elapsed=00:07:03 rate=15832.02_abs_disc/s
+SCAN_PROGRESS |D|=6850000 percent=27.40 fundamental=2082159 candidates=0 elapsed=00:07:13 rate=15788.07_abs_disc/s
+CHECKPOINT |D|=7000000 fundamental=2127750 candidates=0 elapsed=444.521
+SCAN_PROGRESS |D|=7000000 percent=28.00 fundamental=2127750 candidates=0 elapsed=00:07:24 rate=15747.29_abs_disc/s
+SCAN_PROGRESS |D|=7150000 percent=28.60 fundamental=2173351 candidates=0 elapsed=00:07:34 rate=15718.26_abs_disc/s
+SCAN_PROGRESS |D|=7300000 percent=29.20 fundamental=2218937 candidates=0 elapsed=00:07:45 rate=15685.65_abs_disc/s
+SCAN_PROGRESS |D|=7450000 percent=29.80 fundamental=2264550 candidates=0 elapsed=00:07:55 rate=15660.51_abs_disc/s
+SCAN_PROGRESS |D|=7590000 percent=30.36 fundamental=2307088 candidates=0 elapsed=00:08:05 rate=15619.03_abs_disc/s
+SCAN_PROGRESS |D|=7730000 percent=30.92 fundamental=2349640 candidates=0 elapsed=00:08:16 rate=15582.29_abs_disc/s
+SCAN_PROGRESS |D|=7870000 percent=31.48 fundamental=2392197 candidates=0 elapsed=00:08:26 rate=15547.52_abs_disc/s
+CHECKPOINT |D|=8000000 fundamental=2431721 candidates=0 elapsed=515.505
+SCAN_PROGRESS |D|=8010000 percent=32.04 fundamental=2434753 candidates=0 elapsed=00:08:36 rate=15516.34_abs_disc/s
+SCAN_PROGRESS |D|=8140000 percent=32.56 fundamental=2474276 candidates=0 elapsed=00:08:46 rate=15463.65_abs_disc/s
+SCAN_PROGRESS |D|=8280000 percent=33.12 fundamental=2516825 candidates=0 elapsed=00:08:56 rate=15424.49_abs_disc/s
+SCAN_PROGRESS |D|=8410000 percent=33.64 fundamental=2556325 candidates=0 elapsed=00:09:06 rate=15377.60_abs_disc/s
+SCAN_PROGRESS |D|=8550000 percent=34.20 fundamental=2598867 candidates=0 elapsed=00:09:16 rate=15351.69_abs_disc/s
+SCAN_PROGRESS |D|=8700000 percent=34.80 fundamental=2644457 candidates=0 elapsed=00:09:27 rate=15329.28_abs_disc/s
+SCAN_PROGRESS |D|=8840000 percent=35.36 fundamental=2687008 candidates=0 elapsed=00:09:37 rate=15297.07_abs_disc/s
+SCAN_PROGRESS |D|=8980000 percent=35.92 fundamental=2729568 candidates=0 elapsed=00:09:47 rate=15274.93_abs_disc/s
+CHECKPOINT |D|=9000000 fundamental=2735651 candidates=0 elapsed=589.494
+SCAN_PROGRESS |D|=9110000 percent=36.44 fundamental=2769086 candidates=0 elapsed=00:09:57 rate=15236.06_abs_disc/s
+SCAN_PROGRESS |D|=9250000 percent=37.00 fundamental=2811648 candidates=0 elapsed=00:10:08 rate=15211.21_abs_disc/s
+SCAN_PROGRESS |D|=9390000 percent=37.56 fundamental=2854219 candidates=0 elapsed=00:10:18 rate=15188.74_abs_disc/s
+SCAN_PROGRESS |D|=9540000 percent=38.16 fundamental=2899814 candidates=0 elapsed=00:10:28 rate=15170.64_abs_disc/s
+SCAN_PROGRESS |D|=9670000 percent=38.68 fundamental=2939323 candidates=0 elapsed=00:10:39 rate=15129.99_abs_disc/s
+SCAN_PROGRESS |D|=9800000 percent=39.20 fundamental=2978848 candidates=0 elapsed=00:10:49 rate=15092.29_abs_disc/s
+SCAN_PROGRESS |D|=9930000 percent=39.72 fundamental=3018357 candidates=0 elapsed=00:10:59 rate=15056.02_abs_disc/s
+CHECKPOINT |D|=10000000 fundamental=3039632 candidates=0 elapsed=664.871
+SCAN_PROGRESS |D|=10070000 percent=40.28 fundamental=3060898 candidates=0 elapsed=00:11:10 rate=15028.40_abs_disc/s
+SCAN_PROGRESS |D|=10210000 percent=40.84 fundamental=3103460 candidates=0 elapsed=00:11:20 rate=15008.11_abs_disc/s
+SCAN_PROGRESS |D|=10350000 percent=41.40 fundamental=3146017 candidates=0 elapsed=00:11:30 rate=14991.72_abs_disc/s
+SCAN_PROGRESS |D|=10490000 percent=41.96 fundamental=3188567 candidates=0 elapsed=00:11:40 rate=14974.57_abs_disc/s
+SCAN_PROGRESS |D|=10630000 percent=42.52 fundamental=3231117 candidates=0 elapsed=00:11:51 rate=14949.03_abs_disc/s
+SCAN_PROGRESS |D|=10770000 percent=43.08 fundamental=3273673 candidates=0 elapsed=00:12:01 rate=14922.30_abs_disc/s
+SCAN_PROGRESS |D|=10900000 percent=43.60 fundamental=3313204 candidates=0 elapsed=00:12:12 rate=14881.07_abs_disc/s
+CHECKPOINT |D|=11000000 fundamental=3343593 candidates=0 elapsed=739.909
+SCAN_PROGRESS |D|=11030000 percent=44.12 fundamental=3352704 candidates=0 elapsed=00:12:22 rate=14855.34_abs_disc/s
+SCAN_PROGRESS |D|=11160000 percent=44.64 fundamental=3392225 candidates=0 elapsed=00:12:32 rate=14827.20_abs_disc/s
+CANDIDATE D=-11203620 class_group=[10, 10, 10] h=1000 p_rank=3
+SCAN_PROGRESS |D|=11290000 percent=45.16 fundamental=3431743 candidates=1 elapsed=00:12:42 rate=14801.63_abs_disc/s
+SCAN_PROGRESS |D|=11430000 percent=45.72 fundamental=3474302 candidates=1 elapsed=00:12:52 rate=14789.04_abs_disc/s
+SCAN_PROGRESS |D|=11560000 percent=46.24 fundamental=3513823 candidates=1 elapsed=00:13:02 rate=14765.19_abs_disc/s
+SCAN_PROGRESS |D|=11690000 percent=46.76 fundamental=3553337 candidates=1 elapsed=00:13:13 rate=14734.32_abs_disc/s
+SCAN_PROGRESS |D|=11820000 percent=47.28 fundamental=3592845 candidates=1 elapsed=00:13:23 rate=14706.97_abs_disc/s
+SCAN_PROGRESS |D|=11960000 percent=47.84 fundamental=3635389 candidates=1 elapsed=00:13:34 rate=14691.58_abs_disc/s
+CHECKPOINT |D|=12000000 fundamental=3647557 candidates=1 elapsed=816.987
+SCAN_PROGRESS |D|=12100000 percent=48.40 fundamental=3677960 candidates=1 elapsed=00:13:44 rate=14679.81_abs_disc/s
+SCAN_PROGRESS |D|=12240000 percent=48.96 fundamental=3720519 candidates=1 elapsed=00:13:54 rate=14667.14_abs_disc/s
+SCAN_PROGRESS |D|=12370000 percent=49.48 fundamental=3760027 candidates=1 elapsed=00:14:05 rate=14638.85_abs_disc/s
+SCAN_PROGRESS |D|=12510000 percent=50.04 fundamental=3802589 candidates=1 elapsed=00:14:15 rate=14622.01_abs_disc/s
+SCAN_PROGRESS |D|=12650000 percent=50.60 fundamental=3845151 candidates=1 elapsed=00:14:26 rate=14604.72_abs_disc/s
+SCAN_PROGRESS |D|=12780000 percent=51.12 fundamental=3884659 candidates=1 elapsed=00:14:36 rate=14582.73_abs_disc/s
+SCAN_PROGRESS |D|=12910000 percent=51.64 fundamental=3924194 candidates=1 elapsed=00:14:46 rate=14563.92_abs_disc/s
+CHECKPOINT |D|=13000000 fundamental=3951542 candidates=1 elapsed=893.013
+SCAN_PROGRESS |D|=13050000 percent=52.20 fundamental=3966735 candidates=1 elapsed=00:14:56 rate=14550.91_abs_disc/s
+SCAN_PROGRESS |D|=13180000 percent=52.72 fundamental=4006244 candidates=1 elapsed=00:15:07 rate=14527.45_abs_disc/s
+SCAN_PROGRESS |D|=13300000 percent=53.20 fundamental=4042712 candidates=1 elapsed=00:15:17 rate=14499.80_abs_disc/s
+SCAN_PROGRESS |D|=13430000 percent=53.72 fundamental=4082223 candidates=1 elapsed=00:15:27 rate=14478.39_abs_disc/s
+SCAN_PROGRESS |D|=13570000 percent=54.28 fundamental=4124788 candidates=1 elapsed=00:15:37 rate=14467.49_abs_disc/s
+SCAN_PROGRESS |D|=13700000 percent=54.80 fundamental=4164310 candidates=1 elapsed=00:15:48 rate=14449.32_abs_disc/s
+SCAN_PROGRESS |D|=13840000 percent=55.36 fundamental=4206869 candidates=1 elapsed=00:15:58 rate=14439.70_abs_disc/s
+SCAN_PROGRESS |D|=13980000 percent=55.92 fundamental=4249428 candidates=1 elapsed=00:16:08 rate=14429.80_abs_disc/s
+CHECKPOINT |D|=14000000 fundamental=4255501 candidates=1 elapsed=970.310
+SCAN_PROGRESS |D|=14120000 percent=56.48 fundamental=4291962 candidates=1 elapsed=00:16:19 rate=14415.49_abs_disc/s
+SCAN_PROGRESS |D|=14260000 percent=57.04 fundamental=4334528 candidates=1 elapsed=00:16:29 rate=14406.55_abs_disc/s
+SCAN_PROGRESS |D|=14400000 percent=57.60 fundamental=4377095 candidates=1 elapsed=00:16:40 rate=14394.23_abs_disc/s
+SCAN_PROGRESS |D|=14530000 percent=58.12 fundamental=4416614 candidates=1 elapsed=00:16:50 rate=14377.12_abs_disc/s
+SCAN_PROGRESS |D|=14660000 percent=58.64 fundamental=4456131 candidates=1 elapsed=00:17:01 rate=14356.62_abs_disc/s
+SCAN_PROGRESS |D|=14790000 percent=59.16 fundamental=4495649 candidates=1 elapsed=00:17:11 rate=14339.13_abs_disc/s
+SCAN_PROGRESS |D|=14930000 percent=59.72 fundamental=4538185 candidates=1 elapsed=00:17:21 rate=14329.98_abs_disc/s
+CHECKPOINT |D|=15000000 fundamental=4559461 candidates=1 elapsed=1047.055
+SCAN_PROGRESS |D|=15070000 percent=60.28 fundamental=4580750 candidates=1 elapsed=00:17:32 rate=14321.42_abs_disc/s
+SCAN_PROGRESS |D|=15200000 percent=60.80 fundamental=4620283 candidates=1 elapsed=00:17:42 rate=14306.50_abs_disc/s
+SCAN_PROGRESS |D|=15340000 percent=61.36 fundamental=4662829 candidates=1 elapsed=00:17:53 rate=14294.60_abs_disc/s
+SCAN_PROGRESS |D|=15470000 percent=61.88 fundamental=4702338 candidates=1 elapsed=00:18:03 rate=14276.64_abs_disc/s
+SCAN_PROGRESS |D|=15600000 percent=62.40 fundamental=4741851 candidates=1 elapsed=00:18:13 rate=14263.49_abs_disc/s
+SCAN_PROGRESS |D|=15730000 percent=62.92 fundamental=4781365 candidates=1 elapsed=00:18:24 rate=14247.05_abs_disc/s
+SCAN_PROGRESS |D|=15860000 percent=63.44 fundamental=4820890 candidates=1 elapsed=00:18:34 rate=14233.03_abs_disc/s
+SCAN_PROGRESS |D|=15990000 percent=63.96 fundamental=4860407 candidates=1 elapsed=00:18:45 rate=14213.26_abs_disc/s
+CHECKPOINT |D|=16000000 fundamental=4863441 candidates=1 elapsed=1125.811
+SCAN_PROGRESS |D|=16120000 percent=64.48 fundamental=4899921 candidates=1 elapsed=00:18:55 rate=14199.45_abs_disc/s
+SCAN_PROGRESS |D|=16250000 percent=65.00 fundamental=4939422 candidates=1 elapsed=00:19:05 rate=14188.88_abs_disc/s
+SCAN_PROGRESS |D|=16380000 percent=65.52 fundamental=4978948 candidates=1 elapsed=00:19:16 rate=14168.30_abs_disc/s
+SCAN_PROGRESS |D|=16510000 percent=66.04 fundamental=5018444 candidates=1 elapsed=00:19:26 rate=14154.58_abs_disc/s
+SCAN_PROGRESS |D|=16640000 percent=66.56 fundamental=5057965 candidates=1 elapsed=00:19:37 rate=14137.47_abs_disc/s
+SCAN_PROGRESS |D|=16770000 percent=67.08 fundamental=5097482 candidates=1 elapsed=00:19:47 rate=14125.27_abs_disc/s
+SCAN_PROGRESS |D|=16900000 percent=67.60 fundamental=5136984 candidates=1 elapsed=00:19:57 rate=14109.40_abs_disc/s
+CHECKPOINT |D|=17000000 fundamental=5167380 candidates=1 elapsed=1205.953
+SCAN_PROGRESS |D|=17030000 percent=68.12 fundamental=5176502 candidates=1 elapsed=00:20:08 rate=14093.59_abs_disc/s
+SCAN_PROGRESS |D|=17170000 percent=68.68 fundamental=5219056 candidates=1 elapsed=00:20:19 rate=14084.38_abs_disc/s
+SCAN_PROGRESS |D|=17300000 percent=69.20 fundamental=5258567 candidates=1 elapsed=00:20:29 rate=14068.63_abs_disc/s
+SCAN_PROGRESS |D|=17430000 percent=69.72 fundamental=5298095 candidates=1 elapsed=00:20:40 rate=14052.72_abs_disc/s
+SCAN_PROGRESS |D|=17570000 percent=70.28 fundamental=5340647 candidates=1 elapsed=00:20:50 rate=14045.43_abs_disc/s
+SCAN_PROGRESS |D|=17700000 percent=70.80 fundamental=5380153 candidates=1 elapsed=00:21:01 rate=14036.43_abs_disc/s
+SCAN_PROGRESS |D|=17830000 percent=71.32 fundamental=5419678 candidates=1 elapsed=00:21:11 rate=14019.22_abs_disc/s
+SCAN_PROGRESS |D|=17950000 percent=71.80 fundamental=5456129 candidates=1 elapsed=00:21:22 rate=13996.79_abs_disc/s
+CHECKPOINT |D|=18000000 fundamental=5471332 candidates=1 elapsed=1286.482
+SCAN_PROGRESS |D|=18080000 percent=72.32 fundamental=5495661 candidates=1 elapsed=00:21:33 rate=13981.69_abs_disc/s
+SCAN_PROGRESS |D|=18210000 percent=72.84 fundamental=5535165 candidates=1 elapsed=00:21:43 rate=13969.43_abs_disc/s
+SCAN_PROGRESS |D|=18330000 percent=73.32 fundamental=5571638 candidates=1 elapsed=00:21:53 rate=13952.67_abs_disc/s
+CANDIDATE D=-18397407 class_group=[40, 10, 5] h=2000 p_rank=3
+SCAN_PROGRESS |D|=18460000 percent=73.84 fundamental=5611140 candidates=2 elapsed=00:22:04 rate=13937.25_abs_disc/s
+SCAN_PROGRESS |D|=18590000 percent=74.36 fundamental=5650664 candidates=2 elapsed=00:22:15 rate=13923.54_abs_disc/s
+SCAN_PROGRESS |D|=18730000 percent=74.92 fundamental=5693216 candidates=2 elapsed=00:22:25 rate=13916.94_abs_disc/s
+SCAN_PROGRESS |D|=18870000 percent=75.48 fundamental=5735776 candidates=2 elapsed=00:22:36 rate=13910.26_abs_disc/s
+CHECKPOINT |D|=19000000 fundamental=5775299 candidates=2 elapsed=1367.294
+SCAN_PROGRESS |D|=19000000 percent=76.00 fundamental=5775299 candidates=2 elapsed=00:22:47 rate=13896.06_abs_disc/s
+SCAN_PROGRESS |D|=19130000 percent=76.52 fundamental=5814817 candidates=2 elapsed=00:22:58 rate=13880.56_abs_disc/s
+SCAN_PROGRESS |D|=19260000 percent=77.04 fundamental=5854339 candidates=2 elapsed=00:23:08 rate=13870.26_abs_disc/s
+SCAN_PROGRESS |D|=19390000 percent=77.56 fundamental=5893856 candidates=2 elapsed=00:23:19 rate=13855.82_abs_disc/s
+SCAN_PROGRESS |D|=19520000 percent=78.08 fundamental=5933355 candidates=2 elapsed=00:23:30 rate=13843.74_abs_disc/s
+SCAN_PROGRESS |D|=19650000 percent=78.60 fundamental=5972869 candidates=2 elapsed=00:23:40 rate=13830.86_abs_disc/s
+SCAN_PROGRESS |D|=19770000 percent=79.08 fundamental=6009356 candidates=2 elapsed=00:23:50 rate=13817.76_abs_disc/s
+SCAN_PROGRESS |D|=19890000 percent=79.56 fundamental=6045837 candidates=2 elapsed=00:24:00 rate=13804.70_abs_disc/s
+CHECKPOINT |D|=20000000 fundamental=6079277 candidates=2 elapsed=1449.570
+SCAN_PROGRESS |D|=20020000 percent=80.08 fundamental=6085352 candidates=2 elapsed=00:24:11 rate=13793.18_abs_disc/s
+SCAN_PROGRESS |D|=20150000 percent=80.60 fundamental=6124870 candidates=2 elapsed=00:24:21 rate=13785.98_abs_disc/s
+SCAN_PROGRESS |D|=20280000 percent=81.12 fundamental=6164380 candidates=2 elapsed=00:24:31 rate=13777.21_abs_disc/s
+SCAN_PROGRESS |D|=20410000 percent=81.64 fundamental=6203906 candidates=2 elapsed=00:24:42 rate=13763.61_abs_disc/s
+SCAN_PROGRESS |D|=20530000 percent=82.12 fundamental=6240388 candidates=2 elapsed=00:24:53 rate=13749.93_abs_disc/s
+SCAN_PROGRESS |D|=20660000 percent=82.64 fundamental=6279901 candidates=2 elapsed=00:25:03 rate=13740.48_abs_disc/s
+SCAN_PROGRESS |D|=20790000 percent=83.16 fundamental=6319411 candidates=2 elapsed=00:25:14 rate=13731.66_abs_disc/s
+SCAN_PROGRESS |D|=20920000 percent=83.68 fundamental=6358929 candidates=2 elapsed=00:25:24 rate=13726.01_abs_disc/s
+CHECKPOINT |D|=21000000 fundamental=6383237 candidates=2 elapsed=1531.139
+SCAN_PROGRESS |D|=21040000 percent=84.16 fundamental=6395407 candidates=2 elapsed=00:25:34 rate=13710.04_abs_disc/s
+SCAN_PROGRESS |D|=21160000 percent=84.64 fundamental=6431871 candidates=2 elapsed=00:25:44 rate=13697.39_abs_disc/s
+SCAN_PROGRESS |D|=21290000 percent=85.16 fundamental=6471390 candidates=2 elapsed=00:25:54 rate=13691.62_abs_disc/s
+SCAN_PROGRESS |D|=21420000 percent=85.68 fundamental=6510902 candidates=2 elapsed=00:26:05 rate=13686.57_abs_disc/s
+SCAN_PROGRESS |D|=21550000 percent=86.20 fundamental=6550407 candidates=2 elapsed=00:26:15 rate=13675.92_abs_disc/s
+SCAN_PROGRESS |D|=21680000 percent=86.72 fundamental=6589933 candidates=2 elapsed=00:26:25 rate=13670.44_abs_disc/s
+SCAN_PROGRESS |D|=21790000 percent=87.16 fundamental=6623356 candidates=2 elapsed=00:26:35 rate=13653.40_abs_disc/s
+SCAN_PROGRESS |D|=21910000 percent=87.64 fundamental=6659830 candidates=2 elapsed=00:26:46 rate=13641.90_abs_disc/s
+CHECKPOINT |D|=22000000 fundamental=6687191 candidates=2 elapsed=1613.932
+SCAN_PROGRESS |D|=22030000 percent=88.12 fundamental=6696316 candidates=2 elapsed=00:26:56 rate=13627.23_abs_disc/s
+SCAN_PROGRESS |D|=22160000 percent=88.64 fundamental=6735837 candidates=2 elapsed=00:27:06 rate=13621.12_abs_disc/s
+SCAN_PROGRESS |D|=22290000 percent=89.16 fundamental=6775349 candidates=2 elapsed=00:27:17 rate=13613.61_abs_disc/s
+SCAN_PROGRESS |D|=22410000 percent=89.64 fundamental=6811806 candidates=2 elapsed=00:27:27 rate=13601.20_abs_disc/s
+SCAN_PROGRESS |D|=22530000 percent=90.12 fundamental=6848283 candidates=2 elapsed=00:27:37 rate=13590.82_abs_disc/s
+SCAN_PROGRESS |D|=22660000 percent=90.64 fundamental=6887785 candidates=2 elapsed=00:27:48 rate=13583.94_abs_disc/s
+SCAN_PROGRESS |D|=22790000 percent=91.16 fundamental=6927306 candidates=2 elapsed=00:27:58 rate=13575.81_abs_disc/s
+SCAN_PROGRESS |D|=22920000 percent=91.68 fundamental=6966824 candidates=2 elapsed=00:28:09 rate=13566.34_abs_disc/s
+CHECKPOINT |D|=23000000 fundamental=6991135 candidates=2 elapsed=1696.328
+SCAN_PROGRESS |D|=23050000 percent=92.20 fundamental=7006339 candidates=2 elapsed=00:28:20 rate=13556.84_abs_disc/s
+SCAN_PROGRESS |D|=23180000 percent=92.72 fundamental=7045847 candidates=2 elapsed=00:28:30 rate=13550.31_abs_disc/s
+SCAN_PROGRESS |D|=23310000 percent=93.24 fundamental=7085372 candidates=2 elapsed=00:28:41 rate=13544.24_abs_disc/s
+SCAN_PROGRESS |D|=23430000 percent=93.72 fundamental=7121849 candidates=2 elapsed=00:28:51 rate=13534.93_abs_disc/s
+SCAN_PROGRESS |D|=23550000 percent=94.20 fundamental=7158327 candidates=2 elapsed=00:29:01 rate=13523.52_abs_disc/s
+SCAN_PROGRESS |D|=23670000 percent=94.68 fundamental=7194792 candidates=2 elapsed=00:29:11 rate=13512.05_abs_disc/s
+SCAN_PROGRESS |D|=23800000 percent=95.20 fundamental=7234317 candidates=2 elapsed=00:29:22 rate=13505.46_abs_disc/s
+SCAN_PROGRESS |D|=23930000 percent=95.72 fundamental=7273827 candidates=2 elapsed=00:29:33 rate=13496.39_abs_disc/s
+CHECKPOINT |D|=24000000 fundamental=7295105 candidates=2 elapsed=1779.130
+SCAN_PROGRESS |D|=24050000 percent=96.20 fundamental=7310304 candidates=2 elapsed=00:29:43 rate=13485.52_abs_disc/s
+SCAN_PROGRESS |D|=24170000 percent=96.68 fundamental=7346775 candidates=2 elapsed=00:29:53 rate=13474.01_abs_disc/s
+SCAN_PROGRESS |D|=24290000 percent=97.16 fundamental=7383255 candidates=2 elapsed=00:30:03 rate=13464.74_abs_disc/s
+SCAN_PROGRESS |D|=24410000 percent=97.64 fundamental=7419731 candidates=2 elapsed=00:30:14 rate=13453.98_abs_disc/s
+SCAN_PROGRESS |D|=24530000 percent=98.12 fundamental=7456198 candidates=2 elapsed=00:30:24 rate=13443.44_abs_disc/s
+SCAN_PROGRESS |D|=24650000 percent=98.60 fundamental=7492663 candidates=2 elapsed=00:30:34 rate=13435.55_abs_disc/s
+SCAN_PROGRESS |D|=24770000 percent=99.08 fundamental=7529148 candidates=2 elapsed=00:30:45 rate=13422.39_abs_disc/s
+SCAN_PROGRESS |D|=24900000 percent=99.60 fundamental=7568659 candidates=2 elapsed=00:30:55 rate=13417.26_abs_disc/s
+CHECKPOINT |D|=25000000 fundamental=7599051 candidates=2 elapsed=1863.918
+SCAN_PROGRESS |D|=25000000 percent=100.00 fundamental=7599051 candidates=2 elapsed=00:31:03 rate=13412.60_abs_disc/s
+SCAN SUMMARY last=25000000 fundamental=7599051 candidates=2 elapsed=1863.919 rate=13412.60_abs_disc/s

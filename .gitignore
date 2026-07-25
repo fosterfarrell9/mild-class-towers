@@ -13,3 +13,5 @@ settings.json
 build/
 *.o
 *.dSYM/
+__pycache__/
+*.pyc
