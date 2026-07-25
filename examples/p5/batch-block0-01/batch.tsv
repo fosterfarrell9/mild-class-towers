@@ -1,0 +1,11 @@
+D	class_group	p_primary	class_number	state	result_status	arithmetic_audit	cubic_rank	bounded_witness	exhaustive_witness	MILD	CD	leading_words	runtime_seconds	result_sha256	run_log_sha256	exit_status	started_at	ended_at	error
+-27960639	[40,10,10]	[5,5,5]	4000	COMPLETED	STRONGLY_FREE_BASIS_FOUND	PASS (18/18)	3	FOUND	NOT_USED	PROVED	2	"[""ccb"", ""caa"", ""cab""]"	3238.713	2146eccba19ed2499c83440602988f65214a0bf1fc06a4f245b54c4b6020384d	53fb35af430f25cf662100ee118c068d9de51f1260685957d31d61cee3283beb	0	2026-07-25T06:38:25+00:00	2026-07-25T07:37:37+00:00	
+-35663739	[30,10,5]	[5,5,5]	1500	RUNNING				NOT_RUN	NOT_USED							0	2026-07-25T07:37:37+00:00		
+-51213139	[75,5,5]	[25,5,5]	1875	PENDING															
+-61040707	[20,10,5]	[5,5,5]	1000	PENDING															
+-54319112	[60,10,5]	[5,5,5]	3000	PENDING															
+-65818135	[30,10,10]	[5,5,5]	3000	PENDING															
+-75949255	[40,20,5]	[5,5,5]	4000	PENDING															
+-145367147	[125,5,5]	[125,5,5]	3125	PENDING															
+-109909943	[100,10,10]	[25,5,5]	10000	PENDING															
+-207666763	[50,10,5]	[25,5,5]	2500	PENDING															
