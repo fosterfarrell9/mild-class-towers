@@ -107,3 +107,52 @@ The current single-field command exits nonzero and need not write a record when
 arithmetic fails. A future batch driver will catch that failure and persist
 `status="ARITHMETIC_COMPUTATION_FAILED"`; the arithmetic routine itself does
 not currently serialize failure records.
+
+## Resumable audited batch runner
+
+`tools/run_mildness_batch.py` is that batch layer for the fixed ten-field
+block-zero batch. It invokes the existing single-field command rather than
+reimplementing arithmetic. It runs one field at a time, preflights every
+defining polynomial and expected `quadclassunit` result with PARI/GP, and
+independently validates every completed `result.gp`.
+
+Start the batch from the repository root:
+
+```sh
+python3 tools/run_mildness_batch.py \
+  --batch examples/p5/batch-block0-01
+```
+
+Resume after an interruption:
+
+```sh
+python3 tools/run_mildness_batch.py \
+  --batch examples/p5/batch-block0-01 --resume
+```
+
+The runner validates the hashes and GP contents of every completed field before
+skipping it. An entry interrupted while `RUNNING` is retried; if its final
+result had already been atomically installed, the runner validates and
+recovers it instead. Existing successful output is never overwritten during
+an ordinary start or resume. `--resume --force` explicitly discards all field
+artifacts and reruns the whole fixed batch.
+
+Complete merged child output is stored in each `D-*/run.log` and forwarded
+live. The runner also emits and flushes a heartbeat every 25 seconds by default
+(the configurable `--heartbeat-seconds` value must not exceed 30). It records
+state atomically in `batch-state.json`, writes the review table `batch.tsv`,
+and stores starts, heartbeats, milestones, and summaries in `batch.log`.
+
+For rank-three fields the normal 250,000-candidate search runs first. If it
+finds no witness, the runner requests the implemented exhaustive
+`GL_3(F_5)` mode with all 1,488,000 degree-one basis candidates. Exhausting
+that mode only exhausts the six implemented degree-lex variable orders.
+
+A completed field has either `MILD="PROVED", CD=2` or
+`MILD="UNKNOWN", CD="UNKNOWN"`. A field-level pipeline failure is recorded as
+`result_status="ARITHMETIC_COMPUTATION_FAILED"` with unknown mildness and
+cohomological dimension, and the runner continues to the next field. Such a
+failure is not evidence of non-mildness. Repository/build corruption or a
+post-validation inconsistency is a global safety failure and stops the batch.
+An `nfdisc`/`quadclassunit` mismatch is a hard failure for that field and is
+persisted before the runner continues.
