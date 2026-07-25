@@ -113,13 +113,15 @@ exhaustive child (36 AC-check lines, two base certifications).  From
 field 3 onward the runner performs a single exhaustive-stage run per
 field.
 
-Results so far: fields 1 and 4 are MILD = PROVED with CD = 2; fields 2
-and 3 pass the full arithmetic audit with cubic rank 3, but the
+Results so far: fields 1, 4, and 5 are MILD = PROVED with CD = 2;
+fields 2 and 3 pass the full arithmetic audit with cubic rank 3, but the
 exhaustive GL_3(F_5) search finds no strongly free basis, so their
 status is MILD = UNKNOWN (which does not assert non-mildness).
 
-The batch was paused deliberately at the field boundary after field 4;
-`batch-state.json` shows field 5 as RUNNING because the stop arrived
-within the first minute of that field.  A later
-`python3 tools/run_mildness_batch.py --resume` continues cleanly with
-fields 5 to 10.
+The batch was paused deliberately at the field boundary after field 4,
+resumed once for field 5 (D=-54319112: MILD = PROVED, CD = 2, audit
+PASS 18/18, leading words cca, cbb, cba), and paused again after that
+field.  `batch-state.json` may show the following field as RUNNING
+because each stop arrived within the first minute of that field.  A
+later `python3 tools/run_mildness_batch.py --resume` continues cleanly
+with fields 6 to 10.

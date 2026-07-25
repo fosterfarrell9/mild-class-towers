@@ -142,7 +142,10 @@
       "state": "COMPLETED"
     },
     {
+      "CD": "2",
       "D": -54319112,
+      "MILD": "PROVED",
+      "arithmetic_audit": "PASS (18/18)",
       "bounded_witness": "NOT_RUN",
       "class_group": [
         60,
@@ -150,20 +153,31 @@
         5
       ],
       "class_number": 3000,
+      "cubic_rank": 3,
       "directory": "D-54319112",
-      "exhaustive_witness": "NOT_USED",
+      "ended_at": "2026-07-25T17:54:28+00:00",
+      "exhaustive": true,
+      "exhaustive_witness": "FOUND",
+      "exit_status": 0,
       "index": 5,
+      "interrupted_at": "2026-07-25T16:54:52+00:00",
+      "leading_words": "[\"cca\", \"cbb\", \"cba\"]",
       "p_primary": [
         5,
         5,
         5
       ],
       "polynomial": "s^2+13579778",
-      "started_at": "2026-07-25T16:42:55+00:00",
-      "state": "RUNNING"
+      "result_sha256": "3a765e21004577b8b69554b45fac1abc7f4c896a148dc35e61f93762136d3511",
+      "result_status": "STRONGLY_FREE_BASIS_FOUND",
+      "run_log_sha256": "900a2827ae564c015202ff0a36b4b15237043523f61cae77031cc6da252881c5",
+      "runtime_seconds": 3568.699,
+      "started_at": "2026-07-25T16:54:52+00:00",
+      "state": "COMPLETED"
     },
     {
       "D": -65818135,
+      "bounded_witness": "NOT_RUN",
       "class_group": [
         30,
         10,
@@ -171,6 +185,7 @@
       ],
       "class_number": 3000,
       "directory": "D-65818135",
+      "exhaustive_witness": "NOT_USED",
       "index": 6,
       "p_primary": [
         5,
@@ -178,7 +193,8 @@
         5
       ],
       "polynomial": "s^2-s+16454534",
-      "state": "PENDING"
+      "started_at": "2026-07-25T17:54:28+00:00",
+      "state": "RUNNING"
     },
     {
       "D": -75949255,
@@ -254,5 +270,5 @@
     }
   ],
   "format_version": 1,
-  "updated_at": "2026-07-25T16:42:55+00:00"
+  "updated_at": "2026-07-25T17:54:28+00:00"
 }
