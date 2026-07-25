@@ -104,3 +104,22 @@ for every question it answers.
 verbatim snapshot at the moment of the abort. In that snapshot field 2 is
 still marked `RUNNING`; the abort happened before the state file was
 updated. A resumed run rewrites these three files.
+
+## Continuation runs and deliberate pause (2026-07-25)
+
+After the validation fix, field 2 completed under the two-stage runner;
+its `run.log` therefore contains both the bounded child and the
+exhaustive child (36 AC-check lines, two base certifications).  From
+field 3 onward the runner performs a single exhaustive-stage run per
+field.
+
+Results so far: fields 1 and 4 are MILD = PROVED with CD = 2; fields 2
+and 3 pass the full arithmetic audit with cubic rank 3, but the
+exhaustive GL_3(F_5) search finds no strongly free basis, so their
+status is MILD = UNKNOWN (which does not assert non-mildness).
+
+The batch was paused deliberately at the field boundary after field 4;
+`batch-state.json` shows field 5 as RUNNING because the stop arrived
+within the first minute of that field.  A later
+`python3 tools/run_mildness_batch.py --resume` continues cleanly with
+fields 5 to 10.
