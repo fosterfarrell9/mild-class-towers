@@ -1,0 +1,5 @@
+order = deg-lex yzx (Singular Dp); degree bound = 13; terminated = False
+basis leading words by degree: 3:3, 4:1, 5:1, 6:1, 7:1, 8:2, 9:3, 10:3, 11:4, 12:7, 13:7
+series verified through degree 13: matches target
+VERDICT: INCONCLUSIVE_SERIES_MATCHES
+{"engine": "singular-letterplace", "order": "yzx", "degree_bound": 13, "terminated": false, "leading_words": ["xxy", "xxz", "xzxy", "xzxzy", "xzyxyxzyxyxy", "xzyxyxzyxyzxy", "xzyxyxzyxyzzy", "xzyxyxzyxyzzz", "xzyxyxzyz", "xzyxyy", "xzyxzyxy", "xzyxzyxzyy", "xzyxzyyxy", "xzyxzyyxzyxy", "xzyxzyyxzyy", "xzyxzyyxzyz", "xzyxzyyyxy", "xzyxzyyyxzyxy", "xzyxzyyyxzyy", "xzyxzyyyxzyz", "xzyxzyyyyxy", "xzyxzyyyyxzyy", "xzyxzyyyyxzyz", "xzyxzyyyyyxy", "xzyxzyyyyyy", "xzyxzyyyyyzxy", "xzyxzyyyyyzy", "xzyxzyyyyyzz", "xzyxzyyyyz", "xzyxzyyyz", "xzyxzyyz", "xzyxzyz", "xzz"], "verdict": "INCONCLUSIVE_SERIES_MATCHES"}

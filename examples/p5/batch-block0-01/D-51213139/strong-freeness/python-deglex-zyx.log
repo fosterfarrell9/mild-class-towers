@@ -1,0 +1,14 @@
+  degree 4: basis size 4; series matches through degree 4
+  degree 5: basis size 5; series matches through degree 5
+  degree 6: basis size 6; series matches through degree 6
+  degree 7: basis size 7; series matches through degree 7
+  degree 8: basis size 9; series matches through degree 8
+  degree 9: basis size 11; series matches through degree 9
+  degree 10: basis size 15; series matches through degree 10
+  degree 11: basis size 19; series matches through degree 11
+  degree 12: basis size 24; series matches through degree 12
+order = deg-lex zyx;  processed degree = 12;  terminated = False
+basis leading words by degree: 3:3, 4:1, 5:1, 6:1, 7:1, 8:2, 9:2, 10:4, 11:4, 12:5
+series verified through degree 12: matches target
+VERDICT: INCONCLUSIVE_SERIES_MATCHES
+{"order": "zyx", "processed_degree": 12, "terminated": false, "leading_words": ["xyy", "xxz", "xxy", "xyxz", "xyzxz", "xyxyzy", "xyxyxyz", "xyxyzzxz", "xyxyzxyz", "xyxyzzyxz", "xyxyzzxyz", "xyxyzzyyyz", "xyxyzzyyyy", "xyxyzzyyxz", "xyxyzzyxyz", "xyxyzzyyzyy", "xyxyzzyyyxz", "xyxyzzyyxyz", "xyxyzxyxyzz", "xyxyzzyyzyxz", "xyxyzzyyzxzz", "xyxyzzyyzxzy", "xyxyzzyyzxyz", "xyxyzzyyyxyz"], "verdict": "INCONCLUSIVE_SERIES_MATCHES"}
