@@ -167,7 +167,7 @@ def initial_state() -> dict:
         "updated_at": utc_now(),
         "configuration": {
             "p": 5,
-            "bounded_strong_search_limit": 250000,
+            "strong_search_limit": "exhaustive",
             "exhaustive_gl3_f5_candidates": GL3_F5_ORDER,
             "sequential_processes": 1,
         },
@@ -503,14 +503,14 @@ def recover_interrupted_results(
                 "ended_at": item["interrupted_at"],
             }
         )
-        if parsed["exhaustive"]:
-            item["bounded_witness"] = "NOT_FOUND"
+        if parsed["cubic_rank"] < 3:
+            item["bounded_witness"] = "NOT_APPLICABLE"
+            item["exhaustive_witness"] = "NOT_APPLICABLE"
+        elif parsed["exhaustive"]:
+            item["bounded_witness"] = "NOT_RUN"
             item["exhaustive_witness"] = (
                 "FOUND" if parsed["MILD"] == "PROVED" else "NOT_FOUND"
             )
-        elif parsed["cubic_rank"] < 3:
-            item["bounded_witness"] = "NOT_APPLICABLE"
-            item["exhaustive_witness"] = "NOT_USED"
         else:
             item["bounded_witness"] = (
                 "FOUND" if parsed["MILD"] == "PROVED" else "NOT_FOUND"
@@ -613,17 +613,19 @@ def run_field(
         f"FIELD {index}/{total} START | D={field.discriminant} | "
         f"polynomial={field.polynomial} | completed={completed_before}/{total}"
     )
-    bounded_command = [
+    pipeline_command = [
         stdbuf,
         "-oL",
         "-eL",
         str(executable),
         "--example-result",
-        str(bounded_result),
+        str(exhaustive_result),
+        "--strong-search-limit",
+        "exhaustive",
         "5",
         field.polynomial,
     ]
-    progress = {"character": None, "attempt": "bounded"}
+    progress = {"character": None, "attempt": "exhaustive"}
     character_names = {
         "[1, 0, 0]": "a",
         "[0, 1, 0]": "b",
@@ -664,64 +666,20 @@ def run_field(
         return message
 
     exit_status = run_streamed_process(
-        bounded_command,
+        pipeline_command,
         run_log,
         heartbeat_seconds,
         heartbeat,
         child_line,
     )
     item["exit_status"] = exit_status
-    chosen_result = bounded_result
-    if exit_status != 0 or not bounded_result.is_file():
-        raise RuntimeError(f"bounded audited pipeline exited {exit_status}")
+    if exit_status != 0 or not exhaustive_result.is_file():
+        raise RuntimeError(f"audited pipeline exited {exit_status}")
 
-    bounded = validate_result(bounded_result, field, gp, final=False)
-    item["bounded_witness"] = (
-        "FOUND" if bounded["MILD"] == "PROVED" else "NOT_FOUND"
-    )
-    if bounded["cubic_rank"] == 3:
-        logger.emit(
-            f"[{utc_now()}] D={field.discriminant} | "
-            f"STRONG_FREENESS_SEARCH END (bounded) | "
-            f"witness={item['bounded_witness']}"
-        )
-    if (
-        bounded["cubic_rank"] == 3
-        and bounded["result_status"] == "NO_STRONGLY_FREE_BASIS_FOUND"
-    ):
-        logger.emit(
-            f"[{utc_now()}] D={field.discriminant} | bounded witness NOT FOUND; "
-            f"starting exhaustive {GL3_F5_ORDER}-candidate GL_3(F_5) search"
-        )
-        exhaustive_command = [
-            stdbuf,
-            "-oL",
-            "-eL",
-            str(executable),
-            "--example-result",
-            str(exhaustive_result),
-            "--strong-search-limit",
-            "exhaustive",
-            "5",
-            field.polynomial,
-        ]
-        progress["character"] = None
-        progress["attempt"] = "exhaustive"
-        exit_status = run_streamed_process(
-            exhaustive_command,
-            run_log,
-            heartbeat_seconds,
-            heartbeat,
-            child_line,
-            append=True,
-        )
-        item["exit_status"] = exit_status
-        if exit_status != 0 or not exhaustive_result.is_file():
-            raise RuntimeError(f"exhaustive audited pipeline exited {exit_status}")
-        chosen_result = exhaustive_result
-        exhaustive = validate_result(exhaustive_result, field, gp)
+    parsed_run = validate_result(exhaustive_result, field, gp)
+    if parsed_run["cubic_rank"] == 3:
         item["exhaustive_witness"] = (
-            "FOUND" if exhaustive["MILD"] == "PROVED" else "NOT_FOUND"
+            "FOUND" if parsed_run["MILD"] == "PROVED" else "NOT_FOUND"
         )
         logger.emit(
             f"[{utc_now()}] D={field.discriminant} | "
@@ -729,7 +687,7 @@ def run_field(
             f"witness={item['exhaustive_witness']}"
         )
 
-    os.replace(chosen_result, final_result)
+    os.replace(exhaustive_result, final_result)
     for temporary in (bounded_result, exhaustive_result):
         if temporary.exists():
             temporary.unlink()
@@ -753,6 +711,7 @@ def run_field(
     )
     if parsed["cubic_rank"] < 3:
         item["bounded_witness"] = "NOT_APPLICABLE"
+        item["exhaustive_witness"] = "NOT_APPLICABLE"
     write_state(batch, state)
     completed = sum(
         entry["state"] == "COMPLETED" for entry in state["fields"]
