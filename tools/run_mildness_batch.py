@@ -360,8 +360,18 @@ def preflight_field(field: Field, gp: str) -> None:
         )
 
 
-def validate_result(path: Path, field: Field, gp: str) -> dict:
+def validate_result(
+    path: Path, field: Field, gp: str, final: bool = True
+) -> dict:
+    """Validate a result record with PARI/GP.
+
+    With final=True (the default) a no-witness result must come from the
+    exhaustive search.  The intermediate bounded-search result is validated
+    with final=False, since a bounded no-witness outcome is the legitimate
+    trigger for the exhaustive escalation, not an error.
+    """
     expected = vector_text(field.class_group).replace(",", ", ")
+    require_exhaustive = "1" if final else "0"
     script = f"""
 r=read({gp_quote(path)});
 if(type(r)!="t_VEC" || #r!=20,error("bad result schema"));
@@ -382,7 +392,7 @@ if(st=="STRONGLY_FREE_BASIS_FOUND" && (rk!=3 || #w==0 || w[6]!=1 || mild!="PROVE
 if(st!="STRONGLY_FREE_BASIS_FOUND" && (mild!="UNKNOWN" || cd!="UNKNOWN" || #w!=0),error("unknown status inconsistent"));
 if(st=="RANK_LT_3" && rk>=3,error("rank status inconsistent"));
 if(st=="NO_STRONGLY_FREE_BASIS_FOUND" && rk!=3,error("no-witness status inconsistent"));
-if(st=="NO_STRONGLY_FREE_BASIS_FOUND" && ex!=1,error("final no-witness result is not exhaustive"));
+if({require_exhaustive} && st=="NO_STRONGLY_FREE_BASIS_FOUND" && ex!=1,error("final no-witness result is not exhaustive"));
 print(rk);
 print(mild);
 print(cd);
@@ -665,7 +675,7 @@ def run_field(
     if exit_status != 0 or not bounded_result.is_file():
         raise RuntimeError(f"bounded audited pipeline exited {exit_status}")
 
-    bounded = validate_result(bounded_result, field, gp)
+    bounded = validate_result(bounded_result, field, gp, final=False)
     item["bounded_witness"] = (
         "FOUND" if bounded["MILD"] == "PROVED" else "NOT_FOUND"
     )
