@@ -545,11 +545,17 @@ main (int argc, char *argv[])
     if (relation_test && strcmp(relation_test, "1") == 0)
     {
         pari_init(4000000, 500000);
+        /* MASSEY_RELATION_MATRIX may hold a 3 x 27 matrix over F_5 in GP
+         * syntax; without it the audited fixture matrix of the paper's
+         * principal example (D_K = -11203620) is used. */
+        const char *matrix_text = getenv("MASSEY_RELATION_MATRIX");
         GEN fixture =
             gp_read_str(
-                "[0,0,0,0,0,3,0,4,1,0,0,3,0,0,4,4,2,4,0,3,3,3,4,2,1,4,0;"
-                "0,3,3,4,1,4,4,4,2,3,3,2,1,0,2,4,1,0,3,2,1,4,2,0,2,0,0;"
-                "0,1,0,3,2,3,0,2,0,1,1,0,2,0,4,2,2,1,0,0,0,3,4,3,0,1,0]");
+                matrix_text != NULL && matrix_text[0] != '\0'
+                ? matrix_text
+                : "[0,0,0,0,0,3,0,4,1,0,0,3,0,0,4,4,2,4,0,3,3,3,4,2,1,4,0;"
+                  "0,3,3,4,1,4,4,4,2,3,3,2,1,0,2,4,1,0,3,2,1,4,2,0,2,0,0;"
+                  "0,1,0,3,2,3,0,2,0,1,1,0,2,0,4,2,2,1,0,0,0,3,4,3,0,1,0]");
         my_run_relation_degree3_fixture(fixture, stoi(5));
         pari_close();
         return 0;

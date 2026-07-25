@@ -18,6 +18,7 @@
 #define REL_ROWS 3
 #define REL_WORDS 27
 #define REL_LIE_DIM 8
+#define REL_PROMISING_MAX 600
 
 static int rel_current_p = REL_P;
 
@@ -829,7 +830,8 @@ rel_section8_monoid_checks(void)
 
 static int
 rel_collect_promising(
-    int T[REL_ROWS][REL_WORDS], RelPromisingTriple triples[30])
+    int T[REL_ROWS][REL_WORDS],
+    RelPromisingTriple triples[REL_PROMISING_MAX])
 {
     int count = 0;
     for (int i = 0; i < REL_WORDS; ++i)
@@ -840,6 +842,10 @@ rel_collect_promising(
                 if (!rel_cf_degree3(candidate, 3)
                     || rel_column_rank(T, candidate, 3) != 3)
                     continue;
+                if (count == REL_PROMISING_MAX)
+                    pari_err(
+                        e_MISC,
+                        "relation_degree3: promising triple capacity");
                 memcpy(triples[count].words, candidate, sizeof(candidate));
                 triples[count].top_three_count = 0;
                 triples[count].maximum_pivot_intersection = 0;
@@ -1091,10 +1097,11 @@ rel_run_section8_search(int T[REL_ROWS][REL_WORDS])
     rel_section8_unit_tests();
     rel_section8_monoid_checks();
 
-    RelPromisingTriple triples[30];
+    RelPromisingTriple triples[REL_PROMISING_MAX];
     int triple_count = rel_collect_promising(T, triples);
-    if (triple_count != 24)
-        pari_err(e_MISC, "relation_degree3: promising triple count changed");
+    pari_printf(
+        "  promising combinatorially free full-rank triples = %d\n",
+        triple_count);
 
     RelSigma characteristic[6];
     int map_count = 0;
@@ -1136,7 +1143,7 @@ rel_run_section8_search(int T[REL_ROWS][REL_WORDS])
                 triples, triple_count, &stage2_anick, &stage2_efrat);
     }
 
-    pari_printf("  behavior of 24 promising triples:\n");
+    pari_printf("  behavior of %d promising triples:\n", triple_count);
     for (int q = 0; q < triple_count; ++q)
     {
         char first[4], second[4], third[4];
