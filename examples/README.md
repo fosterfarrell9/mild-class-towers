@@ -22,6 +22,34 @@ mkdir -p examples/p5/K-2800905
 The program does not create parent directories. A result is written only after
 the arithmetic and finite-field stages complete.
 
+## Audited example at discriminant -18397407
+
+The directory `p5/K-18397407/` records the computation for
+
+```text
+p = 5
+K = Q[s]/(s^2-s+4599352)
+disc(K) = -18397407
+Cl(K) = [40,10,5].
+```
+
+It was produced with:
+
+```sh
+./build/massey --example-result \
+  examples/p5/K-18397407/result.gp 5 's^2-s+4599352'
+```
+
+Every one of the 18 secondary-norm columns passed the prescribed-character,
+normalized-Artin-generator, exact AC1/AC2, and independent norm-class audit.
+The resulting cubic relation matrix has rank 3.  The generic search found a
+verified strongly-free witness with leading words `["bba","bcc","bca"]`,
+proving `MILD="PROVED"` and `CD=2`.
+
+`result.gp` is the compact machine-readable record.  For this example,
+`run.log` is also retained as the complete console transcript of the exact
+arithmetic audit.
+
 The strong-freeness search tests 250,000 invertible degree-one bases by
 default. Set another positive bound with:
 
