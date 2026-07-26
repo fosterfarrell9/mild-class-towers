@@ -144,10 +144,19 @@ my_run_arithmetic_audit(
         mkcol3(gen_0, gen_1, gen_1)
     };
 
-    if (!equalii(discriminant, stoi(-11203620)) || !equaliu(p, 5))
-        pari_err(e_MISC, "MASSEY_ARITHMETIC_AUDIT requires the fixed p=5 field");
-    if (!gequal(bnf_get_cyc(K), mkvec3(stoi(10), stoi(10), stoi(10))))
-        pari_err(e_MISC, "audit class-group invariants are not [10,10,10]");
+    (void)discriminant;
+    if (!equaliu(p, 5))
+        pari_err(e_MISC, "MASSEY_ARITHMETIC_AUDIT requires p=5");
+    {
+        GEN audit_cyc = bnf_get_cyc(K);
+        long audit_rank = 0;
+        for (long i = 1; i < lg(audit_cyc); ++i)
+            if (dvdii(gel(audit_cyc, i), p)) ++audit_rank;
+        if (audit_rank != 3)
+            pari_err(
+                e_MISC,
+                "MASSEY_ARITHMETIC_AUDIT requires 5-class rank three");
+    }
     if (glength(Ja_vect) != 3)
         pari_err(e_MISC, "audit Ja_vect does not have three entries");
 

@@ -58,16 +58,30 @@ used in AC1 is used in the ideal norm.
 For each entry the verifier also requires the stored relative and absolute
 polynomials to define the same concrete PARI model: the canonical absolute
 polynomial inside the reconstructed `rnf` must equal the polynomial used to
-construct the absolute `nf`. It requires every one of the nine character
-labels and three columns exactly once.
+construct the absolute `nf`.
+
+The verifier is field-generic.  It accepts certificates with 27 entries
+(nine character labels, as released here) or with 18 entries (the six
+main characters, as exported by the audited example pipeline for further
+fields); each present label/column pair is required exactly once, and
+the doubled-character checks run only when the `2a`, `2b`, `2c` entries
+are present.  The comparison against the published matrices of the
+paper is performed only when the certified discriminant is the
+principal example's; for any other field the six reconstructed matrices
+are printed, and an optional second command-line argument naming a
+`result.gp` record cross-checks them against its
+`secondary_norm_samples` (`RESULT_RECORD_MATCH=PASS`).  See
+`REPRODUCING.md` at the repository root for how to export certificates
+for further fields.
 
 ## Building and verifying
 
 PARI 2.17.4 is required for the released representation and is checked by the
 verifier. As elsewhere in this repository, the PARI build must expose the
 exact internal `rnfcycaut`, `allauts`, and `cyclicrelfrob` routines declared in
-`headers/pari_internal.h`; the repository's documented local PARI build does
-so. From a clean checkout:
+`headers/pari_internal.h`; the required one-file patch of stock
+PARI 2.17.4 and the corresponding build steps are documented in
+`doc/pari-2.17.4-patch.md` at the repository root. From a clean checkout:
 
 ```sh
 cd certificate/K-2800905-p5

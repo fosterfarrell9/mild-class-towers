@@ -1,8 +1,9 @@
 # PARI 2.17.4 patch required by Massey-pari
 
-This patch is only needed to reproduce the original `Massey-pari`
-Artin-symbol implementation. The planned rank-three implementation should
-eventually avoid these internal PARI functions.
+Every computation in this repository that touches Artin symbols relies
+on this patch: the original Artin-symbol implementation, the audited
+rank-three pipeline, and the standalone certificate verifier in
+`certificate/`.
 
 `Massey-pari` uses three internal PARI functions from
 `src/modules/algebras.c`:

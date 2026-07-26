@@ -7,6 +7,11 @@ make clean
 make PARI="$HOME/.local"
 ```
 
+The PARI build must expose three routines that are `static` in stock
+PARI 2.17.4 (`rnfcycaut`, `allauts`, `cyclicrelfrob`); the required
+one-file patch, the rebuild steps, and a regression test are documented
+in `doc/pari-2.17.4-patch.md`.
+
 Run the fixed rank-three arithmetic and tensor computation for
 \(K=\mathbf Q(\sqrt{-2800905})\) and \(p=5\):
 
@@ -34,6 +39,56 @@ The ordinary rank-two example can be used as a quick regression check:
 
 The rank-three and arithmetic-verification modes perform number-field
 arithmetic and may take substantially longer than the finite relation test.
+
+## Arithmetic certificates
+
+A certificate is a per-field text file that pins down the expensive
+arithmetic behind the six secondary-norm matrices: for every pair
+(character, torsion basis element) it stores the relative and absolute
+polynomials of the class field, the normalized automorphism, the pair
+(a', J) representing the torsion class, the auxiliary divisor I', the
+compactly represented element t_AC, a residue prime for the sign check,
+and the expected norm class.  The standalone verifier recomputes and
+certifies the base field, identifies the class field and the normalized
+automorphism from the stored data, checks AC1 and AC2 by exact ideal
+arithmetic, and recomputes each norm class -- all without repeating the
+search that found the data.
+
+Certificates do not cover the strong-freeness searches: a failed search
+has no succinct witness.  They do not need to, because everything after
+the certified matrices is fast finite algebra: the cubic matrix T
+follows by the reconstruction formula, the exhaustive GL_3(F_5) search
+takes under a minute, and the Groebner tools above re-verify the
+Hilbert evidence in minutes.
+
+Build the verifier once and verify a certificate (the optional second
+argument cross-checks the certified matrices against a committed
+result record, reporting RESULT_RECORD_MATCH=PASS):
+
+```sh
+cd certificate/K-2800905-p5
+make PARI="$HOME/.local"
+./verify_certificate certificate.gp
+./verify_certificate ../K-51213139-p5/certificate.gp \
+  ../../examples/p5/batch-block0-01/D-51213139/result.gp
+```
+
+Export a certificate for a further field by running the audited
+pipeline with the export path set (expensive; it repeats the search):
+
+```sh
+MASSEY_CERTIFICATE_EXPORT="$PWD/certificate/K-<n>-p5/certificate.gp" \
+./build/massey --example-result /tmp/result.gp \
+  --strong-search-limit exhaustive 5 '<polynomial>'
+```
+
+Pipeline-exported certificates contain the 18 entries for the six
+characters.  The principal example's certificate additionally contains
+the nine genuinely computed doubled-character entries (27 in total),
+produced by the fixed audit mode described in
+`certificate/K-2800905-p5/README.md`; the verifier accepts both forms
+and performs the doubled-character checks only when the entries are
+present.
 
 ## Pure relation-algebra searches for a stored matrix
 

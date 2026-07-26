@@ -412,9 +412,12 @@ main(int argc, char **argv)
         || !gequal(bnf_get_no(K), gel(base_data, 2))
         || !gequal(bnf_get_gen(K), gel(base_data, 3)))
         fail(NULL, 0, "certified base class-group convention mismatch");
-    if (!equaliu(bnf_get_no(K), 1000)
-        || !gequal(bnf_get_cyc(K), mkvec3(stoi(10), stoi(10), stoi(10))))
-        fail(NULL, 0, "unexpected certified base class group");
+    long p_divisible = 0;
+    GEN base_cyc = bnf_get_cyc(K);
+    for (long i = 1; i < lg(base_cyc); ++i)
+        if (dvdii(gel(base_cyc, i), p)) ++p_divisible;
+    if (p_divisible != 3)
+        fail(NULL, 0, "certified base p-class rank is not 3");
     if (glength(bnf_get_fu(K)) != 0
         || bnf_get_tuN(K) != itos(gel(base_data, 4))
         || !gequal(bnf_get_tuU(K), gel(base_data, 5))
@@ -425,8 +428,10 @@ main(int argc, char **argv)
     pari_printf("BASE_BNF_CERTIFIED=PASS\n\n");
 
     GEN entries = gel(certificate, CERT_ENTRIES);
-    if (typ(entries) != t_VEC || glength(entries) != 27)
-        fail(NULL, 0, "certificate must contain 27 entries");
+    if (typ(entries) != t_VEC
+        || (glength(entries) != 27 && glength(entries) != 18))
+        fail(NULL, 0, "certificate must contain 18 or 27 entries");
+    int has_doubled = glength(entries) == 27;
 
     GEN matrices[9];
     int seen[9][3] = {{0}};
@@ -524,52 +529,98 @@ main(int argc, char **argv)
     static const char *all_labels[] = {
         "a", "b", "c", "a+b", "a+c", "b+c", "2a", "2b", "2c"
     };
-    for (long character = 0; character < 9; ++character)
+    for (long character = 0; character < (has_doubled ? 9 : 6); ++character)
         for (long column = 0; column < 3; ++column)
             if (!seen[character][column])
                 fail(
                     all_labels[character], column + 1,
                     "missing certificate entry");
 
-    /* Compare reconstructed matrices with the six published main values. */
-    static const long expected[6][3][3] = {
-        {{0,0,0},{0,3,3},{0,1,0}},
-        {{0,0,4},{1,0,2},{2,0,4}},
-        {{1,4,0},{2,0,0},{0,1,0}},
-        {{0,0,0},{3,2,1},{1,4,2}},
-        {{1,1,4},{4,4,1},{0,4,0}},
-        {{3,0,0},{1,3,2},{2,2,3}}
-    };
+    /*
+     * For the principal example the six matrices are compared with the
+     * published values; for any other field they are printed, and may be
+     * compared against a result record passed as the second argument.
+     */
     static const char *matrix_labels[] = {
         "D_a", "D_b", "D_c", "D_(a+b)", "D_(a+c)", "D_(b+c)"
     };
-    for (long matrix = 0; matrix < 6; ++matrix)
+    if (equalii(
+            gel(certificate, CERT_DISCRIMINANT), stoi(-11203620)))
     {
-        for (long column = 1; column <= 3; ++column)
-            for (long row = 1; row <= 3; ++row)
-                if (!equaliu(
-                        gcoeff(matrices[matrix], row, column),
-                        expected[matrix][column - 1][row - 1]))
-                    fail(NULL, 0, "reconstructed main matrix mismatch");
-        pari_printf("%s=PASS\n", matrix_labels[matrix]);
+        static const long expected[6][3][3] = {
+            {{0,0,0},{0,3,3},{0,1,0}},
+            {{0,0,4},{1,0,2},{2,0,4}},
+            {{1,4,0},{2,0,0},{0,1,0}},
+            {{0,0,0},{3,2,1},{1,4,2}},
+            {{1,1,4},{4,4,1},{0,4,0}},
+            {{3,0,0},{1,3,2},{2,2,3}}
+        };
+        for (long matrix = 0; matrix < 6; ++matrix)
+        {
+            for (long column = 1; column <= 3; ++column)
+                for (long row = 1; row <= 3; ++row)
+                    if (!equaliu(
+                            gcoeff(matrices[matrix], row, column),
+                            expected[matrix][column - 1][row - 1]))
+                        fail(NULL, 0, "reconstructed main matrix mismatch");
+            pari_printf("%s=PASS\n", matrix_labels[matrix]);
+        }
+    }
+    else
+        for (long matrix = 0; matrix < 6; ++matrix)
+            pari_printf(
+                "%s=%Ps\n", matrix_labels[matrix], matrices[matrix]);
+
+    if (argc > 2)
+    {
+        GEN record = read_certificate(argv[2]);
+        GEN samples = NULL;
+        if (typ(record) == t_VEC)
+            for (long i = 1; i < lg(record); ++i)
+            {
+                GEN pair = gel(record, i);
+                if (typ(pair) == t_VEC && lg(pair) == 3
+                    && typ(gel(pair, 1)) == t_STR
+                    && strcmp(
+                        GSTR(gel(pair, 1)),
+                        "secondary_norm_samples") == 0)
+                    samples = gel(pair, 2);
+            }
+        if (samples == NULL || typ(samples) != t_VEC
+            || glength(samples) != 6)
+            fail(NULL, 0, "result record has no secondary-norm samples");
+        for (long matrix = 0; matrix < 6; ++matrix)
+            for (long column = 1; column <= 3; ++column)
+                for (long row = 1; row <= 3; ++row)
+                    if (!equalii(
+                            gcoeff(matrices[matrix], row, column),
+                            modii(
+                                gcoeff(
+                                    gel(samples, matrix + 1),
+                                    row, column), p)))
+                        fail(
+                            NULL, 0,
+                            "certificate disagrees with result record");
+        pari_printf("RESULT_RECORD_MATCH=PASS\n");
     }
 
     /* Check the three redundant doubled-character homogeneity witnesses. */
-    for (long matrix = 0; matrix < 3; ++matrix)
-    {
-        for (long column = 1; column <= 3; ++column)
-            for (long row = 1; row <= 3; ++row)
-                if (!equalii(
-                        gcoeff(matrices[6 + matrix], row, column),
-                        Fp_mul(
-                            stoi(4),
-                            gcoeff(matrices[matrix], row, column), p)))
-                    fail(NULL, 0, "doubled-character scaling mismatch");
-        pari_printf(
-            "D_(2%s)=4D_%s PASS\n",
-            matrix == 0 ? "a" : matrix == 1 ? "b" : "c",
-            matrix == 0 ? "a" : matrix == 1 ? "b" : "c");
-    }
+    if (has_doubled)
+        for (long matrix = 0; matrix < 3; ++matrix)
+        {
+            for (long column = 1; column <= 3; ++column)
+                for (long row = 1; row <= 3; ++row)
+                    if (!equalii(
+                            gcoeff(matrices[6 + matrix], row, column),
+                            Fp_mul(
+                                stoi(4),
+                                gcoeff(matrices[matrix], row, column), p)))
+                        fail(NULL, 0, "doubled-character scaling mismatch");
+            pari_printf(
+                "D_(2%s)=4D_%s PASS\n",
+                matrix == 0 ? "a" : matrix == 1 ? "b" : "c",
+                matrix == 0 ? "a" : matrix == 1 ? "b" : "c");
+        }
 
     pari_printf("\nCERTIFICATE VERIFIED\n");
     pari_close();
