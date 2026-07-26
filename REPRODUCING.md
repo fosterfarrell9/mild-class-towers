@@ -61,16 +61,18 @@ follows by the reconstruction formula, the exhaustive GL_3(F_5) search
 takes under a minute, and the Groebner tools above re-verify the
 Hilbert evidence in minutes.
 
-Build the verifier once and verify a certificate (the optional second
-argument cross-checks the certified matrices against a committed
-result record, reporting RESULT_RECORD_MATCH=PASS):
+The verifier is shared between all certified fields and lives in
+`certificate/`, next to the per-field data directories.  Build it once
+and verify a certificate (the optional second argument cross-checks the
+certified matrices against a committed result record, reporting
+RESULT_RECORD_MATCH=PASS):
 
 ```sh
-cd certificate/K-2800905-p5
+cd certificate
 make PARI="$HOME/.local"
-./verify_certificate certificate.gp
-./verify_certificate ../K-51213139-p5/certificate.gp \
-  ../../examples/p5/batch-block0-01/D-51213139/result.gp
+./verify_certificate K-2800905-p5/certificate.gp
+./verify_certificate K-51213139-p5/certificate.gp \
+  ../examples/p5/batch-block0-01/D-51213139/result.gp
 ```
 
 Export a certificate for a further field by running the audited

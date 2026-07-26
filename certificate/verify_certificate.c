@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../../headers/pari_internal.h"
+#include "../headers/pari_internal.h"
 
 enum {
     CERT_FORMAT = 1,

@@ -19,8 +19,9 @@ PARI.
 - `certificate.gp` is a textual, PARI-readable certificate. It contains 18
   main entries (`a`, `b`, `c`, `a+b`, `a+c`, `b+c`, each at `e1`, `e2`,
   `e3`) and nine doubled-character entries (`2a`, `2b`, `2c`).
-- `verify_certificate.c` is the standalone verifier.
-- `Makefile` builds only the verifier.
+- The standalone verifier `verify_certificate.c` and its `Makefile` are
+  shared between all certified fields and live one directory up, in
+  `certificate/`.
 
 The verifier does not run the search and does not construct a BNF for any
 degree-five relative field \(L_x/K\). In particular, successful verification
@@ -84,16 +85,16 @@ PARI 2.17.4 and the corresponding build steps are documented in
 `doc/pari-2.17.4-patch.md` at the repository root. From a clean checkout:
 
 ```sh
-cd certificate/K-2800905-p5
+cd certificate
 make PARI=/path/to/pari-prefix
-./verify_certificate certificate.gp
+./verify_certificate K-2800905-p5/certificate.gp
 ```
 
 For the repository's documented local PARI installation:
 
 ```sh
 make PARI=/home/denis/.local
-./verify_certificate certificate.gp
+./verify_certificate K-2800905-p5/certificate.gp
 ```
 
 Successful output starts with:
