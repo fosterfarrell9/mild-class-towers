@@ -215,3 +215,18 @@ public workflow.
 
 The hardening checks use fields already present in format version 1.
 `certificate.gp` therefore did not require regeneration.
+
+## Human-readable guide
+
+`certificate-guide.pdf` (source `certificate-guide.tex`) restates the
+content of `certificate.gp` entry by entry in the notation of the
+paper, including per-entry facts recomputed by the generating script.
+It is generated deterministically from the certificate:
+
+```sh
+gp -qf tools/certificate_guide.gp
+pdflatex certificate-guide.tex
+```
+
+The guide is exposition only; the verification chain is implemented
+solely by `verify_certificate.c`.
