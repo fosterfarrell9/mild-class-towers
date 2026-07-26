@@ -56,6 +56,13 @@ class Field:
     def directory(self) -> str:
         return f"D{self.discriminant}"
 
+    @property
+    def radicand(self) -> int:
+        """Positive n with K = Q(sqrt(-n)), used in certificate paths."""
+        if self.discriminant % 4 == 1:
+            return -self.discriminant
+        return -self.discriminant // 4
+
 
 FIELDS = (
     Field(-27960639, (40, 10, 10), 4000),
@@ -259,6 +266,7 @@ def run_streamed_process(
     on_line: Callable[[str], None],
     *,
     append: bool = False,
+    env: dict | None = None,
 ) -> int:
     """Merge, forward, and capture child output while emitting heartbeats."""
     mode = "a" if append else "w"
@@ -266,6 +274,7 @@ def run_streamed_process(
     child = subprocess.Popen(
         command,
         cwd=ROOT,
+        env=env,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         text=True,
@@ -576,6 +585,7 @@ def run_field(
     stdbuf: str,
     heartbeat_seconds: float,
     logger: BatchLogger,
+    certificate_dir: Path | None = None,
 ) -> None:
     index = item["index"]
     total = len(FIELDS)
@@ -625,6 +635,24 @@ def run_field(
         "5",
         field.polynomial,
     ]
+    environment = None
+    if certificate_dir is not None:
+        certificate_path = (
+            certificate_dir / f"K-{field.radicand}-p5" / "certificate.gp"
+        )
+        if certificate_path.exists():
+            raise BatchError(
+                f"D={field.discriminant}: refusing to overwrite "
+                f"{certificate_path}"
+            )
+        certificate_path.parent.mkdir(parents=True, exist_ok=True)
+        environment = dict(os.environ)
+        environment["MASSEY_CERTIFICATE_EXPORT"] = str(certificate_path)
+        item["certificate"] = str(certificate_path)
+        logger.emit(
+            f"[{utc_now()}] D={field.discriminant} | "
+            f"certificate export -> {certificate_path}"
+        )
     progress = {"character": None, "attempt": "exhaustive"}
     character_names = {
         "[1, 0, 0]": "a",
@@ -671,6 +699,7 @@ def run_field(
         heartbeat_seconds,
         heartbeat,
         child_line,
+        env=environment,
     )
     item["exit_status"] = exit_status
     if exit_status != 0 or not exhaustive_result.is_file():
@@ -806,9 +835,27 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     )
     parser.add_argument("--executable", type=Path, default=ROOT / "build" / "massey")
     parser.add_argument("--gp", default=shutil.which("gp") or "gp")
+    parser.add_argument(
+        "--certificate-dir",
+        type=Path,
+        default=None,
+        help="export an arithmetic certificate for each computed field to "
+        "<dir>/K-<n>-p5/certificate.gp during the pipeline run",
+    )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=0,
+        help="run at most this many pending fields, then stop cleanly "
+        "(0 = no limit)",
+    )
     args = parser.parse_args(argv)
     if args.heartbeat_seconds <= 0 or args.heartbeat_seconds > 30:
         parser.error("--heartbeat-seconds must be in (0,30]")
+    if args.limit < 0:
+        parser.error("--limit must be nonnegative")
+    if args.certificate_dir is not None:
+        args.certificate_dir = args.certificate_dir.resolve()
     args.batch = args.batch.resolve()
     args.executable = args.executable.resolve()
     if not args.batch.is_relative_to(ROOT):
@@ -871,12 +918,19 @@ def main(argv: list[str] | None = None) -> int:
             write_state(batch, state)
             logger.emit(f"BATCH START | fields={len(FIELDS)} | sequential=1")
 
+        attempted = 0
         for item, field in zip(state["fields"], FIELDS):
             if item["state"] != "PENDING":
                 logger.emit(
                     f"SKIP D={field.discriminant} | state={item['state']}"
                 )
                 continue
+            if args.limit and attempted >= args.limit:
+                logger.emit(
+                    f"LIMIT REACHED | {attempted} field(s) attempted | "
+                    f"pausing before D={field.discriminant}"
+                )
+                break
             started = time.monotonic()
             try:
                 if field.discriminant in preflight_failures:
@@ -891,11 +945,13 @@ def main(argv: list[str] | None = None) -> int:
                     stdbuf,
                     args.heartbeat_seconds,
                     logger,
+                    certificate_dir=args.certificate_dir,
                 )
             except BatchError:
                 raise
             except Exception as exc:
                 mark_failed(batch, state, item, started, exc, logger)
+            attempted += 1
 
         complete = sum(
             item["state"] == "COMPLETED" for item in state["fields"]
