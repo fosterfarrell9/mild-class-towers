@@ -222,12 +222,16 @@ The hardening checks use fields already present in format version 1.
 `certificate-guide.pdf` (source `certificate-guide.tex`) restates the
 content of `certificate.gp` entry by entry in the notation of the
 paper, including per-entry facts recomputed by the generating script.
-It is generated deterministically from the certificate:
+It is generated deterministically from the certificate; from the
+repository root:
 
 ```sh
 gp -qf tools/certificate_guide.gp
-pdflatex certificate-guide.tex
+cd certificate/K-2800905-p5 && pdflatex certificate-guide.tex
 ```
+
+The generator reads the environment variable `CERT_DIR` to produce the
+guide of any other certified field (it defaults to this directory).
 
 The guide is exposition only; the verification chain is implemented
 solely by `verify_certificate.c`.

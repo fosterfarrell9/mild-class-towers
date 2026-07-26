@@ -3,8 +3,9 @@
 One subdirectory per field, named `K-<|D'|>-p5` after the radicand of the
 defining polynomial.  Each subdirectory contains the data only: the
 textual certificate `certificate.gp`, a README with the field data and
-the exact generation command, and (for the principal example) a
-human-readable guide.
+the exact generation command, and a human-readable guide
+`certificate-guide.pdf` generated from the certificate by
+`tools/certificate_guide.gp`.
 
 The verifier is shared and lives here, next to this file.  Build it once
 and point it at any certificate:
