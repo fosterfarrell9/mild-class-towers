@@ -211,22 +211,38 @@
       "state": "COMPLETED"
     },
     {
+      "CD": "2",
       "D": -75949255,
+      "MILD": "PROVED",
+      "arithmetic_audit": "PASS (18/18)",
+      "bounded_witness": "NOT_RUN",
+      "certificate": "/home/denis/massey/Massey-pari/certificate/K-75949255-p5/certificate.gp",
       "class_group": [
         40,
         20,
         5
       ],
       "class_number": 4000,
+      "cubic_rank": 3,
       "directory": "D-75949255",
+      "ended_at": "2026-07-26T18:43:23+00:00",
+      "exhaustive": true,
+      "exhaustive_witness": "FOUND",
+      "exit_status": 0,
       "index": 7,
+      "leading_words": "[\"ccb\", \"caa\", \"cab\"]",
       "p_primary": [
         5,
         5,
         5
       ],
       "polynomial": "s^2-s+18987314",
-      "state": "PENDING"
+      "result_sha256": "2656f60315ba19f41b194632486acbf1e170a394b9ad58ccfd4caae14f79a50d",
+      "result_status": "STRONGLY_FREE_BASIS_FOUND",
+      "run_log_sha256": "2fc4795393540ef026985198acb7f49a242560936ee0ded31e9a056bb958c4fc",
+      "runtime_seconds": 3106.895,
+      "started_at": "2026-07-26T17:51:33+00:00",
+      "state": "COMPLETED"
     },
     {
       "D": -145367147,
@@ -284,5 +300,5 @@
     }
   ],
   "format_version": 1,
-  "updated_at": "2026-07-26T17:37:08+00:00"
+  "updated_at": "2026-07-26T18:43:23+00:00"
 }
