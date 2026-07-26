@@ -1637,3 +1637,283 @@ FIELD 6/10 START | D=-65818135 | polynomial=s^2-s+16454534 | completed=5/10
 [2026-07-25T17:58:39+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:04:10 | batch_completed=5/10
 [2026-07-25T17:59:04+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:04:35 | batch_completed=5/10
 [2026-07-25T17:59:29+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:05:00 | batch_completed=5/10
+[2026-07-26T16:10:36+00:00] validating executable and all ten field specifications
+BATCH RESUME
+completed: 5/10
+next field: -65818135
+previous failed fields: none
+previous inconclusive fields: -35663739, -51213139
+SKIP D=-27960639 | state=COMPLETED
+SKIP D=-35663739 | state=COMPLETED
+SKIP D=-51213139 | state=COMPLETED
+SKIP D=-61040707 | state=COMPLETED
+SKIP D=-54319112 | state=COMPLETED
+==============================================================
+FIELD 6/10 START | D=-65818135 | polynomial=s^2-s+16454534 | completed=5/10
+[2026-07-26T16:10:37+00:00] D=-65818135 | certificate export -> /home/denis/massey/Massey-pari/certificate/K-65818135-p5/certificate.gp
+[2026-07-26T16:11:05+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:00:25 | batch_completed=5/10
+[2026-07-26T16:11:31+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:00:50 | batch_completed=5/10
+[2026-07-26T16:11:58+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:01:15 | batch_completed=5/10
+[2026-07-26T16:12:26+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:01:40 | batch_completed=5/10
+[2026-07-26T16:12:53+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:02:05 | batch_completed=5/10
+[2026-07-26T16:13:21+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:02:30 | batch_completed=5/10
+[2026-07-26T16:13:46+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:02:55 | batch_completed=5/10
+[2026-07-26T16:14:14+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:03:20 | batch_completed=5/10
+[2026-07-26T16:14:41+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:03:45 | batch_completed=5/10
+[2026-07-26T16:15:09+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:04:10 | batch_completed=5/10
+[2026-07-26T16:15:36+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:04:35 | batch_completed=5/10
+[2026-07-26T16:16:04+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:05:00 | batch_completed=5/10
+[2026-07-26T16:16:29+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:05:25 | batch_completed=5/10
+[2026-07-26T16:16:56+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:05:50 | batch_completed=5/10
+[2026-07-26T16:17:24+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:06:15 | batch_completed=5/10
+[2026-07-26T16:17:51+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:06:40 | batch_completed=5/10
+[2026-07-26T16:18:19+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:07:05 | batch_completed=5/10
+[2026-07-26T16:18:47+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:07:30 | batch_completed=5/10
+[2026-07-26T16:19:12+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:07:55 | batch_completed=5/10
+[2026-07-26T16:19:40+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:08:20 | batch_completed=5/10
+[2026-07-26T16:20:07+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:08:45 | batch_completed=5/10
+[2026-07-26T16:20:35+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:09:10 | batch_completed=5/10
+[2026-07-26T16:21:02+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:09:35 | batch_completed=5/10
+[2026-07-26T16:21:30+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:10:00 | batch_completed=5/10
+[2026-07-26T16:21:55+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:10:25 | batch_completed=5/10
+[2026-07-26T16:22:22+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:10:50 | batch_completed=5/10
+[2026-07-26T16:22:50+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:11:15 | batch_completed=5/10
+[2026-07-26T16:23:17+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:11:40 | batch_completed=5/10
+[2026-07-26T16:23:45+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:12:05 | batch_completed=5/10
+[2026-07-26T16:24:13+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:12:30 | batch_completed=5/10
+[2026-07-26T16:24:38+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:12:55 | batch_completed=5/10
+[2026-07-26T16:25:05+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:13:20 | batch_completed=5/10
+[2026-07-26T16:25:09+00:00] CHILD | MASSEY_ARITHMETIC_AUDIT character certificate
+[2026-07-26T16:25:09+00:00] CHILD |   prescribed t = [1, 0, 0]
+[2026-07-26T16:25:09+00:00] D=-65818135 | character=a | arithmetic audit BEGIN
+[2026-07-26T16:25:10+00:00] CHILD |   input e_1: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 3, 4] production D=[0, 3, 4] MATCH
+[2026-07-26T16:25:10+00:00] CHILD |   input e_2: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 2, 1] production D=[0, 2, 1] MATCH
+[2026-07-26T16:25:11+00:00] CHILD |   input e_3: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 4, 0] production D=[0, 4, 0] MATCH
+[2026-07-26T16:25:11+00:00] D=-65818135 | D_a COMPLETE | AC1 PASS | AC2 PASS | norm-class MATCH
+[2026-07-26T16:25:33+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:13:45 | batch_completed=5/10
+[2026-07-26T16:26:00+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:14:10 | batch_completed=5/10
+[2026-07-26T16:26:28+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:14:35 | batch_completed=5/10
+[2026-07-26T16:26:56+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:15:00 | batch_completed=5/10
+[2026-07-26T16:27:21+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:15:25 | batch_completed=5/10
+[2026-07-26T16:27:48+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:15:50 | batch_completed=5/10
+[2026-07-26T16:28:16+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:16:15 | batch_completed=5/10
+[2026-07-26T16:28:44+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:16:40 | batch_completed=5/10
+[2026-07-26T16:29:11+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:17:05 | batch_completed=5/10
+[2026-07-26T16:29:39+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:17:30 | batch_completed=5/10
+[2026-07-26T16:30:04+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:17:55 | batch_completed=5/10
+[2026-07-26T16:30:31+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:18:20 | batch_completed=5/10
+[2026-07-26T16:30:58+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:18:45 | batch_completed=5/10
+[2026-07-26T16:31:24+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:19:10 | batch_completed=5/10
+[2026-07-26T16:31:50+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:19:35 | batch_completed=5/10
+[2026-07-26T16:32:16+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:20:00 | batch_completed=5/10
+[2026-07-26T16:32:41+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:20:25 | batch_completed=5/10
+[2026-07-26T16:33:07+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:20:50 | batch_completed=5/10
+[2026-07-26T16:33:32+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:21:15 | batch_completed=5/10
+[2026-07-26T16:33:58+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:21:40 | batch_completed=5/10
+[2026-07-26T16:34:23+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:22:05 | batch_completed=5/10
+[2026-07-26T16:34:49+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:22:30 | batch_completed=5/10
+[2026-07-26T16:35:14+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:22:55 | batch_completed=5/10
+[2026-07-26T16:35:39+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:23:20 | batch_completed=5/10
+[2026-07-26T16:36:05+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:23:45 | batch_completed=5/10
+[2026-07-26T16:36:30+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:24:10 | batch_completed=5/10
+[2026-07-26T16:36:56+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:24:35 | batch_completed=5/10
+[2026-07-26T16:37:21+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:25:00 | batch_completed=5/10
+[2026-07-26T16:37:46+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:25:25 | batch_completed=5/10
+[2026-07-26T16:38:12+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:25:50 | batch_completed=5/10
+[2026-07-26T16:38:37+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:26:15 | batch_completed=5/10
+[2026-07-26T16:39:02+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:26:40 | batch_completed=5/10
+[2026-07-26T16:39:28+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:27:05 | batch_completed=5/10
+[2026-07-26T16:39:38+00:00] CHILD | MASSEY_ARITHMETIC_AUDIT character certificate
+[2026-07-26T16:39:38+00:00] CHILD |   prescribed t = [0, 1, 0]
+[2026-07-26T16:39:38+00:00] D=-65818135 | character=b | arithmetic audit BEGIN
+[2026-07-26T16:39:38+00:00] CHILD |   input e_1: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[4, 0, 0] production D=[4, 0, 0] MATCH
+[2026-07-26T16:39:39+00:00] CHILD |   input e_2: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 0, 4] production D=[0, 0, 4] MATCH
+[2026-07-26T16:39:40+00:00] CHILD |   input e_3: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[3, 0, 3] production D=[3, 0, 3] MATCH
+[2026-07-26T16:39:40+00:00] D=-65818135 | D_b COMPLETE | AC1 PASS | AC2 PASS | norm-class MATCH
+[2026-07-26T16:39:53+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:27:30 | batch_completed=5/10
+[2026-07-26T16:40:18+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:27:55 | batch_completed=5/10
+[2026-07-26T16:40:43+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:28:20 | batch_completed=5/10
+[2026-07-26T16:41:08+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:28:45 | batch_completed=5/10
+[2026-07-26T16:41:34+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:29:10 | batch_completed=5/10
+[2026-07-26T16:41:59+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:29:35 | batch_completed=5/10
+[2026-07-26T16:42:24+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:30:00 | batch_completed=5/10
+[2026-07-26T16:42:49+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:30:25 | batch_completed=5/10
+[2026-07-26T16:43:14+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:30:50 | batch_completed=5/10
+[2026-07-26T16:43:39+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:31:15 | batch_completed=5/10
+[2026-07-26T16:44:04+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:31:40 | batch_completed=5/10
+[2026-07-26T16:44:29+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:32:05 | batch_completed=5/10
+[2026-07-26T16:44:54+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:32:30 | batch_completed=5/10
+[2026-07-26T16:45:19+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:32:55 | batch_completed=5/10
+[2026-07-26T16:45:44+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:33:20 | batch_completed=5/10
+[2026-07-26T16:46:09+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:33:45 | batch_completed=5/10
+[2026-07-26T16:46:34+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:34:10 | batch_completed=5/10
+[2026-07-26T16:46:59+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:34:35 | batch_completed=5/10
+[2026-07-26T16:47:24+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:35:00 | batch_completed=5/10
+[2026-07-26T16:47:49+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:35:25 | batch_completed=5/10
+[2026-07-26T16:48:14+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:35:50 | batch_completed=5/10
+[2026-07-26T16:48:39+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:36:15 | batch_completed=5/10
+[2026-07-26T16:49:04+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:36:40 | batch_completed=5/10
+[2026-07-26T16:49:29+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:37:05 | batch_completed=5/10
+[2026-07-26T16:49:54+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:37:30 | batch_completed=5/10
+[2026-07-26T16:50:19+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:37:55 | batch_completed=5/10
+[2026-07-26T16:50:45+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:38:20 | batch_completed=5/10
+[2026-07-26T16:51:10+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:38:45 | batch_completed=5/10
+[2026-07-26T16:51:35+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:39:10 | batch_completed=5/10
+[2026-07-26T16:52:00+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:39:35 | batch_completed=5/10
+[2026-07-26T16:52:25+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:40:00 | batch_completed=5/10
+[2026-07-26T16:52:50+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:40:25 | batch_completed=5/10
+[2026-07-26T16:53:15+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:40:50 | batch_completed=5/10
+[2026-07-26T16:53:40+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:41:15 | batch_completed=5/10
+[2026-07-26T16:53:59+00:00] CHILD | MASSEY_ARITHMETIC_AUDIT character certificate
+[2026-07-26T16:53:59+00:00] CHILD |   prescribed t = [0, 0, 1]
+[2026-07-26T16:53:59+00:00] D=-65818135 | character=c | arithmetic audit BEGIN
+[2026-07-26T16:54:01+00:00] CHILD |   input e_1: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[4, 2, 0] production D=[4, 2, 0] MATCH
+[2026-07-26T16:54:02+00:00] CHILD |   input e_2: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[4, 2, 0] production D=[4, 2, 0] MATCH
+[2026-07-26T16:54:03+00:00] CHILD |   input e_3: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 1, 0] production D=[0, 1, 0] MATCH
+[2026-07-26T16:54:03+00:00] D=-65818135 | D_c COMPLETE | AC1 PASS | AC2 PASS | norm-class MATCH
+[2026-07-26T16:54:05+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:41:40 | batch_completed=5/10
+[2026-07-26T16:54:30+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:42:05 | batch_completed=5/10
+[2026-07-26T16:54:55+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:42:30 | batch_completed=5/10
+[2026-07-26T16:55:20+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:42:55 | batch_completed=5/10
+[2026-07-26T16:55:45+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:43:20 | batch_completed=5/10
+[2026-07-26T16:56:10+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:43:45 | batch_completed=5/10
+[2026-07-26T16:56:35+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:44:10 | batch_completed=5/10
+[2026-07-26T16:57:00+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:44:35 | batch_completed=5/10
+[2026-07-26T16:57:25+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:45:00 | batch_completed=5/10
+[2026-07-26T16:57:50+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:45:25 | batch_completed=5/10
+[2026-07-26T16:58:15+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:45:50 | batch_completed=5/10
+[2026-07-26T16:58:40+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:46:15 | batch_completed=5/10
+[2026-07-26T16:59:05+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:46:40 | batch_completed=5/10
+[2026-07-26T16:59:30+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:47:05 | batch_completed=5/10
+[2026-07-26T16:59:55+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:47:30 | batch_completed=5/10
+[2026-07-26T17:00:20+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:47:55 | batch_completed=5/10
+[2026-07-26T17:00:45+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:48:20 | batch_completed=5/10
+[2026-07-26T17:01:10+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:48:45 | batch_completed=5/10
+[2026-07-26T17:01:35+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:49:10 | batch_completed=5/10
+[2026-07-26T17:02:00+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:49:35 | batch_completed=5/10
+[2026-07-26T17:02:25+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:50:00 | batch_completed=5/10
+[2026-07-26T17:02:50+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:50:25 | batch_completed=5/10
+[2026-07-26T17:03:15+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:50:50 | batch_completed=5/10
+[2026-07-26T17:03:40+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:51:15 | batch_completed=5/10
+[2026-07-26T17:04:05+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:51:40 | batch_completed=5/10
+[2026-07-26T17:04:30+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:52:05 | batch_completed=5/10
+[2026-07-26T17:04:55+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:52:30 | batch_completed=5/10
+[2026-07-26T17:05:20+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:52:55 | batch_completed=5/10
+[2026-07-26T17:05:45+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:53:20 | batch_completed=5/10
+[2026-07-26T17:06:10+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:53:45 | batch_completed=5/10
+[2026-07-26T17:06:35+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:54:10 | batch_completed=5/10
+[2026-07-26T17:07:00+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:54:35 | batch_completed=5/10
+[2026-07-26T17:07:25+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:55:00 | batch_completed=5/10
+[2026-07-26T17:07:50+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:55:25 | batch_completed=5/10
+[2026-07-26T17:08:15+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:55:50 | batch_completed=5/10
+[2026-07-26T17:08:22+00:00] CHILD | MASSEY_ARITHMETIC_AUDIT character certificate
+[2026-07-26T17:08:22+00:00] CHILD |   prescribed t = [1, 1, 0]
+[2026-07-26T17:08:22+00:00] D=-65818135 | character=a+b | arithmetic audit BEGIN
+[2026-07-26T17:08:23+00:00] CHILD |   input e_1: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[1, 4, 3] production D=[1, 4, 3] MATCH
+[2026-07-26T17:08:25+00:00] CHILD |   input e_2: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[3, 2, 1] production D=[3, 2, 1] MATCH
+[2026-07-26T17:08:26+00:00] CHILD |   input e_3: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[4, 1, 4] production D=[4, 1, 4] MATCH
+[2026-07-26T17:08:26+00:00] D=-65818135 | D_a+b COMPLETE | AC1 PASS | AC2 PASS | norm-class MATCH
+[2026-07-26T17:08:40+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:56:15 | batch_completed=5/10
+[2026-07-26T17:09:05+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:56:40 | batch_completed=5/10
+[2026-07-26T17:09:30+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:57:05 | batch_completed=5/10
+[2026-07-26T17:09:55+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:57:30 | batch_completed=5/10
+[2026-07-26T17:10:20+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:57:55 | batch_completed=5/10
+[2026-07-26T17:10:45+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:58:20 | batch_completed=5/10
+[2026-07-26T17:11:10+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:58:45 | batch_completed=5/10
+[2026-07-26T17:11:35+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:59:10 | batch_completed=5/10
+[2026-07-26T17:12:00+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=00:59:35 | batch_completed=5/10
+[2026-07-26T17:12:25+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:00:00 | batch_completed=5/10
+[2026-07-26T17:12:50+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:00:25 | batch_completed=5/10
+[2026-07-26T17:13:15+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:00:50 | batch_completed=5/10
+[2026-07-26T17:13:40+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:01:15 | batch_completed=5/10
+[2026-07-26T17:14:05+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:01:40 | batch_completed=5/10
+[2026-07-26T17:14:30+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:02:05 | batch_completed=5/10
+[2026-07-26T17:14:55+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:02:30 | batch_completed=5/10
+[2026-07-26T17:15:20+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:02:55 | batch_completed=5/10
+[2026-07-26T17:15:45+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:03:20 | batch_completed=5/10
+[2026-07-26T17:16:10+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:03:45 | batch_completed=5/10
+[2026-07-26T17:16:35+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:04:10 | batch_completed=5/10
+[2026-07-26T17:17:00+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:04:35 | batch_completed=5/10
+[2026-07-26T17:17:25+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:05:00 | batch_completed=5/10
+[2026-07-26T17:17:50+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:05:25 | batch_completed=5/10
+[2026-07-26T17:18:15+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:05:50 | batch_completed=5/10
+[2026-07-26T17:18:40+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:06:15 | batch_completed=5/10
+[2026-07-26T17:19:05+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:06:40 | batch_completed=5/10
+[2026-07-26T17:19:30+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:07:05 | batch_completed=5/10
+[2026-07-26T17:19:55+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:07:30 | batch_completed=5/10
+[2026-07-26T17:20:20+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:07:55 | batch_completed=5/10
+[2026-07-26T17:20:45+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:08:20 | batch_completed=5/10
+[2026-07-26T17:21:10+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:08:45 | batch_completed=5/10
+[2026-07-26T17:21:35+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:09:10 | batch_completed=5/10
+[2026-07-26T17:22:00+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:09:35 | batch_completed=5/10
+[2026-07-26T17:22:25+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:10:00 | batch_completed=5/10
+[2026-07-26T17:22:43+00:00] CHILD | MASSEY_ARITHMETIC_AUDIT character certificate
+[2026-07-26T17:22:43+00:00] CHILD |   prescribed t = [1, 0, 1]
+[2026-07-26T17:22:43+00:00] D=-65818135 | character=a+c | arithmetic audit BEGIN
+[2026-07-26T17:22:44+00:00] CHILD |   input e_1: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 2, 0] production D=[0, 2, 0] MATCH
+[2026-07-26T17:22:46+00:00] CHILD |   input e_2: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[3, 0, 2] production D=[3, 0, 2] MATCH
+[2026-07-26T17:22:48+00:00] CHILD |   input e_3: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 0, 0] production D=[0, 0, 0] MATCH
+[2026-07-26T17:22:48+00:00] D=-65818135 | D_a+c COMPLETE | AC1 PASS | AC2 PASS | norm-class MATCH
+[2026-07-26T17:22:50+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:10:25 | batch_completed=5/10
+[2026-07-26T17:23:15+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:10:50 | batch_completed=5/10
+[2026-07-26T17:23:40+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:11:15 | batch_completed=5/10
+[2026-07-26T17:24:05+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:11:40 | batch_completed=5/10
+[2026-07-26T17:24:30+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:12:05 | batch_completed=5/10
+[2026-07-26T17:24:55+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:12:30 | batch_completed=5/10
+[2026-07-26T17:25:20+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:12:55 | batch_completed=5/10
+[2026-07-26T17:25:45+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:13:20 | batch_completed=5/10
+[2026-07-26T17:26:10+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:13:45 | batch_completed=5/10
+[2026-07-26T17:26:35+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:14:10 | batch_completed=5/10
+[2026-07-26T17:27:00+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:14:35 | batch_completed=5/10
+[2026-07-26T17:27:25+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:15:00 | batch_completed=5/10
+[2026-07-26T17:27:50+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:15:25 | batch_completed=5/10
+[2026-07-26T17:28:15+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:15:50 | batch_completed=5/10
+[2026-07-26T17:28:40+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:16:15 | batch_completed=5/10
+[2026-07-26T17:29:05+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:16:40 | batch_completed=5/10
+[2026-07-26T17:29:30+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:17:05 | batch_completed=5/10
+[2026-07-26T17:29:55+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:17:30 | batch_completed=5/10
+[2026-07-26T17:30:20+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:17:55 | batch_completed=5/10
+[2026-07-26T17:30:45+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:18:20 | batch_completed=5/10
+[2026-07-26T17:31:10+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:18:45 | batch_completed=5/10
+[2026-07-26T17:31:35+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:19:10 | batch_completed=5/10
+[2026-07-26T17:32:00+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:19:35 | batch_completed=5/10
+[2026-07-26T17:32:25+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:20:00 | batch_completed=5/10
+[2026-07-26T17:32:50+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:20:25 | batch_completed=5/10
+[2026-07-26T17:33:15+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:20:50 | batch_completed=5/10
+[2026-07-26T17:33:40+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:21:15 | batch_completed=5/10
+[2026-07-26T17:34:05+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:21:40 | batch_completed=5/10
+[2026-07-26T17:34:30+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:22:05 | batch_completed=5/10
+[2026-07-26T17:34:55+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:22:30 | batch_completed=5/10
+[2026-07-26T17:35:20+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:22:55 | batch_completed=5/10
+[2026-07-26T17:35:45+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:23:20 | batch_completed=5/10
+[2026-07-26T17:36:10+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:23:45 | batch_completed=5/10
+[2026-07-26T17:36:35+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:24:10 | batch_completed=5/10
+[2026-07-26T17:37:00+00:00] BATCH 6/10 | D=-65818135 | RUNNING | field_elapsed=01:24:35 | batch_completed=5/10
+[2026-07-26T17:37:03+00:00] CHILD | MASSEY_ARITHMETIC_AUDIT character certificate
+[2026-07-26T17:37:03+00:00] CHILD |   prescribed t = [0, 1, 1]
+[2026-07-26T17:37:03+00:00] D=-65818135 | character=b+c | arithmetic audit BEGIN
+[2026-07-26T17:37:05+00:00] CHILD |   input e_1: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[2, 2, 3] production D=[2, 2, 3] MATCH
+[2026-07-26T17:37:06+00:00] CHILD |   input e_2: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[2, 3, 2] production D=[2, 3, 2] MATCH
+[2026-07-26T17:37:07+00:00] CHILD |   input e_3: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[2, 3, 2] production D=[2, 3, 2] MATCH
+[2026-07-26T17:37:07+00:00] D=-65818135 | D_b+c COMPLETE | AC1 PASS | AC2 PASS | norm-class MATCH
+[2026-07-26T17:37:07+00:00] CHILD | SECONDARY_NORMS VERIFIED
+[2026-07-26T17:37:07+00:00] CHILD | MASSEY_RANK 3
+[2026-07-26T17:37:07+00:00] D=-65818135 | STRONG_FREENESS_SEARCH BEGIN (exhaustive)
+[2026-07-26T17:37:07+00:00] CHILD | STRONG_FREENESS PASS
+[2026-07-26T17:37:07+00:00] CHILD | LEADING_WORDS ["cca", "cbb", "cba"]
+[2026-07-26T17:37:07+00:00] CHILD | MILD PASS
+[2026-07-26T17:37:08+00:00] D=-65818135 | STRONG_FREENESS_SEARCH END (exhaustive) | witness=FOUND
+[2026-07-26T17:37:08+00:00] D=-65818135 | INDEPENDENT_POSTVALIDATION PASS | six_D_matrices=PASS | doubled_character_checks=PASS | rank(T)=3
+==============================================================
+FIELD 6/10 COMPLETE
+D = -65818135
+arithmetic audit = PASS (18/18)
+rank(T) = 3
+strong freeness = PASS
+MILD = PROVED
+CD = 2
+field elapsed = 01:24:42
+batch completed = 6/10
+==============================================================
+LIMIT REACHED | 1 field(s) attempted | pausing before D=-75949255
+BATCH END | completed=6/10 | failed=0 | timestamp=2026-07-26T17:37:08+00:00
