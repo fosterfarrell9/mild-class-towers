@@ -194,10 +194,14 @@ def initial_state() -> dict:
     }
 
 
+STATE_LOCK = threading.Lock()
+
+
 def write_state(batch: Path, state: dict) -> None:
-    state["updated_at"] = utc_now()
-    atomic_write_json(batch / STATE_NAME, state)
-    write_tsv(batch, state)
+    with STATE_LOCK:
+        state["updated_at"] = utc_now()
+        atomic_write_json(batch / STATE_NAME, state)
+        write_tsv(batch, state)
 
 
 def write_tsv(batch: Path, state: dict) -> None:
@@ -240,12 +244,18 @@ class BatchLogger:
     def __init__(self, path: Path):
         self.path = path
         self.path.parent.mkdir(parents=True, exist_ok=True)
+        self._lock = threading.Lock()
 
     def emit(self, message: str) -> None:
-        print(message, flush=True)
-        self.record(message)
+        with self._lock:
+            print(message, flush=True)
+            self._write(message)
 
     def record(self, message: str) -> None:
+        with self._lock:
+            self._write(message)
+
+    def _write(self, message: str) -> None:
         with self.path.open("a", encoding="utf-8") as stream:
             stream.write(message + "\n")
             stream.flush()
@@ -253,9 +263,7 @@ class BatchLogger:
     def important(self, line: str) -> None:
         lowered = line.lower()
         if any(fragment.lower() in lowered for fragment in IMPORTANT_FRAGMENTS):
-            with self.path.open("a", encoding="utf-8") as stream:
-                stream.write(f"[{utc_now()}] CHILD | {line.rstrip()}\n")
-                stream.flush()
+            self.record(f"[{utc_now()}] CHILD | {line.rstrip()}")
 
 
 def run_streamed_process(
@@ -748,6 +756,107 @@ def run_field(
     field_summary(logger, item, total, completed)
 
 
+def result_entry(text: str, key: str) -> str:
+    """The complete ["key", value] entry of a result record, whitespace
+    normalized, located by balanced-bracket scanning."""
+    marker = '"%s"' % key
+    pos = text.find(marker)
+    if pos < 0:
+        raise BatchError(f"missing {key} in result record")
+    start = text.rfind("[", 0, pos)
+    depth = 0
+    for i in range(start, len(text)):
+        if text[i] == "[":
+            depth += 1
+        elif text[i] == "]":
+            depth -= 1
+            if depth == 0:
+                return "".join(text[start:i + 1].split())
+    raise BatchError(f"unterminated {key} entry")
+
+
+CERT_COMPARE_KEYS = (
+    "class_group_invariants",
+    "secondary_norm_samples",
+    "doubled_character_checks",
+    "cubic_relation_matrix",
+)
+
+
+def run_certificate_only(
+    batch: Path,
+    state: dict,
+    item: dict,
+    field: Field,
+    executable: Path,
+    gp: str,
+    stdbuf: str,
+    heartbeat_seconds: float,
+    logger: BatchLogger,
+    certificate_dir: Path,
+) -> None:
+    """Re-run the audited pipeline for an already computed field solely to
+    export its arithmetic certificate.  The committed result.gp is never
+    touched; the fresh result must reproduce its verified entries exactly
+    and is then discarded."""
+    directory = batch / field.directory
+    committed = directory / "result.gp"
+    if not committed.is_file():
+        raise BatchError(
+            f"D={field.discriminant}: no committed result for "
+            "certificate re-run")
+    certificate_path = (
+        certificate_dir / f"K-{field.radicand}-p5" / "certificate.gp")
+    if certificate_path.exists():
+        raise BatchError(
+            f"D={field.discriminant}: certificate already present")
+    temp_result = directory / ".result-certexport.gp"
+    rerun_log = directory / "cert-rerun.log"
+    if temp_result.exists():
+        temp_result.unlink()
+    certificate_path.parent.mkdir(parents=True, exist_ok=True)
+    environment = dict(os.environ)
+    environment["MASSEY_CERTIFICATE_EXPORT"] = str(certificate_path)
+    started = time.monotonic()
+    logger.emit(
+        f"[{utc_now()}] CERT RERUN START | D={field.discriminant} | "
+        f"export -> {certificate_path}")
+    command = [
+        stdbuf, "-oL", "-eL", str(executable),
+        "--example-result", str(temp_result),
+        "--strong-search-limit", "exhaustive",
+        "5", field.polynomial,
+    ]
+
+    def heartbeat() -> str:
+        message = (
+            f"[{utc_now()}] CERT RERUN | D={field.discriminant} | RUNNING "
+            f"| elapsed={format_elapsed(time.monotonic() - started)}")
+        logger.record(message)
+        return message
+
+    exit_status = run_streamed_process(
+        command, rerun_log, heartbeat_seconds, heartbeat,
+        logger.important, env=environment)
+    if exit_status != 0 or not temp_result.is_file():
+        raise RuntimeError(f"certificate re-run exited {exit_status}")
+    fresh = temp_result.read_text()
+    old = committed.read_text()
+    for key in CERT_COMPARE_KEYS:
+        if result_entry(old, key) != result_entry(fresh, key):
+            raise BatchError(
+                f"D={field.discriminant}: certificate re-run REGRESSION "
+                f"in {key}; fresh result kept at {temp_result}")
+    temp_result.unlink()
+    rerun_log.unlink()
+    item["certificate"] = str(certificate_path)
+    write_state(batch, state)
+    logger.emit(
+        f"[{utc_now()}] CERT RERUN COMPLETE | D={field.discriminant} | "
+        "fresh result matches committed record | elapsed="
+        f"{format_elapsed(time.monotonic() - started)}")
+
+
 def mark_failed(
     batch: Path,
     state: dict,
@@ -849,11 +958,35 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         help="run at most this many pending fields, then stop cleanly "
         "(0 = no limit)",
     )
+    parser.add_argument(
+        "--jobs",
+        type=int,
+        default=1,
+        help="run up to this many field/certificate tasks concurrently",
+    )
+    parser.add_argument(
+        "--certificates",
+        action="store_true",
+        help="additionally re-run completed fields that lack an arithmetic "
+        "certificate, exporting it without touching their results",
+    )
+    parser.add_argument(
+        "--certificates-only",
+        action="store_true",
+        help="run only the missing-certificate re-runs; do not start any "
+        "pending field computation",
+    )
     args = parser.parse_args(argv)
     if args.heartbeat_seconds <= 0 or args.heartbeat_seconds > 30:
         parser.error("--heartbeat-seconds must be in (0,30]")
     if args.limit < 0:
         parser.error("--limit must be nonnegative")
+    if args.jobs < 1 or args.jobs > 16:
+        parser.error("--jobs must be in [1,16]")
+    if args.certificates_only:
+        args.certificates = True
+    if args.certificates and args.certificate_dir is None:
+        parser.error("--certificates requires --certificate-dir")
     if args.certificate_dir is not None:
         args.certificate_dir = args.certificate_dir.resolve()
     args.batch = args.batch.resolve()
@@ -918,40 +1051,75 @@ def main(argv: list[str] | None = None) -> int:
             write_state(batch, state)
             logger.emit(f"BATCH START | fields={len(FIELDS)} | sequential=1")
 
-        attempted = 0
+        tasks: list[tuple[str, dict, Field]] = []
+        pending = 0
         for item, field in zip(state["fields"], FIELDS):
             if item["state"] != "PENDING":
                 logger.emit(
                     f"SKIP D={field.discriminant} | state={item['state']}"
                 )
                 continue
-            if args.limit and attempted >= args.limit:
+            if args.certificates_only:
                 logger.emit(
-                    f"LIMIT REACHED | {attempted} field(s) attempted | "
-                    f"pausing before D={field.discriminant}"
+                    f"SKIP D={field.discriminant} | certificates-only"
                 )
-                break
+                continue
+            pending += 1
+            if args.limit and pending > args.limit:
+                logger.emit(
+                    f"LIMIT REACHED | skipping D={field.discriminant}"
+                )
+                continue
+            tasks.append(("field", item, field))
+        if args.certificates:
+            for item, field in zip(state["fields"], FIELDS):
+                if item["state"] != "COMPLETED":
+                    continue
+                certificate_path = (
+                    args.certificate_dir
+                    / f"K-{field.radicand}-p5" / "certificate.gp")
+                if certificate_path.exists():
+                    continue
+                tasks.append(("cert", item, field))
+        logger.emit(
+            f"TASKS | fields={sum(t[0] == 'field' for t in tasks)} | "
+            f"certificates={sum(t[0] == 'cert' for t in tasks)} | "
+            f"jobs={args.jobs}")
+
+        def run_task(kind: str, item: dict, field: Field) -> None:
             started = time.monotonic()
             try:
                 if field.discriminant in preflight_failures:
                     raise preflight_failures[field.discriminant]
-                run_field(
-                    batch,
-                    state,
-                    item,
-                    field,
-                    args.executable,
-                    args.gp,
-                    stdbuf,
-                    args.heartbeat_seconds,
-                    logger,
-                    certificate_dir=args.certificate_dir,
-                )
+                if kind == "field":
+                    run_field(
+                        batch, state, item, field, args.executable,
+                        args.gp, stdbuf, args.heartbeat_seconds, logger,
+                        certificate_dir=args.certificate_dir)
+                else:
+                    run_certificate_only(
+                        batch, state, item, field, args.executable,
+                        args.gp, stdbuf, args.heartbeat_seconds, logger,
+                        args.certificate_dir)
             except BatchError:
                 raise
             except Exception as exc:
-                mark_failed(batch, state, item, started, exc, logger)
-            attempted += 1
+                if kind == "field":
+                    mark_failed(batch, state, item, started, exc, logger)
+                else:
+                    logger.emit(
+                        f"CERT RERUN FAILED | D={field.discriminant} | "
+                        f"{exc}")
+
+        if args.jobs <= 1 or len(tasks) <= 1:
+            for task in tasks:
+                run_task(*task)
+        else:
+            from concurrent.futures import ThreadPoolExecutor
+            with ThreadPoolExecutor(max_workers=args.jobs) as pool:
+                futures = [pool.submit(run_task, *task) for task in tasks]
+                for future in futures:
+                    future.result()
 
         complete = sum(
             item["state"] == "COMPLETED" for item in state["fields"]
