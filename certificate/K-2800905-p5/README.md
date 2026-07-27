@@ -19,6 +19,10 @@ PARI.
 - `certificate.gp` is a textual, PARI-readable certificate. It contains 18
   main entries (`a`, `b`, `c`, `a+b`, `a+c`, `b+c`, each at `e1`, `e2`,
   `e3`) and nine doubled-character entries (`2a`, `2b`, `2c`).
+- `secondary-norms.gp` is a small derived data file with the six verified
+  secondary-norm matrices in the format of the `result.gp` records,
+  regenerated deterministically by `gp -qf tools/export_secondary_norms.gp`;
+  it lets finite-algebra tools read all computed fields uniformly.
 - The standalone verifier `verify_certificate.c` and its `Makefile` are
   shared between all certified fields and live one directory up, in
   `certificate/`.
