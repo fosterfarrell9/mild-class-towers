@@ -92,6 +92,27 @@ produced by the fixed audit mode described in
 and performs the doubled-character checks only when the entries are
 present.
 
+## Transverse rank-one certificates
+
+The transverse rank-one mildness criterion is certified for all nine
+computed fields by
+
+```sh
+python3 tools/transverse_rank_one.py
+```
+
+which rebuilds the quadratic secondary-norm family of each field by
+polarization from the six verified matrices (committed `result.gp`
+records; for the principal example
+`certificate/K-2800905-p5/secondary-norms.gp`, exported from the
+arithmetic certificate by `gp -qf tools/export_secondary_norms.gp`),
+locates the closed points of the rank-drop scheme exactly (Singular
+radical per affine chart, eliminant roots over explicit fields
+F_5[t]/(f)), and certifies `rank(D_x)=1` and `det(B_x)!=0` by direct
+linear algebra over the residue field, with a Jacobian tangent-space
+cross-check at every point.  Results are committed under
+`examples/p5/transverse-rank-one/`.
+
 ## Pure relation-algebra searches for a stored matrix
 
 The relation-algebra fixture (lexicographic and weighted-degree Anick
