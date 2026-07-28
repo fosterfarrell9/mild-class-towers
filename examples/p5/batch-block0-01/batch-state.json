@@ -13,6 +13,7 @@
       "MILD": "PROVED",
       "arithmetic_audit": "PASS (18/18)",
       "bounded_witness": "FOUND",
+      "certificate": "/home/denis/massey/Massey-pari/certificate/K-27960639-p5/certificate.gp",
       "class_group": [
         40,
         10,
@@ -46,6 +47,7 @@
       "MILD": "UNKNOWN",
       "arithmetic_audit": "PASS (18/18)",
       "bounded_witness": "NOT_FOUND",
+      "certificate": "/home/denis/massey/Massey-pari/certificate/K-35663739-p5/certificate.gp",
       "class_group": [
         30,
         10,
@@ -114,6 +116,7 @@
       "MILD": "PROVED",
       "arithmetic_audit": "PASS (18/18)",
       "bounded_witness": "NOT_RUN",
+      "certificate": "/home/denis/massey/Massey-pari/certificate/K-61040707-p5/certificate.gp",
       "class_group": [
         20,
         10,
@@ -147,6 +150,7 @@
       "MILD": "PROVED",
       "arithmetic_audit": "PASS (18/18)",
       "bounded_witness": "NOT_RUN",
+      "certificate": "/home/denis/massey/Massey-pari/certificate/K-13579778-p5/certificate.gp",
       "class_group": [
         60,
         10,
@@ -246,6 +250,7 @@
     },
     {
       "D": -145367147,
+      "bounded_witness": "NOT_RUN",
       "class_group": [
         125,
         5,
@@ -253,13 +258,16 @@
       ],
       "class_number": 3125,
       "directory": "D-145367147",
+      "exhaustive_witness": "NOT_USED",
       "index": 8,
+      "interrupted_at": "2026-07-27T20:18:31+00:00",
       "p_primary": [
         125,
         5,
         5
       ],
       "polynomial": "s^2-s+36341787",
+      "started_at": "2026-07-27T19:11:42+00:00",
       "state": "PENDING"
     },
     {
@@ -300,5 +308,5 @@
     }
   ],
   "format_version": 1,
-  "updated_at": "2026-07-26T18:43:23+00:00"
+  "updated_at": "2026-07-27T23:19:53+00:00"
 }
