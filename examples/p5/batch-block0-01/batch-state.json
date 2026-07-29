@@ -249,26 +249,40 @@
       "state": "COMPLETED"
     },
     {
+      "CD": "2",
       "D": -145367147,
+      "MILD": "PROVED",
+      "arithmetic_audit": "PASS (18/18)",
       "bounded_witness": "NOT_RUN",
+      "certificate": "certificate/K-145367147-p5/certificate.gp",
       "class_group": [
         125,
         5,
         5
       ],
       "class_number": 3125,
+      "computation": "parallel per-character (parallelization/)",
+      "cubic_rank": 3,
       "directory": "D-145367147",
-      "exhaustive_witness": "NOT_USED",
+      "ended_at": "2026-07-28T21:58:39+00:00",
+      "exhaustive": true,
+      "exhaustive_witness": "FOUND",
+      "exit_status": 0,
       "index": 8,
       "interrupted_at": "2026-07-27T20:18:31+00:00",
+      "leading_words": "[\"aac\", \"abb\", \"abc\"]",
       "p_primary": [
         125,
         5,
         5
       ],
       "polynomial": "s^2-s+36341787",
+      "result_sha256": "df25f5f5b4a6d7430b5e65522572de4c3355892f4565fe80decf5f1667f535bb",
+      "result_status": "STRONGLY_FREE_BASIS_FOUND",
+      "run_log_sha256": "3ec42b4f25645998233ed9d03e260de4ff35367b2fc691cda4110eb62f89cf78",
+      "runtime_seconds": 2895.0,
       "started_at": "2026-07-27T19:11:42+00:00",
-      "state": "PENDING"
+      "state": "COMPLETED"
     },
     {
       "D": -109909943,
@@ -289,24 +303,40 @@
       "state": "PENDING"
     },
     {
+      "CD": "2",
       "D": -207666763,
+      "MILD": "PROVED",
+      "arithmetic_audit": "PASS (18/18)",
+      "bounded_witness": "NOT_RUN",
+      "certificate": "certificate/K-207666763-p5/certificate.gp",
       "class_group": [
         50,
         10,
         5
       ],
       "class_number": 2500,
+      "computation": "parallel per-character (parallelization/)",
+      "cubic_rank": 3,
       "directory": "D-207666763",
+      "ended_at": "2026-07-28T21:58:39+00:00",
+      "exhaustive": true,
+      "exhaustive_witness": "FOUND",
+      "exit_status": 0,
       "index": 10,
+      "leading_words": "[\"cca\", \"cbb\", \"cba\"]",
       "p_primary": [
         25,
         5,
         5
       ],
       "polynomial": "s^2-s+51916691",
-      "state": "PENDING"
+      "result_sha256": "c93dd9b8716d098abe59c0d764749629e22e27ba67071335912f9970837de264",
+      "result_status": "STRONGLY_FREE_BASIS_FOUND",
+      "run_log_sha256": "fcf9f27af0c6d829a8ea41b4f00ad5acd052965ca563966c4e6090cd003a6fcd",
+      "runtime_seconds": 1720.0,
+      "state": "COMPLETED"
     }
   ],
   "format_version": 1,
-  "updated_at": "2026-07-27T23:19:53+00:00"
+  "updated_at": "2026-07-28T21:58:39+00:00"
 }

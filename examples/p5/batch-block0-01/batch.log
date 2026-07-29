@@ -3251,3 +3251,5 @@ TASKS | fields=0 | certificates=4 | jobs=4
 [2026-07-27T23:19:51+00:00] CHILD | MILD PASS
 [2026-07-27T23:19:53+00:00] CERT RERUN COMPLETE | D=-61040707 | fresh result matches committed record | elapsed=02:51:37
 BATCH END | completed=7/10 | failed=0 | timestamp=2026-07-27T23:19:53+00:00
+[2026-07-28T21:58:39+00:00] PARALLEL INSTALL | D=-145367147 | MILD=PROVED | rank(T)=3 | wall=2895s | six per-character processes (parallelization/), result and certificate verified
+[2026-07-28T21:58:39+00:00] PARALLEL INSTALL | D=-207666763 | MILD=PROVED | rank(T)=3 | wall=1720s | six per-character processes (parallelization/), result and certificate verified

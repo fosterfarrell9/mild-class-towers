@@ -1,0 +1,177 @@
+==== character 1 ====
+CHARACTER_DRIVER index=1 D=-207666763
+BASE_BNF_CERTIFIED
+prescribed t = [1, 0, 0]
+  ***   Warning: increasing stack size to 2147483648.
+
+MASSEY_ARITHMETIC_AUDIT character certificate
+  prescribed t = [1, 0, 0]
+  chi = [10, 0, 0]
+  H = [5, 0, 0; 0, 1, 0; 0, 0, 1]
+  det(H) = 5; [Cl(K):H] = 5
+  class-field modulus = 1 (ordinary class group)
+  relative degree = 5; disc(L) = disc(K)^5 = -386220184527980591621592579890931871230043; finite-unramified=PASS
+  H column 1: t(h)=0 PASS
+  H column 2: t(h)=0 PASS
+  H column 3: t(h)=0 PASS
+  A=[1, 0, 0] lambda=1 u=1 lambda/u=1 sigma_t/sigma_Artin=1
+  generator g_1: Artin exponent A_i=1; relative to sigma_t=1; prescribed t_i=1 PASS
+  generator g_2: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+  generator g_3: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+  direct AC and independent norm-class checks
+  input e_1: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 4, 0] production D=[0, 4, 0] MATCH
+    rational_prime=7 prime_ideal=[7, [-3, 1]~, 1, 1, [2, -51916691; 1, 3]] residue(u)=1 residue(+1)=1 residue(-1)=6 unit_coordinates=[0]~
+  input e_2: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 3, 4] production D=[0, 3, 4] MATCH
+    rational_prime=7 prime_ideal=[7, [-3, 1]~, 1, 1, [2, -51916691; 1, 3]] residue(u)=1 residue(+1)=1 residue(-1)=6 unit_coordinates=[0]~
+  input e_3: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 0, 2] production D=[0, 0, 2] MATCH
+    rational_prime=7 prime_ideal=[7, [-3, 1]~, 1, 1, [2, -51916691; 1, 3]] residue(u)=1 residue(+1)=1 residue(-1)=6 unit_coordinates=[0]~
+CHARACTER_DONE index=1 D_t=[0, 0, 0; 4, 3, 0; 0, 4, 2]
+==== character 2 ====
+CHARACTER_DRIVER index=2 D=-207666763
+BASE_BNF_CERTIFIED
+prescribed t = [0, 1, 0]
+  ***   Warning: increasing stack size to 2147483648.
+
+MASSEY_ARITHMETIC_AUDIT character certificate
+  prescribed t = [0, 1, 0]
+  chi = [0, 2, 0]
+  H = [1, 0, 0; 0, 5, 0; 0, 0, 1]
+  det(H) = 5; [Cl(K):H] = 5
+  class-field modulus = 1 (ordinary class group)
+  relative degree = 5; disc(L) = disc(K)^5 = -386220184527980591621592579890931871230043; finite-unramified=PASS
+  H column 1: t(h)=0 PASS
+  H column 2: t(h)=0 PASS
+  H column 3: t(h)=0 PASS
+  A=[0, 3, 0] lambda=3 u=1 lambda/u=3 sigma_t/sigma_Artin=3
+  generator g_1: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+  generator g_2: Artin exponent A_i=3; relative to sigma_t=1; prescribed t_i=1 PASS
+  generator g_3: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+  direct AC and independent norm-class checks
+  input e_1: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[1, 0, 1] production D=[1, 0, 1] MATCH
+    rational_prime=7 prime_ideal=[7, [-3, 1]~, 1, 1, [2, -51916691; 1, 3]] residue(u)=1 residue(+1)=1 residue(-1)=6 unit_coordinates=[0]~
+  input e_2: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 0, 2] production D=[0, 0, 2] MATCH
+    rational_prime=7 prime_ideal=[7, [-3, 1]~, 1, 1, [2, -51916691; 1, 3]] residue(u)=1 residue(+1)=1 residue(-1)=6 unit_coordinates=[0]~
+  input e_3: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[2, 0, 4] production D=[2, 0, 4] MATCH
+    rational_prime=7 prime_ideal=[7, [-3, 1]~, 1, 1, [2, -51916691; 1, 3]] residue(u)=1 residue(+1)=1 residue(-1)=6 unit_coordinates=[0]~
+CHARACTER_DONE index=2 D_t=[1, 0, 2; 0, 0, 0; 1, 2, 4]
+==== character 3 ====
+CHARACTER_DRIVER index=3 D=-207666763
+BASE_BNF_CERTIFIED
+prescribed t = [0, 0, 1]
+  ***   Warning: increasing stack size to 2147483648.
+
+MASSEY_ARITHMETIC_AUDIT character certificate
+  prescribed t = [0, 0, 1]
+  chi = [0, 0, 1]
+  H = [1, 0, 0; 0, 1, 0; 0, 0, 5]
+  det(H) = 5; [Cl(K):H] = 5
+  class-field modulus = 1 (ordinary class group)
+  relative degree = 5; disc(L) = disc(K)^5 = -386220184527980591621592579890931871230043; finite-unramified=PASS
+  H column 1: t(h)=0 PASS
+  H column 2: t(h)=0 PASS
+  H column 3: t(h)=0 PASS
+  A=[0, 0, 3] lambda=3 u=1 lambda/u=3 sigma_t/sigma_Artin=3
+  generator g_1: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+  generator g_2: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+  generator g_3: Artin exponent A_i=3; relative to sigma_t=1; prescribed t_i=1 PASS
+  direct AC and independent norm-class checks
+  input e_1: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[1, 2, 0] production D=[1, 2, 0] MATCH
+    rational_prime=7 prime_ideal=[7, [-3, 1]~, 1, 1, [2, -51916691; 1, 3]] residue(u)=1 residue(+1)=1 residue(-1)=6 unit_coordinates=[0]~
+  input e_2: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 0, 0] production D=[0, 0, 0] MATCH
+    rational_prime=7 prime_ideal=[7, [-3, 1]~, 1, 1, [2, -51916691; 1, 3]] residue(u)=1 residue(+1)=1 residue(-1)=6 unit_coordinates=[0]~
+  input e_3: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[3, 0, 0] production D=[3, 0, 0] MATCH
+    rational_prime=7 prime_ideal=[7, [-3, 1]~, 1, 1, [2, -51916691; 1, 3]] residue(u)=1 residue(+1)=1 residue(-1)=6 unit_coordinates=[0]~
+CHARACTER_DONE index=3 D_t=[1, 0, 3; 2, 0, 0; 0, 0, 0]
+==== character 4 ====
+CHARACTER_DRIVER index=4 D=-207666763
+BASE_BNF_CERTIFIED
+prescribed t = [1, 1, 0]
+  ***   Warning: increasing stack size to 2147483648.
+
+MASSEY_ARITHMETIC_AUDIT character certificate
+  prescribed t = [1, 1, 0]
+  chi = [10, 2, 0]
+  H = [5, 4, 0; 0, 1, 0; 0, 0, 1]
+  det(H) = 5; [Cl(K):H] = 5
+  class-field modulus = 1 (ordinary class group)
+  relative degree = 5; disc(L) = disc(K)^5 = -386220184527980591621592579890931871230043; finite-unramified=PASS
+  H column 1: t(h)=0 PASS
+  H column 2: t(h)=0 PASS
+  H column 3: t(h)=0 PASS
+  A=[4, 4, 0] lambda=4 u=1 lambda/u=4 sigma_t/sigma_Artin=4
+  generator g_1: Artin exponent A_i=4; relative to sigma_t=1; prescribed t_i=1 PASS
+  generator g_2: Artin exponent A_i=4; relative to sigma_t=1; prescribed t_i=1 PASS
+  generator g_3: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+  direct AC and independent norm-class checks
+  input e_1: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[2, 3, 4] production D=[2, 3, 4] MATCH
+    rational_prime=7 prime_ideal=[7, [-3, 1]~, 1, 1, [2, -51916691; 1, 3]] residue(u)=1 residue(+1)=1 residue(-1)=6 unit_coordinates=[0]~
+  input e_2: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[2, 3, 1] production D=[2, 3, 1] MATCH
+    rational_prime=7 prime_ideal=[7, [-3, 1]~, 1, 1, [2, -51916691; 1, 3]] residue(u)=1 residue(+1)=1 residue(-1)=6 unit_coordinates=[0]~
+  input e_3: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[2, 3, 0] production D=[2, 3, 0] MATCH
+    rational_prime=7 prime_ideal=[7, [-3, 1]~, 1, 1, [2, -51916691; 1, 3]] residue(u)=1 residue(+1)=1 residue(-1)=6 unit_coordinates=[0]~
+CHARACTER_DONE index=4 D_t=[2, 2, 2; 3, 3, 3; 4, 1, 0]
+==== character 5 ====
+CHARACTER_DRIVER index=5 D=-207666763
+BASE_BNF_CERTIFIED
+prescribed t = [1, 0, 1]
+  ***   Warning: increasing stack size to 2147483648.
+
+MASSEY_ARITHMETIC_AUDIT character certificate
+  prescribed t = [1, 0, 1]
+  chi = [10, 0, 1]
+  H = [5, 0, 4; 0, 1, 0; 0, 0, 1]
+  det(H) = 5; [Cl(K):H] = 5
+  class-field modulus = 1 (ordinary class group)
+  relative degree = 5; disc(L) = disc(K)^5 = -386220184527980591621592579890931871230043; finite-unramified=PASS
+  H column 1: t(h)=0 PASS
+  H column 2: t(h)=0 PASS
+  H column 3: t(h)=0 PASS
+  A=[1, 0, 1] lambda=1 u=1 lambda/u=1 sigma_t/sigma_Artin=1
+  generator g_1: Artin exponent A_i=1; relative to sigma_t=1; prescribed t_i=1 PASS
+  generator g_2: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+  generator g_3: Artin exponent A_i=1; relative to sigma_t=1; prescribed t_i=1 PASS
+  direct AC and independent norm-class checks
+  input e_1: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[1, 3, 4] production D=[1, 3, 4] MATCH
+    rational_prime=7 prime_ideal=[7, [-3, 1]~, 1, 1, [2, -51916691; 1, 3]] residue(u)=1 residue(+1)=1 residue(-1)=6 unit_coordinates=[0]~
+  input e_2: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[1, 2, 4] production D=[1, 2, 4] MATCH
+    rational_prime=7 prime_ideal=[7, [-3, 1]~, 1, 1, [2, -51916691; 1, 3]] residue(u)=1 residue(+1)=1 residue(-1)=6 unit_coordinates=[0]~
+  input e_3: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[1, 3, 4] production D=[1, 3, 4] MATCH
+    rational_prime=7 prime_ideal=[7, [-3, 1]~, 1, 1, [2, -51916691; 1, 3]] residue(u)=1 residue(+1)=1 residue(-1)=6 unit_coordinates=[0]~
+CHARACTER_DONE index=5 D_t=[1, 1, 1; 3, 2, 3; 4, 4, 4]
+==== character 6 ====
+CHARACTER_DRIVER index=6 D=-207666763
+BASE_BNF_CERTIFIED
+prescribed t = [0, 1, 1]
+  ***   Warning: increasing stack size to 2147483648.
+
+MASSEY_ARITHMETIC_AUDIT character certificate
+  prescribed t = [0, 1, 1]
+  chi = [0, 2, 1]
+  H = [1, 0, 0; 0, 5, 4; 0, 0, 1]
+  det(H) = 5; [Cl(K):H] = 5
+  class-field modulus = 1 (ordinary class group)
+  relative degree = 5; disc(L) = disc(K)^5 = -386220184527980591621592579890931871230043; finite-unramified=PASS
+  H column 1: t(h)=0 PASS
+  H column 2: t(h)=0 PASS
+  H column 3: t(h)=0 PASS
+  A=[0, 4, 4] lambda=4 u=1 lambda/u=4 sigma_t/sigma_Artin=4
+  generator g_1: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+  generator g_2: Artin exponent A_i=4; relative to sigma_t=1; prescribed t_i=1 PASS
+  generator g_3: Artin exponent A_i=4; relative to sigma_t=1; prescribed t_i=1 PASS
+  direct AC and independent norm-class checks
+  input e_1: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[2, 1, 4] production D=[2, 1, 4] MATCH
+    rational_prime=3 prime_ideal=[3, [3, 0]~, 1, 2, 1] residue(u)=1 residue(+1)=1 residue(-1)=2 unit_coordinates=[0]~
+  input e_2: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[1, 3, 2] production D=[1, 3, 2] MATCH
+    rational_prime=5 prime_ideal=[5, [5, 0]~, 1, 2, 1] residue(u)=1 residue(+1)=1 residue(-1)=4 unit_coordinates=[0]~
+  input e_3: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[3, 1, 4] production D=[3, 1, 4] MATCH
+    rational_prime=7 prime_ideal=[7, [-3, 1]~, 1, 1, [2, -51916691; 1, 3]] residue(u)=1 residue(+1)=1 residue(-1)=6 unit_coordinates=[0]~
+CHARACTER_DONE index=6 D_t=[2, 1, 3; 1, 3, 1; 4, 2, 4]
+==== finish ====
+BASE_BNF_CERTIFIED
+P_CLASS_RANK 3
+SECONDARY_NORMS COLLECTED
+MASSEY_RANK 3
+STRONG_FREENESS PASS
+LEADING_WORDS ["cca", "cbb", "cba"]
+MILD PASS
+RESULT_WRITTEN work/D-207666763/result.gp
