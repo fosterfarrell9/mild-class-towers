@@ -49,7 +49,8 @@ def run_field(polynomial, workdir, limit, indices=None, finish=True):
             workdir / f"cert-{i}.gp")
         log = (workdir / f"char-{i}.log").open("w")
         procs.append((i, subprocess.Popen(
-            [str(HERE / "character_driver"), "5", polynomial, str(i),
+            ["/usr/bin/time", "-v",
+             str(HERE / "character_driver"), "5", polynomial, str(i),
              str(workdir / f"mat-{i}.gp")],
             stdout=log, stderr=subprocess.STDOUT, env=env), log))
         print(f"spawned character {i} ({LABELS[i-1]})", flush=True)
@@ -57,8 +58,13 @@ def run_field(polynomial, workdir, limit, indices=None, finish=True):
     for i, proc, log in procs:
         rc = proc.wait()
         log.close()
+        peak = ""
+        for line in (workdir / f"char-{i}.log").read_text().splitlines():
+            if "Maximum resident set size" in line:
+                kb = int(line.rsplit(":", 1)[1])
+                peak = f", peak RSS {kb / 1048576:.1f} GiB"
         print(f"character {i} ({LABELS[i-1]}) exited {rc} "
-              f"after {time.monotonic()-started:.0f}s", flush=True)
+              f"after {time.monotonic()-started:.0f}s{peak}", flush=True)
         if rc != 0:
             failures.append(i)
     if failures:
