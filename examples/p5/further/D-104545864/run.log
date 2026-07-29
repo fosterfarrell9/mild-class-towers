@@ -1,0 +1,321 @@
+==== character 1 ====
+CHARACTER_DRIVER index=1 D=-104545864
+BASE_BNF_CERTIFIED
+prescribed t = [1, 0, 0]
+  ***   Warning: increasing stack size to 2147483648.
+  ***   Warning: increasing stack size to 4294967296.
+
+MASSEY_ARITHMETIC_AUDIT character certificate
+  prescribed t = [1, 0, 0]
+  chi = [12, 0, 0]
+  H = [5, 0, 0; 0, 1, 0; 0, 0, 1]
+  det(H) = 5; [Cl(K):H] = 5
+  class-field modulus = 1 (ordinary class group)
+  relative degree = 5; disc(L) = disc(K)^5 = -12489190228121999578934770366611337805824; finite-unramified=PASS
+  H column 1: t(h)=0 PASS
+  H column 2: t(h)=0 PASS
+  H column 3: t(h)=0 PASS
+  A=[1, 0, 0] lambda=1 u=1 lambda/u=1 sigma_t/sigma_Artin=1
+  generator g_1: Artin exponent A_i=1; relative to sigma_t=1; prescribed t_i=1 PASS
+  generator g_2: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+  generator g_3: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+  direct AC and independent norm-class checks
+  input e_1: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 1, 3] production D=[0, 1, 3] MATCH
+    rational_prime=5 prime_ideal=[5, [-2, 1]~, 1, 1, [2, -26136466; 1, 2]] residue(u)=1 residue(+1)=1 residue(-1)=4 unit_coordinates=[0]~
+  input e_2: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 4, 1] production D=[0, 4, 1] MATCH
+    rational_prime=5 prime_ideal=[5, [-2, 1]~, 1, 1, [2, -26136466; 1, 2]] residue(u)=1 residue(+1)=1 residue(-1)=4 unit_coordinates=[0]~
+  input e_3: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 3, 2] production D=[0, 3, 2] MATCH
+    rational_prime=5 prime_ideal=[5, [-2, 1]~, 1, 1, [2, -26136466; 1, 2]] residue(u)=1 residue(+1)=1 residue(-1)=4 unit_coordinates=[0]~
+CHARACTER_DONE index=1 D_t=[0, 0, 0; 1, 4, 3; 3, 1, 2]
+	Command being timed: "/home/denis/massey/Massey-pari/parallelization/character_driver 5 s^2+26136466 1 work/D-104545864/mat-1.gp"
+	User time (seconds): 4087.18
+	System time (seconds): 20.87
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:08:28
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 5202344
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 7080238
+	Voluntary context switches: 344
+	Involuntary context switches: 2989
+	Swaps: 0
+	File system inputs: 1184
+	File system outputs: 176
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+==== character 2 ====
+CHARACTER_DRIVER index=2 D=-104545864
+BASE_BNF_CERTIFIED
+prescribed t = [0, 1, 0]
+  ***   Warning: increasing stack size to 2147483648.
+  ***   Warning: increasing stack size to 4294967296.
+
+MASSEY_ARITHMETIC_AUDIT character certificate
+  prescribed t = [0, 1, 0]
+  chi = [0, 2, 0]
+  H = [1, 0, 0; 0, 5, 0; 0, 0, 1]
+  det(H) = 5; [Cl(K):H] = 5
+  class-field modulus = 1 (ordinary class group)
+  relative degree = 5; disc(L) = disc(K)^5 = -12489190228121999578934770366611337805824; finite-unramified=PASS
+  H column 1: t(h)=0 PASS
+  H column 2: t(h)=0 PASS
+  H column 3: t(h)=0 PASS
+  A=[0, 2, 0] lambda=2 u=1 lambda/u=2 sigma_t/sigma_Artin=2
+  generator g_1: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+  generator g_2: Artin exponent A_i=2; relative to sigma_t=1; prescribed t_i=1 PASS
+  generator g_3: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+  direct AC and independent norm-class checks
+  input e_1: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[2, 0, 3] production D=[2, 0, 3] MATCH
+    rational_prime=5 prime_ideal=[5, [-2, 1]~, 1, 1, [2, -26136466; 1, 2]] residue(u)=1 residue(+1)=1 residue(-1)=4 unit_coordinates=[0]~
+  input e_2: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 0, 2] production D=[0, 0, 2] MATCH
+    rational_prime=5 prime_ideal=[5, [-2, 1]~, 1, 1, [2, -26136466; 1, 2]] residue(u)=1 residue(+1)=1 residue(-1)=4 unit_coordinates=[0]~
+  input e_3: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[4, 0, 2] production D=[4, 0, 2] MATCH
+    rational_prime=5 prime_ideal=[5, [-2, 1]~, 1, 1, [2, -26136466; 1, 2]] residue(u)=1 residue(+1)=1 residue(-1)=4 unit_coordinates=[0]~
+CHARACTER_DONE index=2 D_t=[2, 0, 4; 0, 0, 0; 3, 2, 2]
+	Command being timed: "/home/denis/massey/Massey-pari/parallelization/character_driver 5 s^2+26136466 2 work/D-104545864/mat-2.gp"
+	User time (seconds): 3968.49
+	System time (seconds): 22.71
+	Percent of CPU this job got: 100%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:06:30
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 5202440
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 7080448
+	Voluntary context switches: 494
+	Involuntary context switches: 2694
+	Swaps: 0
+	File system inputs: 16
+	File system outputs: 200
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+==== character 3 ====
+CHARACTER_DRIVER index=3 D=-104545864
+BASE_BNF_CERTIFIED
+prescribed t = [0, 0, 1]
+  ***   Warning: increasing stack size to 2147483648.
+  ***   Warning: increasing stack size to 4294967296.
+
+MASSEY_ARITHMETIC_AUDIT character certificate
+  prescribed t = [0, 0, 1]
+  chi = [0, 0, 1]
+  H = [1, 0, 0; 0, 1, 0; 0, 0, 5]
+  det(H) = 5; [Cl(K):H] = 5
+  class-field modulus = 1 (ordinary class group)
+  relative degree = 5; disc(L) = disc(K)^5 = -12489190228121999578934770366611337805824; finite-unramified=PASS
+  H column 1: t(h)=0 PASS
+  H column 2: t(h)=0 PASS
+  H column 3: t(h)=0 PASS
+  A=[0, 0, 2] lambda=2 u=1 lambda/u=2 sigma_t/sigma_Artin=2
+  generator g_1: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+  generator g_2: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+  generator g_3: Artin exponent A_i=2; relative to sigma_t=1; prescribed t_i=1 PASS
+  direct AC and independent norm-class checks
+  input e_1: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[3, 2, 0] production D=[3, 2, 0] MATCH
+    rational_prime=5 prime_ideal=[5, [-2, 1]~, 1, 1, [2, -26136466; 1, 2]] residue(u)=1 residue(+1)=1 residue(-1)=4 unit_coordinates=[0]~
+  input e_2: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[1, 1, 0] production D=[1, 1, 0] MATCH
+    rational_prime=5 prime_ideal=[5, [-2, 1]~, 1, 1, [2, -26136466; 1, 2]] residue(u)=1 residue(+1)=1 residue(-1)=4 unit_coordinates=[0]~
+  input e_3: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[3, 2, 0] production D=[3, 2, 0] MATCH
+    rational_prime=5 prime_ideal=[5, [-2, 1]~, 1, 1, [2, -26136466; 1, 2]] residue(u)=1 residue(+1)=1 residue(-1)=4 unit_coordinates=[0]~
+CHARACTER_DONE index=3 D_t=[3, 1, 3; 2, 1, 2; 0, 0, 0]
+	Command being timed: "/home/denis/massey/Massey-pari/parallelization/character_driver 5 s^2+26136466 3 work/D-104545864/mat-3.gp"
+	User time (seconds): 4047.91
+	System time (seconds): 21.35
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:07:49
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 5202276
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 7080373
+	Voluntary context switches: 382
+	Involuntary context switches: 6183
+	Swaps: 0
+	File system inputs: 16
+	File system outputs: 128
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+==== character 4 ====
+CHARACTER_DRIVER index=4 D=-104545864
+BASE_BNF_CERTIFIED
+prescribed t = [1, 1, 0]
+  ***   Warning: increasing stack size to 2147483648.
+  ***   Warning: increasing stack size to 4294967296.
+
+MASSEY_ARITHMETIC_AUDIT character certificate
+  prescribed t = [1, 1, 0]
+  chi = [12, 2, 0]
+  H = [5, 4, 0; 0, 1, 0; 0, 0, 1]
+  det(H) = 5; [Cl(K):H] = 5
+  class-field modulus = 1 (ordinary class group)
+  relative degree = 5; disc(L) = disc(K)^5 = -12489190228121999578934770366611337805824; finite-unramified=PASS
+  H column 1: t(h)=0 PASS
+  H column 2: t(h)=0 PASS
+  H column 3: t(h)=0 PASS
+  A=[2, 2, 0] lambda=2 u=1 lambda/u=2 sigma_t/sigma_Artin=2
+  generator g_1: Artin exponent A_i=2; relative to sigma_t=1; prescribed t_i=1 PASS
+  generator g_2: Artin exponent A_i=2; relative to sigma_t=1; prescribed t_i=1 PASS
+  generator g_3: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+  direct AC and independent norm-class checks
+  input e_1: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[1, 4, 4] production D=[1, 4, 4] MATCH
+    rational_prime=7 prime_ideal=[7, [-1, 1]~, 1, 1, [1, -26136466; 1, 1]] residue(u)=1 residue(+1)=1 residue(-1)=6 unit_coordinates=[0]~
+  input e_2: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[1, 4, 4] production D=[1, 4, 4] MATCH
+    rational_prime=7 prime_ideal=[7, [1, 1]~, 1, 1, [-1, -26136466; 1, -1]] residue(u)=1 residue(+1)=1 residue(-1)=6 unit_coordinates=[0]~
+  input e_3: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[1, 4, 4] production D=[1, 4, 4] MATCH
+    rational_prime=7 prime_ideal=[7, [-1, 1]~, 1, 1, [1, -26136466; 1, 1]] residue(u)=1 residue(+1)=1 residue(-1)=6 unit_coordinates=[0]~
+CHARACTER_DONE index=4 D_t=[1, 1, 1; 4, 4, 4; 4, 4, 4]
+	Command being timed: "/home/denis/massey/Massey-pari/parallelization/character_driver 5 s^2+26136466 4 work/D-104545864/mat-4.gp"
+	User time (seconds): 4093.25
+	System time (seconds): 20.68
+	Percent of CPU this job got: 100%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:08:33
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 5201296
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 7080392
+	Voluntary context switches: 426
+	Involuntary context switches: 7305
+	Swaps: 0
+	File system inputs: 16
+	File system outputs: 176
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+==== character 5 ====
+CHARACTER_DRIVER index=5 D=-104545864
+BASE_BNF_CERTIFIED
+prescribed t = [1, 0, 1]
+  ***   Warning: increasing stack size to 2147483648.
+  ***   Warning: increasing stack size to 4294967296.
+
+MASSEY_ARITHMETIC_AUDIT character certificate
+  prescribed t = [1, 0, 1]
+  chi = [12, 0, 1]
+  H = [5, 0, 4; 0, 1, 0; 0, 0, 1]
+  det(H) = 5; [Cl(K):H] = 5
+  class-field modulus = 1 (ordinary class group)
+  relative degree = 5; disc(L) = disc(K)^5 = -12489190228121999578934770366611337805824; finite-unramified=PASS
+  H column 1: t(h)=0 PASS
+  H column 2: t(h)=0 PASS
+  H column 3: t(h)=0 PASS
+  A=[3, 0, 3] lambda=3 u=1 lambda/u=3 sigma_t/sigma_Artin=3
+  generator g_1: Artin exponent A_i=3; relative to sigma_t=1; prescribed t_i=1 PASS
+  generator g_2: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+  generator g_3: Artin exponent A_i=3; relative to sigma_t=1; prescribed t_i=1 PASS
+  direct AC and independent norm-class checks
+  input e_1: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 2, 0] production D=[0, 2, 0] MATCH
+    rational_prime=7 prime_ideal=[7, [-1, 1]~, 1, 1, [1, -26136466; 1, 1]] residue(u)=1 residue(+1)=1 residue(-1)=6 unit_coordinates=[0]~
+  input e_2: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 4, 0] production D=[0, 4, 0] MATCH
+    rational_prime=7 prime_ideal=[7, [1, 1]~, 1, 1, [-1, -26136466; 1, -1]] residue(u)=1 residue(+1)=1 residue(-1)=6 unit_coordinates=[0]~
+  input e_3: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[1, 1, 4] production D=[1, 1, 4] MATCH
+    rational_prime=7 prime_ideal=[7, [-1, 1]~, 1, 1, [1, -26136466; 1, 1]] residue(u)=1 residue(+1)=1 residue(-1)=6 unit_coordinates=[0]~
+CHARACTER_DONE index=5 D_t=[0, 0, 1; 2, 4, 1; 0, 0, 4]
+	Command being timed: "/home/denis/massey/Massey-pari/parallelization/character_driver 5 s^2+26136466 5 work/D-104545864/mat-5.gp"
+	User time (seconds): 4069.34
+	System time (seconds): 22.02
+	Percent of CPU this job got: 100%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:08:10
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 5202220
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 7080489
+	Voluntary context switches: 578
+	Involuntary context switches: 4214
+	Swaps: 0
+	File system inputs: 16
+	File system outputs: 168
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+==== character 6 ====
+CHARACTER_DRIVER index=6 D=-104545864
+BASE_BNF_CERTIFIED
+prescribed t = [0, 1, 1]
+  ***   Warning: increasing stack size to 2147483648.
+  ***   Warning: increasing stack size to 4294967296.
+
+MASSEY_ARITHMETIC_AUDIT character certificate
+  prescribed t = [0, 1, 1]
+  chi = [0, 2, 1]
+  H = [1, 0, 0; 0, 5, 4; 0, 0, 1]
+  det(H) = 5; [Cl(K):H] = 5
+  class-field modulus = 1 (ordinary class group)
+  relative degree = 5; disc(L) = disc(K)^5 = -12489190228121999578934770366611337805824; finite-unramified=PASS
+  H column 1: t(h)=0 PASS
+  H column 2: t(h)=0 PASS
+  H column 3: t(h)=0 PASS
+  A=[0, 1, 1] lambda=1 u=1 lambda/u=1 sigma_t/sigma_Artin=1
+  generator g_1: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+  generator g_2: Artin exponent A_i=1; relative to sigma_t=1; prescribed t_i=1 PASS
+  generator g_3: Artin exponent A_i=1; relative to sigma_t=1; prescribed t_i=1 PASS
+  direct AC and independent norm-class checks
+  input e_1: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[3, 4, 1] production D=[3, 4, 1] MATCH
+    rational_prime=5 prime_ideal=[5, [-2, 1]~, 1, 1, [2, -26136466; 1, 2]] residue(u)=1 residue(+1)=1 residue(-1)=4 unit_coordinates=[0]~
+  input e_2: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[1, 4, 1] production D=[1, 4, 1] MATCH
+    rational_prime=5 prime_ideal=[5, [-2, 1]~, 1, 1, [2, -26136466; 1, 2]] residue(u)=1 residue(+1)=1 residue(-1)=4 unit_coordinates=[0]~
+  input e_3: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[1, 0, 0] production D=[1, 0, 0] MATCH
+    rational_prime=5 prime_ideal=[5, [-2, 1]~, 1, 1, [2, -26136466; 1, 2]] residue(u)=1 residue(+1)=1 residue(-1)=4 unit_coordinates=[0]~
+CHARACTER_DONE index=6 D_t=[3, 1, 1; 4, 4, 0; 1, 1, 0]
+	Command being timed: "/home/denis/massey/Massey-pari/parallelization/character_driver 5 s^2+26136466 6 work/D-104545864/mat-6.gp"
+	User time (seconds): 3934.08
+	System time (seconds): 23.29
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:05:57
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 5202604
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 6
+	Minor (reclaiming a frame) page faults: 7080617
+	Voluntary context switches: 731
+	Involuntary context switches: 3560
+	Swaps: 0
+	File system inputs: 7728
+	File system outputs: 184
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+==== finish ====
+BASE_BNF_CERTIFIED
+P_CLASS_RANK 3
+SECONDARY_NORMS COLLECTED
+MASSEY_RANK 3
+STRONG_FREENESS PASS
+LEADING_WORDS ["cca", "cbb", "cba"]
+MILD PASS
+RESULT_WRITTEN work/D-104545864/result.gp

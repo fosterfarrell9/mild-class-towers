@@ -12,6 +12,9 @@ Layout of this directory:
   `batch.tsv` (summary table) are the provenance record of the runs.
   The batch position numbering used in the log (`FIELD N/10`) is *not*
   the ordering by absolute discriminant.
+- `further/` — fields beyond the original batch, computed with the
+  per-character parallel drivers in `parallelization/`; one
+  subdirectory `D<disc>` with `result.gp` and `run.log` each.
 - `transverse-rank-one/` — transverse rank-one certificates for all
   computed fields (see its README).
 
@@ -34,6 +37,10 @@ rank three below 2^28), the computed examples are
  7  -61040707    (batch)
  8  -65818135    (batch)
  9  -75949255    (batch)
+15  -104545864   (further/)
+19  -123779560   (further/)
+20  -126740891   (further/; no F_5 Anick witness -- mild by the
+                  transverse rank-one criterion, degree-6 point)
 24  -145367147   (batch; computed by the per-character parallel
                   drivers in parallelization/)
 45  -207666763   (batch; likewise)
