@@ -14,6 +14,9 @@ D_K          #rat rk1  #rat transverse  min k-degree  criterion applies
 -75949255           2               2            1  YES
 -145367147          2               2            1  YES
 -207666763          1               1            1  YES
+-104545864          1               1            1  YES
+-123779560          2               1            1  YES
+-126740891          0               0            6  YES
 
 == -11203620
   rational x=(1, 1, 0)  det B = 1  TRANSVERSE  (tangent dim 0)
@@ -124,4 +127,28 @@ D_K          #rat rk1  #rat transverse  min k-degree  criterion applies
     x = [[0, 4, 2, 4, 3], [0, 2, 1, 2, 3], [1, 0, 0, 0, 0]]
     det B = [3, 2, 3, 4, 1]  TRANSVERSE  (tangent dim 0)
     B = [[[4, 0, 4, 2, 3], [1, 4, 3, 0, 0]], [[1, 4, 2, 2, 0], [1, 1, 1, 3, 4]]]
+
+== -104545864
+  rational x=(1, 1, 0)  det B = 4  TRANSVERSE  (tangent dim 0)
+    B = [[[1], [3]], [[3], [3]]]
+  degree-5 point over F_5[t]/(t^5: [1, 0, 0, 0, 4, 1])
+    x = [[3, 2, 1, 1, 4], [1, 1, 2, 3, 0], [1, 0, 0, 0, 0]]
+    det B = [3, 0, 2, 2, 3]  TRANSVERSE  (tangent dim 0)
+    B = [[[3, 0, 3, 1, 3], [4, 0, 1, 2, 2]], [[3, 1, 2, 3, 1], [1, 1, 0, 0, 0]]]
+
+== -123779560
+  rational x=(1, 3, 1)  det B = 0  not transverse  (tangent dim 1)
+    B = [[[3], [4]], [[4], [2]]]
+  rational x=(1, 3, 3)  det B = 2  TRANSVERSE  (tangent dim 0)
+    B = [[[3], [2]], [[1], [3]]]
+  degree-3 point over F_5[t]/(t^3: [1, 0, 1, 1])
+    x = [[4, 4, 3], [0, 3, 0], [1, 0, 0]]
+    det B = [3, 4, 0]  TRANSVERSE  (tangent dim 0)
+    B = [[[0, 4, 3], [3, 1, 1]], [[1, 0, 0], [2, 1, 1]]]
+
+== -126740891
+  degree-6 point over F_5[t]/(t^6: [1, 0, 0, 0, 1, 1, 1])
+    x = [[4, 2, 1, 1, 3, 4], [0, 0, 2, 1, 4, 1], [1, 0, 0, 0, 0, 0]]
+    det B = [2, 1, 1, 1, 4, 0]  TRANSVERSE  (tangent dim 0)
+    B = [[[3, 2, 1, 1, 3, 2], [4, 2, 0, 0, 2, 3]], [[2, 1, 0, 3, 3, 1], [1, 4, 3, 1, 1, 2]]]
 
