@@ -42,6 +42,7 @@ rank three below 2^28), the computed examples are
 13  -90903207    (further/)
 14  -93121640    (further/)
 15  -104545864   (further/)
+16  -106660295   (further/)
 18  -123482119   (further/)
 19  -123779560   (further/)
 20  -126740891   (further/; no F_5 Anick witness -- mild by the
@@ -53,9 +54,12 @@ rank three below 2^28), the computed examples are
 
 The first nine are exactly the nine smallest absolute discriminants;
 beyond rank nine the batch list was not ordered by absolute
-discriminant.  Of the twenty smallest, three remain uncomputed for
-memory reasons (the PARI stack of a single character process
-overflows the listed ceiling): rank 10, D = -77778287 (12 GiB); rank
-16, D = -106660295 (untested, expected similar); rank 17,
-D = -109909943 (8 GiB, still a pending batch field).  Every computed
-field has an arithmetic certificate under `certificate/`.
+discriminant.  Of the twenty smallest, two remain uncomputed for memory
+reasons (the PARI stack of a single character process overflows the
+listed ceiling): rank 10, D = -77778287 (12 GiB), and rank 17,
+D = -109909943 (8 GiB, still a pending batch field).  Cost is governed
+by the class groups of the L_x rather than by h_K: rank 16 with the
+largest class number of the list (h = 11000) took eleven minutes at
+0.7 GiB per character, while rank 10 with h = 6000 exceeded 12 GiB
+after nine hours.  Every computed field has an arithmetic certificate
+under `certificate/`.
