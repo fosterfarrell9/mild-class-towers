@@ -37,7 +37,12 @@ rank three below 2^28), the computed examples are
  7  -61040707    (batch)
  8  -65818135    (batch)
  9  -75949255    (batch)
+11  -89017304    (further/)
+12  -89218664    (further/)
+13  -90903207    (further/)
+14  -93121640    (further/)
 15  -104545864   (further/)
+18  -123482119   (further/)
 19  -123779560   (further/)
 20  -126740891   (further/; no F_5 Anick witness -- mild by the
                   transverse rank-one criterion, degree-6 point)
@@ -48,8 +53,9 @@ rank three below 2^28), the computed examples are
 
 The first nine are exactly the nine smallest absolute discriminants;
 beyond rank nine the batch list was not ordered by absolute
-discriminant.  The one remaining batch field, D = -109909943 (rank 17,
-class number 10000), currently exceeds the memory budget of the
-relative-field arithmetic (the PARI stack overflows even at 8 GiB per
-character process).  Every computed field has an arithmetic certificate
-under `certificate/`.
+discriminant.  Of the twenty smallest, three remain uncomputed for
+memory reasons (the PARI stack of a single character process
+overflows the listed ceiling): rank 10, D = -77778287 (12 GiB); rank
+16, D = -106660295 (untested, expected similar); rank 17,
+D = -109909943 (8 GiB, still a pending batch field).  Every computed
+field has an arithmetic certificate under `certificate/`.
