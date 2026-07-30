@@ -48,23 +48,33 @@ def run_field(polynomial, workdir, limit, indices=None, finish=True):
         env["MASSEY_CERTIFICATE_EXPORT"] = str(
             workdir / f"cert-{i}.gp")
         log = (workdir / f"char-{i}.log").open("w")
-        procs.append((i, subprocess.Popen(
+        driver = subprocess.Popen(
             ["/usr/bin/time", "-v",
              str(HERE / "character_driver"), "5", polynomial, str(i),
              str(workdir / f"mat-{i}.gp")],
-            stdout=log, stderr=subprocess.STDOUT, env=env), log))
+            stdout=subprocess.PIPE, stderr=subprocess.STDOUT, env=env)
+        stamper = subprocess.Popen(
+            ["awk", '{ print strftime("[%Y-%m-%d %H:%M:%S]"), $0;'
+             ' fflush() }'],
+            stdin=driver.stdout, stdout=log)
+        driver.stdout.close()
+        procs.append((i, driver, stamper, log))
         print(f"spawned character {i} ({LABELS[i-1]})", flush=True)
     failures = []
-    for i, proc, log in procs:
+    for i, proc, stamper, log in procs:
         rc = proc.wait()
+        stamper.wait()
         log.close()
         peak = ""
+        peak_kb = ""
         for line in (workdir / f"char-{i}.log").read_text().splitlines():
             if "Maximum resident set size" in line:
-                kb = int(line.rsplit(":", 1)[1])
-                peak = f", peak RSS {kb / 1048576:.1f} GiB"
+                peak_kb = int(line.rsplit(":", 1)[1])
+                peak = f", peak RSS {peak_kb / 1048576:.1f} GiB"
         print(f"character {i} ({LABELS[i-1]}) exited {rc} "
               f"after {time.monotonic()-started:.0f}s{peak}", flush=True)
+        record_stats(workdir, polynomial, i, rc,
+                     round(time.monotonic() - started), peak_kb)
         if rc != 0:
             failures.append(i)
     if failures:
@@ -87,6 +97,19 @@ def run_field(polynomial, workdir, limit, indices=None, finish=True):
     if rc != 0:
         raise SystemExit(f"finish_driver exited {rc}")
     print("result assembled", flush=True)
+
+
+def record_stats(workdir, polynomial, index, rc, seconds, peak_kb):
+    """Append one per-character cost record to the empirical table."""
+    stats = HERE / "stats.tsv"
+    if not stats.exists():
+        stats.write_text("field\tpolynomial\tcharacter\tlabel\texit"
+                         "\tseconds\tpeak_rss_kb\tstack_cap\n")
+    cap = os.environ.get("MASSEY_PARISTACK_MAX", "default")
+    with stats.open("a") as fh:
+        fh.write(f"{workdir.name}\t{polynomial}\t{index}"
+                 f"\t{LABELS[index-1]}\t{rc}\t{seconds}"
+                 f"\t{peak_kb}\t{cap}\n")
 
 
 def merge_certificates(paths, out):
