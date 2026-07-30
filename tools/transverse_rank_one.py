@@ -71,6 +71,11 @@ FIELDS = [
     (-104545864, ROOT / "examples/p5/further/D-104545864/result.gp"),
     (-123779560, ROOT / "examples/p5/further/D-123779560/result.gp"),
     (-126740891, ROOT / "examples/p5/further/D-126740891/result.gp"),
+    (-89017304, ROOT / "examples/p5/further/D-89017304/result.gp"),
+    (-89218664, ROOT / "examples/p5/further/D-89218664/result.gp"),
+    (-90903207, ROOT / "examples/p5/further/D-90903207/result.gp"),
+    (-93121640, ROOT / "examples/p5/further/D-93121640/result.gp"),
+    (-123482119, ROOT / "examples/p5/further/D-123482119/result.gp"),
 ]
 
 
