@@ -22,6 +22,7 @@ D_K          #rat rk1  #rat transverse  min k-degree  criterion applies
 -90903207           2               2            1  YES
 -93121640           1               1            1  YES
 -123482119          4               4            1  YES
+-106660295          2               2            1  YES
 
 == -11203620
   rational x=(1, 1, 0)  det B = 1  TRANSVERSE  (tangent dim 0)
@@ -214,4 +215,14 @@ D_K          #rat rk1  #rat transverse  min k-degree  criterion applies
     x = [[0, 0], [2, 3], [1, 0]]
     det B = [1, 4]  TRANSVERSE  (tangent dim 0)
     B = [[[1, 2], [3, 0]], [[0, 0], [4, 4]]]
+
+== -106660295
+  rational x=(1, 2, 0)  det B = 4  TRANSVERSE  (tangent dim 0)
+    B = [[[3], [2]], [[1], [2]]]
+  rational x=(0, 1, 0)  det B = 2  TRANSVERSE  (tangent dim 0)
+    B = [[[3], [2]], [[0], [4]]]
+  degree-4 point over F_5[t]/(t^4: [1, 0, 1, 1, 1])
+    x = [[3, 1, 3, 4], [0, 1, 0, 1], [1, 0, 0, 0]]
+    det B = [3, 1, 1, 1]  TRANSVERSE  (tangent dim 0)
+    B = [[[3, 4, 3, 0], [2, 2, 1, 0]], [[3, 0, 1, 3], [4, 3, 0, 2]]]
 
