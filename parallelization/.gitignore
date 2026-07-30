@@ -1,3 +1,5 @@
 /character_driver
+/character_driver_mt
+/build-mt/
 /finish_driver
 /work/

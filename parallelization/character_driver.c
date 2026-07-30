@@ -49,14 +49,23 @@ main(int argc, char *argv[])
     long long stack_max = 1LL << 33;
     const char *cap = getenv("MASSEY_PARISTACK_MAX");
     if (cap && *cap) stack_max = atoll(cap);
+    const char *threads = getenv("MASSEY_NBTHREADS");
+    const char *thread_stack = getenv("MASSEY_THREADSTACK");
     entree ep = {"_worker", 0, (void *)compute_my_relations, 20, "LG", ""};
     pari_init_opts(1L << 30, 1048576,
                    INIT_JMPm | INIT_SIGm | INIT_DFTm | INIT_noIMTm);
     pari_add_function(&ep);
+    /* Thread count must be fixed before the multithreading interface is
+     * started; without MASSEY_NBTHREADS the process stays single-threaded,
+     * which is the behaviour of every run recorded so far. */
+    if (threads && *threads) pari_mt_nbthreads = (ulong)atol(threads);
     pari_mt_init();
     paristack_setsize(1L << 30, (size_t)stack_max);
-    sd_threadsizemax("2147483648", 0);
+    sd_threadsizemax(
+        thread_stack && *thread_stack ? thread_stack : "2147483648", 0);
     setalldebug(0);
+    pari_printf("CHARACTER_DRIVER threads=%ld stack_max_MiB=%ld\n",
+                (long)mt_nbthreads(), (long)(stack_max >> 20));
 
     GEN p = gp_read_str(argv[1]);
     GEN f = gp_read_str(argv[2]);

@@ -39,7 +39,8 @@ from run_mildness_batch import result_entry, CERT_COMPARE_KEYS  # noqa: E402
 LABELS = ["a", "b", "c", "a+b", "a+c", "b+c"]
 
 
-def run_field(polynomial, workdir, limit, indices=None, finish=True):
+def run_field(polynomial, workdir, limit, indices=None, finish=True,
+              driver="character_driver"):
     workdir.mkdir(parents=True, exist_ok=True)
     procs = []
     started = time.monotonic()
@@ -48,17 +49,17 @@ def run_field(polynomial, workdir, limit, indices=None, finish=True):
         env["MASSEY_CERTIFICATE_EXPORT"] = str(
             workdir / f"cert-{i}.gp")
         log = (workdir / f"char-{i}.log").open("w")
-        driver = subprocess.Popen(
+        child = subprocess.Popen(
             ["/usr/bin/time", "-v",
-             str(HERE / "character_driver"), "5", polynomial, str(i),
+             str(HERE / driver), "5", polynomial, str(i),
              str(workdir / f"mat-{i}.gp")],
             stdout=subprocess.PIPE, stderr=subprocess.STDOUT, env=env)
         stamper = subprocess.Popen(
             ["awk", '{ print strftime("[%Y-%m-%d %H:%M:%S]"), $0;'
              ' fflush() }'],
-            stdin=driver.stdout, stdout=log)
-        driver.stdout.close()
-        procs.append((i, driver, stamper, log))
+            stdin=child.stdout, stdout=log)
+        child.stdout.close()
+        procs.append((i, child, stamper, log))
         print(f"spawned character {i} ({LABELS[i-1]})", flush=True)
     failures = []
     for i, proc, stamper, log in procs:
@@ -156,6 +157,9 @@ def main():
     parser.add_argument("--characters", default=None,
                         help="comma list of indices 1..6: compute only "
                         "these and stop (no merge/finish)")
+    parser.add_argument("--driver", default="character_driver",
+                        help="driver binary: character_driver (default)"
+                        " or character_driver_mt for the threaded build")
     parser.add_argument("--merge-only", action="store_true",
                         help="skip computation; merge existing partial "
                         "certificates, assemble and verify the result")
@@ -164,7 +168,7 @@ def main():
     if args.characters:
         indices = [int(v) for v in args.characters.split(",")]
         run_field(args.polynomial, args.workdir, args.limit,
-                  indices=indices, finish=False)
+                  indices=indices, finish=False, driver=args.driver)
         return
     if args.merge_only:
         merge_certificates(
@@ -180,7 +184,8 @@ def main():
         if rc != 0:
             raise SystemExit(f"finish_driver exited {rc}")
     else:
-        run_field(args.polynomial, args.workdir, args.limit)
+        run_field(args.polynomial, args.workdir, args.limit,
+                  driver=args.driver)
 
     certificate = args.workdir / "certificate.gp"
     fresh = args.workdir / "result.gp"
