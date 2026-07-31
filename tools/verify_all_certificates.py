@@ -72,10 +72,15 @@ def main():
         elapsed = time.monotonic() - started
         output = proc.stdout + proc.stderr
 
-        # The principal example carries the nine doubled-character entries as
-        # well, so the total is a property of the certificate, not a constant.
+        # How many entries there are is a property of the certificate -- the
+        # principal example carries the nine doubled-character entries as
+        # well -- so it is counted in the file, not in the output.  Counting
+        # it in the output would make the denominator agree with the numerator
+        # by construction and hide exactly the case worth seeing: a run that
+        # stopped early.
         entries = output.count("AC1=PASS")
-        expected = output.count("FIELD_MODEL_COMPATIBILITY") or entries
+        expected = sum(1 for line in certificate.open()
+                       if re.match(r"\[+\"", line))
 
         if proc.returncode in (124, 137):
             status = "TIMEOUT"
