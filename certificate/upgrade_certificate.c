@@ -5,10 +5,9 @@
  * @brief Rewrite a format 1 certificate as format 2 by recording its bases.
  *
  * A format 1 certificate stores elements and ideals as coordinates with
- * respect to an integral basis it does not name.  PARI's integral basis is
- * LLL-reduced and not canonical, so the certificate is only meaningful on a
- * machine whose nfinit reproduces the basis of its generator.  Measured over
- * twenty-one certificates on two machines, eleven failed on the foreign one.
+ * respect to an integral basis it does not name.  Since PARI's integral basis
+ * is LLL-reduced and not canonical, such a certificate is only meaningful on
+ * a machine whose nfinit reproduces the basis its generator used.
  *
  * This program supplies what is missing.  It must run on a machine where the
  * certificate verifies -- there and only there does nfinit return the basis

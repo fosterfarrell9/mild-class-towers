@@ -59,13 +59,13 @@ fail(const char *label, long column, const char *assertion)
 /*
  * Certificates record elements and ideals as coordinates with respect to an
  * integral basis -- and PARI's integral basis is LLL-reduced, hence not
- * canonical.  nfinit on another machine may hand back a different basis, and
- * the same coordinate vector then denotes a different algebraic number: the
- * stored automorphism stops fixing K, the stored ideals become other ideals,
- * and the verification fails on data that is perfectly correct.  Measured on
- * two machines, eleven of twenty-one certificates were affected.
+ * canonical.  This is not a theoretical worry: two machines running the same
+ * PARI version do return different bases for the same field.  The same
+ * coordinate vector then denotes a different algebraic number, the stored
+ * automorphism stops fixing K, the stored ideals become other ideals, and
+ * verification fails on data that is perfectly correct.
  *
- * Format 2 therefore records the basis that was used, and the verifier
+ * The certificate therefore records the basis it refers to, and the verifier
  * translates the stored coordinates into its own.  The columns of the matrix
  * below are the stored basis elements expressed in the local basis.  Insisting
  * that it be integral with determinant +-1 is what makes this safe: the two
