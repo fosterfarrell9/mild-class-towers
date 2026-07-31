@@ -94,10 +94,12 @@ make PARI=/path/to/pari-prefix
 ./verify_certificate K-2800905-p5/certificate.gp
 ```
 
-For the repository's documented local PARI installation:
+The patched PARI can be built with `tools/build-patched-pari.sh`, which
+installs it into `$HOME/.local` by default:
 
 ```sh
-make PARI=/home/denis/.local
+tools/build-patched-pari.sh
+cd certificate && make PARI="$HOME/.local"
 ./verify_certificate K-2800905-p5/certificate.gp
 ```
 
@@ -207,7 +209,7 @@ Regeneration intentionally invokes the full search and is separate from
 verification:
 
 ```sh
-make PARI=/home/denis/.local
+make PARI=/path/to/pari-prefix
 MASSEY_ARITHMETIC_AUDIT=1 \
 MASSEY_CERTIFICATE_EXPORT=certificate/K-2800905-p5/certificate.gp \
 ./build/massey 5 's^2+2800905'

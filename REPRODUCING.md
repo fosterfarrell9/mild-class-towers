@@ -10,7 +10,11 @@ make PARI="$HOME/.local"
 The PARI build must expose three routines that are `static` in stock
 PARI 2.17.4 (`rnfcycaut`, `allauts`, `cyclicrelfrob`); the required
 one-file patch, the rebuild steps, and a regression test are documented
-in `doc/pari-2.17.4-patch.md`.
+in `doc/pari-2.17.4-patch.md`.  The whole build is scripted:
+
+```sh
+tools/build-patched-pari.sh          # installs into $HOME/.local
+```
 
 Run the fixed rank-three arithmetic and tensor computation for
 \(K=\mathbf Q(\sqrt{-2800905})\) and \(p=5\):

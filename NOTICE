@@ -1,0 +1,64 @@
+# Origin and authorship
+
+This repository continues Eric Ahlqvist's `Massey-pari`, the PARI/GP code
+base that grew out of the computations accompanying Ahlqvist--Carlson.  It
+is not a copy: the git history of this repository *is* his history with
+later work on top.  Commits up to and including `337fca9` (2025-01-16 to
+2026-02-09) are by Eric Ahlqvist; everything from `bb30c99` (2026-07-23)
+onwards is by Denis Vogel.  `git log` shows the boundary directly.
+
+Both parts are distributed under the MIT license reproduced in `LICENSE`,
+which now carries both copyright notices.
+
+## Eric Ahlqvist's part
+
+The arithmetic core, which constructs unramified cyclic extensions, their
+automorphisms and Artin symbols, and searches for the auxiliary
+Ahlqvist--Carlson data:
+
+```text
+src/artin_symbol.c      headers/artin_symbol.h
+src/ext_and_aut.c       headers/ext_and_aut.h
+src/find_cup_matrix.c   headers/find_cup_matrix.h
+src/misc_functions.c    headers/misc_functions.h
+src/massey.c
+Makefile
+```
+
+These files have since been extended (about 1200 added and 110 removed
+lines across them), chiefly to allow a character to be prescribed and to
+return the resulting secondary norm operator in fixed class-group
+coordinates.
+
+## Denis Vogel's part
+
+New modules in the same tree:
+
+```text
+src/secondary_norm.c      headers/secondary_norm.h
+src/massey_tensor.c       headers/massey_tensor.h
+src/relation_degree3.c    headers/relation_degree3.h
+src/example_pipeline.c    headers/example_pipeline.h
+src/candidate_scanner.c   headers/candidate_scanner.h
+                          headers/pari_internal.h
+```
+
+and the following directories in their entirety:
+
+```text
+certificate/       standalone arithmetic certificates and their verifier
+examples/          computed results, run logs, transverse certificates
+tools/             batch runner, Groebner and Singular drivers,
+                   transverse rank-one certification, table readers
+parallelization/   per-character parallel drivers
+tests/             regression tests
+doc/               the PARI patch documentation
+candidates/        candidate scans
+REPRODUCING.md
+```
+
+## Third-party components
+
+The build requires a one-file patch of stock PARI 2.17.4 (three functions
+made non-static), documented in `doc/pari-2.17.4-patch.md`.  No PARI source
+is redistributed here.
