@@ -128,6 +128,18 @@ emit_header() =
   out("determinant of the matrix is the norm of the ideal.  Elements are");
   out("likewise given by their coordinate vectors in the integral basis.");
   out("\\par\\medskip");
+  out("\\textbf{Which integral basis.}  The one PARI returns for the field");
+  out("in question -- and that basis is LLL-reduced, so it is not canonical:");
+  out("another machine may reduce differently, and the same coordinate");
+  out("vector would then denote a different algebraic number.  The");
+  out("certificate therefore records the basis it was written against, as");
+  out("its last field per entry and in the header for $K$.  The verifier");
+  out("expresses the stored basis in its own, checks that the resulting");
+  out("matrix is integral with determinant $\\pm1$ -- so that both bases");
+  out("span the same ring of integers -- and converts the coordinates");
+  out("before checking anything.  Where the two bases agree, that matrix is");
+  out("the identity and nothing changes.");
+  out("\\par\\medskip");
   out("\\textbf{Characters.}  The header fixes three generators");
   out("$\\kappa_1,\\kappa_2,\\kappa_3$ of $\\operatorname{Cl}(K)$ (as HNF");
   out("ideals).  A character $x$ on $\\operatorname{Cl}(K)/5$ is recorded");

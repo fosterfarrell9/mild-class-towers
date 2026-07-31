@@ -39,7 +39,8 @@ enum {
     ENTRY_T_AC,
     ENTRY_ELL,
     ENTRY_PRIME,
-    ENTRY_NORM_CLASS
+    ENTRY_NORM_CLASS,
+    ENTRY_INTEGRAL_BASIS       /* format 2 only */
 };
 
 static void
@@ -53,6 +54,85 @@ fail(const char *label, long column, const char *assertion)
         pari_fprintf(stderr, "CERTIFICATE FAILURE: %s\n", assertion);
     pari_close();
     exit(EXIT_FAILURE);
+}
+
+/*
+ * Certificates record elements and ideals as coordinates with respect to an
+ * integral basis -- and PARI's integral basis is LLL-reduced, hence not
+ * canonical.  nfinit on another machine may hand back a different basis, and
+ * the same coordinate vector then denotes a different algebraic number: the
+ * stored automorphism stops fixing K, the stored ideals become other ideals,
+ * and the verification fails on data that is perfectly correct.  Measured on
+ * two machines, eleven of twenty-one certificates were affected.
+ *
+ * Format 2 therefore records the basis that was used, and the verifier
+ * translates the stored coordinates into its own.  The columns of the matrix
+ * below are the stored basis elements expressed in the local basis.  Insisting
+ * that it be integral with determinant +-1 is what makes this safe: the two
+ * bases then span the same ring of integers, so a certificate cannot smuggle
+ * in a different order by declaring a convenient "basis".
+ */
+static GEN
+basis_change_matrix(
+    GEN nf, GEN stored_basis, const char *label, long column)
+{
+    long degree = nf_get_degree(nf);
+    if (typ(stored_basis) != t_VEC || lg(stored_basis) != degree + 1)
+        fail(label, column, "stored integral basis has the wrong length");
+
+    GEN matrix = cgetg(degree + 1, t_MAT);
+    for (long i = 1; i <= degree; ++i)
+        gel(matrix, i) = algtobasis(nf, gel(stored_basis, i));
+    if (!RgM_is_ZM(matrix))
+        fail(label, column,
+             "stored integral basis is not integral in the local basis");
+    if (!is_pm1(ZM_det(matrix)))
+        fail(label, column, "stored integral basis is not unimodular");
+    return matrix;
+}
+
+/**
+ * An element given by stored coordinates, in local coordinates.  Coordinates
+ * of algebraic numbers are rational in general -- a' carries denominators of
+ * the order of 2^40 -- so this must not use the integer-only routines.
+ */
+static GEN
+transformed_element(GEN matrix, GEN coordinates)
+{
+    return typ(coordinates) == t_COL
+        ? RgM_RgC_mul(matrix, coordinates) : coordinates;
+}
+
+/**
+ * An ideal given by a stored HNF matrix, in local coordinates.  A fractional
+ * ideal is cleared of its denominator first, so that the Hermite form is
+ * taken over the integers, and scaled back afterwards.
+ */
+static GEN
+transformed_ideal(GEN matrix, GEN hnf)
+{
+    GEN denominator;
+    GEN integral = Q_remove_denom(hnf, &denominator);
+    GEN transformed = ZM_hnf(ZM_mul(matrix, integral));
+    return denominator ? RgM_Rg_div(transformed, denominator) : transformed;
+}
+
+/**
+ * A factored element in local coordinates.  Rational generators carry no
+ * basis and are left alone.
+ */
+static GEN
+transformed_famat(GEN matrix, GEN famat)
+{
+    GEN generators = gel(famat, 1);
+    GEN result = cgetg(3, t_MAT);
+    GEN transformed = cgetg(lg(generators), t_COL);
+    for (long i = 1; i < lg(generators); ++i)
+        gel(transformed, i) =
+            transformed_element(matrix, gel(generators, i));
+    gel(result, 1) = transformed;
+    gel(result, 2) = gel(famat, 2);
+    return result;
 }
 
 static GEN
@@ -387,7 +467,10 @@ main(int argc, char **argv)
     GEN certificate = read_certificate(path);
     if (typ(certificate) != t_VEC || lg(certificate) != 8)
         fail(NULL, 0, "invalid top-level certificate schema");
-    if (!equaliu(gel(certificate, CERT_FORMAT), 1))
+    if (typ(gel(certificate, CERT_FORMAT)) != t_INT)
+        fail(NULL, 0, "unsupported certificate format");
+    long format = itos(gel(certificate, CERT_FORMAT));
+    if (format != 1 && format != 2)
         fail(NULL, 0, "unsupported certificate format");
     if (!equaliu(gel(certificate, CERT_PARI_VERSION), PARI_VERSION_CODE))
         fail(NULL, 0, "PARI version differs from certificate generator");
@@ -406,7 +489,8 @@ main(int argc, char **argv)
         fail(NULL, 0, "base discriminant mismatch");
 
     GEN base_data = gel(certificate, CERT_BASE_DATA);
-    if (typ(base_data) != t_VEC || lg(base_data) != 6)
+    long base_fields = format == 1 ? 6 : 7;
+    if (typ(base_data) != t_VEC || lg(base_data) != base_fields)
         fail(NULL, 0, "invalid base metadata");
     if (!gequal(bnf_get_cyc(K), gel(base_data, 1))
         || !gequal(bnf_get_no(K), gel(base_data, 2))
@@ -424,6 +508,24 @@ main(int argc, char **argv)
         || bnf_get_tuN(K) != 2
         || !gequal(bnf_get_tuU(K), gen_m1))
         fail(NULL, 0, "certified base unit data mismatch");
+
+    /*
+     * Format 1 carries no integral basis, so its coordinates are only
+     * meaningful on a machine whose nfinit happens to reproduce the basis of
+     * the generator.  Say so rather than let a failure look like bad
+     * arithmetic.
+     */
+    GEN base_change = NULL;
+    if (format == 1)
+        pari_fprintf(
+            stderr,
+            "WARNING: certificate format 1 does not record the integral "
+            "basis it was written against.  A failure below may mean that "
+            "this machine's nfinit chose a different basis, not that the "
+            "arithmetic is wrong.  Convert to format 2.\n");
+    else
+        base_change = basis_change_matrix(
+            bnf_get_nf(K), gel(base_data, 6), NULL, 0);
 
     pari_printf("BASE_BNF_CERTIFIED=PASS\n\n");
 
@@ -445,7 +547,7 @@ main(int argc, char **argv)
     for (long entry_index = 1; entry_index < lg(entries); ++entry_index)
     {
         GEN entry = gel(entries, entry_index);
-        if (typ(entry) != t_VEC || lg(entry) != 14)
+        if (typ(entry) != t_VEC || lg(entry) != (format == 1 ? 14 : 15))
             fail(NULL, 0, "invalid entry schema");
 
         const char *label = GSTR(gel(entry, ENTRY_CHARACTER));
@@ -478,13 +580,31 @@ main(int argc, char **argv)
             fail(label, column, "relative discriminant is not trivial");
 
         GEN sigma = gel(entry, ENTRY_SIGMA);
-        verify_automorphism(Labs, Lrel, K, sigma, label, column);
-        verify_character_and_normalization(
-            Labs, Lrel, K, sigma, character, p, label, column);
         GEN I_prime = gel(entry, ENTRY_I_PRIME);
         GEN a_prime = gel(entry, ENTRY_A_PRIME);
         GEN J = gel(entry, ENTRY_J);
         GEN t_AC = gel(entry, ENTRY_T_AC);
+
+        /*
+         * Translate the stored coordinates into this machine's bases before
+         * anything is checked, so that every test below sees the algebraic
+         * objects the generator meant.  Where the two bases agree the matrix
+         * is the identity and this changes nothing.
+         */
+        if (format != 1)
+        {
+            GEN change = basis_change_matrix(
+                Labs, gel(entry, ENTRY_INTEGRAL_BASIS), label, column);
+            sigma = transformed_element(change, sigma);
+            I_prime = transformed_ideal(change, I_prime);
+            t_AC = transformed_famat(change, t_AC);
+            a_prime = transformed_element(base_change, a_prime);
+            J = transformed_ideal(base_change, J);
+        }
+
+        verify_automorphism(Labs, Lrel, K, sigma, label, column);
+        verify_character_and_normalization(
+            Labs, Lrel, K, sigma, character, p, label, column);
         GEN unit_L = idealhnf0(Labs, gen_1, NULL);
         GEN unit_K = idealhnf0(K, gen_1, NULL);
 

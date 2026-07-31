@@ -263,14 +263,22 @@ secondary_norm_certificate_export(
             pari_err_FILE("MASSEY_CERTIFICATE_EXPORT", path);
         if (atexit(secondary_norm_certificate_close) != 0)
             secondary_norm_error("could not register certificate finalizer");
+        /*
+         * Format 2 records the integral bases.  Everything below is stored as
+         * coordinates with respect to them, and PARI's integral basis is
+         * LLL-reduced, hence not canonical: without the basis the same
+         * coordinate vector denotes a different algebraic number on a machine
+         * whose nfinit happens to reduce differently, and the certificate
+         * fails to verify although its arithmetic is correct.
+         */
         pari_fprintf(
             secondary_norm_certificate_file,
-            "[1,%ld,%Ps,%Ps,%Ps,"
-            "[%Ps,%Ps,%Ps,%ld,%Ps],\n[",
+            "[2,%ld,%Ps,%Ps,%Ps,"
+            "[%Ps,%Ps,%Ps,%ld,%Ps,%Ps],\n[",
             (long)PARI_VERSION_CODE, p,
             nf_get_pol(bnf_get_nf(K)), nf_get_disc(bnf_get_nf(K)),
             bnf_get_cyc(K), bnf_get_no(K), bnf_get_gen(K),
-            bnf_get_tuN(K), bnf_get_tuU(K));
+            bnf_get_tuN(K), bnf_get_tuU(K), nf_get_zk(bnf_get_nf(K)));
     }
 
     if (!secondary_norm_certificate_first_entry)
@@ -279,10 +287,11 @@ secondary_norm_certificate_export(
 
     pari_fprintf(
         secondary_norm_certificate_file,
-        "[\"%s\",%ld,%Ps,%Ps,%Ps,%Ps,%Ps,%Ps,%Ps,%Ps,%Ps,%Ps,%Ps]",
+        "[\"%s\",%ld,%Ps,%Ps,%Ps,%Ps,%Ps,%Ps,%Ps,%Ps,%Ps,%Ps,%Ps,%Ps]",
         secondary_norm_character_label(prescribed_t), input_index,
         prescribed_t, rnf_get_pol(Lrel), nf_get_pol(bnf_get_nf(Labs)),
-        sigma_t, a_prime, J, I_prime, t_AC, ell, prime, independent);
+        sigma_t, a_prime, J, I_prime, t_AC, ell, prime, independent,
+        nf_get_zk(bnf_get_nf(Labs)));
     fflush(secondary_norm_certificate_file);
 }
 

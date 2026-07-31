@@ -43,6 +43,18 @@ integral basis $(1,s)$, denotes the ideal $\mathbf Z\,1884+\mathbf Z\,(1639+s)$.
 determinant of the matrix is the norm of the ideal.  Elements are
 likewise given by their coordinate vectors in the integral basis.
 \par\medskip
+\textbf{Which integral basis.}  The one PARI returns for the field
+in question -- and that basis is LLL-reduced, so it is not canonical:
+another machine may reduce differently, and the same coordinate
+vector would then denote a different algebraic number.  The
+certificate therefore records the basis it was written against, as
+its last field per entry and in the header for $K$.  The verifier
+expresses the stored basis in its own, checks that the resulting
+matrix is integral with determinant $\pm1$ -- so that both bases
+span the same ring of integers -- and converts the coordinates
+before checking anything.  Where the two bases agree, that matrix is
+the identity and nothing changes.
+\par\medskip
 \textbf{Characters.}  The header fixes three generators
 $\kappa_1,\kappa_2,\kappa_3$ of $\operatorname{Cl}(K)$ (as HNF
 ideals).  A character $x$ on $\operatorname{Cl}(K)/5$ is recorded
