@@ -15,6 +15,11 @@
 #                      measured 14% slower on relation-collection-bound
 #                      fields, and each thread needs its own stack)
 #   PARI_SRC=<dir>     where to unpack sources (default: $HOME/src)
+#   PARI_GMP=<dir>     prefix of a GMP outside the system paths; a system
+#                      GMP is found without this, multiarch layout included
+#   CFLAGS=<flags>     default -march=native, which ties the build to the
+#                      instruction set of the machine it is built on; drop
+#                      it for a binary that runs on older hardware too
 #
 # Afterwards, from the repository root:
 #   make PARI=<PREFIX>
@@ -31,8 +36,11 @@ missing=""
 for tool in gcc make wget python3; do
     command -v "$tool" >/dev/null || missing="$missing $tool"
 done
-[ -f /usr/include/gmp.h ] || [ -f "$PREFIX/include/gmp.h" ] \
-    || missing="$missing libgmp-dev"
+# Ask the compiler rather than guessing a path: on Debian and Ubuntu the
+# header is architecture-dependent and lives under /usr/include/<triplet>,
+# so a test for /usr/include/gmp.h reports it missing when it is installed.
+echo '#include <gmp.h>' | cc -E ${PARI_GMP:+-I"$PARI_GMP/include"} - \
+    >/dev/null 2>&1 || missing="$missing libgmp-dev"
 if [ -n "$missing" ]; then
     echo "missing:$missing" >&2
     echo "on Debian/Ubuntu: sudo apt-get install -y build-essential wget libgmp-dev" >&2
@@ -74,7 +82,10 @@ PATCH
 echo "=== configuring and building"
 configure_args=(--prefix="$PREFIX")
 [ -n "${PARI_MT:-}" ] && configure_args+=(--mt="$PARI_MT")
-[ -f "$PREFIX/include/gmp.h" ] && configure_args+=(--with-gmp="$PREFIX")
+# Only needed for a GMP outside the system paths; PARI's Configure finds a
+# system GMP by itself, including under the Debian multiarch layout.
+gmp_dir="${PARI_GMP:-$PREFIX}"
+[ -f "$gmp_dir/include/gmp.h" ] && configure_args+=(--with-gmp="$gmp_dir")
 CFLAGS="${CFLAGS:--march=native}" ./Configure "${configure_args[@]}"
 nice -n 19 make -j"$(nproc)" gp
 make install
