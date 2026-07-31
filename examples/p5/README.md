@@ -2,7 +2,7 @@
 
 Layout of this directory:
 
-- `K-18397407/` — the second-smallest example, computed individually
+- `D-18397407/` — the second-smallest example, computed individually
   before the batch infrastructure existed; contains its `result.gp` and
   `run.log`.
 - `batch-block0-01/` — the production batch of ten further fields.  One
@@ -28,8 +28,8 @@ Ordered by absolute discriminant (rank within the 61 fields of 5-class
 rank three below 2^28), the computed examples are
 
 ```text
- 1  -11203620    (principal; certificate/K-2800905-p5/)
- 2  -18397407    (K-18397407/)
+ 1  -11203620    (D-11203620/; principal example of the paper)
+ 2  -18397407    (D-18397407/)
  3  -27960639    (batch)
  4  -35663739    (batch)
  5  -51213139    (batch)

@@ -1,4 +1,4 @@
-Transverse rank-one certificates for the nine computed fields
+Transverse rank-one certificates for 21 computed fields
 ==================================================================
 
 D_K          #rat rk1  #rat transverse  min k-degree  criterion applies

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Transverse rank-one certificates for the nine computed fields.
+"""Transverse rank-one certificates for the computed fields.
 
 For each field the quadratic secondary-norm family D(u,v,w) is rebuilt by
 polarization from the six verified matrices stored in the repository (the
@@ -58,7 +58,7 @@ SIX = [(1, 0, 0), (0, 1, 0), (0, 0, 1), (1, 1, 0), (1, 0, 1), (0, 1, 1)]
 
 FIELDS = [
     (-11203620, ROOT / "certificate/K-2800905-p5/secondary-norms.gp"),
-    (-18397407, ROOT / "examples/p5/K-18397407/result.gp"),
+    (-18397407, ROOT / "examples/p5/D-18397407/result.gp"),
     (-27960639, ROOT / "examples/p5/batch-block0-01/D-27960639/result.gp"),
     (-35663739, ROOT / "examples/p5/batch-block0-01/D-35663739/result.gp"),
     (-51213139, ROOT / "examples/p5/batch-block0-01/D-51213139/result.gp"),
@@ -877,8 +877,8 @@ def main():
     (OUTDIR / "certificates.json").write_text(
         json.dumps(all_results, indent=1))
 
-    lines = ["Transverse rank-one certificates for the nine computed "
-             "fields", "=" * 66, "",
+    lines = [f"Transverse rank-one certificates for {len(all_results)} "
+             f"computed fields", "=" * 66, "",
              "D_K          #rat rk1  #rat transverse  min k-degree  "
              "criterion applies", "-" * 66]
     for e in all_results:

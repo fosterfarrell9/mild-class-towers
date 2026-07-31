@@ -14,9 +14,9 @@ are used only to find candidates.
 Run one field from the repository root:
 
 ```sh
-mkdir -p examples/p5/K-2800905
+mkdir -p examples/p5/D-11203620
 ./build/massey --example-result \
-  examples/p5/K-2800905/result.gp 5 's^2+2800905'
+  examples/p5/D-11203620/result.gp 5 's^2+2800905'
 ```
 
 The program does not create parent directories. A result is written only after
@@ -24,7 +24,7 @@ the arithmetic and finite-field stages complete.
 
 ## Audited example at discriminant -18397407
 
-The directory `p5/K-18397407/` records the computation for
+The directory `p5/D-18397407/` records the computation for
 
 ```text
 p = 5
@@ -37,7 +37,7 @@ It was produced with:
 
 ```sh
 ./build/massey --example-result \
-  examples/p5/K-18397407/result.gp 5 's^2-s+4599352'
+  examples/p5/D-18397407/result.gp 5 's^2-s+4599352'
 ```
 
 Every one of the 18 secondary-norm columns passed the prescribed-character,

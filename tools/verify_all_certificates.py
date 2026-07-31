@@ -47,19 +47,20 @@ def main():
     records = result_records(root)
 
     failures = 0
-    print("certificate\tformat\tstatus\tseconds\tentries\tresult record")
+    print(f"{'certificate':<16}{'status':<18}{'seconds':>8}"
+          f"{'entries':>9}  cross-checked against")
     for directory in sorted(cert_dir.glob("K-*-p5")):
         certificate = directory / "certificate.gp"
         if not certificate.exists():
             continue
         head = certificate.open().read(400)
-        match = re.match(r"\[(\d+),\d+,\d+,[^,]+,(-?\d+),", head)
+        match = re.match(r"\[\d+,\d+,\d+,[^,]+,(-?\d+),", head)
         if not match:
-            print(f"{directory.name}\t?\tUNPARSED\t0\t-\t-", flush=True)
+            print(f"{directory.name:<16}{'UNPARSED':<18}{0:>8}"
+                  f"{'-':>9}  -", flush=True)
             failures += 1
             continue
-        version, discriminant = match.group(1), match.group(2)
-        record = records.get(discriminant)
+        record = records.get(match.group(1))
 
         command = ["timeout", "-k", "10", TIMEOUT, "./verify_certificate",
                    f"{directory.name}/certificate.gp"]
@@ -93,9 +94,9 @@ def main():
         if status != "VERIFIED":
             failures += 1
 
-        print(f"{directory.name}\t{version}\t{status}\t{elapsed:.1f}\t"
-              f"{entries}/{expected}\t"
-              f"{record.parent.name if record else '-'}", flush=True)
+        against = record.parent.name if record else "nothing"
+        print(f"{directory.name:<16}{status:<18}{elapsed:>8.1f}"
+              f"{f'{entries}/{expected}':>9}  {against}", flush=True)
 
     if failures:
         print(f"\n{failures} certificate(s) did not verify", file=sys.stderr)

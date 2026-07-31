@@ -1,0 +1,315 @@
+==== character 1 ====
+[2026-07-31 23:27:03] CHARACTER_DRIVER threads=1 stack_max_MiB=8192 log_level=0
+[2026-07-31 23:27:03] CHARACTER_DRIVER index=1 D=-11203620
+[2026-07-31 23:27:03] BASE_BNF_CERTIFIED
+[2026-07-31 23:27:03] prescribed t = [1, 0, 0]
+[2026-07-31 23:29:22] 
+[2026-07-31 23:29:22] MASSEY_ARITHMETIC_AUDIT character certificate
+[2026-07-31 23:29:22]   prescribed t = [1, 0, 0]
+[2026-07-31 23:29:22]   chi = [2, 0, 0]
+[2026-07-31 23:29:22]   H = [5, 0, 0; 0, 1, 0; 0, 0, 1]
+[2026-07-31 23:29:22]   det(H) = 5; [Cl(K):H] = 5
+[2026-07-31 23:29:22]   class-field modulus = 1 (ordinary class group)
+[2026-07-31 23:29:22]   relative degree = 5; disc(L) = disc(K)^5 = -176519159491060586121609743683200000; finite-unramified=PASS
+[2026-07-31 23:29:22]   H column 1: t(h)=0 PASS
+[2026-07-31 23:29:22]   H column 2: t(h)=0 PASS
+[2026-07-31 23:29:22]   H column 3: t(h)=0 PASS
+[2026-07-31 23:29:22]   A=[3, 0, 0] lambda=3 u=1 lambda/u=3 sigma_t/sigma_Artin=3
+[2026-07-31 23:29:22]   generator g_1: Artin exponent A_i=3; relative to sigma_t=1; prescribed t_i=1 PASS
+[2026-07-31 23:29:22]   generator g_2: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+[2026-07-31 23:29:22]   generator g_3: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+[2026-07-31 23:29:22]   direct AC and independent norm-class checks
+[2026-07-31 23:29:22]   input e_1: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 0, 0] production D=[0, 0, 0] MATCH
+[2026-07-31 23:29:22]     rational_prime=11 prime_ideal=[11, [-5, 1]~, 1, 1, [5, -2800905; 1, 5]] residue(u)=1 residue(+1)=1 residue(-1)=10 unit_coordinates=[0]~
+[2026-07-31 23:29:23]   input e_2: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 3, 3] production D=[0, 3, 3] MATCH
+[2026-07-31 23:29:23]     rational_prime=11 prime_ideal=[11, [-5, 1]~, 1, 1, [5, -2800905; 1, 5]] residue(u)=1 residue(+1)=1 residue(-1)=10 unit_coordinates=[0]~
+[2026-07-31 23:29:23]   input e_3: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 1, 0] production D=[0, 1, 0] MATCH
+[2026-07-31 23:29:23]     rational_prime=11 prime_ideal=[11, [-5, 1]~, 1, 1, [5, -2800905; 1, 5]] residue(u)=1 residue(+1)=1 residue(-1)=10 unit_coordinates=[0]~
+[2026-07-31 23:29:23] CHARACTER_DONE index=1 D_t=[0, 0, 0; 0, 3, 1; 0, 3, 0]
+[2026-07-31 23:29:23] 	Command being timed: "/home/denis/massey/Massey-pari/parallelization/character_driver 5 s^2+2800905 1 work/D-11203620/mat-1.gp"
+[2026-07-31 23:29:23] 	User time (seconds): 140.48
+[2026-07-31 23:29:23] 	System time (seconds): 0.16
+[2026-07-31 23:29:23] 	Percent of CPU this job got: 99%
+[2026-07-31 23:29:23] 	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:20.73
+[2026-07-31 23:29:23] 	Average shared text size (kbytes): 0
+[2026-07-31 23:29:23] 	Average unshared data size (kbytes): 0
+[2026-07-31 23:29:23] 	Average stack size (kbytes): 0
+[2026-07-31 23:29:23] 	Average total size (kbytes): 0
+[2026-07-31 23:29:23] 	Maximum resident set size (kbytes): 139988
+[2026-07-31 23:29:23] 	Average resident set size (kbytes): 0
+[2026-07-31 23:29:23] 	Major (requiring I/O) page faults: 1
+[2026-07-31 23:29:23] 	Minor (reclaiming a frame) page faults: 49012
+[2026-07-31 23:29:23] 	Voluntary context switches: 3
+[2026-07-31 23:29:23] 	Involuntary context switches: 119
+[2026-07-31 23:29:23] 	Swaps: 0
+[2026-07-31 23:29:23] 	File system inputs: 1360
+[2026-07-31 23:29:23] 	File system outputs: 104
+[2026-07-31 23:29:23] 	Socket messages sent: 0
+[2026-07-31 23:29:23] 	Socket messages received: 0
+[2026-07-31 23:29:23] 	Signals delivered: 0
+[2026-07-31 23:29:23] 	Page size (bytes): 4096
+[2026-07-31 23:29:23] 	Exit status: 0
+==== character 2 ====
+[2026-07-31 23:27:03] CHARACTER_DRIVER threads=1 stack_max_MiB=8192 log_level=0
+[2026-07-31 23:27:03] CHARACTER_DRIVER index=2 D=-11203620
+[2026-07-31 23:27:03] BASE_BNF_CERTIFIED
+[2026-07-31 23:27:03] prescribed t = [0, 1, 0]
+[2026-07-31 23:29:22] 
+[2026-07-31 23:29:22] MASSEY_ARITHMETIC_AUDIT character certificate
+[2026-07-31 23:29:22]   prescribed t = [0, 1, 0]
+[2026-07-31 23:29:22]   chi = [0, 2, 0]
+[2026-07-31 23:29:22]   H = [1, 0, 0; 0, 5, 0; 0, 0, 1]
+[2026-07-31 23:29:22]   det(H) = 5; [Cl(K):H] = 5
+[2026-07-31 23:29:22]   class-field modulus = 1 (ordinary class group)
+[2026-07-31 23:29:22]   relative degree = 5; disc(L) = disc(K)^5 = -176519159491060586121609743683200000; finite-unramified=PASS
+[2026-07-31 23:29:22]   H column 1: t(h)=0 PASS
+[2026-07-31 23:29:22]   H column 2: t(h)=0 PASS
+[2026-07-31 23:29:22]   H column 3: t(h)=0 PASS
+[2026-07-31 23:29:22]   A=[0, 1, 0] lambda=1 u=1 lambda/u=1 sigma_t/sigma_Artin=1
+[2026-07-31 23:29:22]   generator g_1: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+[2026-07-31 23:29:22]   generator g_2: Artin exponent A_i=1; relative to sigma_t=1; prescribed t_i=1 PASS
+[2026-07-31 23:29:22]   generator g_3: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+[2026-07-31 23:29:22]   direct AC and independent norm-class checks
+[2026-07-31 23:29:22]   input e_1: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 0, 4] production D=[0, 0, 4] MATCH
+[2026-07-31 23:29:22]     rational_prime=7 prime_ideal=[7, [7, 0]~, 1, 2, 1] residue(u)=1 residue(+1)=1 residue(-1)=6 unit_coordinates=[0]~
+[2026-07-31 23:29:23]   input e_2: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[1, 0, 2] production D=[1, 0, 2] MATCH
+[2026-07-31 23:29:23]     rational_prime=11 prime_ideal=[11, [-5, 1]~, 1, 1, [5, -2800905; 1, 5]] residue(u)=1 residue(+1)=1 residue(-1)=10 unit_coordinates=[0]~
+[2026-07-31 23:29:23]   input e_3: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[2, 0, 4] production D=[2, 0, 4] MATCH
+[2026-07-31 23:29:23]     rational_prime=7 prime_ideal=[7, [7, 0]~, 1, 2, 1] residue(u)=1 residue(+1)=1 residue(-1)=6 unit_coordinates=[0]~
+[2026-07-31 23:29:23] CHARACTER_DONE index=2 D_t=[0, 1, 2; 0, 0, 0; 4, 2, 4]
+[2026-07-31 23:29:23] 	Command being timed: "/home/denis/massey/Massey-pari/parallelization/character_driver 5 s^2+2800905 2 work/D-11203620/mat-2.gp"
+[2026-07-31 23:29:23] 	User time (seconds): 140.49
+[2026-07-31 23:29:23] 	System time (seconds): 0.17
+[2026-07-31 23:29:23] 	Percent of CPU this job got: 99%
+[2026-07-31 23:29:23] 	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:20.75
+[2026-07-31 23:29:23] 	Average shared text size (kbytes): 0
+[2026-07-31 23:29:23] 	Average unshared data size (kbytes): 0
+[2026-07-31 23:29:23] 	Average stack size (kbytes): 0
+[2026-07-31 23:29:23] 	Average total size (kbytes): 0
+[2026-07-31 23:29:23] 	Maximum resident set size (kbytes): 139440
+[2026-07-31 23:29:23] 	Average resident set size (kbytes): 0
+[2026-07-31 23:29:23] 	Major (requiring I/O) page faults: 1
+[2026-07-31 23:29:23] 	Minor (reclaiming a frame) page faults: 49008
+[2026-07-31 23:29:23] 	Voluntary context switches: 2
+[2026-07-31 23:29:23] 	Involuntary context switches: 62
+[2026-07-31 23:29:23] 	Swaps: 0
+[2026-07-31 23:29:23] 	File system inputs: 0
+[2026-07-31 23:29:23] 	File system outputs: 80
+[2026-07-31 23:29:23] 	Socket messages sent: 0
+[2026-07-31 23:29:23] 	Socket messages received: 0
+[2026-07-31 23:29:23] 	Signals delivered: 0
+[2026-07-31 23:29:23] 	Page size (bytes): 4096
+[2026-07-31 23:29:23] 	Exit status: 0
+==== character 3 ====
+[2026-07-31 23:27:03] CHARACTER_DRIVER threads=1 stack_max_MiB=8192 log_level=0
+[2026-07-31 23:27:03] CHARACTER_DRIVER index=3 D=-11203620
+[2026-07-31 23:27:03] BASE_BNF_CERTIFIED
+[2026-07-31 23:27:03] prescribed t = [0, 0, 1]
+[2026-07-31 23:29:22] 
+[2026-07-31 23:29:22] MASSEY_ARITHMETIC_AUDIT character certificate
+[2026-07-31 23:29:22]   prescribed t = [0, 0, 1]
+[2026-07-31 23:29:22]   chi = [0, 0, 2]
+[2026-07-31 23:29:22]   H = [1, 0, 0; 0, 1, 0; 0, 0, 5]
+[2026-07-31 23:29:22]   det(H) = 5; [Cl(K):H] = 5
+[2026-07-31 23:29:22]   class-field modulus = 1 (ordinary class group)
+[2026-07-31 23:29:22]   relative degree = 5; disc(L) = disc(K)^5 = -176519159491060586121609743683200000; finite-unramified=PASS
+[2026-07-31 23:29:22]   H column 1: t(h)=0 PASS
+[2026-07-31 23:29:22]   H column 2: t(h)=0 PASS
+[2026-07-31 23:29:22]   H column 3: t(h)=0 PASS
+[2026-07-31 23:29:22]   A=[0, 0, 1] lambda=1 u=1 lambda/u=1 sigma_t/sigma_Artin=1
+[2026-07-31 23:29:22]   generator g_1: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+[2026-07-31 23:29:22]   generator g_2: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+[2026-07-31 23:29:22]   generator g_3: Artin exponent A_i=1; relative to sigma_t=1; prescribed t_i=1 PASS
+[2026-07-31 23:29:22]   direct AC and independent norm-class checks
+[2026-07-31 23:29:22]   input e_1: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[1, 4, 0] production D=[1, 4, 0] MATCH
+[2026-07-31 23:29:22]     rational_prime=13 prime_ideal=[13, [-6, 1]~, 1, 1, [6, -2800905; 1, 6]] residue(u)=1 residue(+1)=1 residue(-1)=12 unit_coordinates=[0]~
+[2026-07-31 23:29:22]   input e_2: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[2, 0, 0] production D=[2, 0, 0] MATCH
+[2026-07-31 23:29:22]     rational_prime=13 prime_ideal=[13, [-6, 1]~, 1, 1, [6, -2800905; 1, 6]] residue(u)=1 residue(+1)=1 residue(-1)=12 unit_coordinates=[0]~
+[2026-07-31 23:29:23]   input e_3: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 1, 0] production D=[0, 1, 0] MATCH
+[2026-07-31 23:29:23]     rational_prime=13 prime_ideal=[13, [6, 1]~, 1, 1, [-6, -2800905; 1, -6]] residue(u)=1 residue(+1)=1 residue(-1)=12 unit_coordinates=[0]~
+[2026-07-31 23:29:23] CHARACTER_DONE index=3 D_t=[1, 2, 0; 4, 0, 1; 0, 0, 0]
+[2026-07-31 23:29:23] 	Command being timed: "/home/denis/massey/Massey-pari/parallelization/character_driver 5 s^2+2800905 3 work/D-11203620/mat-3.gp"
+[2026-07-31 23:29:23] 	User time (seconds): 139.90
+[2026-07-31 23:29:23] 	System time (seconds): 0.15
+[2026-07-31 23:29:23] 	Percent of CPU this job got: 99%
+[2026-07-31 23:29:23] 	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:20.15
+[2026-07-31 23:29:23] 	Average shared text size (kbytes): 0
+[2026-07-31 23:29:23] 	Average unshared data size (kbytes): 0
+[2026-07-31 23:29:23] 	Average stack size (kbytes): 0
+[2026-07-31 23:29:23] 	Average total size (kbytes): 0
+[2026-07-31 23:29:23] 	Maximum resident set size (kbytes): 139432
+[2026-07-31 23:29:23] 	Average resident set size (kbytes): 0
+[2026-07-31 23:29:23] 	Major (requiring I/O) page faults: 0
+[2026-07-31 23:29:23] 	Minor (reclaiming a frame) page faults: 49024
+[2026-07-31 23:29:23] 	Voluntary context switches: 0
+[2026-07-31 23:29:23] 	Involuntary context switches: 269
+[2026-07-31 23:29:23] 	Swaps: 0
+[2026-07-31 23:29:23] 	File system inputs: 0
+[2026-07-31 23:29:23] 	File system outputs: 88
+[2026-07-31 23:29:23] 	Socket messages sent: 0
+[2026-07-31 23:29:23] 	Socket messages received: 0
+[2026-07-31 23:29:23] 	Signals delivered: 0
+[2026-07-31 23:29:23] 	Page size (bytes): 4096
+[2026-07-31 23:29:23] 	Exit status: 0
+==== character 4 ====
+[2026-07-31 23:27:03] CHARACTER_DRIVER threads=1 stack_max_MiB=8192 log_level=0
+[2026-07-31 23:27:03] CHARACTER_DRIVER index=4 D=-11203620
+[2026-07-31 23:27:03] BASE_BNF_CERTIFIED
+[2026-07-31 23:27:03] prescribed t = [1, 1, 0]
+[2026-07-31 23:29:21] 
+[2026-07-31 23:29:21] MASSEY_ARITHMETIC_AUDIT character certificate
+[2026-07-31 23:29:21]   prescribed t = [1, 1, 0]
+[2026-07-31 23:29:21]   chi = [2, 2, 0]
+[2026-07-31 23:29:21]   H = [5, 4, 0; 0, 1, 0; 0, 0, 1]
+[2026-07-31 23:29:21]   det(H) = 5; [Cl(K):H] = 5
+[2026-07-31 23:29:21]   class-field modulus = 1 (ordinary class group)
+[2026-07-31 23:29:21]   relative degree = 5; disc(L) = disc(K)^5 = -176519159491060586121609743683200000; finite-unramified=PASS
+[2026-07-31 23:29:21]   H column 1: t(h)=0 PASS
+[2026-07-31 23:29:21]   H column 2: t(h)=0 PASS
+[2026-07-31 23:29:21]   H column 3: t(h)=0 PASS
+[2026-07-31 23:29:21]   A=[2, 2, 0] lambda=2 u=1 lambda/u=2 sigma_t/sigma_Artin=2
+[2026-07-31 23:29:21]   generator g_1: Artin exponent A_i=2; relative to sigma_t=1; prescribed t_i=1 PASS
+[2026-07-31 23:29:21]   generator g_2: Artin exponent A_i=2; relative to sigma_t=1; prescribed t_i=1 PASS
+[2026-07-31 23:29:21]   generator g_3: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+[2026-07-31 23:29:21]   direct AC and independent norm-class checks
+[2026-07-31 23:29:22]   input e_1: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 0, 0] production D=[0, 0, 0] MATCH
+[2026-07-31 23:29:22]     rational_prime=17 prime_ideal=[17, [-7, 1]~, 1, 1, [7, -2800905; 1, 7]] residue(u)=1 residue(+1)=1 residue(-1)=16 unit_coordinates=[0]~
+[2026-07-31 23:29:22]   input e_2: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[3, 2, 1] production D=[3, 2, 1] MATCH
+[2026-07-31 23:29:22]     rational_prime=17 prime_ideal=[17, [-7, 1]~, 1, 1, [7, -2800905; 1, 7]] residue(u)=1 residue(+1)=1 residue(-1)=16 unit_coordinates=[0]~
+[2026-07-31 23:29:23]   input e_3: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[1, 4, 2] production D=[1, 4, 2] MATCH
+[2026-07-31 23:29:23]     rational_prime=17 prime_ideal=[17, [-7, 1]~, 1, 1, [7, -2800905; 1, 7]] residue(u)=1 residue(+1)=1 residue(-1)=16 unit_coordinates=[0]~
+[2026-07-31 23:29:23] CHARACTER_DONE index=4 D_t=[0, 3, 1; 0, 2, 4; 0, 1, 2]
+[2026-07-31 23:29:23] 	Command being timed: "/home/denis/massey/Massey-pari/parallelization/character_driver 5 s^2+2800905 4 work/D-11203620/mat-4.gp"
+[2026-07-31 23:29:23] 	User time (seconds): 139.80
+[2026-07-31 23:29:23] 	System time (seconds): 0.15
+[2026-07-31 23:29:23] 	Percent of CPU this job got: 99%
+[2026-07-31 23:29:23] 	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:20.05
+[2026-07-31 23:29:23] 	Average shared text size (kbytes): 0
+[2026-07-31 23:29:23] 	Average unshared data size (kbytes): 0
+[2026-07-31 23:29:23] 	Average stack size (kbytes): 0
+[2026-07-31 23:29:23] 	Average total size (kbytes): 0
+[2026-07-31 23:29:23] 	Maximum resident set size (kbytes): 139812
+[2026-07-31 23:29:23] 	Average resident set size (kbytes): 0
+[2026-07-31 23:29:23] 	Major (requiring I/O) page faults: 0
+[2026-07-31 23:29:23] 	Minor (reclaiming a frame) page faults: 49004
+[2026-07-31 23:29:23] 	Voluntary context switches: 3
+[2026-07-31 23:29:23] 	Involuntary context switches: 141
+[2026-07-31 23:29:23] 	Swaps: 0
+[2026-07-31 23:29:23] 	File system inputs: 0
+[2026-07-31 23:29:23] 	File system outputs: 88
+[2026-07-31 23:29:23] 	Socket messages sent: 0
+[2026-07-31 23:29:23] 	Socket messages received: 0
+[2026-07-31 23:29:23] 	Signals delivered: 0
+[2026-07-31 23:29:23] 	Page size (bytes): 4096
+[2026-07-31 23:29:23] 	Exit status: 0
+==== character 5 ====
+[2026-07-31 23:27:03] CHARACTER_DRIVER threads=1 stack_max_MiB=8192 log_level=0
+[2026-07-31 23:27:03] CHARACTER_DRIVER index=5 D=-11203620
+[2026-07-31 23:27:03] BASE_BNF_CERTIFIED
+[2026-07-31 23:27:03] prescribed t = [1, 0, 1]
+[2026-07-31 23:29:19] 
+[2026-07-31 23:29:19] MASSEY_ARITHMETIC_AUDIT character certificate
+[2026-07-31 23:29:19]   prescribed t = [1, 0, 1]
+[2026-07-31 23:29:19]   chi = [2, 0, 2]
+[2026-07-31 23:29:19]   H = [5, 0, 4; 0, 1, 0; 0, 0, 1]
+[2026-07-31 23:29:19]   det(H) = 5; [Cl(K):H] = 5
+[2026-07-31 23:29:19]   class-field modulus = 1 (ordinary class group)
+[2026-07-31 23:29:19]   relative degree = 5; disc(L) = disc(K)^5 = -176519159491060586121609743683200000; finite-unramified=PASS
+[2026-07-31 23:29:19]   H column 1: t(h)=0 PASS
+[2026-07-31 23:29:19]   H column 2: t(h)=0 PASS
+[2026-07-31 23:29:19]   H column 3: t(h)=0 PASS
+[2026-07-31 23:29:19]   A=[3, 0, 3] lambda=3 u=1 lambda/u=3 sigma_t/sigma_Artin=3
+[2026-07-31 23:29:19]   generator g_1: Artin exponent A_i=3; relative to sigma_t=1; prescribed t_i=1 PASS
+[2026-07-31 23:29:19]   generator g_2: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+[2026-07-31 23:29:19]   generator g_3: Artin exponent A_i=3; relative to sigma_t=1; prescribed t_i=1 PASS
+[2026-07-31 23:29:19]   direct AC and independent norm-class checks
+[2026-07-31 23:29:20]   input e_1: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[1, 1, 4] production D=[1, 1, 4] MATCH
+[2026-07-31 23:29:20]     rational_prime=11 prime_ideal=[11, [-5, 1]~, 1, 1, [5, -2800905; 1, 5]] residue(u)=1 residue(+1)=1 residue(-1)=10 unit_coordinates=[0]~
+[2026-07-31 23:29:20]   input e_2: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[4, 4, 1] production D=[4, 4, 1] MATCH
+[2026-07-31 23:29:20]     rational_prime=11 prime_ideal=[11, [-5, 1]~, 1, 1, [5, -2800905; 1, 5]] residue(u)=1 residue(+1)=1 residue(-1)=10 unit_coordinates=[0]~
+[2026-07-31 23:29:21]   input e_3: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[0, 4, 0] production D=[0, 4, 0] MATCH
+[2026-07-31 23:29:21]     rational_prime=11 prime_ideal=[11, [-5, 1]~, 1, 1, [5, -2800905; 1, 5]] residue(u)=1 residue(+1)=1 residue(-1)=10 unit_coordinates=[0]~
+[2026-07-31 23:29:21] CHARACTER_DONE index=5 D_t=[1, 4, 0; 1, 4, 4; 4, 1, 0]
+[2026-07-31 23:29:21] 	Command being timed: "/home/denis/massey/Massey-pari/parallelization/character_driver 5 s^2+2800905 5 work/D-11203620/mat-5.gp"
+[2026-07-31 23:29:21] 	User time (seconds): 138.13
+[2026-07-31 23:29:21] 	System time (seconds): 0.12
+[2026-07-31 23:29:21] 	Percent of CPU this job got: 99%
+[2026-07-31 23:29:21] 	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:18.36
+[2026-07-31 23:29:21] 	Average shared text size (kbytes): 0
+[2026-07-31 23:29:21] 	Average unshared data size (kbytes): 0
+[2026-07-31 23:29:21] 	Average stack size (kbytes): 0
+[2026-07-31 23:29:21] 	Average total size (kbytes): 0
+[2026-07-31 23:29:21] 	Maximum resident set size (kbytes): 139436
+[2026-07-31 23:29:21] 	Average resident set size (kbytes): 0
+[2026-07-31 23:29:21] 	Major (requiring I/O) page faults: 0
+[2026-07-31 23:29:21] 	Minor (reclaiming a frame) page faults: 49001
+[2026-07-31 23:29:21] 	Voluntary context switches: 0
+[2026-07-31 23:29:21] 	Involuntary context switches: 228
+[2026-07-31 23:29:21] 	Swaps: 0
+[2026-07-31 23:29:21] 	File system inputs: 0
+[2026-07-31 23:29:21] 	File system outputs: 104
+[2026-07-31 23:29:21] 	Socket messages sent: 0
+[2026-07-31 23:29:21] 	Socket messages received: 0
+[2026-07-31 23:29:21] 	Signals delivered: 0
+[2026-07-31 23:29:21] 	Page size (bytes): 4096
+[2026-07-31 23:29:21] 	Exit status: 0
+==== character 6 ====
+[2026-07-31 23:27:03] CHARACTER_DRIVER threads=1 stack_max_MiB=8192 log_level=0
+[2026-07-31 23:27:03] CHARACTER_DRIVER index=6 D=-11203620
+[2026-07-31 23:27:03] BASE_BNF_CERTIFIED
+[2026-07-31 23:27:03] prescribed t = [0, 1, 1]
+[2026-07-31 23:29:21] 
+[2026-07-31 23:29:21] MASSEY_ARITHMETIC_AUDIT character certificate
+[2026-07-31 23:29:21]   prescribed t = [0, 1, 1]
+[2026-07-31 23:29:21]   chi = [0, 2, 2]
+[2026-07-31 23:29:21]   H = [1, 0, 0; 0, 5, 4; 0, 0, 1]
+[2026-07-31 23:29:21]   det(H) = 5; [Cl(K):H] = 5
+[2026-07-31 23:29:21]   class-field modulus = 1 (ordinary class group)
+[2026-07-31 23:29:21]   relative degree = 5; disc(L) = disc(K)^5 = -176519159491060586121609743683200000; finite-unramified=PASS
+[2026-07-31 23:29:21]   H column 1: t(h)=0 PASS
+[2026-07-31 23:29:21]   H column 2: t(h)=0 PASS
+[2026-07-31 23:29:21]   H column 3: t(h)=0 PASS
+[2026-07-31 23:29:21]   A=[0, 2, 2] lambda=2 u=1 lambda/u=2 sigma_t/sigma_Artin=2
+[2026-07-31 23:29:21]   generator g_1: Artin exponent A_i=0; relative to sigma_t=0; prescribed t_i=0 PASS
+[2026-07-31 23:29:21]   generator g_2: Artin exponent A_i=2; relative to sigma_t=1; prescribed t_i=1 PASS
+[2026-07-31 23:29:21]   generator g_3: Artin exponent A_i=2; relative to sigma_t=1; prescribed t_i=1 PASS
+[2026-07-31 23:29:21]   direct AC and independent norm-class checks
+[2026-07-31 23:29:22]   input e_1: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[3, 0, 0] production D=[3, 0, 0] MATCH
+[2026-07-31 23:29:22]     rational_prime=11 prime_ideal=[11, [-5, 1]~, 1, 1, [5, -2800905; 1, 5]] residue(u)=1 residue(+1)=1 residue(-1)=10 unit_coordinates=[0]~
+[2026-07-31 23:29:22]   input e_2: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[1, 3, 2] production D=[1, 3, 2] MATCH
+[2026-07-31 23:29:22]     rational_prime=11 prime_ideal=[11, [-5, 1]~, 1, 1, [5, -2800905; 1, 5]] residue(u)=1 residue(+1)=1 residue(-1)=10 unit_coordinates=[0]~
+[2026-07-31 23:29:23]   input e_3: AC1_COMPACT_DIVISOR=PASS AC2_UNIT_STATUS=PASS AC2_MODULAR_SIGN=PASS AC2_UNIT_COORD=PASS independent D=[2, 2, 3] production D=[2, 2, 3] MATCH
+[2026-07-31 23:29:23]     rational_prime=11 prime_ideal=[11, [-5, 1]~, 1, 1, [5, -2800905; 1, 5]] residue(u)=1 residue(+1)=1 residue(-1)=10 unit_coordinates=[0]~
+[2026-07-31 23:29:23] CHARACTER_DONE index=6 D_t=[3, 1, 2; 0, 3, 2; 0, 2, 3]
+[2026-07-31 23:29:23] 	Command being timed: "/home/denis/massey/Massey-pari/parallelization/character_driver 5 s^2+2800905 6 work/D-11203620/mat-6.gp"
+[2026-07-31 23:29:23] 	User time (seconds): 139.86
+[2026-07-31 23:29:23] 	System time (seconds): 0.26
+[2026-07-31 23:29:23] 	Percent of CPU this job got: 99%
+[2026-07-31 23:29:23] 	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:20.22
+[2026-07-31 23:29:23] 	Average shared text size (kbytes): 0
+[2026-07-31 23:29:23] 	Average unshared data size (kbytes): 0
+[2026-07-31 23:29:23] 	Average stack size (kbytes): 0
+[2026-07-31 23:29:23] 	Average total size (kbytes): 0
+[2026-07-31 23:29:23] 	Maximum resident set size (kbytes): 244704
+[2026-07-31 23:29:23] 	Average resident set size (kbytes): 0
+[2026-07-31 23:29:23] 	Major (requiring I/O) page faults: 0
+[2026-07-31 23:29:23] 	Minor (reclaiming a frame) page faults: 75215
+[2026-07-31 23:29:23] 	Voluntary context switches: 0
+[2026-07-31 23:29:23] 	Involuntary context switches: 132
+[2026-07-31 23:29:23] 	Swaps: 0
+[2026-07-31 23:29:23] 	File system inputs: 0
+[2026-07-31 23:29:23] 	File system outputs: 88
+[2026-07-31 23:29:23] 	Socket messages sent: 0
+[2026-07-31 23:29:23] 	Socket messages received: 0
+[2026-07-31 23:29:23] 	Signals delivered: 0
+[2026-07-31 23:29:23] 	Page size (bytes): 4096
+[2026-07-31 23:29:23] 	Exit status: 0
+==== finish ====
+BASE_BNF_CERTIFIED
+P_CLASS_RANK 3
+SECONDARY_NORMS COLLECTED
+MASSEY_RANK 3
+STRONG_FREENESS PASS
+LEADING_WORDS ["cca", "cbb", "cba"]
+MILD PASS
+RESULT_WRITTEN work/D-11203620/result.gp

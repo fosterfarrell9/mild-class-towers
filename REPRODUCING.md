@@ -147,7 +147,7 @@ Hilbert series of the relation algebra degree by degree when it does not:
 
 ```sh
 python3 tools/strong_freeness_gb.py \
-  --result examples/p5/K-18397407/result.gp --order xyz --max-degree 12
+  --result examples/p5/D-18397407/result.gp --order xyz --max-degree 12
 python3 tests/test_strong_freeness_gb.py
 ```
 
@@ -163,7 +163,7 @@ executable; higher degree bounds become practical):
 
 ```sh
 python3 tools/strong_freeness_singular.py \
-  --result examples/p5/K-18397407/result.gp --order xyz --degree-bound 13
+  --result examples/p5/D-18397407/result.gp --order xyz --degree-bound 13
 python3 tests/test_strong_freeness_singular.py
 ```
 

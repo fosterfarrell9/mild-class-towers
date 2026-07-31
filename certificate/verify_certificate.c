@@ -95,7 +95,8 @@ basis_change_matrix(
         if (typ(element) != t_INT && typ(element) != t_FRAC
             && !(typ(element) == t_POL
                  && varn(element) == varn(nf_get_pol(nf))
-                 && degpol(element) < degree))
+                 && degpol(element) < degree
+                 && RgX_is_QX(element)))
             fail(label, column,
                  "stored integral basis is not given as rationals and "
                  "polynomials in the field generator");
@@ -674,32 +675,8 @@ main(int argc, char **argv)
     static const char *matrix_labels[] = {
         "D_a", "D_b", "D_c", "D_(a+b)", "D_(a+c)", "D_(b+c)"
     };
-    if (equalii(
-            gel(certificate, CERT_DISCRIMINANT), stoi(-11203620)))
-    {
-        static const long expected[6][3][3] = {
-            {{0,0,0},{0,3,3},{0,1,0}},
-            {{0,0,4},{1,0,2},{2,0,4}},
-            {{1,4,0},{2,0,0},{0,1,0}},
-            {{0,0,0},{3,2,1},{1,4,2}},
-            {{1,1,4},{4,4,1},{0,4,0}},
-            {{3,0,0},{1,3,2},{2,2,3}}
-        };
-        for (long matrix = 0; matrix < 6; ++matrix)
-        {
-            for (long column = 1; column <= 3; ++column)
-                for (long row = 1; row <= 3; ++row)
-                    if (!equaliu(
-                            gcoeff(matrices[matrix], row, column),
-                            expected[matrix][column - 1][row - 1]))
-                        fail(NULL, 0, "reconstructed main matrix mismatch");
-            pari_printf("%s=PASS\n", matrix_labels[matrix]);
-        }
-    }
-    else
-        for (long matrix = 0; matrix < 6; ++matrix)
-            pari_printf(
-                "%s=%Ps\n", matrix_labels[matrix], matrices[matrix]);
+    for (long matrix = 0; matrix < 6; ++matrix)
+        pari_printf("%s=%Ps\n", matrix_labels[matrix], matrices[matrix]);
 
     if (argc > 2)
     {

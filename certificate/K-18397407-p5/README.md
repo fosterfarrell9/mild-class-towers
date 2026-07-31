@@ -26,7 +26,7 @@ MASSEY_CERTIFICATE_EXPORT="$PWD/certificate/K-18397407-p5/certificate.gp" \
 ```
 
 The fresh run reproduced the verified entries of the committed
-`examples/p5/K-18397407/result.gp` exactly; only the certificate was
+`examples/p5/D-18397407/result.gp` exactly; only the certificate was
 kept.
 
 Verify with the shared verifier in `certificate/`, cross-checking
@@ -35,7 +35,7 @@ against the committed result record:
 ```sh
 cd certificate && make PARI=/path/to/pari-prefix
 ./verify_certificate K-18397407-p5/certificate.gp \
-  ../examples/p5/K-18397407/result.gp
+  ../examples/p5/D-18397407/result.gp
 ```
 
 Expected: `BASE_BNF_CERTIFIED=PASS`, all 18 entry lines with
