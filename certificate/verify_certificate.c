@@ -40,7 +40,7 @@ enum {
     ENTRY_ELL,
     ENTRY_PRIME,
     ENTRY_NORM_CLASS,
-    ENTRY_INTEGRAL_BASIS       /* format 2 only */
+    ENTRY_INTEGRAL_BASIS
 };
 
 static void
@@ -82,7 +82,25 @@ basis_change_matrix(
 
     GEN matrix = cgetg(degree + 1, t_MAT);
     for (long i = 1; i <= degree; ++i)
-        gel(matrix, i) = algtobasis(nf, gel(stored_basis, i));
+    {
+        GEN element = gel(stored_basis, i);
+        /*
+         * The basis has to be written in a form that means the same thing
+         * everywhere: rationals and polynomials in the field generator.  A
+         * coordinate vector would not qualify -- algtobasis passes one
+         * through unchanged, so a certificate could declare its basis to be
+         * whatever the reader's basis happens to be, and reintroduce the very
+         * ambiguity this field exists to remove.
+         */
+        if (typ(element) != t_INT && typ(element) != t_FRAC
+            && !(typ(element) == t_POL
+                 && varn(element) == varn(nf_get_pol(nf))
+                 && degpol(element) < degree))
+            fail(label, column,
+                 "stored integral basis is not given as rationals and "
+                 "polynomials in the field generator");
+        gel(matrix, i) = algtobasis(nf, element);
+    }
     if (!RgM_is_ZM(matrix))
         fail(label, column,
              "stored integral basis is not integral in the local basis");
@@ -467,10 +485,7 @@ main(int argc, char **argv)
     GEN certificate = read_certificate(path);
     if (typ(certificate) != t_VEC || lg(certificate) != 8)
         fail(NULL, 0, "invalid top-level certificate schema");
-    if (typ(gel(certificate, CERT_FORMAT)) != t_INT)
-        fail(NULL, 0, "unsupported certificate format");
-    long format = itos(gel(certificate, CERT_FORMAT));
-    if (format != 1 && format != 2)
+    if (!equaliu(gel(certificate, CERT_FORMAT), 2))
         fail(NULL, 0, "unsupported certificate format");
     if (!equaliu(gel(certificate, CERT_PARI_VERSION), PARI_VERSION_CODE))
         fail(NULL, 0, "PARI version differs from certificate generator");
@@ -489,8 +504,7 @@ main(int argc, char **argv)
         fail(NULL, 0, "base discriminant mismatch");
 
     GEN base_data = gel(certificate, CERT_BASE_DATA);
-    long base_fields = format == 1 ? 6 : 7;
-    if (typ(base_data) != t_VEC || lg(base_data) != base_fields)
+    if (typ(base_data) != t_VEC || lg(base_data) != 7)
         fail(NULL, 0, "invalid base metadata");
     if (!gequal(bnf_get_cyc(K), gel(base_data, 1))
         || !gequal(bnf_get_no(K), gel(base_data, 2))
@@ -510,22 +524,21 @@ main(int argc, char **argv)
         fail(NULL, 0, "certified base unit data mismatch");
 
     /*
-     * Format 1 carries no integral basis, so its coordinates are only
-     * meaningful on a machine whose nfinit happens to reproduce the basis of
-     * the generator.  Say so rather than let a failure look like bad
-     * arithmetic.
+     * The base field is imaginary quadratic, where the integral basis is
+     * canonical: there is nothing for the reduction to choose, and every
+     * certificate of this collection agrees with the local basis.  So the
+     * header basis is checked rather than converted.  That is not laziness
+     * about the general case -- base-field data reaches the checks by several
+     * routes, among them the class group generators compared before any
+     * conversion could happen and the stored prime ideal, whose generator and
+     * multiplication table are both coordinate-dependent.  Converting some of
+     * them and not the others would leave the format meaning two things at
+     * once.  If a future base field ever needs it, convert all of them.
      */
-    GEN base_change = NULL;
-    if (format == 1)
-        pari_fprintf(
-            stderr,
-            "WARNING: certificate format 1 does not record the integral "
-            "basis it was written against.  A failure below may mean that "
-            "this machine's nfinit chose a different basis, not that the "
-            "arithmetic is wrong.  Convert to format 2.\n");
-    else
-        base_change = basis_change_matrix(
-            bnf_get_nf(K), gel(base_data, 6), NULL, 0);
+    GEN base_change =
+        basis_change_matrix(bnf_get_nf(K), gel(base_data, 6), NULL, 0);
+    if (!ZM_isidentity(base_change))
+        fail(NULL, 0, "base field integral basis differs from the local one");
 
     pari_printf("BASE_BNF_CERTIFIED=PASS\n\n");
 
@@ -547,7 +560,7 @@ main(int argc, char **argv)
     for (long entry_index = 1; entry_index < lg(entries); ++entry_index)
     {
         GEN entry = gel(entries, entry_index);
-        if (typ(entry) != t_VEC || lg(entry) != (format == 1 ? 14 : 15))
+        if (typ(entry) != t_VEC || lg(entry) != 15)
             fail(NULL, 0, "invalid entry schema");
 
         const char *label = GSTR(gel(entry, ENTRY_CHARACTER));
@@ -586,21 +599,18 @@ main(int argc, char **argv)
         GEN t_AC = gel(entry, ENTRY_T_AC);
 
         /*
-         * Translate the stored coordinates into this machine's bases before
-         * anything is checked, so that every test below sees the algebraic
-         * objects the generator meant.  Where the two bases agree the matrix
-         * is the identity and this changes nothing.
+         * Translate the stored coordinates into this machine's basis for the
+         * class field before anything is checked, so that every test below
+         * sees the algebraic objects the generator meant.  Where the two
+         * bases agree the matrix is the identity and this changes nothing.
+         * a' and J need no conversion: they live in the base field, whose
+         * basis was required to agree above.
          */
-        if (format != 1)
-        {
-            GEN change = basis_change_matrix(
-                Labs, gel(entry, ENTRY_INTEGRAL_BASIS), label, column);
-            sigma = transformed_element(change, sigma);
-            I_prime = transformed_ideal(change, I_prime);
-            t_AC = transformed_famat(change, t_AC);
-            a_prime = transformed_element(base_change, a_prime);
-            J = transformed_ideal(base_change, J);
-        }
+        GEN change = basis_change_matrix(
+            Labs, gel(entry, ENTRY_INTEGRAL_BASIS), label, column);
+        sigma = transformed_element(change, sigma);
+        I_prime = transformed_ideal(change, I_prime);
+        t_AC = transformed_famat(change, t_AC);
 
         verify_automorphism(Labs, Lrel, K, sigma, label, column);
         verify_character_and_normalization(
