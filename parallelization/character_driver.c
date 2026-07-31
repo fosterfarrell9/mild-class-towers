@@ -25,6 +25,7 @@
 #include "../headers/misc_functions.h"
 #include "../headers/secondary_norm.h"
 #include "../headers/find_cup_matrix.h"
+#include "../headers/progress.h"
 
 static const long CHARACTER_COORDS[6][3] = {
     {1, 0, 0}, {0, 1, 0}, {0, 0, 1},
@@ -63,9 +64,10 @@ main(int argc, char *argv[])
     paristack_setsize(1L << 30, (size_t)stack_max);
     sd_threadsizemax(
         thread_stack && *thread_stack ? thread_stack : "2147483648", 0);
-    setalldebug(0);
-    pari_printf("CHARACTER_DRIVER threads=%ld stack_max_MiB=%ld\n",
-                (long)mt_nbthreads(), (long)(stack_max >> 20));
+    my_progress_init();
+    pari_printf("CHARACTER_DRIVER threads=%ld stack_max_MiB=%ld log_level=%ld\n",
+                (long)mt_nbthreads(), (long)(stack_max >> 20),
+                my_progress_level());
 
     GEN p = gp_read_str(argv[1]);
     GEN f = gp_read_str(argv[2]);
@@ -73,6 +75,7 @@ main(int argc, char *argv[])
     if (index < 1 || index > 6)
         pari_err(e_MISC, "character index must be in 1..6");
 
+    my_progress("class group of the base field (bnfinit)");
     GEN K = Buchall(f, nf_FORCE, DEFAULTPREC);
     GEN D = nf_get_disc(bnf_get_nf(K));
     pari_printf("CHARACTER_DRIVER index=%ld D=%Ps\n", index, D);
@@ -82,11 +85,14 @@ main(int argc, char *argv[])
         pari_err(e_MISC, "driver requires an imaginary quadratic field");
     if (my_p_class_rank(K, p) != 3)
         pari_err(e_MISC, "driver requires p-class rank 3");
+    my_progress("unconditional certification of the base class group "
+                "(bnfcertify)");
     if (bnfcertify0(K, 0) != 1)
         pari_err(e_MISC, "base BNF certification failed");
     pari_printf("BASE_BNF_CERTIFIED\n");
 
     /* Deterministic input preparation, exactly as in the sequential main. */
+    my_progress("arithmetic inputs: p-generators, units mod p, AC pairs");
     GEN D_prime_vect = gel(factor(D), 1);
     GEN J_vect = my_find_p_gens(K, p);
     GEN units_mod_p = my_find_units_mod_p(K, p);
@@ -110,6 +116,7 @@ main(int argc, char *argv[])
     if (fclose(out) != 0) pari_err_FILE("matrix output", argv[4]);
 
     pari_printf("CHARACTER_DONE index=%ld D_t=%Ps\n", index, Dt);
+    my_progress_stop();
     pari_close();
     return 0;
 }

@@ -24,6 +24,7 @@
 #include "../headers/ext_and_aut.h"
 #include "../headers/misc_functions.h"
 #include "../headers/pari_internal.h"
+#include "../headers/progress.h"
 
 static int secondary_norm_exact_audit_required = 0;
 
@@ -554,8 +555,11 @@ my_secondary_norm_operator(
             secondary_norm_error(
                 "charker subgroup annihilator is not the prescribed line");
 
+    my_progress("defining polynomial of the class field cut out by H "
+                "(bnrclassfield)");
     GEN classfield_polynomials =
         bnrclassfield(K, H, 0, DEFAULTPREC);
+    my_progress("constructing the class field and its H90 automorphism");
     GEN K_ext =
         my_ext(K, mkvec(classfield_polynomials), p, 1, D_prime_vect);
     GEN Labs = gmael(K_ext, 1, 1);
@@ -565,6 +569,7 @@ my_secondary_norm_operator(
 
     (void)rnfidealup0(Lrel, idealhnf0(K, gen_1, NULL), 1);
 
+    my_progress("Artin symbols of the %ld class group generators", p_rk);
     GEN A = zerocol(p_rk);
     GEN generators = bnf_get_gen(K);
     j = 1;
@@ -585,6 +590,7 @@ my_secondary_norm_operator(
             secondary_norm_error(
                 "Artin character is not a scalar multiple of prescribed t");
 
+    my_progress("normalizing the automorphism to the prescribed character");
     GEN u = stoi(my_sigma_exponent(Labs, Lrel, sigma_H90, p));
     GEN a = Fp_div(lambda, u, p);
     GEN sigma_t =
@@ -602,11 +608,14 @@ my_secondary_norm_operator(
             secondary_norm_error(
                 "normalized H90 automorphism does not represent prescribed t");
 
+    my_progress("Hilbert 90 descent for the %ld arithmetic inputs",
+                (long)glength(Ja_vect));
     GEN I_prime_vect =
         my_H90_vect_2(
             Labs, Lrel, Lbnr, K, sigma_t, Ja_vect, p, 2);
     long inputs = glength(Ja_vect);
     GEN D = cgetg(inputs + 1, t_MAT);
+    my_progress("relative ideal norms and their class coordinates");
     for (j = 1; j <= inputs; ++j)
     {
         GEN I_rel =
@@ -693,11 +702,15 @@ my_secondary_norm_operator(
 
         pari_printf("  direct AC and independent norm-class checks\n");
         for (j = 1; j <= inputs; ++j)
+        {
+            my_progress("exact audit of column %ld of %ld", j, inputs);
             (void)secondary_norm_audit_column(
                 Labs, Lrel, K, sigma_t, p,
                 t, gel(Ja_vect, j), gel(I_prime_vect, j), gel(D, j), j);
+        }
     }
 
+    my_progress("secondary norm operator complete");
     return gerepilecopy(av, D);
 }
 
