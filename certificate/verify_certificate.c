@@ -668,9 +668,8 @@ main(int argc, char **argv)
                     "missing certificate entry");
 
     /*
-     * For the principal example the six matrices are compared with the
-     * published values; for any other field they are printed, and may be
-     * compared against a result record passed as the second argument.
+     * The six matrices are printed, and compared against a result record
+     * when one is passed as the second argument.
      */
     static const char *matrix_labels[] = {
         "D_a", "D_b", "D_c", "D_(a+b)", "D_(a+c)", "D_(b+c)"
