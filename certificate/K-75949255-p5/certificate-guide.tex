@@ -21,11 +21,11 @@ notation of Section~2.5 of the paper.  Each of the 18 entries
 certifies one value $D_x(e_j)$ of a secondary norm operator: it
 stores the unramified cyclic quintic $L_x/K$, the normalized
 generator $\sigma_x$, the pair $(a',J)$ representing the torsion
-class $e_j$, the auxiliary divisor $I'$, the compactly represented
+class $e_j$, the auxiliary ideal $I'$, the compactly represented
 element $t$, a residue prime for the sign check, and the expected
 norm class $[N_x(I')]$.  The two defining equations are
 \begin{align*}
-(1-\sigma_x)^2I'+\operatorname{div}(t)+i_x(J)&=0,&
+I'^{\,(1-\sigma_x)^2}\,(t)\,J\mathcal O_{L_x}&=\mathcal O_{L_x},&
 N_x(t)&=a'.
 \end{align*}
 Facts marked \textbf{Checked} are recomputed exactly by the
@@ -119,7 +119,7 @@ $.
  256&21\cr
  0&1\cr
  }. \]
-$N(J)=256$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$, equivalently $\operatorname{div}(a')+5J=0$: pass.
+$N(J)=256$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$: pass.
 \subsection*{The auxiliary pair $(t,I')$}
 $I'$ is the ideal of $L_x$ with the following HNF matrix in the integral basis of the absolute model; its absolute norm is $3230601672625 = 5^{3}\cdot 25844813381$:
 \begin{center}\resizebox{\textwidth}{!}{$\pmatrix{
@@ -170,7 +170,7 @@ $.
  830&47\cr
  0&1\cr
  }. \]
-$N(J)=830$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$, equivalently $\operatorname{div}(a')+5J=0$: pass.
+$N(J)=830$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$: pass.
 \subsection*{The auxiliary pair $(t,I')$}
 $I'$ is the ideal of $L_x$ with the following HNF matrix in the integral basis of the absolute model; its absolute norm is $1570108656483 = 3^{2}\cdot 174456517387$:
 \begin{center}\resizebox{\textwidth}{!}{$\pmatrix{
@@ -221,7 +221,7 @@ $.
  4114&607\cr
  0&1\cr
  }. \]
-$N(J)=4114$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$, equivalently $\operatorname{div}(a')+5J=0$: pass.
+$N(J)=4114$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$: pass.
 \subsection*{The auxiliary pair $(t,I')$}
 $I'$ is the ideal of $L_x$ with the following HNF matrix in the integral basis of the absolute model; its absolute norm is $5527782070875 = 3^{2}\cdot 5^{3}\cdot 4913584063$:
 \begin{center}\resizebox{\textwidth}{!}{$\pmatrix{
@@ -272,7 +272,7 @@ $.
  256&21\cr
  0&1\cr
  }. \]
-$N(J)=256$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$, equivalently $\operatorname{div}(a')+5J=0$: pass.
+$N(J)=256$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$: pass.
 \subsection*{The auxiliary pair $(t,I')$}
 $I'$ is the ideal of $L_x$ with the following HNF matrix in the integral basis of the absolute model; its absolute norm is $59110480752640 = 2^{12}\cdot 5\cdot 127\cdot 22726409$:
 \begin{center}\resizebox{\textwidth}{!}{$\pmatrix{
@@ -323,7 +323,7 @@ $.
  830&47\cr
  0&1\cr
  }. \]
-$N(J)=830$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$, equivalently $\operatorname{div}(a')+5J=0$: pass.
+$N(J)=830$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$: pass.
 \subsection*{The auxiliary pair $(t,I')$}
 $I'$ is the ideal of $L_x$ with the following HNF matrix in the integral basis of the absolute model; its absolute norm is $32430087103328 = 2^{5}\cdot 29\cdot 34946214551$:
 \begin{center}\resizebox{\textwidth}{!}{$\pmatrix{
@@ -374,7 +374,7 @@ $.
  4114&607\cr
  0&1\cr
  }. \]
-$N(J)=4114$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$, equivalently $\operatorname{div}(a')+5J=0$: pass.
+$N(J)=4114$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$: pass.
 \subsection*{The auxiliary pair $(t,I')$}
 $I'$ is the ideal of $L_x$ with the following HNF matrix in the integral basis of the absolute model; its absolute norm is $28813429757440 = 2^{9}\cdot 5\cdot 29\cdot 103\cdot 3768077$:
 \begin{center}\resizebox{\textwidth}{!}{$\pmatrix{
@@ -423,7 +423,7 @@ $.
  256&21\cr
  0&1\cr
  }. \]
-$N(J)=256$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$, equivalently $\operatorname{div}(a')+5J=0$: pass.
+$N(J)=256$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$: pass.
 \subsection*{The auxiliary pair $(t,I')$}
 $I'$ is the ideal of $L_x$ with the following HNF matrix in the integral basis of the absolute model; its absolute norm is $389865520000 = 2^{7}\cdot 5^{4}\cdot 11\cdot 43\cdot 10303$:
 \begin{center}\resizebox{\textwidth}{!}{$\pmatrix{
@@ -472,7 +472,7 @@ $.
  830&47\cr
  0&1\cr
  }. \]
-$N(J)=830$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$, equivalently $\operatorname{div}(a')+5J=0$: pass.
+$N(J)=830$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$: pass.
 \subsection*{The auxiliary pair $(t,I')$}
 $I'$ is the ideal of $L_x$ with the following HNF matrix in the integral basis of the absolute model; its absolute norm is $6956054458560 = 2^{6}\cdot 3^{2}\cdot 5\cdot 2415296687$:
 \begin{center}\resizebox{\textwidth}{!}{$\pmatrix{
@@ -521,7 +521,7 @@ $.
  4114&607\cr
  0&1\cr
  }. \]
-$N(J)=4114$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$, equivalently $\operatorname{div}(a')+5J=0$: pass.
+$N(J)=4114$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$: pass.
 \subsection*{The auxiliary pair $(t,I')$}
 $I'$ is the ideal of $L_x$ with the following HNF matrix in the integral basis of the absolute model; its absolute norm is $41878023644160 = 2^{10}\cdot 3^{2}\cdot 5\cdot 11^{2}\cdot 1487\cdot 5051$:
 \begin{center}\resizebox{\textwidth}{!}{$\pmatrix{
@@ -572,7 +572,7 @@ $.
  256&21\cr
  0&1\cr
  }. \]
-$N(J)=256$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$, equivalently $\operatorname{div}(a')+5J=0$: pass.
+$N(J)=256$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$: pass.
 \subsection*{The auxiliary pair $(t,I')$}
 $I'$ is the ideal of $L_x$ with the following HNF matrix in the integral basis of the absolute model; its absolute norm is $582174874454229 = 3^{2}\cdot 7^{2}\cdot 43\cdot 61^{2}\cdot 139\cdot 59357$:
 \begin{center}\resizebox{\textwidth}{!}{$\pmatrix{
@@ -623,7 +623,7 @@ $.
  830&47\cr
  0&1\cr
  }. \]
-$N(J)=830$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$, equivalently $\operatorname{div}(a')+5J=0$: pass.
+$N(J)=830$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$: pass.
 \subsection*{The auxiliary pair $(t,I')$}
 $I'$ is the ideal of $L_x$ with the following HNF matrix in the integral basis of the absolute model; its absolute norm is $700240148927 = 11\cdot 63658195357$:
 \begin{center}\resizebox{\textwidth}{!}{$\pmatrix{
@@ -674,7 +674,7 @@ $.
  4114&607\cr
  0&1\cr
  }. \]
-$N(J)=4114$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$, equivalently $\operatorname{div}(a')+5J=0$: pass.
+$N(J)=4114$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$: pass.
 \subsection*{The auxiliary pair $(t,I')$}
 $I'$ is the ideal of $L_x$ with the following HNF matrix in the integral basis of the absolute model; its absolute norm is $12400947627875 = 5^{3}\cdot 137941\cdot 719203$:
 \begin{center}\resizebox{\textwidth}{!}{$\pmatrix{
@@ -721,7 +721,7 @@ $.
  256&21\cr
  0&1\cr
  }. \]
-$N(J)=256$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$, equivalently $\operatorname{div}(a')+5J=0$: pass.
+$N(J)=256$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$: pass.
 \subsection*{The auxiliary pair $(t,I')$}
 $I'$ is the ideal of $L_x$ with the following HNF matrix in the integral basis of the absolute model; its absolute norm is $16933696425491 = 19^{2}\cdot 2393\cdot 19602067$:
 \begin{center}\resizebox{\textwidth}{!}{$\pmatrix{
@@ -768,7 +768,7 @@ $.
  830&47\cr
  0&1\cr
  }. \]
-$N(J)=830$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$, equivalently $\operatorname{div}(a')+5J=0$: pass.
+$N(J)=830$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$: pass.
 \subsection*{The auxiliary pair $(t,I')$}
 $I'$ is the ideal of $L_x$ with the following HNF matrix in the integral basis of the absolute model; its absolute norm is $237822829488235 = 5\cdot 389\cdot 1733\cdot 70556231$:
 \begin{center}\resizebox{\textwidth}{!}{$\pmatrix{
@@ -815,7 +815,7 @@ $.
  4114&607\cr
  0&1\cr
  }. \]
-$N(J)=4114$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$, equivalently $\operatorname{div}(a')+5J=0$: pass.
+$N(J)=4114$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$: pass.
 \subsection*{The auxiliary pair $(t,I')$}
 $I'$ is the ideal of $L_x$ with the following HNF matrix in the integral basis of the absolute model; its absolute norm is $634801694441 = 103\cdot 6163123247$:
 \begin{center}\resizebox{\textwidth}{!}{$\pmatrix{
@@ -862,7 +862,7 @@ $.
  256&21\cr
  0&1\cr
  }. \]
-$N(J)=256$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$, equivalently $\operatorname{div}(a')+5J=0$: pass.
+$N(J)=256$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$: pass.
 \subsection*{The auxiliary pair $(t,I')$}
 $I'$ is the ideal of $L_x$ with the following HNF matrix in the integral basis of the absolute model; its absolute norm is $17084375562240 = 2^{11}\cdot 3^{2}\cdot 5\cdot 7^{2}\cdot 3783211$:
 \begin{center}\resizebox{\textwidth}{!}{$\pmatrix{
@@ -909,7 +909,7 @@ $.
  830&47\cr
  0&1\cr
  }. \]
-$N(J)=830$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$, equivalently $\operatorname{div}(a')+5J=0$: pass.
+$N(J)=830$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$: pass.
 \subsection*{The auxiliary pair $(t,I')$}
 $I'$ is the ideal of $L_x$ with the following HNF matrix in the integral basis of the absolute model; its absolute norm is $52321878016000 = 2^{18}\cdot 5^{3}\cdot 1596737$:
 \begin{center}\resizebox{\textwidth}{!}{$\pmatrix{
@@ -956,7 +956,7 @@ $.
  4114&607\cr
  0&1\cr
  }. \]
-$N(J)=4114$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$, equivalently $\operatorname{div}(a')+5J=0$: pass.
+$N(J)=4114$.  \textbf{Checked:} $(a')\,J^{5}=\mathcal O_K$: pass.
 \subsection*{The auxiliary pair $(t,I')$}
 $I'$ is the ideal of $L_x$ with the following HNF matrix in the integral basis of the absolute model; its absolute norm is $231874899712000 = 2^{11}\cdot 5^{3}\cdot 905761327$:
 \begin{center}\resizebox{\textwidth}{!}{$\pmatrix{

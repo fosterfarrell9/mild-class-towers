@@ -5,7 +5,7 @@
 \\ defaults to the principal example.  The guide restates, for
 \\ every entry, the stored objects in the notation of Section 2.5 of the
 \\ paper, together with facts that this script itself recomputes exactly
-\\ (the relation div(a') + 5J = 0, ideal norms, degrees).  The heavy
+\\ (the relation (a')J^5 = O_K, ideal norms, degrees).  The heavy
 \\ verification (AC1, AC2, Artin normalization, norm classes) remains the
 \\ job of certificate/verify_certificate.c; this guide is exposition, not
 \\ a checker.
@@ -100,11 +100,11 @@ emit_header() =
   out("certifies one value $D_x(e_j)$ of a secondary norm operator: it");
   out("stores the unramified cyclic quintic $L_x/K$, the normalized");
   out("generator $\\sigma_x$, the pair $(a',J)$ representing the torsion");
-  out("class $e_j$, the auxiliary divisor $I'$, the compactly represented");
+  out("class $e_j$, the auxiliary ideal $I'$, the compactly represented");
   out("element $t$, a residue prime for the sign check, and the expected");
   out("norm class $[N_x(I')]$.  The two defining equations are");
   out("\\begin{align*}");
-  out("(1-\\sigma_x)^2I'+\\operatorname{div}(t)+i_x(J)&=0,&");
+  out("I'^{\\,(1-\\sigma_x)^2}\\,(t)\\,J\\mathcal O_{L_x}&=\\mathcal O_{L_x},&");
   out("N_x(t)&=a'.");
   out("\\end{align*}");
   out("Facts marked \\textbf{Checked} are recomputed exactly by the");
@@ -200,8 +200,7 @@ emit_entry(n) =
                                idealpow(K, J, pp)))
           == idealhnf(K, 1);
   out(concat(["$N(J)=", Str(nJ), "$.  \\textbf{Checked:} $(a')\\,J^{",
-      Str(pp), "}=\\mathcal O_K$, equivalently $\\operatorname{div}(a')+",
-      Str(pp), "J=0$: ",
+      Str(pp), "}=\\mathcal O_K$: ",
       if(okrel, "pass", "FAIL"), "."]));
 
   out("\\subsection*{The auxiliary pair $(t,I')$}");

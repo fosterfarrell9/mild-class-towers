@@ -50,7 +50,7 @@ A certificate is a per-field text file that pins down the expensive
 arithmetic behind the six secondary-norm matrices: for every pair
 (character, torsion basis element) it stores the relative and absolute
 polynomials of the class field, the normalized automorphism, the pair
-(a', J) representing the torsion class, the auxiliary divisor I', the
+(a', J) representing the torsion class, the auxiliary ideal I', the
 compactly represented element t_AC, a residue prime for the sign check,
 and the expected norm class.  The standalone verifier recomputes and
 certifies the base field, identifies the class field and the normalized

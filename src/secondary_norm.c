@@ -439,7 +439,7 @@ secondary_norm_audit_column(
     GEN unit_hnf = idealhnf0(Labs, gen_1, NULL);
     if (!gequal(ac1_hnf, unit_hnf))
         secondary_norm_error(
-            "audit AC1 compact-element divisor equality failed");
+            "audit AC1 compact-element ideal equality failed");
 
     GEN base_relation =
         idealmul(
@@ -451,13 +451,13 @@ secondary_norm_audit_column(
 
     /*
      * AC1_COMPACT_DIVISOR plus div(a')+pJ=0 proves that the compact quotient
-     * u=N(t_AC)/a' has zero divisor.  Confirm the resulting principal ideal
+     * u=N(t_AC)/a' generates the unit ideal.  Confirm the resulting ideal
      * directly as an additional exact ideal-arithmetic check.
      */
     GEN quotient_ideal =
         secondary_norm_compact_principal_ideal(K, norm_AC_over_a);
     if (!gequal(quotient_ideal, base_unit_hnf))
-        secondary_norm_error("audit AC2 quotient does not have zero divisor");
+        secondary_norm_error("audit AC2 quotient does not generate the unit ideal");
 
     GEN modular = secondary_norm_compact_modular_sign(K, norm_AC_over_a);
     GEN ell = gel(modular, 1);
