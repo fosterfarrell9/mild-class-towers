@@ -11,9 +11,10 @@ Cl(K) = [110, 10, 10]
 
 This field has the largest class number among the twenty smallest
 absolute discriminants of 5-class rank three, yet it was one of the
-cheapest to compute (eleven minutes of wall time, 0.7 GiB per character
-process) -- the cost of the relative-field arithmetic is governed by
-the class groups of the L_x, not by h_K.
+cheapest to compute: eleven minutes of wall time, 0.7 GiB per character
+process.  The cost is governed neither by h_K nor by the class groups of
+the L_x; `examples/p5/README.md` records the measurement that settles
+this.
 
 The exhaustive GL_3(F_5) search found an Anick witness with leading
 words `bba, bcc, bca`, so the tower group is mild (`MILD=PROVED` in the

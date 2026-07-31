@@ -37,6 +37,8 @@ rank three below 2^28), the computed examples are
  7  -61040707    (batch)
  8  -65818135    (batch)
  9  -75949255    (batch)
+10  -77778287    (further/; computed across two machines, see
+                  certificate/K-77778287-p5/README.md)
 11  -89017304    (further/)
 12  -89218664    (further/)
 13  -90903207    (further/)
@@ -52,14 +54,24 @@ rank three below 2^28), the computed examples are
 45  -207666763   (batch; likewise)
 ```
 
-The first nine are exactly the nine smallest absolute discriminants;
-beyond rank nine the batch list was not ordered by absolute
-discriminant.  Of the twenty smallest, two remain uncomputed for memory
-reasons (the PARI stack of a single character process overflows the
-listed ceiling): rank 10, D = -77778287 (12 GiB), and rank 17,
-D = -109909943 (8 GiB, still a pending batch field).  Cost is governed
-by the class groups of the L_x rather than by h_K: rank 16 with the
-largest class number of the list (h = 11000) took eleven minutes at
-0.7 GiB per character, while rank 10 with h = 6000 exceeded 12 GiB
-after nine hours.  Every computed field has an arithmetic certificate
-under `certificate/`.
+Ranks 1 to 16 are exactly the sixteen smallest absolute discriminants;
+beyond that the list is no longer an initial segment.  One field of the
+twenty smallest remains uncomputed: rank 17, D = -109909943, whose
+character processes reached 37.7 GiB and were still running after ten
+hours at a ceiling of 32 GiB.
+
+Cost is not governed by h_K.  Rank 16 carries the largest class number
+of the list (h = 11000) and took eleven minutes at 0.7 GiB per
+character; rank 10 with h = 6000 needed 16.75 GiB and nine hours.  Nor
+is it governed by the class groups of the L_x: the six characters of
+rank 10 peak at 17564236, 17563508, 17563328, 17563264, 17563272 and
+17563800 kbytes, a spread of 0.006 %, and the same uniformity holds for
+rank 17 -- yet the L_x differ from character to character.  A
+computation that does not
+depend on the character dominates both the time and the memory, and
+`MASSEY_LOG_LEVEL=2` identifies it: the class group of the auxiliary
+field K(zeta_5), which PARI builds inside `bnrclassfield` for the Kummer
+construction.  Splitting a field across six processes therefore buys
+wall time but no headroom.
+
+Every computed field has an arithmetic certificate under `certificate/`.
