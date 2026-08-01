@@ -19,7 +19,7 @@ secondary-norm family.  Seven fields have rational certificates
 ```
 
 `certificates.json` records, per field, every rational rank-one point
-and every non-rational closed point of the rank-drop scheme, with kernel
+and every non-rational closed point of the norm-degeneracy scheme, with kernel
 and image bases, the chosen quotient representatives and annihilating
 functional, the exact matrix \(B_x\), \(\det B_x\), and the Jacobian
 tangent-space dimension used as an independent cross-check

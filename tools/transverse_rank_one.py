@@ -15,8 +15,9 @@ criterion of the paper,
     DeltaD(x,v) = D_x + D_v - D_{x+v},
 
 is tested at all 31 rational points of P^2(F_5) and at every non-rational
-closed point of the rank-drop scheme Sigma_D = {rank D_x <= 1}.  Closed
-points are located exactly: per affine chart the radical of the ideal of
+closed point of the norm-degeneracy scheme Sigma_D = {rank D_x <= 1}.
+Closed points are located exactly: per affine chart the radical of the
+ideal of
 2x2 minors is computed with Singular (lex order), the univariate
 eliminant's roots over F_{5^d}, d <= 6, are found by exhaustive scanning,
 and every certificate is direct linear algebra over an explicitly

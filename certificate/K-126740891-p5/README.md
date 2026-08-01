@@ -11,7 +11,7 @@ Cl(K) = [195, 5, 5]
 
 For this field the exhaustive GL_3(F_5) search found no Anick witness
 (`MILD=UNKNOWN` in the result record); mildness is proved instead by
-the transverse rank-one criterion.  The rank-drop scheme has no
+the transverse rank-one criterion.  The norm-degeneracy scheme has no
 rational point and consists of a single reduced closed point of degree
 6, whose certificate over \(\mathbf F_5[t]/(t^6+t^5+t^4+1)\) is derived
 from the six matrices certified here (see
