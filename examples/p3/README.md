@@ -34,3 +34,14 @@ are `results/verification.json` and `results/final-results.json`.
 The negative tests in `verifier/test_rejections.py` check that
 malformed certificates, missing entries, and wrong expected tensors
 are rejected.
+
+The builder under `builder/` regenerates certificates from scratch:
+
+```sh
+python3 builder/build_certificates.py --field 3640387
+```
+
+The relative class-field data are found by PARI as a search oracle;
+every entry passes the exact audits before it is written.  A rebuild
+against an existing certificate must reproduce it byte for byte
+(status `UNCHANGED`); a difference aborts with a determinism failure.
