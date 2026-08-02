@@ -19,3 +19,4 @@ __pycache__/
 paper/
 references/
 
+examples/p3/verifier/verify_certificate

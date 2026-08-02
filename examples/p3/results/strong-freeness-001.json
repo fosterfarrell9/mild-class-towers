@@ -1,0 +1,514 @@
+{
+  "source_verification": "examples/p3/results/verification-001.json",
+  "randomness_used": false,
+  "seeds": [],
+  "theorem_fields_expected": 11,
+  "theorem_fields_strongly_free": 11,
+  "theorem_chain_complete": true,
+  "pilot_status": "UNDECIDED",
+  "records": [
+    {
+      "discriminant": -228404408,
+      "certificate": "ANICK_F3",
+      "status": "STRONGLY_FREE",
+      "witness": {
+        "found": true,
+        "tested": 91,
+        "matrix": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ]
+        ],
+        "leaders": [
+          "zzx",
+          "zyy",
+          "zyx"
+        ]
+      },
+      "seconds": 0.014267509999626782
+    },
+    {
+      "discriminant": -198040904,
+      "certificate": "ANICK_F3",
+      "status": "STRONGLY_FREE",
+      "witness": {
+        "found": true,
+        "tested": 1,
+        "matrix": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "leaders": [
+          "zzx",
+          "zyy",
+          "zyx"
+        ]
+      },
+      "seconds": 0.00038818299799459055
+    },
+    {
+      "discriminant": -166596251,
+      "certificate": "ANICK_F3",
+      "status": "STRONGLY_FREE",
+      "witness": {
+        "found": true,
+        "tested": 6,
+        "matrix": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "leaders": [
+          "zzx",
+          "zyy",
+          "zyx"
+        ]
+      },
+      "seconds": 0.0010978689970215783
+    },
+    {
+      "discriminant": -163004039,
+      "certificate": "ANICK_F3",
+      "status": "STRONGLY_FREE",
+      "witness": {
+        "found": true,
+        "tested": 163,
+        "matrix": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            2,
+            0
+          ]
+        ],
+        "leaders": [
+          "zzx",
+          "zyy",
+          "zyx"
+        ]
+      },
+      "seconds": 0.02576250100537436
+    },
+    {
+      "discriminant": -147994487,
+      "certificate": "ANICK_F3",
+      "status": "STRONGLY_FREE",
+      "witness": {
+        "found": true,
+        "tested": 869,
+        "matrix": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "leaders": [
+          "zzx",
+          "zyy",
+          "zyx"
+        ]
+      },
+      "seconds": 0.14123406499857083
+    },
+    {
+      "discriminant": -139272611,
+      "certificate": "ANICK_F9_WITH_F3_DESCENT",
+      "status": "STRONGLY_FREE",
+      "witness": {
+        "field_order": 9,
+        "modulus_coefficients_low_to_high": [
+          1,
+          0,
+          1
+        ],
+        "torus_order": 512,
+        "gl3_order": 339655680,
+        "coset_representatives": 663390,
+        "tested": 663390,
+        "exhaustive": true,
+        "found": true,
+        "witness_representatives": 1458,
+        "precomputation_seconds": 0.29495917400345206,
+        "elapsed_seconds": 2.3063973730022553,
+        "seconds_per_test_amortized": 3.476683961172546e-06,
+        "seed": null,
+        "matrix_packed": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            3
+          ],
+          [
+            1,
+            3,
+            0
+          ]
+        ],
+        "matrix_polynomial": [
+          [
+            "0",
+            "0",
+            "1"
+          ],
+          [
+            "0",
+            "1",
+            "t"
+          ],
+          [
+            "1",
+            "t",
+            "0"
+          ]
+        ],
+        "leaders": [
+          "zzx",
+          "zyy",
+          "zyx"
+        ]
+      },
+      "seconds": 2.309071566996863
+    },
+    {
+      "discriminant": -138230347,
+      "certificate": "ANICK_F3",
+      "status": "STRONGLY_FREE",
+      "witness": {
+        "found": true,
+        "tested": 77,
+        "matrix": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        "leaders": [
+          "zzx",
+          "zyy",
+          "zyx"
+        ]
+      },
+      "seconds": 0.012203448997752275
+    },
+    {
+      "discriminant": -134034647,
+      "certificate": "ANICK_F3",
+      "status": "STRONGLY_FREE",
+      "witness": {
+        "found": true,
+        "tested": 96,
+        "matrix": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            1,
+            2,
+            0
+          ]
+        ],
+        "leaders": [
+          "zzx",
+          "zyy",
+          "zyx"
+        ]
+      },
+      "seconds": 0.01496921900252346
+    },
+    {
+      "discriminant": -101375499,
+      "certificate": "ANICK_F3",
+      "status": "STRONGLY_FREE",
+      "witness": {
+        "found": true,
+        "tested": 96,
+        "matrix": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            1,
+            2,
+            0
+          ]
+        ],
+        "leaders": [
+          "zzx",
+          "zyy",
+          "zyx"
+        ]
+      },
+      "seconds": 0.014924115996109322
+    },
+    {
+      "discriminant": -53209523,
+      "certificate": "ANICK_F3",
+      "status": "STRONGLY_FREE",
+      "witness": {
+        "found": true,
+        "tested": 6,
+        "matrix": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "leaders": [
+          "zzx",
+          "zyy",
+          "zyx"
+        ]
+      },
+      "seconds": 0.001028054000926204
+    },
+    {
+      "discriminant": -4447704,
+      "certificate": "TERMINATING_GROEBNER_AUTOMATON",
+      "status": "STRONGLY_FREE",
+      "witness": {
+        "label": "D=-4447704",
+        "requested_max_degree": 10,
+        "processed_degree": 9,
+        "first_exact_deviation_degree": null,
+        "verdict": "STRONGLY_FREE",
+        "terminated_completion": true,
+        "positive_certificate_comparison_bound": 25,
+        "per_degree": [
+          {
+            "degree": 4,
+            "hilbert_dimension": 63,
+            "target_dimension": 63,
+            "matches_through_degree": true,
+            "first_deviation_degree": null,
+            "basis_elements": 6,
+            "largest_leading_word_degree": 4,
+            "automaton_states": 6,
+            "incremental_seconds": 0.0012466130065149628,
+            "cumulative_seconds": 0.0012466130065149628
+          },
+          {
+            "degree": 5,
+            "hilbert_dimension": 162,
+            "target_dimension": 162,
+            "matches_through_degree": true,
+            "first_deviation_degree": null,
+            "basis_elements": 9,
+            "largest_leading_word_degree": 5,
+            "automaton_states": 8,
+            "incremental_seconds": 0.006288307995419018,
+            "cumulative_seconds": 0.007534921001933981
+          },
+          {
+            "degree": 6,
+            "hilbert_dimension": 414,
+            "target_dimension": 414,
+            "matches_through_degree": true,
+            "first_deviation_degree": null,
+            "basis_elements": 9,
+            "largest_leading_word_degree": 5,
+            "automaton_states": 8,
+            "incremental_seconds": 0.024611972003185656,
+            "cumulative_seconds": 0.03214689300511964
+          },
+          {
+            "degree": 7,
+            "hilbert_dimension": 1053,
+            "target_dimension": 1053,
+            "matches_through_degree": true,
+            "first_deviation_degree": null,
+            "basis_elements": 9,
+            "largest_leading_word_degree": 5,
+            "automaton_states": 8,
+            "incremental_seconds": 0.05197297300037462,
+            "cumulative_seconds": 0.08411986600549426
+          },
+          {
+            "degree": 8,
+            "hilbert_dimension": 2673,
+            "target_dimension": 2673,
+            "matches_through_degree": true,
+            "first_deviation_degree": null,
+            "basis_elements": 9,
+            "largest_leading_word_degree": 5,
+            "automaton_states": 8,
+            "incremental_seconds": 0.0001927799967234023,
+            "cumulative_seconds": 0.08431264600221766
+          },
+          {
+            "degree": 9,
+            "hilbert_dimension": 6777,
+            "target_dimension": 6777,
+            "matches_through_degree": true,
+            "first_deviation_degree": null,
+            "basis_elements": 9,
+            "largest_leading_word_degree": 5,
+            "automaton_states": 8,
+            "incremental_seconds": 0.0001491470029577613,
+            "cumulative_seconds": 0.08446179300517542
+          }
+        ],
+        "final_series": [
+          1,
+          3,
+          9,
+          24,
+          63,
+          162,
+          414,
+          1053,
+          2673,
+          6777
+        ],
+        "target_series": [
+          1,
+          3,
+          9,
+          24,
+          63,
+          162,
+          414,
+          1053,
+          2673,
+          6777
+        ],
+        "final_automaton_states": 8,
+        "elapsed_seconds": 0.08456501800537808,
+        "basis_independence": "The generated two-sided ideal depends only on the relation span; generator changes induce graded free-algebra automorphisms. Any deviation is therefore an exact basis-independent negative."
+      },
+      "seconds": 0.08475156699569197
+    },
+    {
+      "discriminant": -3640387,
+      "certificate": "NO_POSITIVE_CERTIFICATE",
+      "status": "UNDECIDED",
+      "rational_anick": {
+        "found": false,
+        "tested": 11232,
+        "matrix": null,
+        "leaders": []
+      },
+      "f9_anick": {
+        "field_order": 9,
+        "modulus_coefficients_low_to_high": [
+          1,
+          0,
+          1
+        ],
+        "torus_order": 512,
+        "gl3_order": 339655680,
+        "coset_representatives": 663390,
+        "tested": 663390,
+        "exhaustive": true,
+        "found": false,
+        "witness_representatives": 0,
+        "precomputation_seconds": 0.3032711899941205,
+        "elapsed_seconds": 2.141509111999767,
+        "seconds_per_test_amortized": 3.2281299265888344e-06,
+        "seed": null,
+        "matrix_packed": null,
+        "matrix_polynomial": null,
+        "leaders": []
+      },
+      "interpretation": "Failure of the two Anick searches is not a negative strong-freeness certificate.",
+      "seconds": 3.8915297349958564
+    }
+  ]
+}

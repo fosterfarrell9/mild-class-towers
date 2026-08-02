@@ -1,0 +1,23 @@
+{
+  "all_passed": true,
+  "records": [
+    {
+      "case": "format_1",
+      "status": "PASS",
+      "expected_error": "unsupported certificate format",
+      "returncode": 1
+    },
+    {
+      "case": "missing_entry",
+      "status": "PASS",
+      "expected_error": "must contain exactly 18 entries",
+      "returncode": 1
+    },
+    {
+      "case": "wrong_expected_tensor",
+      "status": "PASS",
+      "expected_error": "reconstructed tensor disagrees with expected tensor",
+      "returncode": 1
+    }
+  ]
+}
