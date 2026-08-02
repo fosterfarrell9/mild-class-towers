@@ -11,6 +11,7 @@
 #include <pari/paripriv.h>
 
 #include <math.h>
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -84,6 +85,10 @@ initialize_double_eta(GEN D, struct gpq_data *data)
 
         q = u_forprime_next(&iterator);
         if (best > 0.0 && q >= max_q) break;
+        /* Schertz's double-eta construction at even fundamental
+         * discriminant is used here only at odd level.  In particular, do
+         * not feed the ramified prime 2 to double_eta_quotient. */
+        if (!mpodd(D) && q == 2) continue;
         if (kroiu(D, q) < 0) continue;
         Q = qfbred_i(primeform_u(D, q));
         if (is_pm1(gel(Q, 1))) continue;
@@ -206,7 +211,13 @@ form_from_base_ideal(GEN ideal, GEN D)
         pari_err_BUG("CM constructor: unexpected quadratic ideal HNF");
     a = gcoeff(ideal, 1, 1);
     residue = gcoeff(ideal, 1, 2);
-    b = subii(negi(shifti(residue, 1)), gen_1);
+    /* PARI's quadratic HNF is [a,residue;0,1].  In the integral basis
+     * omega=(epsilon+sqrt(D))/2, epsilon is 1 for odd D and 0 for even D,
+     * so residue+omega corresponds to the form coefficient
+     * b=-2*residue-epsilon.  The former hard-coded epsilon=1 corrupted all
+     * forms for even discriminants. */
+    b = negi(shifti(residue, 1));
+    if (mpodd(D)) b = subii(b, gen_1);
     numerator = subii(sqri(b), D);
     c = diviiexact(numerator, shifti(a, 2));
     return qfbred_i(mkqfb(a, b, c, D));
@@ -229,6 +240,26 @@ form_powers(GEN generator, long order, GEN identity)
         gel(powers, exponent + 1) =
             qfbcomp_i(gel(powers, exponent), generator);
     return powers;
+}
+
+static int
+advance_exponents(long *exponents, const long *orders, long rank)
+{
+    for (long i = rank - 1; i >= 0; --i)
+    {
+        if (++exponents[i] < orders[i]) return 1;
+        exponents[i] = 0;
+    }
+    return 0;
+}
+
+static GEN
+form_at_exponents(GEN powers, const long *exponents, long rank)
+{
+    GEN form = gmael(powers, 1, exponents[0] + 1);
+    for (long i = 2; i <= rank; ++i)
+        form = qfbcomp_i(form, gmael(powers, i, exponents[i - 1] + 1));
+    return form;
 }
 
 static void
@@ -343,16 +374,29 @@ main(int argc, char **argv)
     if (!gequal(gel(quadratic_group, 1), class_number)
         || !gequal(gel(quadratic_group, 2), cyc))
         pari_err_BUG("CM constructor: bnf/quadclassunit mismatch");
-    if (lg(cyc) != 4 || !equaliu(p, 5))
-        pari_err_BUG("CM constructor: expected class-group rank three");
-    long orders[3];
+    if (!equaliu(p, 5)) pari_err_BUG("CM constructor: expected p=5");
+    long class_group_rank = lg(cyc) - 1;
+    if (class_group_rank < 3)
+        pari_err_BUG("CM constructor: class-group rank below p-rank three");
+    long *orders = pari_malloc(sizeof(*orders) * (size_t)class_group_rank);
+    long p_coordinates[3];
+    long p_rank = 0;
     long h = 1;
-    for (long i = 0; i < 3; ++i)
+    for (long i = 0; i < class_group_rank; ++i)
     {
         orders[i] = itos(gel(cyc, i + 1));
-        if (orders[i] % 5) pari_err_BUG("CM constructor: order not divisible by 5");
+        if (orders[i] % 5 == 0)
+        {
+            if (p_rank >= 3)
+                pari_err_BUG("CM constructor: p-class rank above three");
+            p_coordinates[p_rank++] = i;
+        }
+        if (orders[i] <= 0 || h > LONG_MAX / orders[i])
+            pari_err_BUG("CM constructor: class number does not fit in long");
         h *= orders[i];
     }
+    if (p_rank != 3)
+        pari_err_BUG("CM constructor: expected p-class rank three");
     if (!equaliu(class_number, (ulong)h))
         pari_err_BUG("CM constructor: class number does not fit in long");
 
@@ -377,9 +421,9 @@ main(int argc, char **argv)
     eta.sqd = sqrtr_abs(itor(D, precision));
 
     GEN identity = principal_form(D);
-    GEN generators = cgetg(4, t_VEC);
-    GEN powers = cgetg(4, t_VEC);
-    for (long i = 1; i <= 3; ++i)
+    GEN generators = cgetg(class_group_rank + 1, t_VEC);
+    GEN powers = cgetg(class_group_rank + 1, t_VEC);
+    for (long i = 1; i <= class_group_rank; ++i)
     {
         gel(generators, i) = form_from_base_ideal(gel(base_generators, i), D);
         gel(powers, i) =
@@ -405,12 +449,18 @@ main(int argc, char **argv)
     FILE *metrics = stdout;
     fprintf(
         metrics,
-        "CONFIG D=%ld h=%ld cyc=[%ld,%ld,%ld] p=%ld q=%ld "
+        "CONFIG D=%ld h=%ld cyc=[",
+        itos(D), h);
+    for (long i = 0; i < class_group_rank; ++i)
+        fprintf(metrics, "%s%ld", i ? "," : "", orders[i]);
+    fprintf(
+        metrics,
+        "] p=%ld q=%ld "
         "gain=%.17g pi_sqrt_D=%.17g kernel=%ld "
         "root_height_nats=%.17g coefficient_height_nats=%.17g "
         "height_bits=%ld safety_bits=%ld precision_bits=%ld "
         "precision_decimal_digits=%ld certified=%d selected_character=%ld\n",
-        itos(D), h, orders[0], orders[1], orders[2], eta.p, eta.q,
+        eta.p, eta.q,
         gain, pi_sqrt_D, h / 5, root_height_nats,
         coefficient_height_nats, height_bits, safety_bits, precision_bits,
         (long)floor(precision_bits * log10(2.0)), certified,
@@ -420,35 +470,35 @@ main(int argc, char **argv)
 
     double evaluation_started = monotonic_seconds();
     long evaluated = 0;
-    for (long e1 = 0; e1 < orders[0]; ++e1)
-        for (long e2 = 0; e2 < orders[1]; ++e2)
-            for (long e3 = 0; e3 < orders[2]; ++e3)
-            {
-                GEN form = qfbcomp_i(
-                    qfbcomp_i(gmael(powers, 1, e1 + 1),
-                              gmael(powers, 2, e2 + 1)),
-                    gmael(powers, 3, e3 + 1));
-                GEN value = double_eta_value(form, &eta);
-                ++evaluated;
-                for (long character = 0; character < 6; ++character)
-                {
-                    if (!sums[character]) continue;
-                    long coset = (
-                        CHARACTER_COORDS[character][0] * (e1 % 5)
-                        + CHARACTER_COORDS[character][1] * (e2 % 5)
-                        + CHARACTER_COORDS[character][2] * (e3 % 5)) % 5;
-                    gel(sums[character], coset + 1) =
-                        gadd(gel(sums[character], coset + 1), value);
-                    ++counts[character][coset];
-                }
-                if (evaluated % 1000 == 0)
-                {
-                    fprintf(
-                        metrics, "PROGRESS evaluated=%ld/%ld seconds=%.6f\n",
-                        evaluated, h, monotonic_seconds() - evaluation_started);
-                    fflush(metrics);
-                }
-            }
+    long *exponents = pari_calloc(sizeof(*exponents) * (size_t)class_group_rank);
+    do
+    {
+        GEN form = form_at_exponents(
+            powers, exponents, class_group_rank);
+        GEN value = double_eta_value(form, &eta);
+        ++evaluated;
+        for (long character = 0; character < 6; ++character)
+        {
+            if (!sums[character]) continue;
+            long coset = 0;
+            for (long coordinate = 0; coordinate < 3; ++coordinate)
+                coset += CHARACTER_COORDS[character][coordinate]
+                    * (exponents[p_coordinates[coordinate]] % 5);
+            coset %= 5;
+            gel(sums[character], coset + 1) =
+                gadd(gel(sums[character], coset + 1), value);
+            ++counts[character][coset];
+        }
+        if (evaluated % 1000 == 0)
+        {
+            fprintf(
+                metrics, "PROGRESS evaluated=%ld/%ld seconds=%.6f\n",
+                evaluated, h, monotonic_seconds() - evaluation_started);
+            fflush(metrics);
+        }
+    }
+    while (advance_exponents(exponents, orders, class_group_rank));
+    pari_free(exponents);
     double evaluation_seconds = monotonic_seconds() - evaluation_started;
     fprintf(
         metrics, "EVALUATION_DONE classes=%ld seconds=%.9f\n",
@@ -539,6 +589,7 @@ main(int argc, char **argv)
         metrics, "CM_CONSTRUCTION_COMPLETE output=%s evaluation_seconds=%.9f "
         "total_seconds=%.9f\n",
         argv[2], evaluation_seconds, monotonic_seconds() - total_started);
+    pari_free(orders);
     pari_close();
     return 0;
 }
