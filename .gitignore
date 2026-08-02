@@ -22,3 +22,6 @@ references/
 examples/p3/verifier/verify_certificate
 examples/p3/certificates/*/build-data/
 paper-p3/
+cm-constructor/cm_construct
+cm-constructor/audit_cm_fields
+cm-constructor/cm_character_driver

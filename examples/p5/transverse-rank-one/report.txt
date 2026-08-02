@@ -1,4 +1,4 @@
-Transverse rank-one certificates for 21 computed fields
+Transverse rank-one certificates for 22 computed fields
 ==================================================================
 
 D_K          #rat rk1  #rat transverse  min k-degree  criterion applies
@@ -12,6 +12,7 @@ D_K          #rat rk1  #rat transverse  min k-degree  criterion applies
 -61040707           2               1            1  YES
 -65818135           3               2            1  YES
 -75949255           2               2            1  YES
+-109909943          1               1            1  YES
 -145367147          2               2            1  YES
 -207666763          1               1            1  YES
 -104545864          1               1            1  YES
@@ -112,6 +113,18 @@ D_K          #rat rk1  #rat transverse  min k-degree  criterion applies
     x = [[0, 1, 4, 2], [1, 0, 1, 1], [1, 0, 0, 0]]
     det B = [4, 2, 4, 1]  TRANSVERSE  (tangent dim 0)
     B = [[[3, 4, 2, 0], [3, 0, 0, 4]], [[1, 2, 2, 1], [0, 3, 4, 0]]]
+
+== -109909943
+  rational x=(1, 2, 3)  det B = 3  TRANSVERSE  (tangent dim 0)
+    B = [[[4], [2]], [[1], [0]]]
+  degree-2 point over F_5[t]/(t^2: [1, 1, 1])
+    x = [[4, 0], [1, 4], [1, 0]]
+    det B = [3, 1]  TRANSVERSE  (tangent dim 0)
+    B = [[[2, 2], [4, 4]], [[0, 2], [3, 3]]]
+  degree-3 point over F_5[t]/(t^3: [1, 0, 1, 1])
+    x = [[4, 2, 1], [0, 0, 4], [1, 0, 0]]
+    det B = [3, 1, 0]  TRANSVERSE  (tangent dim 0)
+    B = [[[3, 1, 4], [0, 1, 1]], [[4, 1, 3], [0, 3, 3]]]
 
 == -145367147
   rational x=(1, 1, 4)  det B = 4  TRANSVERSE  (tangent dim 0)

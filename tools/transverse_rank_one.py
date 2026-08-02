@@ -67,6 +67,7 @@ FIELDS = [
     (-61040707, ROOT / "examples/p5/batch-block0-01/D-61040707/result.gp"),
     (-65818135, ROOT / "examples/p5/batch-block0-01/D-65818135/result.gp"),
     (-75949255, ROOT / "examples/p5/batch-block0-01/D-75949255/result.gp"),
+    (-109909943, ROOT / "examples/p5/D-109909943/result.gp"),
     (-145367147, ROOT / "examples/p5/batch-block0-01/D-145367147/result.gp"),
     (-207666763, ROOT / "examples/p5/batch-block0-01/D-207666763/result.gp"),
     (-104545864, ROOT / "examples/p5/further/D-104545864/result.gp"),
