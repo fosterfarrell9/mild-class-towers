@@ -574,6 +574,34 @@ verify_shuffle_identities(GEN tensor, GEN p)
     }
 }
 
+
+/**
+ * The pair (a', J) must represent the labelled torsion element: the full
+ * class coordinates of J have to be those of e_j, the (d/p)-th multiple of
+ * the j-th p-divisible generator of the certified class group.  Without
+ * this check the recorded column would satisfy every identity below and
+ * still belong to the wrong input class.
+ */
+static void
+verify_input_class(GEN K, GEN J, GEN p, long column, const char *label)
+{
+    GEN exponents = bnfisprincipal0(K, J, 0);
+    GEN cyc = bnf_get_cyc(K);
+    long p_divisible = 0;
+    for (long i = 1; i < lg(cyc); ++i) {
+        GEN expected = gen_0;
+        if (dvdii(gel(cyc, i), p)) {
+            ++p_divisible;
+            if (p_divisible == column)
+                expected = diviiexact(gel(cyc, i), p);
+        }
+        if (!equalii(modii(gel(exponents, i), gel(cyc, i)),
+                     modii(expected, gel(cyc, i))))
+            fail(label, column,
+                 "[J] does not represent the labelled torsion element e_j");
+    }
+}
+
 /** Read the GP expression without asking GP to execute a source file. */
 static GEN
 read_certificate(const char *path)
@@ -742,6 +770,7 @@ main(int argc, char **argv)
             K, idealhnf0(K, a_prime, NULL), idealpow(K, J, p));
         if (!gequal(idealhnf0(K, base_relation, NULL), unit_K))
             fail(label, column, "(a') J^3 is not O_K");
+        verify_input_class(K, J, p, column, label);
 
         GEN operated = one_minus_sigma(Labs, sigma, I_prime);
         operated = one_minus_sigma(Labs, sigma, operated);
