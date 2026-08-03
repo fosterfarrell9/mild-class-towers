@@ -1,0 +1,53 @@
+D_K = -3640387
+  Bockstein rank 2; cone dimension 0
+  Sigma_D has no closed point of degree <= 3 with rank at most one
+
+D_K = -4447704
+  Bockstein rank 3; cone empty
+  Sigma_D has no closed point of degree <= 3 with rank at most one
+
+D_K = -53209523
+  Bockstein rank 1; cone dimension 1
+  point degree 1, rank 1, on cone: True, rk Theta = 2, reduced isolated: True; adapted pivot words XXZ/XYY/XYZ (row rank 3)
+
+D_K = -101375499
+  Bockstein rank 1; cone dimension 1
+  point degree 1, rank 1, on cone: False
+  point degree 1, rank 1, on cone: True, rk Theta = 2, reduced isolated: True; adapted pivot words XXZ/XYY/XYZ (row rank 3)
+
+D_K = -134034647
+  Bockstein rank 1; cone dimension 1
+  point degree 1, rank 1, on cone: True, rk Theta = 2, reduced isolated: True; adapted pivot words XXZ/XYY/XYZ (row rank 3)
+
+D_K = -138230347
+  Bockstein rank 1; cone dimension 1
+  point degree 1, rank 1, on cone: True, rk Theta = 2, reduced isolated: True; adapted pivot words XXZ/XYY/XYZ (row rank 3)
+
+D_K = -139272611
+  Bockstein rank 1; cone dimension 1
+  point degree 1, rank 1, on cone: True, rk Theta = 1, reduced isolated: False
+  point degree 2, rank 1, on cone: True, rk Theta = 2, reduced isolated: True; adapted pivot words XXZ/XYY/XYZ (row rank 3)
+
+D_K = -147994487
+  Bockstein rank 1; cone dimension 1
+  point degree 1, rank 1, on cone: True, rk Theta = 2, reduced isolated: True; adapted pivot words XXZ/XYY/XYZ (row rank 3)
+  point degree 1, rank 1, on cone: True, rk Theta = 1, reduced isolated: False
+
+D_K = -163004039
+  Bockstein rank 1; cone dimension 1
+  point degree 1, rank 1, on cone: True, rk Theta = 1, reduced isolated: False
+  point degree 1, rank 1, on cone: True, rk Theta = 2, reduced isolated: True; adapted pivot words XXZ/XYY/XYZ (row rank 3)
+
+D_K = -166596251
+  Bockstein rank 1; cone dimension 1
+  point degree 1, rank 1, on cone: True, rk Theta = 2, reduced isolated: True; adapted pivot words XXZ/XYY/XYZ (row rank 3)
+
+D_K = -198040904
+  Bockstein rank 1; cone dimension 1
+  point degree 1, rank 1, on cone: True, rk Theta = 2, reduced isolated: True; adapted pivot words XXZ/XYY/XYZ (row rank 3)
+
+D_K = -228404408
+  Bockstein rank 1; cone dimension 1
+  point degree 1, rank 1, on cone: True, rk Theta = 1, reduced isolated: False
+  point degree 1, rank 1, on cone: True, rk Theta = 2, reduced isolated: True; adapted pivot words XXZ/XYY/XYZ (row rank 3)
+
