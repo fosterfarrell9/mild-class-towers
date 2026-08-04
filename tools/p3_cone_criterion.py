@@ -314,6 +314,7 @@ def main():
     OUT.mkdir(exist_ok=True)
     fields = GF(1), GF(2), GF(3)
     lines = []
+    summary = []
     for tdir in sorted(SRC.iterdir(), key=lambda p: int(p.name.split("-")[1])):
         data = json.loads((tdir / "tensor.json").read_text())
         T = data["tensor_3_by_27"]
@@ -358,6 +359,14 @@ def main():
                         entry["heads"] = sorted(word_name(h) for h in heads)
                         entry["row_rank"] = rk
                 found.append(entry)
+        degrees = [e["degree"] for e in found
+                   if e.get("reduced_isolated")]
+        summary.append({
+            "discriminant": disc,
+            "bockstein_rank": brank,
+            "points": len(found),
+            "min_transverse_cone_degree": min(degrees) if degrees else None,
+        })
         if not found:
             lines.append("  Sigma_D has no closed point of degree <= 3 "
                          "with rank at most one")
@@ -374,7 +383,16 @@ def main():
         lines.append("")
     report = "\n".join(lines) + "\n"
     (OUT / "report.txt").write_text(report)
-    print(report)
+    (OUT / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
+    tally = {}
+    for entry in summary:
+        key = (entry["bockstein_rank"],
+               entry["min_transverse_cone_degree"] is not None)
+        tally[key] = tally.get(key, 0) + 1
+    print(f"fields: {len(summary)}")
+    for (rank, has), n in sorted(tally.items()):
+        print(f"  bockstein rank {rank}, criterion "
+              f"{'applies' if has else 'silent'}: {n}")
 
 
 if __name__ == "__main__":

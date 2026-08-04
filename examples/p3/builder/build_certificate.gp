@@ -10,7 +10,7 @@
 \\   P3_EXPECTED_TENSOR='[[...],[...],[...]]' \\
 \\     gp -qf experiments/p3-cert/build_certificate.gp
 
-default(parisizemax, 4*10^9);
+default(parisizemax, if(type(getenv("P3_PARISIZEMAX")) == "t_STR" && getenv("P3_PARISIZEMAX") != "", eval(getenv("P3_PARISIZEMAX")), 4*10^9));
 
 P = 3;
 SURVEY_FIELDS = [[-3321607,[63,3,3]],[-3640387,[18,3,3]],[-4019207,[207,3,3]],[-4447704,[24,6,6]],[-4472360,[30,6,6]],[-4818916,[48,3,3]],[-4897363,[33,3,3]],[-5048347,[18,6,3]],[-5067967,[69,3,3]],[-5153431,[216,3,3]],[-5288968,[72,3,3]],[-5769988,[12,6,6]]];
@@ -55,13 +55,27 @@ p_coordinates(Kb, idxK, ideal) =
   vector(#idxK, i, modp(c[idxK[i]]));
 }
 
+\\ Reduced binary powering: keeps every intermediate ideal reduced, so the
+\\ construction stays within the default stack on fields with large class
+\\ groups.  The result is a possibly different representative of the same
+\\ class; every subsequent audit works with the representative chosen here.
+idealpow_reduced(Lb, I, e) =
+{
+  my(ans = idealhnf(Lb, 1), base = idealred(Lb, idealhnf(Lb, I)));
+  while (e,
+    if (e % 2, ans = idealred(Lb, idealmul(Lb, ans, base)));
+    base = idealred(Lb, idealmul(Lb, base, base));
+    e \= 2);
+  ans;
+}
+
 ideal_from_coords(Lb, coordinates) =
 {
   my(ans = idealhnf(Lb, 1));
   for (i = 1, #coordinates,
     if (coordinates[i],
       ans = idealred(Lb,
-        idealmul(Lb, ans, idealpow(Lb, Lb.gen[i], coordinates[i])))));
+        idealmul(Lb, ans, idealpow_reduced(Lb, Lb.gen[i], coordinates[i])))));
   idealred(Lb, ans);
 }
 
