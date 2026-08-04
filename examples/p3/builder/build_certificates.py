@@ -67,8 +67,12 @@ FIELDS = (
 
 
 def expected_tensor(record: Field) -> list[list[int]]:
-    data = json.loads(record.tensor_path.read_text())
-    tensor = data.get("tensor_3_by_27")
+    if record.tensor_path.exists():
+        data = json.loads(record.tensor_path.read_text())
+        tensor = data.get("tensor_3_by_27")
+    else:
+        data = {}
+        tensor = None
     if tensor is None:
         # The legacy delta-sweep analysis used the tensor but omitted it from
         # analysis.json.  Recreate the exact object from that run's persisted
@@ -237,14 +241,45 @@ def unique_results_path(stem: str) -> Path:
     return results / f"{stem}-{number:03d}.json"
 
 
+def load_fields_tsv(path: Path) -> tuple[Field, ...]:
+    """Additional fields, one per row: signed discriminant and class group.
+
+    The expected tensor is read, exactly as for the built-in twelve, from
+    ``source-tensors/D-<absD>/`` --- either a ``tensor.json`` or the
+    ``matrices.tsv`` of the prior computation that serves as the
+    independent baseline for the source-tensor comparison.
+    """
+    known = {abs(record.discriminant) for record in FIELDS}
+    extra = []
+    with path.open() as stream:
+        for row in csv.DictReader(stream, delimiter="\t"):
+            discriminant = int(row["D_K"])
+            if abs(discriminant) in known:
+                continue
+            class_group = tuple(
+                int(part) for part in row["class_group"].split(","))
+            extra.append(field(discriminant, class_group, ""))
+    return tuple(extra)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--field", type=int, action="append",
-        help="absolute or signed discriminant; default: all twelve")
+        help="absolute or signed discriminant; default: all known fields")
+    parser.add_argument(
+        "--fields-tsv", type=Path,
+        help="TSV with columns D_K and class_group; rows extend the "
+             "built-in field table")
+    parser.add_argument(
+        "--keep-going", action="store_true",
+        help="continue with the remaining fields after an UNDECIDED build")
     args = parser.parse_args()
+    table = FIELDS
+    if args.fields_tsv:
+        table = table + load_fields_tsv(args.fields_tsv)
     wanted = {abs(value) for value in args.field} if args.field else None
-    selected = [record for record in FIELDS
+    selected = [record for record in table
                 if wanted is None or abs(record.discriminant) in wanted]
     if wanted is not None and len(selected) != len(wanted):
         known = {abs(record.discriminant) for record in selected}
@@ -255,7 +290,7 @@ def main() -> int:
         result = build_one(record)
         records.append(result)
         print(json.dumps(result, sort_keys=True), flush=True)
-        if result["status"] == "UNDECIDED":
+        if result["status"] == "UNDECIDED" and not args.keep_going:
             break
 
     output = unique_results_path("build-costs")
