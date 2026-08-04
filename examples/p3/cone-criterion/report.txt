@@ -1289,6 +1289,7 @@ D_K = -53090887
 D_K = -53209523
   Bockstein rank 1; cone dimension 1
   point degree 1, rank 1, on cone: True, rk Theta = 2, reduced isolated: True; adapted pivot words XXZ/XYY/XYZ (row rank 3)
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -53246276
   Bockstein rank 3; cone empty
@@ -1401,6 +1402,7 @@ D_K = -56910443
 D_K = -57236692
   Bockstein rank 1; cone dimension 1
   Sigma_D has no closed point of degree <= 3 with rank at most one
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -57280391
   Bockstein rank 3; cone empty
@@ -2146,6 +2148,7 @@ D_K = -79239963
 D_K = -79378899
   Bockstein rank 1; cone dimension 1
   Sigma_D has no closed point of degree <= 3 with rank at most one
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -79417343
   Bockstein rank 2; cone dimension 0
@@ -2186,6 +2189,7 @@ D_K = -80055743
 D_K = -80067263
   Bockstein rank 1; cone dimension 1
   point degree 1, rank 1, on cone: True, rk Theta = 1, reduced isolated: False
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -80179323
   Bockstein rank 3; cone empty
@@ -2957,6 +2961,7 @@ D_K = -101375499
   Bockstein rank 1; cone dimension 1
   point degree 1, rank 1, on cone: False
   point degree 1, rank 1, on cone: True, rk Theta = 2, reduced isolated: True; adapted pivot words XXZ/XYY/XYZ (row rank 3)
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -101380051
   Bockstein rank 3; cone empty
@@ -3009,6 +3014,7 @@ D_K = -102448843
 D_K = -102504715
   Bockstein rank 1; cone dimension 1
   Sigma_D has no closed point of degree <= 3 with rank at most one
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -102862399
   Bockstein rank 3; cone empty
@@ -3442,6 +3448,7 @@ D_K = -113540959
   Bockstein rank 1; cone dimension 1
   point degree 1, rank 1, on cone: True, rk Theta = 1, reduced isolated: False
   point degree 1, rank 1, on cone: False
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -113890891
   Bockstein rank 2; cone dimension 0
@@ -3659,6 +3666,7 @@ D_K = -119879459
 D_K = -119905627
   Bockstein rank 1; cone dimension 1
   point degree 1, rank 1, on cone: True, rk Theta = 1, reduced isolated: False
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -120085699
   Bockstein rank 3; cone empty
@@ -4240,6 +4248,7 @@ D_K = -133989187
 D_K = -134034647
   Bockstein rank 1; cone dimension 1
   point degree 1, rank 1, on cone: True, rk Theta = 2, reduced isolated: True; adapted pivot words XXZ/XYY/XYZ (row rank 3)
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -134104024
   Bockstein rank 3; cone empty
@@ -4408,6 +4417,7 @@ D_K = -137896439
 D_K = -138230347
   Bockstein rank 1; cone dimension 1
   point degree 1, rank 1, on cone: True, rk Theta = 2, reduced isolated: True; adapted pivot words XXZ/XYY/XYZ (row rank 3)
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -138387395
   Bockstein rank 2; cone dimension 0
@@ -4432,6 +4442,7 @@ D_K = -138650388
 D_K = -138690547
   Bockstein rank 1; cone dimension 1
   point degree 1, rank 1, on cone: True, rk Theta = 1, reduced isolated: False
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -138697355
   Bockstein rank 2; cone dimension 0
@@ -4453,6 +4464,7 @@ D_K = -139272611
   Bockstein rank 1; cone dimension 1
   point degree 1, rank 1, on cone: True, rk Theta = 1, reduced isolated: False
   point degree 2, rank 1, on cone: True, rk Theta = 2, reduced isolated: True; adapted pivot words XXZ/XYY/XYZ (row rank 3)
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -139353252
   Bockstein rank 3; cone empty
@@ -4566,6 +4578,7 @@ D_K = -141178143
 D_K = -141241443
   Bockstein rank 1; cone dimension 1
   Sigma_D has no closed point of degree <= 3 with rank at most one
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -141590039
   Bockstein rank 2; cone dimension 0
@@ -4740,6 +4753,7 @@ D_K = -145391423
 D_K = -145519608
   Bockstein rank 1; cone dimension 1
   Sigma_D has no closed point of degree <= 3 with rank at most one
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -145537655
   Bockstein rank 2; cone dimension 0
@@ -4842,6 +4856,7 @@ D_K = -147994487
   Bockstein rank 1; cone dimension 1
   point degree 1, rank 1, on cone: True, rk Theta = 2, reduced isolated: True; adapted pivot words XXZ/XYY/XYZ (row rank 3)
   point degree 1, rank 1, on cone: True, rk Theta = 1, reduced isolated: False
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -148015928
   Bockstein rank 2; cone dimension 0
@@ -4898,6 +4913,7 @@ D_K = -148847668
 D_K = -148917919
   Bockstein rank 1; cone dimension 1
   point degree 1, rank 1, on cone: True, rk Theta = 1, reduced isolated: False
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -148919560
   Bockstein rank 3; cone empty
@@ -5347,6 +5363,7 @@ D_K = -159264212
 D_K = -159518299
   Bockstein rank 1; cone dimension 1
   Sigma_D has no closed point of degree <= 3 with rank at most one
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -159552807
   Bockstein rank 3; cone empty
@@ -5383,6 +5400,7 @@ D_K = -159983764
 D_K = -160005791
   Bockstein rank 1; cone dimension 1
   point degree 1, rank 1, on cone: True, rk Theta = 1, reduced isolated: False
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -160203255
   Bockstein rank 3; cone empty
@@ -5468,6 +5486,7 @@ D_K = -163004039
   Bockstein rank 1; cone dimension 1
   point degree 1, rank 1, on cone: True, rk Theta = 1, reduced isolated: False
   point degree 1, rank 1, on cone: True, rk Theta = 2, reduced isolated: True; adapted pivot words XXZ/XYY/XYZ (row rank 3)
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -163076963
   Bockstein rank 3; cone empty
@@ -5496,6 +5515,7 @@ D_K = -163904980
 D_K = -163967847
   Bockstein rank 1; cone dimension 1
   Sigma_D has no closed point of degree <= 3 with rank at most one
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -164016836
   Bockstein rank 2; cone dimension 0
@@ -5576,6 +5596,7 @@ D_K = -165279163
 D_K = -165352883
   Bockstein rank 1; cone dimension 1
   Sigma_D has no closed point of degree <= 3 with rank at most one
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -165450503
   Bockstein rank 3; cone empty
@@ -5640,6 +5661,7 @@ D_K = -166449560
 D_K = -166596251
   Bockstein rank 1; cone dimension 1
   point degree 1, rank 1, on cone: True, rk Theta = 2, reduced isolated: True; adapted pivot words XXZ/XYY/XYZ (row rank 3)
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -166662296
   Bockstein rank 3; cone empty
@@ -6419,6 +6441,7 @@ D_K = -185794639
 D_K = -185908231
   Bockstein rank 1; cone dimension 1
   Sigma_D has no closed point of degree <= 3 with rank at most one
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -185911063
   Bockstein rank 3; cone empty
@@ -6541,6 +6564,7 @@ D_K = -188409163
 D_K = -188424655
   Bockstein rank 1; cone dimension 1
   Sigma_D has no closed point of degree <= 3 with rank at most one
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -188521447
   Bockstein rank 3; cone empty
@@ -6670,6 +6694,7 @@ D_K = -192644159
 D_K = -192757064
   Bockstein rank 1; cone dimension 1
   Sigma_D has no closed point of degree <= 3 with rank at most one
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -192836527
   Bockstein rank 2; cone dimension 0
@@ -6850,6 +6875,7 @@ D_K = -197004839
 D_K = -197305251
   Bockstein rank 1; cone dimension 1
   Sigma_D has no closed point of degree <= 3 with rank at most one
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -197336239
   Bockstein rank 2; cone dimension 0
@@ -6894,6 +6920,7 @@ D_K = -197895156
 D_K = -198040904
   Bockstein rank 1; cone dimension 1
   point degree 1, rank 1, on cone: True, rk Theta = 2, reduced isolated: True; adapted pivot words XXZ/XYY/XYZ (row rank 3)
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -198110971
   Bockstein rank 3; cone empty
@@ -7354,6 +7381,7 @@ D_K = -209480295
 D_K = -209552171
   Bockstein rank 1; cone dimension 1
   point degree 1, rank 1, on cone: True, rk Theta = 1, reduced isolated: False
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -209559507
   Bockstein rank 3; cone empty
@@ -8176,6 +8204,7 @@ D_K = -228404408
   Bockstein rank 1; cone dimension 1
   point degree 1, rank 1, on cone: True, rk Theta = 1, reduced isolated: False
   point degree 1, rank 1, on cone: True, rk Theta = 2, reduced isolated: True; adapted pivot words XXZ/XYY/XYZ (row rank 3)
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -228970283
   Bockstein rank 3; cone empty
@@ -8184,6 +8213,7 @@ D_K = -228970283
 D_K = -229194311
   Bockstein rank 1; cone dimension 1
   Sigma_D has no closed point of degree <= 3 with rank at most one
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -229241843
   Bockstein rank 3; cone empty
@@ -8334,6 +8364,7 @@ D_K = -231743560
 D_K = -231751283
   Bockstein rank 1; cone dimension 1
   Sigma_D has no closed point of degree <= 3 with rank at most one
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -231827883
   Bockstein rank 3; cone empty
@@ -8507,6 +8538,7 @@ D_K = -234884024
 D_K = -234912628
   Bockstein rank 1; cone dimension 1
   Sigma_D has no closed point of degree <= 3 with rank at most one
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -235445387
   Bockstein rank 3; cone empty
@@ -8687,6 +8719,7 @@ D_K = -239745711
 D_K = -239952212
   Bockstein rank 1; cone dimension 1
   Sigma_D has no closed point of degree <= 3 with rank at most one
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -239955684
   Bockstein rank 3; cone empty
@@ -9669,6 +9702,7 @@ D_K = -259176667
 D_K = -259290571
   Bockstein rank 1; cone dimension 1
   point degree 1, rank 1, on cone: False
+  cone line not contained in Sigma_D; its Sigma_D points have degree <= 4; degree-4 points found: 0 (pass complete)
 
 D_K = -259312388
   Bockstein rank 3; cone empty

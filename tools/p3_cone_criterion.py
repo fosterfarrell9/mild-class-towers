@@ -9,8 +9,16 @@ point, the transversality map Theta_x.  At each reduced isolated cone
 point it constructs the adapted basis of the criterion and checks that
 the transformed relation rows have the pivot words XXZ, XYY, XYZ.
 
-Everything is exact linear algebra over F_3, F_9, F_27; the script is
-deterministic and writes examples/p3/cone-criterion/report.txt.
+On a cone line (Bockstein rank one) the enumeration of candidates is
+complete: closed points of Sigma_D on the line have residue degree at
+most four, because the nine minors restrict to binary quartic forms and
+the script verifies that the line does not lie inside Sigma_D (rank at
+most one at all ten F_9-points of the line would force all nine
+restricted quartics to vanish identically); the degree-four points of
+the line are then examined exactly like the lower-degree ones.
+
+Everything is exact linear algebra over F_3, F_9, F_27, F_81; the
+script is deterministic and writes examples/p3/cone-criterion/report.txt.
 """
 
 from __future__ import annotations
@@ -24,9 +32,9 @@ OUT = ROOT / "examples" / "p3" / "cone-criterion"
 
 # ----------------------------------------------------------------------
 # Finite fields F_{3^d} as coefficient tuples modulo a fixed minimal
-# polynomial; the moduli are x^2+1 over F_3 and x^3-x+1 over F_3.
+# polynomial; the moduli are x^2+1, x^3-x+1, and x^4+x+2 over F_3.
 
-MODULI = {1: (0,), 2: (1, 0), 3: (1, 2, 0)}  # low-degree coefficients
+MODULI = {1: (0,), 2: (1, 0), 3: (1, 2, 0), 4: (2, 1, 0, 0)}
 
 
 class GF:
@@ -186,6 +194,32 @@ def frob_point(k, v):
     return _normalize(k, tuple(k.frob(c) for c in v))
 
 
+def line_points(k, v1, v2):
+    """Points of the projective line spanned by the F_3-vectors v1, v2."""
+    lifted = [tuple(k.from_int(c) for c in v) for v in (v1, v2)]
+    params = [(s, k.one()) for s in k.elements()] + [(k.one(), k.zero())]
+    pts, seen = [], set()
+    for a, b in params:
+        x = tuple(k.add(k.mul(a, u), k.mul(b, w))
+                  for u, w in zip(lifted[0], lifted[1]))
+        if all(c == k.zero() for c in x):
+            continue
+        n = _normalize(k, x)
+        if n not in seen:
+            seen.add(n)
+            pts.append(n)
+    return pts
+
+
+def check_gf4():
+    """The degree-4 modulus must define a field (irreducibility check)."""
+    k = GF(4)
+    for a in k.elements():
+        if a == k.zero():
+            continue
+        assert k.mul(a, k.inv(a)) == k.one()
+
+
 def theta_rank(k, T, x, Dx):
     """Rank of Theta_x at a rank-one cone point (adapted-datum route)."""
     cols = [tuple(Dx[j][ell] for j in range(3)) for ell in range(3)]
@@ -312,6 +346,7 @@ def _mat_inverse(k, M):
 
 def main():
     OUT.mkdir(exist_ok=True)
+    check_gf4()
     fields = GF(1), GF(2), GF(3)
     lines = []
     summary = []
@@ -359,6 +394,61 @@ def main():
                         entry["heads"] = sorted(word_name(h) for h in heads)
                         entry["row_rank"] = rk
                 found.append(entry)
+        line_in_sigma = None
+        line_deg4 = None
+        if brank == 1:
+            Brows = [[k1.from_int(B[r][c]) for c in range(3)]
+                     for r in range(3)]
+            ker = kernel_basis(k1, Brows)
+            assert len(ker) == 2
+            v1 = tuple(c[0] for c in ker[0])
+            v2 = tuple(c[0] for c in ker[1])
+            k2 = fields[1]
+            line_in_sigma = True
+            for pt in line_points(k2, v1, v2):
+                Dx = D_matrix(k2, T, pt)
+                r, _ = mat_rank(k2, [[Dx[j][l] for l in range(3)]
+                                     for j in range(3)])
+                if r > 1:
+                    line_in_sigma = False
+                    break
+            line_deg4 = 0
+            if not line_in_sigma:
+                k4 = GF(4)
+                seen4 = set()
+                for pt in line_points(k4, v1, v2):
+                    orbit = []
+                    q = pt
+                    while q not in orbit:
+                        orbit.append(q)
+                        q = frob_point(k4, q)
+                    if len(orbit) != 4:
+                        continue
+                    key = tuple(sorted(orbit))
+                    if key in seen4:
+                        continue
+                    seen4.add(key)
+                    Dx = D_matrix(k4, T, pt)
+                    r, _ = mat_rank(k4, [[Dx[j][l] for l in range(3)]
+                                         for j in range(3)])
+                    if r > 1:
+                        continue
+                    line_deg4 += 1
+                    assert all(v == k4.zero()
+                               for v in cone_value(k4, B, pt))
+                    entry = {"degree": 4, "point": pt, "rank": r,
+                             "cone": True}
+                    if r == 1:
+                        tr = theta_rank(k4, T, pt, Dx)
+                        entry["theta_rank"] = tr
+                        entry["reduced_isolated"] = tr == 2
+                        if tr == 2:
+                            basis = adapted_basis(k4, pt, Dx)
+                            heads, rk = anick_heads(k4, T, basis)
+                            entry["heads"] = sorted(word_name(h)
+                                                    for h in heads)
+                            entry["row_rank"] = rk
+                    found.append(entry)
         degrees = [e["degree"] for e in found
                    if e.get("reduced_isolated")]
         summary.append({
@@ -366,6 +456,8 @@ def main():
             "bockstein_rank": brank,
             "points": len(found),
             "min_transverse_cone_degree": min(degrees) if degrees else None,
+            "cone_line_in_sigma": line_in_sigma,
+            "cone_line_degree4_points": line_deg4,
         })
         if not found:
             lines.append("  Sigma_D has no closed point of degree <= 3 "
@@ -380,6 +472,14 @@ def main():
                 desc += (f"; adapted pivot words {'/'.join(e['heads'])} "
                          f"(row rank {e['row_rank']})")
             lines.append(desc)
+        if line_in_sigma is not None:
+            if line_in_sigma:
+                lines.append("  cone line contained in Sigma_D: no point "
+                             "of the line is isolated")
+            else:
+                lines.append("  cone line not contained in Sigma_D; its "
+                             "Sigma_D points have degree <= 4; degree-4 "
+                             f"points found: {line_deg4} (pass complete)")
         lines.append("")
     report = "\n".join(lines) + "\n"
     (OUT / "report.txt").write_text(report)
