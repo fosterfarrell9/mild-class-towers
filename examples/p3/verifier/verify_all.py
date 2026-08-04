@@ -23,20 +23,9 @@ CERTIFICATES = HERE.parent / "certificates"
 RESULTS = HERE.parent / "results"
 TIMEOUT_SECONDS = 300
 
-SOURCE_TENSORS = {
-    -3640387: HERE.parent / "source-tensors/D-3640387/tensor.json",
-    -4447704: HERE.parent / "source-tensors/D-4447704/tensor.json",
-    -53209523: HERE.parent / "source-tensors/D-53209523/tensor.json",
-    -101375499: HERE.parent / "source-tensors/D-101375499/tensor.json",
-    -134034647: HERE.parent / "source-tensors/D-134034647/tensor.json",
-    -138230347: HERE.parent / "source-tensors/D-138230347/tensor.json",
-    -139272611: HERE.parent / "source-tensors/D-139272611/tensor.json",
-    -147994487: HERE.parent / "source-tensors/D-147994487/tensor.json",
-    -163004039: HERE.parent / "source-tensors/D-163004039/tensor.json",
-    -166596251: HERE.parent / "source-tensors/D-166596251/tensor.json",
-    -198040904: HERE.parent / "source-tensors/D-198040904/tensor.json",
-    -228404408: HERE.parent / "source-tensors/D-228404408/tensor.json",
-}
+def source_tensor_path(discriminant: int) -> Path:
+    """The independent baseline tensor for a field, by discriminant."""
+    return HERE.parent / f"source-tensors/D-{abs(discriminant)}/tensor.json"
 
 
 def next_log(directory: Path) -> tuple[int, Path]:
@@ -75,7 +64,7 @@ def verify(directory: Path) -> dict[str, object]:
     log_path.write_text(output)
     tensor_match = re.search(r"^TENSOR_3_BY_27=(.+)$", output, re.MULTILINE)
     tensor = json.loads(tensor_match.group(1)) if tensor_match else None
-    source_path = SOURCE_TENSORS[discriminant]
+    source_path = source_tensor_path(discriminant)
     source_tensor = json.loads(source_path.read_text())["tensor_3_by_27"]
     external_match = tensor is not None and tensor == source_tensor
     entries = output.count("AC1=PASS")
