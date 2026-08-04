@@ -1,0 +1,16 @@
+{
+  "randomness_used": false,
+  "seeds": [],
+  "fields_requested": 1,
+  "fields_completed": 1,
+  "records": [
+    {
+      "discriminant": -79446183,
+      "status": "UNDECIDED",
+      "reason": "builder exit status 0; completion_marker=False; gp_error=True",
+      "seconds": 36.16990770099983,
+      "run": 1,
+      "log": "examples/p3/certificates/K-79446183-p3/build-001.log"
+    }
+  ]
+}

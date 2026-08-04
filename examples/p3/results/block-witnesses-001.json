@@ -1,0 +1,421 @@
+{
+  "verification": "verification-004.json",
+  "randomness_used": false,
+  "seeds": [],
+  "strongly_free": 4,
+  "of": 5,
+  "records": [
+    {
+      "discriminant": -211248887,
+      "certificate": "ANICK_F3",
+      "status": "STRONGLY_FREE",
+      "witness": {
+        "found": true,
+        "tested": 1,
+        "matrix": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "leaders": [
+          "zzx",
+          "zyx",
+          "yyx"
+        ]
+      },
+      "seconds": 0.00023499300004914403
+    },
+    {
+      "discriminant": -263780072,
+      "certificate": "ANICK_F3",
+      "status": "STRONGLY_FREE",
+      "witness": {
+        "found": true,
+        "tested": 1,
+        "matrix": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "leaders": [
+          "zyy",
+          "zyx",
+          "zxx"
+        ]
+      },
+      "seconds": 0.00020065900025656447
+    },
+    {
+      "discriminant": -4447704,
+      "certificate": "TERMINATING_GROEBNER",
+      "status": "STRONGLY_FREE",
+      "witness": {
+        "label": "D=-4447704",
+        "requested_max_degree": 10,
+        "processed_degree": 9,
+        "first_exact_deviation_degree": null,
+        "verdict": "STRONGLY_FREE",
+        "terminated_completion": true,
+        "positive_certificate_comparison_bound": 25,
+        "per_degree": [
+          {
+            "degree": 4,
+            "hilbert_dimension": 63,
+            "target_dimension": 63,
+            "matches_through_degree": true,
+            "first_deviation_degree": null,
+            "basis_elements": 6,
+            "largest_leading_word_degree": 4,
+            "automaton_states": 6,
+            "incremental_seconds": 0.001351684999463032,
+            "cumulative_seconds": 0.001351684999463032
+          },
+          {
+            "degree": 5,
+            "hilbert_dimension": 162,
+            "target_dimension": 162,
+            "matches_through_degree": true,
+            "first_deviation_degree": null,
+            "basis_elements": 9,
+            "largest_leading_word_degree": 5,
+            "automaton_states": 8,
+            "incremental_seconds": 0.006030552000083844,
+            "cumulative_seconds": 0.007382236999546876
+          },
+          {
+            "degree": 6,
+            "hilbert_dimension": 414,
+            "target_dimension": 414,
+            "matches_through_degree": true,
+            "first_deviation_degree": null,
+            "basis_elements": 9,
+            "largest_leading_word_degree": 5,
+            "automaton_states": 8,
+            "incremental_seconds": 0.023729394999463693,
+            "cumulative_seconds": 0.03111163199901057
+          },
+          {
+            "degree": 7,
+            "hilbert_dimension": 1053,
+            "target_dimension": 1053,
+            "matches_through_degree": true,
+            "first_deviation_degree": null,
+            "basis_elements": 9,
+            "largest_leading_word_degree": 5,
+            "automaton_states": 8,
+            "incremental_seconds": 0.04706530900148209,
+            "cumulative_seconds": 0.07817694100049266
+          },
+          {
+            "degree": 8,
+            "hilbert_dimension": 2673,
+            "target_dimension": 2673,
+            "matches_through_degree": true,
+            "first_deviation_degree": null,
+            "basis_elements": 9,
+            "largest_leading_word_degree": 5,
+            "automaton_states": 8,
+            "incremental_seconds": 0.00016094300008262508,
+            "cumulative_seconds": 0.07833788400057529
+          },
+          {
+            "degree": 9,
+            "hilbert_dimension": 6777,
+            "target_dimension": 6777,
+            "matches_through_degree": true,
+            "first_deviation_degree": null,
+            "basis_elements": 9,
+            "largest_leading_word_degree": 5,
+            "automaton_states": 8,
+            "incremental_seconds": 0.00011348699990776367,
+            "cumulative_seconds": 0.07845137100048305
+          }
+        ],
+        "final_series": [
+          1,
+          3,
+          9,
+          24,
+          63,
+          162,
+          414,
+          1053,
+          2673,
+          6777
+        ],
+        "target_series": [
+          1,
+          3,
+          9,
+          24,
+          63,
+          162,
+          414,
+          1053,
+          2673,
+          6777
+        ],
+        "final_automaton_states": 8,
+        "elapsed_seconds": 0.07852299200021662,
+        "basis_independence": "The generated two-sided ideal depends only on the relation span; generator changes induce graded free-algebra automorphisms. Any deviation is therefore an exact basis-independent negative."
+      },
+      "seconds": 0.07872170700102288
+    },
+    {
+      "discriminant": -192928619,
+      "certificate": "TERMINATING_GROEBNER",
+      "status": "UNDECIDED",
+      "witness": {
+        "label": "D=-192928619",
+        "requested_max_degree": 10,
+        "processed_degree": 9,
+        "first_exact_deviation_degree": null,
+        "verdict": "STRONGLY_FREE",
+        "terminated_completion": true,
+        "positive_certificate_comparison_bound": 29,
+        "per_degree": [
+          {
+            "degree": 4,
+            "hilbert_dimension": 63,
+            "target_dimension": 63,
+            "matches_through_degree": true,
+            "first_deviation_degree": null,
+            "basis_elements": 6,
+            "largest_leading_word_degree": 4,
+            "automaton_states": 6,
+            "incremental_seconds": 0.0006528249996335944,
+            "cumulative_seconds": 0.0006528249996335944
+          },
+          {
+            "degree": 5,
+            "hilbert_dimension": 162,
+            "target_dimension": 162,
+            "matches_through_degree": true,
+            "first_deviation_degree": null,
+            "basis_elements": 9,
+            "largest_leading_word_degree": 5,
+            "automaton_states": 10,
+            "incremental_seconds": 0.004758749000757234,
+            "cumulative_seconds": 0.005411574000390829
+          },
+          {
+            "degree": 6,
+            "hilbert_dimension": 414,
+            "target_dimension": 414,
+            "matches_through_degree": true,
+            "first_deviation_degree": null,
+            "basis_elements": 9,
+            "largest_leading_word_degree": 5,
+            "automaton_states": 10,
+            "incremental_seconds": 0.016748321999330074,
+            "cumulative_seconds": 0.022159895999720902
+          },
+          {
+            "degree": 7,
+            "hilbert_dimension": 1053,
+            "target_dimension": 1053,
+            "matches_through_degree": true,
+            "first_deviation_degree": null,
+            "basis_elements": 9,
+            "largest_leading_word_degree": 5,
+            "automaton_states": 10,
+            "incremental_seconds": 0.03186304100017878,
+            "cumulative_seconds": 0.054022936999899684
+          },
+          {
+            "degree": 8,
+            "hilbert_dimension": 2673,
+            "target_dimension": 2673,
+            "matches_through_degree": true,
+            "first_deviation_degree": null,
+            "basis_elements": 9,
+            "largest_leading_word_degree": 5,
+            "automaton_states": 10,
+            "incremental_seconds": 0.00016504599989275448,
+            "cumulative_seconds": 0.05418798299979244
+          },
+          {
+            "degree": 9,
+            "hilbert_dimension": 6777,
+            "target_dimension": 6777,
+            "matches_through_degree": true,
+            "first_deviation_degree": null,
+            "basis_elements": 9,
+            "largest_leading_word_degree": 5,
+            "automaton_states": 10,
+            "incremental_seconds": 0.00014050500067241956,
+            "cumulative_seconds": 0.05432848800046486
+          }
+        ],
+        "final_series": [
+          1,
+          3,
+          9,
+          24,
+          63,
+          162,
+          414,
+          1053,
+          2673,
+          6777
+        ],
+        "target_series": [
+          1,
+          3,
+          9,
+          24,
+          63,
+          162,
+          414,
+          1053,
+          2673,
+          6777
+        ],
+        "final_automaton_states": 10,
+        "elapsed_seconds": 0.054410943999755546,
+        "basis_independence": "The generated two-sided ideal depends only on the relation span; generator changes induce graded free-algebra automorphisms. Any deviation is therefore an exact basis-independent negative."
+      },
+      "seconds": 0.054607129999567405
+    },
+    {
+      "discriminant": -263310215,
+      "certificate": "TERMINATING_GROEBNER",
+      "status": "STRONGLY_FREE",
+      "witness": {
+        "label": "D=-263310215",
+        "requested_max_degree": 10,
+        "processed_degree": 9,
+        "first_exact_deviation_degree": null,
+        "verdict": "STRONGLY_FREE",
+        "terminated_completion": true,
+        "positive_certificate_comparison_bound": 25,
+        "per_degree": [
+          {
+            "degree": 4,
+            "hilbert_dimension": 63,
+            "target_dimension": 63,
+            "matches_through_degree": true,
+            "first_deviation_degree": null,
+            "basis_elements": 6,
+            "largest_leading_word_degree": 4,
+            "automaton_states": 6,
+            "incremental_seconds": 0.0006070349991205148,
+            "cumulative_seconds": 0.0006070349991205148
+          },
+          {
+            "degree": 5,
+            "hilbert_dimension": 162,
+            "target_dimension": 162,
+            "matches_through_degree": true,
+            "first_deviation_degree": null,
+            "basis_elements": 9,
+            "largest_leading_word_degree": 5,
+            "automaton_states": 8,
+            "incremental_seconds": 0.003955465001126868,
+            "cumulative_seconds": 0.0045625000002473826
+          },
+          {
+            "degree": 6,
+            "hilbert_dimension": 414,
+            "target_dimension": 414,
+            "matches_through_degree": true,
+            "first_deviation_degree": null,
+            "basis_elements": 9,
+            "largest_leading_word_degree": 5,
+            "automaton_states": 8,
+            "incremental_seconds": 0.011060373999498552,
+            "cumulative_seconds": 0.015622873999745934
+          },
+          {
+            "degree": 7,
+            "hilbert_dimension": 1053,
+            "target_dimension": 1053,
+            "matches_through_degree": true,
+            "first_deviation_degree": null,
+            "basis_elements": 9,
+            "largest_leading_word_degree": 5,
+            "automaton_states": 8,
+            "incremental_seconds": 0.024939008999353973,
+            "cumulative_seconds": 0.04056188299909991
+          },
+          {
+            "degree": 8,
+            "hilbert_dimension": 2673,
+            "target_dimension": 2673,
+            "matches_through_degree": true,
+            "first_deviation_degree": null,
+            "basis_elements": 9,
+            "largest_leading_word_degree": 5,
+            "automaton_states": 8,
+            "incremental_seconds": 0.00015667700063204393,
+            "cumulative_seconds": 0.04071855999973195
+          },
+          {
+            "degree": 9,
+            "hilbert_dimension": 6777,
+            "target_dimension": 6777,
+            "matches_through_degree": true,
+            "first_deviation_degree": null,
+            "basis_elements": 9,
+            "largest_leading_word_degree": 5,
+            "automaton_states": 8,
+            "incremental_seconds": 0.00010901399946305901,
+            "cumulative_seconds": 0.04082757399919501
+          }
+        ],
+        "final_series": [
+          1,
+          3,
+          9,
+          24,
+          63,
+          162,
+          414,
+          1053,
+          2673,
+          6777
+        ],
+        "target_series": [
+          1,
+          3,
+          9,
+          24,
+          63,
+          162,
+          414,
+          1053,
+          2673,
+          6777
+        ],
+        "final_automaton_states": 8,
+        "elapsed_seconds": 0.040893497000070056,
+        "basis_independence": "The generated two-sided ideal depends only on the relation span; generator changes induce graded free-algebra automorphisms. Any deviation is therefore an exact basis-independent negative."
+      },
+      "seconds": 0.041068012000323506
+    }
+  ]
+}

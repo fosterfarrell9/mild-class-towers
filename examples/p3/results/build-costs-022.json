@@ -1,0 +1,17 @@
+{
+  "randomness_used": false,
+  "seeds": [],
+  "fields_requested": 1,
+  "fields_completed": 1,
+  "records": [
+    {
+      "discriminant": -239677039,
+      "status": "CREATED",
+      "seconds": 6.702256481000404,
+      "run": 1,
+      "log": "examples/p3/certificates/K-239677039-p3/build-001.log",
+      "certificate": "examples/p3/certificates/K-239677039-p3/certificate.gp",
+      "source_tensor": "examples/p3/source-tensors/D-239677039/tensor.json"
+    }
+  ]
+}
