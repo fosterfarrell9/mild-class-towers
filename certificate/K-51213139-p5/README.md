@@ -39,11 +39,16 @@ Expected: `BASE_BNF_CERTIFIED=PASS`, all 18 entry lines with
 `AC1=PASS AC2=PASS`, the six matrices, `RESULT_RECORD_MATCH=PASS`, and
 `CERTIFICATE VERIFIED`.
 
-`certificate-guide.pdf` (source `certificate-guide.tex`) restates the
-certificate entry by entry in the notation of the paper; it is
-generated deterministically from `certificate.gp` by
+A human-readable guide restating the certificate entry by entry in
+the notation of the paper is generated deterministically from
+`certificate.gp`; from the repository root
 
 ```sh
 CERT_DIR=certificate/K-51213139-p5 gp -qf tools/certificate_guide.gp
 cd certificate/K-51213139-p5 && pdflatex certificate-guide.tex
 ```
+
+The repository ships the built guide only for the principal example
+`certificate/K-2800905-p5`; for every other field it is these two
+commands away.  The guide is exposition only; the verification chain
+is implemented solely by `verify_certificate.c`.

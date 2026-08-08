@@ -60,10 +60,16 @@ certificate: nine seconds on the machine that took nine hours per
 character, because verification repeats no search and computes no class
 or unit group of the relative fields.
 
-`certificate-guide.pdf` (source `certificate-guide.tex`) restates the
-certificate entry by entry in the notation of the paper; regenerate by
+A human-readable guide restating the certificate entry by entry in
+the notation of the paper is generated deterministically from
+`certificate.gp`; from the repository root
 
 ```sh
 CERT_DIR=certificate/K-77778287-p5 gp -qf tools/certificate_guide.gp
 cd certificate/K-77778287-p5 && pdflatex certificate-guide.tex
 ```
+
+The repository ships the built guide only for the principal example
+`certificate/K-2800905-p5`; for every other field it is these two
+commands away.  The guide is exposition only; the verification chain
+is implemented solely by `verify_certificate.c`.

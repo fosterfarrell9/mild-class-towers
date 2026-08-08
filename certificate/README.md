@@ -2,10 +2,23 @@
 
 One subdirectory per field, named `K-<|D'|>-p5` after the radicand of the
 defining polynomial.  Each subdirectory contains the data only: the
-textual certificate `certificate.gp`, a README with the field data and
-the exact generation command, and a human-readable guide
-`certificate-guide.pdf` generated from the certificate by
-`tools/certificate_guide.gp`.
+textual certificate `certificate.gp` and a README with the field data and
+the exact generation command.
+
+A human-readable guide `certificate-guide.pdf` restating a certificate
+entry by entry in the notation of the paper is generated from
+`certificate.gp` by `tools/certificate_guide.gp`; from the repository
+root
+
+```sh
+CERT_DIR=certificate/K-<n>-p5 gp -qf tools/certificate_guide.gp
+cd certificate/K-<n>-p5 && pdflatex certificate-guide.tex
+```
+
+The built guide ships only for the principal example `K-2800905-p5`,
+since it is derived from data that ships in full.  The guide is
+exposition; the verification chain is implemented solely by
+`verify_certificate.c`.
 
 The verifier is shared and lives here, next to this file.  Build it once
 and point it at any certificate:
