@@ -2,17 +2,42 @@
   "prime": 3,
   "order": "xyz",
   "degree_bound": 13,
+  "engine": "python",
   "verification": "verification-004.json",
-  "fields": 66,
+  "fields": 69,
   "randomness_used": false,
   "seeds": [],
   "counts": {
-    "STRONGLY_FREE": 59,
+    "STRONGLY_FREE": 62,
     "NOT_STRONGLY_FREE": 7,
     "UNDECIDED": 0
   },
-  "seconds": 3.712697935000051,
+  "seconds": 3.129933028000778,
   "records": [
+    {
+      "discriminant": -4447704,
+      "degree_bound": 13,
+      "first_deviation_degree": null,
+      "processed_degree": 9,
+      "terminated_completion": true,
+      "automaton_states": 8,
+      "basis_elements": 9,
+      "largest_leading_word_degree": 5,
+      "verdict": "STRONGLY_FREE",
+      "positive_certificate_bound": 25,
+      "leading_words": [
+        "zyxx",
+        "zyxy",
+        "zyy",
+        "zzxxx",
+        "zzxxy",
+        "zzxy",
+        "zzxzx",
+        "zzy",
+        "zzz"
+      ],
+      "seconds": 0.10652383699925849
+    },
     {
       "discriminant": -4897363,
       "degree_bound": 13,
@@ -37,7 +62,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.7251363610002954
+      "seconds": 0.6360416620000251
     },
     {
       "discriminant": -29225219,
@@ -62,7 +87,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.15416840499983664
+      "seconds": 0.13043899099920964
     },
     {
       "discriminant": -42305279,
@@ -87,7 +112,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.44320455999968544
+      "seconds": 0.38448795299973426
     },
     {
       "discriminant": -45152879,
@@ -111,7 +136,7 @@
         "zzyzy",
         "zzz"
       ],
-      "seconds": 1.0809945800001515
+      "seconds": 1.098200284000086
     },
     {
       "discriminant": -50179656,
@@ -136,7 +161,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.15643494300002203
+      "seconds": 0.18360076200042386
     },
     {
       "discriminant": -54962868,
@@ -145,7 +170,7 @@
       "processed_degree": 3,
       "terminated_completion": false,
       "verdict": "NOT_STRONGLY_FREE",
-      "seconds": 0.000678029000027891
+      "seconds": 0.0009115449993259972
     },
     {
       "discriminant": -67271572,
@@ -171,7 +196,7 @@
         "zzyyx",
         "zzz"
       ],
-      "seconds": 0.33049739499983843
+      "seconds": 0.3693883919995642
     },
     {
       "discriminant": -70488707,
@@ -196,7 +221,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.2935710250003467
+      "seconds": 0.25889345799987495
     },
     {
       "discriminant": -79446183,
@@ -221,7 +246,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.33611449799991533
+      "seconds": 0.2535018079997826
     },
     {
       "discriminant": -80667656,
@@ -245,7 +270,7 @@
         "zzyzy",
         "zzz"
       ],
-      "seconds": 0.2942804909998813
+      "seconds": 0.2334430130003966
     },
     {
       "discriminant": -87155515,
@@ -269,7 +294,7 @@
         "zzyzy",
         "zzz"
       ],
-      "seconds": 0.29319162699994195
+      "seconds": 0.24573592799970356
     },
     {
       "discriminant": -87893823,
@@ -294,7 +319,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.19630080400020233
+      "seconds": 0.1833044909999444
     },
     {
       "discriminant": -98512820,
@@ -318,7 +343,7 @@
         "zzyzx",
         "zzz"
       ],
-      "seconds": 0.3104911919999722
+      "seconds": 0.42721757399976923
     },
     {
       "discriminant": -105274283,
@@ -342,7 +367,7 @@
         "zzyzy",
         "zzz"
       ],
-      "seconds": 0.24646297000026607
+      "seconds": 0.2712516689998665
     },
     {
       "discriminant": -106331556,
@@ -368,7 +393,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.7440355680000721
+      "seconds": 0.6163089109995781
     },
     {
       "discriminant": -110528935,
@@ -393,7 +418,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.21588501899987023
+      "seconds": 0.1408031459995982
     },
     {
       "discriminant": -112596647,
@@ -421,7 +446,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 2.4569866150000053
+      "seconds": 2.0555882810003823
     },
     {
       "discriminant": -113167511,
@@ -446,7 +471,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.21091664300001867
+      "seconds": 0.21855928399963886
     },
     {
       "discriminant": -115676840,
@@ -471,7 +496,7 @@
         "zzyzy",
         "zzz"
       ],
-      "seconds": 0.7001554710000164
+      "seconds": 0.9142716389997076
     },
     {
       "discriminant": -123927735,
@@ -480,7 +505,7 @@
       "processed_degree": 3,
       "terminated_completion": false,
       "verdict": "NOT_STRONGLY_FREE",
-      "seconds": 0.001034284000070329
+      "seconds": 0.0009932310003932798
     },
     {
       "discriminant": -128631659,
@@ -504,7 +529,7 @@
         "zzyzy",
         "zzz"
       ],
-      "seconds": 0.20118671799991716
+      "seconds": 0.22970736399929592
     },
     {
       "discriminant": -131071559,
@@ -529,7 +554,7 @@
         "zzyyx",
         "zzz"
       ],
-      "seconds": 0.6084354969998458
+      "seconds": 0.5277881760002856
     },
     {
       "discriminant": -133858164,
@@ -554,7 +579,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.17449168200027998
+      "seconds": 0.17846218700015015
     },
     {
       "discriminant": -135819467,
@@ -563,7 +588,7 @@
       "processed_degree": 3,
       "terminated_completion": false,
       "verdict": "NOT_STRONGLY_FREE",
-      "seconds": 0.0004197539997221611
+      "seconds": 0.00040899900068325223
     },
     {
       "discriminant": -136185871,
@@ -589,7 +614,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.5542906159998893
+      "seconds": 0.6226602999995521
     },
     {
       "discriminant": -137752583,
@@ -615,7 +640,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.7965236540003389
+      "seconds": 0.811597745000654
     },
     {
       "discriminant": -140436319,
@@ -642,7 +667,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.9743891359998997
+      "seconds": 0.9368819230003282
     },
     {
       "discriminant": -142082007,
@@ -666,7 +691,7 @@
         "zzyzy",
         "zzz"
       ],
-      "seconds": 0.23392296599968176
+      "seconds": 0.2458941020004204
     },
     {
       "discriminant": -147372692,
@@ -691,7 +716,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.17212893099986104
+      "seconds": 0.17986440999993647
     },
     {
       "discriminant": -159218551,
@@ -716,7 +741,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.2142103600003793
+      "seconds": 0.2169072030001189
     },
     {
       "discriminant": -159842587,
@@ -743,7 +768,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 1.2983929749998424
+      "seconds": 1.2588785600000847
     },
     {
       "discriminant": -164443092,
@@ -767,7 +792,7 @@
         "zzyzx",
         "zzz"
       ],
-      "seconds": 0.30296517200031303
+      "seconds": 0.25270923399966705
     },
     {
       "discriminant": -164490995,
@@ -794,7 +819,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.9365196880003168
+      "seconds": 0.821732823000275
     },
     {
       "discriminant": -165939880,
@@ -820,7 +845,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.8138751849996879
+      "seconds": 0.7898467639997762
     },
     {
       "discriminant": -168380088,
@@ -844,7 +869,7 @@
         "zzyzy",
         "zzz"
       ],
-      "seconds": 1.0490860870004326
+      "seconds": 0.9646981260002576
     },
     {
       "discriminant": -176214724,
@@ -853,7 +878,7 @@
       "processed_degree": 3,
       "terminated_completion": false,
       "verdict": "NOT_STRONGLY_FREE",
-      "seconds": 1.0634662529996604
+      "seconds": 0.9993133110001509
     },
     {
       "discriminant": -177327572,
@@ -878,7 +903,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.2102661869998883
+      "seconds": 0.18607096599953366
     },
     {
       "discriminant": -177911939,
@@ -903,7 +928,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.29131858500022645
+      "seconds": 0.29131300899916823
     },
     {
       "discriminant": -179262491,
@@ -927,7 +952,7 @@
         "zzyzy",
         "zzz"
       ],
-      "seconds": 0.23683248500037735
+      "seconds": 0.22542999199959013
     },
     {
       "discriminant": -184537012,
@@ -953,7 +978,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.9371709460001512
+      "seconds": 0.9080127050001465
     },
     {
       "discriminant": -186324791,
@@ -980,7 +1005,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.7318693120000717
+      "seconds": 0.729004900000291
     },
     {
       "discriminant": -187191391,
@@ -1005,7 +1030,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.2032842610001353
+      "seconds": 0.15030823399956716
     },
     {
       "discriminant": -188352419,
@@ -1030,7 +1055,7 @@
         "zzyzy",
         "zzz"
       ],
-      "seconds": 0.34690050800008976
+      "seconds": 0.45284642399929
     },
     {
       "discriminant": -188424655,
@@ -1056,7 +1081,31 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.850620648000131
+      "seconds": 0.7859706310000547
+    },
+    {
+      "discriminant": -192928619,
+      "degree_bound": 13,
+      "first_deviation_degree": null,
+      "processed_degree": 9,
+      "terminated_completion": true,
+      "automaton_states": 10,
+      "basis_elements": 9,
+      "largest_leading_word_degree": 5,
+      "verdict": "STRONGLY_FREE",
+      "positive_certificate_bound": 29,
+      "leading_words": [
+        "zyxx",
+        "zyxyx",
+        "zyy",
+        "zyzxx",
+        "zzxx",
+        "zzxy",
+        "zzxzx",
+        "zzy",
+        "zzz"
+      ],
+      "seconds": 0.06225550299950555
     },
     {
       "discriminant": -193816927,
@@ -1081,7 +1130,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.16519737899989195
+      "seconds": 0.18361056999947323
     },
     {
       "discriminant": -206568676,
@@ -1105,7 +1154,7 @@
         "zzyzy",
         "zzz"
       ],
-      "seconds": 0.22427061700000195
+      "seconds": 0.23800444100015739
     },
     {
       "discriminant": -207482084,
@@ -1132,7 +1181,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 1.0731262069998593
+      "seconds": 1.071915562999493
     },
     {
       "discriminant": -213255839,
@@ -1159,7 +1208,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.8831084990001727
+      "seconds": 0.8246813390005627
     },
     {
       "discriminant": -220005619,
@@ -1186,7 +1235,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.9384614720001991
+      "seconds": 1.2117488059993775
     },
     {
       "discriminant": -221338583,
@@ -1210,7 +1259,7 @@
         "zzyzy",
         "zzz"
       ],
-      "seconds": 0.3225630130000354
+      "seconds": 0.273478262000026
     },
     {
       "discriminant": -229531859,
@@ -1233,7 +1282,7 @@
         "zzyzx",
         "zzz"
       ],
-      "seconds": 0.23885289300005752
+      "seconds": 0.18729474599967944
     },
     {
       "discriminant": -229988136,
@@ -1257,7 +1306,7 @@
         "zzyzy",
         "zzz"
       ],
-      "seconds": 0.22062725399973715
+      "seconds": 0.1765146999996432
     },
     {
       "discriminant": -230059147,
@@ -1282,7 +1331,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.21586975199988956
+      "seconds": 0.1683743809999214
     },
     {
       "discriminant": -236414323,
@@ -1309,7 +1358,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 1.5680408680000255
+      "seconds": 1.5036837699999523
     },
     {
       "discriminant": -239565368,
@@ -1331,7 +1380,7 @@
         "zzx",
         "zzz"
       ],
-      "seconds": 0.2689077499999257
+      "seconds": 0.34875451300013083
     },
     {
       "discriminant": -242115347,
@@ -1356,7 +1405,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.22401239900000292
+      "seconds": 0.21287340100025176
     },
     {
       "discriminant": -242584547,
@@ -1380,7 +1429,7 @@
         "zzyzy",
         "zzz"
       ],
-      "seconds": 0.17688450300011027
+      "seconds": 0.2265955879993271
     },
     {
       "discriminant": -243949704,
@@ -1406,7 +1455,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 0.7835735570001816
+      "seconds": 0.7834282690000691
     },
     {
       "discriminant": -247085519,
@@ -1430,7 +1479,7 @@
         "zzyzy",
         "zzz"
       ],
-      "seconds": 0.1952212450000843
+      "seconds": 0.1857525010000245
     },
     {
       "discriminant": -251244319,
@@ -1454,7 +1503,7 @@
         "zzyzy",
         "zzz"
       ],
-      "seconds": 0.20080627400011508
+      "seconds": 0.21912559700012935
     },
     {
       "discriminant": -252545119,
@@ -1463,7 +1512,7 @@
       "processed_degree": 3,
       "terminated_completion": false,
       "verdict": "NOT_STRONGLY_FREE",
-      "seconds": 0.0008314439996865985
+      "seconds": 0.0013330009996934677
     },
     {
       "discriminant": -256421332,
@@ -1488,7 +1537,7 @@
         "zzyzy",
         "zzz"
       ],
-      "seconds": 0.25177677600004245
+      "seconds": 0.2797970430001442
     },
     {
       "discriminant": -257444104,
@@ -1497,7 +1546,7 @@
       "processed_degree": 3,
       "terminated_completion": false,
       "verdict": "NOT_STRONGLY_FREE",
-      "seconds": 1.7776859670002523
+      "seconds": 1.7414945599994098
     },
     {
       "discriminant": -259111511,
@@ -1506,7 +1555,31 @@
       "processed_degree": 3,
       "terminated_completion": false,
       "verdict": "NOT_STRONGLY_FREE",
-      "seconds": 0.0009021119999488292
+      "seconds": 0.0013572340003520367
+    },
+    {
+      "discriminant": -263310215,
+      "degree_bound": 13,
+      "first_deviation_degree": null,
+      "processed_degree": 9,
+      "terminated_completion": true,
+      "automaton_states": 8,
+      "basis_elements": 9,
+      "largest_leading_word_degree": 5,
+      "verdict": "STRONGLY_FREE",
+      "positive_certificate_bound": 25,
+      "leading_words": [
+        "zyxx",
+        "zyxy",
+        "zyy",
+        "zzxx",
+        "zzxyx",
+        "zzxyy",
+        "zzxzx",
+        "zzy",
+        "zzz"
+      ],
+      "seconds": 0.07364519100065081
     },
     {
       "discriminant": -264862580,
@@ -1533,7 +1606,7 @@
         "zzy",
         "zzz"
       ],
-      "seconds": 1.295580006000364
+      "seconds": 1.2218597829996725
     },
     {
       "discriminant": -264874404,
@@ -1557,7 +1630,7 @@
         "zzyzy",
         "zzz"
       ],
-      "seconds": 0.3286699119998957
+      "seconds": 0.2381362900005115
     }
   ]
 }
