@@ -8,6 +8,13 @@ relation ideal is computed by Singular's Letterplace subsystem
 normal-word counting and the comparison with the strongly free target
 series 1/(1-3z+3z^3) reuse the audited routines of strong_freeness_gb.py.
 
+The characteristic is taken from --prime and enters both the generated
+Singular ring and the reduction of the input coefficients.  Note that a
+caller importing this module gets its own instance of
+strong_freeness_gb; switch the characteristic through ``sing.gb.P`` (or
+--prime), never through a separately imported copy, or the ring is built
+over the wrong field while the coefficients still look plausible.
+
 The --order option uses the same ascending convention as
 strong_freeness_gb.py: --order xyz means x < y < z in the
 degree-lexicographic order, so words rich in the last letter lead.  The
@@ -100,6 +107,9 @@ def main(argv=None):
     source.add_argument("--result", type=Path)
     source.add_argument("--matrix")
     parser.add_argument("--order", default="xyz")
+    parser.add_argument("--prime", type=int, default=gb.P,
+                        help="characteristic of the coefficient field; the "
+                             "p=3 block drivers pass 3")
     parser.add_argument("--degree-bound", type=int, default=13)
     parser.add_argument("--singular", default="Singular")
     parser.add_argument("--emit-script", action="store_true")
@@ -108,10 +118,11 @@ def main(argv=None):
 
     if sorted(args.order) != ["x", "y", "z"]:
         raise SystemExit("--order must be a permutation of xyz")
+    gb.P = args.prime
     matrix = (gb.matrix_from_result(args.result) if args.result
               else gb.parse_matrix_text(args.matrix))
     if not gb.rank3(matrix):
-        raise SystemExit("matrix does not have rank 3 over F_5")
+        raise SystemExit(f"matrix does not have rank 3 over F_{gb.P}")
 
     script = build_script(matrix, args.order, args.degree_bound)
     if args.emit_script:

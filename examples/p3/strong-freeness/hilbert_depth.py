@@ -1,27 +1,24 @@
 #!/usr/bin/env python3
-"""Progressive exact Hilbert comparisons with per-degree timing."""
+"""Progressive exact Hilbert comparisons with per-degree timing.
+
+``measured_comparison`` completes the truncated two-sided Groebner basis
+of a cubic relation ideal degree by degree, comparing the normal word
+counts with the strongly free series 1/(1-3z+3z^3) after every step and
+stopping at the first deviation.  It is the shared engine of
+``block_witnesses.py``, ``block_sweep.py`` and
+``verify_strong_freeness.py``.
+"""
 
 from __future__ import annotations
 
-import argparse
-import json
-import sys
 import time
 from pathlib import Path
+import sys
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[1]
-FINITE = ROOT / "experiments" / "p3-finite-algebra"
-PILOT = ROOT / "experiments" / "p3-arithmetic-pilot"
-SWEEP = ROOT / "experiments" / "p3-delta-sweep"
-sys.path[:0] = [str(FINITE), str(PILOT), str(SWEEP)]
+sys.path[:0] = [str(HERE)]
 
 import strong_freeness as gb  # noqa: E402
-from analyze import MINIMAL_POINTS  # noqa: E402
-from analyze_sweep import load_values  # noqa: E402
-from reconstruction import reconstruct_from_points  # noqa: E402
-
-RESULTS = HERE / "results"
 
 
 class ExactDeviation(Exception):
@@ -117,60 +114,3 @@ def measured_comparison(tensor, max_degree: int, label: str):
             "deviation is therefore an exact basis-independent negative."
         ),
     }
-
-
-def pilot_tensor():
-    return json.loads((PILOT / "results" / "tensor.json").read_text())[
-        "tensor_3_by_27"]
-
-
-def sweep_tensors():
-    records = json.loads((SWEEP / "results" / "fields.json").read_text())
-    output = []
-    for record in records:
-        discriminant = record["discriminant"]
-        field_dir = SWEEP / "results" / str(abs(discriminant))
-        _, _, _, by_point, _ = load_values(field_dir / "matrices.tsv")
-        tensor = reconstruct_from_points(MINIMAL_POINTS, by_point)
-        output.append((discriminant, tensor))
-    return output
-
-
-def main(argv=None):
-    parser = argparse.ArgumentParser()
-    parser.add_argument("mode", choices=("pilot", "sweep"))
-    parser.add_argument("--max-degree", type=int, required=True)
-    args = parser.parse_args(argv)
-    RESULTS.mkdir(exist_ok=True)
-    if args.mode == "pilot":
-        result = measured_comparison(pilot_tensor(), args.max_degree,
-                                     "D=-3640387")
-        (RESULTS / "hilbert-pilot.json").write_text(
-            json.dumps(result, indent=2) + "\n")
-        print(json.dumps(result, indent=2))
-        return
-
-    records = []
-    for discriminant, tensor in sweep_tensors():
-        result = measured_comparison(tensor, args.max_degree,
-                                     f"D={discriminant}")
-        records.append({"discriminant": discriminant, **result})
-        (RESULTS / f"hilbert-{abs(discriminant)}.json").write_text(
-            json.dumps(records[-1], indent=2) + "\n")
-    summary = {
-        "uniform_max_degree": args.max_degree,
-        "fields": records,
-        "exact_negatives": [record["discriminant"] for record in records
-                            if record["verdict"] == "NOT_STRONGLY_FREE"],
-        "all_match_through_uniform_degree": all(
-            record["verdict"] != "NOT_STRONGLY_FREE" for record in records),
-        "total_elapsed_seconds": sum(record["elapsed_seconds"]
-                                     for record in records),
-    }
-    (RESULTS / "hilbert-sweep.json").write_text(
-        json.dumps(summary, indent=2) + "\n")
-    print(json.dumps(summary, indent=2))
-
-
-if __name__ == "__main__":
-    main()

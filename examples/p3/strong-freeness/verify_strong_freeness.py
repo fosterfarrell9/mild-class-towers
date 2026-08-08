@@ -27,10 +27,19 @@ RATIONAL_ANICK = {
 
 
 def latest_verification() -> Path:
+    """Newest verification of the twelve fields these checks are about.
+
+    The results directory also holds the block verification of all 2497
+    fields; picking the newest file outright would find that one and fail
+    the count test below.
+    """
     paths = sorted((HERE.parent / "results").glob("verification-*.json"))
-    if not paths:
-        raise FileNotFoundError("run verify_all.py first")
-    return paths[-1]
+    for path in reversed(paths):
+        data = json.loads(path.read_text())
+        if data.get("all_verified") and data.get("certificates_verified") == 12:
+            return path
+    raise FileNotFoundError(
+        "no complete 12/12 verification in results/; run verifier/verify_all.py")
 
 
 def next_result() -> Path:

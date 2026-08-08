@@ -30,10 +30,19 @@ BLOCK_SIZE = 2497
 
 
 def latest_verification() -> Path:
+    """Newest complete block verification.
+
+    Selected by size, not by date: the results directory also holds the
+    twelve-field verifications of the theorem fields.
+    """
     paths = sorted((HERE.parent / "results").glob("verification-*.json"))
-    if not paths:
-        raise FileNotFoundError("run verify_all.py first")
-    return paths[-1]
+    for path in reversed(paths):
+        data = json.loads(path.read_text())
+        if (data.get("all_verified")
+                and data.get("certificates_verified") == BLOCK_SIZE):
+            return path
+    raise FileNotFoundError(
+        "no complete block verification in results/; run verifier/verify_all.py")
 
 
 def next_result() -> Path:

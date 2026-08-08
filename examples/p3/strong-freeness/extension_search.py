@@ -17,9 +17,7 @@ from itertools import product
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[1]
-FINITE = ROOT / "experiments" / "p3-finite-algebra"
-sys.path.insert(0, str(FINITE))
+sys.path[:0] = [str(HERE)]
 
 from admissible import (  # noqa: E402
     combinatorially_free,
