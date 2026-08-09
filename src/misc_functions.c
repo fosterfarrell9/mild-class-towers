@@ -36,6 +36,7 @@
 #include <math.h>
 #include <pari/pari.h>
 #include "../headers/misc_functions.h"
+#include "../headers/progress.h"
 
 // Debug macros (shared with main)
 #define ANSI_COLOR_RED     "\x1b[31m"
@@ -171,7 +172,9 @@ GEN my_1MS_operator_2 (GEN Labs, GEN Lbnr, GEN sigma, int n) {
     GEN cyc = bnf_get_cyc(Labs); 
 
     // Compute how sigma acts on the generators of Cl(L)/pCl(L)
+    my_progress("H90: action of sigma on Cl(L) (bnrgaloismatrix)");
     GEN sigma_matrix = bnrgaloismatrix(Lbnr, sigma);
+    my_progress("H90: sigma action found");
     GEN id_mat = matid(glength(sigma_matrix));
     GEN M0 = ZM_sub(id_mat, sigma_matrix);
     M0 = ZM_ZV_mod(M0, cyc);
@@ -448,6 +451,7 @@ GEN my_H90_vect_2 (GEN Labs, GEN Lrel, GEN Lbnr, GEN K, GEN sigma, GEN Ja_vect, 
         iJ = rnfidealup0(Lrel, gel(gel(Ja_vect, i),2), 1);
 
         // Find [I, M] s.t. (1-sigma)I = iJ in Cl(L) and M is a matrix s.t. ...
+        my_progress("H90: solving (1-sigma)^n x = iJ in Cl(L) (my_H90_2), input %d", i);
         if (n==1)
         {
             F = my_H90_2(Labs, iJ, oneMS_operator, n);
@@ -456,6 +460,7 @@ GEN my_H90_vect_2 (GEN Labs, GEN Lrel, GEN Lbnr, GEN K, GEN sigma, GEN Ja_vect, 
         {
             F = my_H90_2(Labs, idealinv(Labs, iJ), oneMS_operator, n);
         }
+        my_progress("H90: solution found, input %d", i);
 
         // Then (1-sigma)I+div(t) = iJ for some t in L^x. However, it might be the case that N(t)*a is not 1. 
         // We know from theory that there should be an I and a t s.t (1-sigma)I+div(t) = iJ and N(t)*a=1. 
@@ -467,7 +472,9 @@ GEN my_H90_vect_2 (GEN Labs, GEN Lrel, GEN Lbnr, GEN K, GEN sigma, GEN Ja_vect, 
         // If the kernel is trivial, then we are done. 
         if (glength(ker_T_basis)==0)
         {
-            gel(I_vect, i) = idealfactorback(Labs, mkmat2(gtocol(bnf_get_gen(Labs)), gel(F, 1)), NULL, 0);
+            my_progress("H90: assembling I from class group generators (trivial kernel)");
+            gel(I_vect, i) = idealfactorback(Labs, mkmat2(gtocol(bnf_get_gen(Labs)), gel(F, 1)), NULL, 1);
+            my_progress("H90: I assembled");
             done = 1;
         }
         else {
@@ -475,6 +482,8 @@ GEN my_H90_vect_2 (GEN Labs, GEN Lrel, GEN Lbnr, GEN K, GEN sigma, GEN Ja_vect, 
             // This can probably be improved ...
             ker_T = my_get_sums(ker_T_basis, itos(p));
             
+            my_progress("H90: norm operator on units (my_norm_operator, once per input)");
+            norm_operator = my_norm_operator(Labs, Lrel, K, p);
             f = glength(ker_T);
             DEBUG_PRINT(1, "Searching a chunk of ker (1-sigma) of size: %d\n", f);
             
@@ -489,7 +498,9 @@ GEN my_H90_vect_2 (GEN Labs, GEN Lrel, GEN Lbnr, GEN K, GEN sigma, GEN Ja_vect, 
                 I_fact = ZV_ZV_mod(gadd(gel(F, 1), gtocol(gel(ker_T, j))), cyc);
                 
                 DEBUG_PRINT(1, "\nI_fact found: %Ps\n", I_fact);
-                F_ker_T = idealred0(Labs, idealfactorback(Labs, mkmat2(gtocol(bnf_get_gen(Labs)), I_fact), NULL, 0), NULL);
+                my_progress("H90: assembling candidate I (idealfactorback), kernel element %d/%d", j, f);
+                F_ker_T = idealred0(Labs, idealfactorback(Labs, mkmat2(gtocol(bnf_get_gen(Labs)), I_fact), NULL, 1), NULL);
+                my_progress("H90: candidate I assembled and reduced");
                 // F_ker_T = idealfactorback(Labs, mkmat2(gtocol(bnf_get_gen(Labs)), I_fact), NULL, 0);
                 DEBUG_PRINT(1, "\nF_ker_T found: %Ps\n", F_ker_T);
                //------------------------------------------------------------------------------------------------
@@ -499,8 +510,10 @@ GEN my_H90_vect_2 (GEN Labs, GEN Lrel, GEN Lbnr, GEN K, GEN sigma, GEN Ja_vect, 
                 ideal = F_ker_T;
                 for (k = 1; k <= n; k++)
                 {
+                    my_progress("H90: applying (1-sigma), step %d/%d", k, n);
                     ideal = my_1MS_ideal(Labs, sigma, ideal);
                 }
+                my_progress("H90: principality test (bnfisprincipal0, compact form)");
                 DEBUG_PRINT(1, "\n------------------------------------------------------------------------\nSTART: bnfisprincipal0 to find t in compact form\n------------------------------------------------------------------------\n");
                 if (n==1)
                 {
@@ -524,6 +537,7 @@ GEN my_H90_vect_2 (GEN Labs, GEN Lrel, GEN Lbnr, GEN K, GEN sigma, GEN Ja_vect, 
                 
                 //------------------------------------------------------------------------------------------------
                 // The norm of t in compact/factored form
+                my_progress("H90: relative norm of t in compact form");
                 Nt = my_rel_norm_compact(Labs, Lrel, K, t_fact);
                 // DEBUG_PRINT(1, "Nt: %Ps\n", Nt);
 
@@ -539,6 +553,7 @@ GEN my_H90_vect_2 (GEN Labs, GEN Lrel, GEN Lbnr, GEN K, GEN sigma, GEN Ja_vect, 
                 //------------------------------------------------------------------------------------------------
                 // Since div(a)+pJ = 0 and div(N(t))-pJ = 0, we get that div(N(t)*a) = 0 and therefore N(t)*a must be a unit.
                 // Next we find its exponents in terms of the fixed generators of the unit group 
+                my_progress("H90: unit exponents of N(t)*a (bnfisunit0)");
                 exp = bnfisunit0(K, diff, NULL);
                 if (glength(exp)==0)
                 {
@@ -565,7 +580,6 @@ GEN my_H90_vect_2 (GEN Labs, GEN Lrel, GEN Lbnr, GEN K, GEN sigma, GEN Ja_vect, 
                 //------------------------------------------------------------------------------------------------
                 // Check if N(t)*a is the norm of a unit. If it is, we may modify t by this unit without effecting the equality 
                 // (1-sigma)I = iJ and hence we are done. Returns zero if not a norm (which should never happen).
-                norm_operator = my_norm_operator(Labs, Lrel, K, p);
                 DEBUG_PRINT(1, "Norm operator: %Ps\n", norm_operator);
                 DEBUG_PRINT(1, "Checking if N(t)*a is a norm\n");
                 is_norm = matsolvemod(norm_operator, zerocol(glength(exp)), gtocol(exp), 0);
