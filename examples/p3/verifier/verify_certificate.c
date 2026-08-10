@@ -201,13 +201,27 @@ character_index_and_vector(
     const char *label, GEN stored, GEN p,
     const char *entry_label, long column, GEN *normalized)
 {
-    static const char *labels[] = {
+    /* Slot 3 holds the sixth family member: x1+x2+x3 at p = 3, and
+     * x2+x3 for p > 3, matching the respective builders and the
+     * reconstruction below. */
+    int is_three = equaliu(p, 3);
+    static const char *labels_p3[] = {
         "x1", "x2", "x3", "x1+x2+x3", "x1+x2", "x1+x3"
     };
-    static const long coordinates[][3] = {
+    static const long coordinates_p3[][3] = {
         {1, 0, 0}, {0, 1, 0}, {0, 0, 1},
         {1, 1, 1}, {1, 1, 0}, {1, 0, 1}
     };
+    static const char *labels_odd[] = {
+        "x1", "x2", "x3", "x2+x3", "x1+x2", "x1+x3"
+    };
+    static const long coordinates_odd[][3] = {
+        {1, 0, 0}, {0, 1, 0}, {0, 0, 1},
+        {0, 1, 1}, {1, 1, 0}, {1, 0, 1}
+    };
+    const char **labels = is_three ? labels_p3 : labels_odd;
+    const long (*coordinates)[3] =
+        is_three ? coordinates_p3 : coordinates_odd;
 
     long index = -1;
     for (long i = 0; i < 6; ++i)
@@ -363,10 +377,10 @@ verify_character_and_normalization(
     }
 }
 
-/** Check that the stored absolute automorphism fixes K and has order three. */
+/** Check that the stored absolute automorphism fixes K and has order p. */
 static void
 verify_automorphism(
-    GEN Labs, GEN Lrel, GEN K, GEN sigma,
+    GEN Labs, GEN Lrel, GEN K, GEN sigma, long p_int,
     const char *label, long column)
 {
     GEN base_generator =
@@ -380,14 +394,14 @@ verify_automorphism(
     GEN absolute_generator =
         algtobasis(Labs, pol_x(nf_get_varn(Labs)));
     GEN current = absolute_generator;
-    for (long exponent = 1; exponent <= 3; ++exponent)
+    for (long exponent = 1; exponent <= p_int; ++exponent)
     {
         current = galoisapply(Labs, sigma, current);
-        if (exponent < 3 && gequal(current, absolute_generator))
-            fail(label, column, "stored sigma has order less than 3");
+        if (exponent < p_int && gequal(current, absolute_generator))
+            fail(label, column, "stored sigma has order less than the certificate prime");
     }
     if (!gequal(current, absolute_generator))
-        fail(label, column, "stored sigma does not have order 3");
+        fail(label, column, "stored sigma does not have order equal to the certificate prime");
 }
 
 /** Resolve the unit ambiguity in AC2 by reduction at the stored odd prime. */
@@ -496,11 +510,21 @@ reconstruct_tensor(GEN matrices[6], GEN p)
     GEN b13 = matrix_combination(
         matrices[0], 1, matrices[2], 1, matrices[5], -1,
         NULL, 0, NULL, 0, NULL, 0, p);
-    GEN b23 = matrix_combination(
-        matrices[0], 1, matrices[1], 1, matrices[2], 1,
-        b12, -1, b13, -1, matrices[3], -1, p);
+    /* At p = 3 slot 3 is D_{x1+x2+x3} and B23 follows from the full
+     * quadratic expansion; for p > 3 slot 3 is D_{x2+x3} and B23 is a
+     * plain polarization like B12 and B13. */
+    GEN b23 = equaliu(p, 3)
+        ? matrix_combination(
+              matrices[0], 1, matrices[1], 1, matrices[2], 1,
+              b12, -1, b13, -1, matrices[3], -1, p)
+        : matrix_combination(
+              matrices[1], 1, matrices[2], 1, matrices[3], -1,
+              NULL, 0, NULL, 0, NULL, 0, p);
 
     GEN tensor = cgetg(4, t_VEC);
+    /* The outer-diagonal words carry M(x_i, x_m, x_i) = -2 M(x_i, x_i, x_m);
+     * the scalar is invisible at p = 3, where -2 = 1. */
+    GEN minus_two = modii(stoi(-2), p);
     for (long relation = 1; relation <= 3; ++relation)
     {
         GEN row = zerovec(27);
@@ -508,7 +532,9 @@ reconstruct_tensor(GEN matrices[6], GEN p)
         for (long i = 0; i < 3; ++i)
             for (long middle = 0; middle < 3; ++middle)
                 gel(row, word_index(i, middle, i) + 1) =
-                    gcopy(gcoeff(matrices[i], middle + 1, relation));
+                    Fp_mul(
+                        minus_two,
+                        gcoeff(matrices[i], middle + 1, relation), p);
 
         GEN contractions[] = {b12, b13, b23};
         const long pairs[][2] = {{0, 1}, {0, 2}, {1, 2}};
@@ -528,6 +554,14 @@ reconstruct_tensor(GEN matrices[6], GEN p)
 static void
 verify_tensor_schema_and_expected(GEN tensor, GEN expected, GEN p)
 {
+    /* p = 3 certificates always embed the expected tensor; for p > 3 the
+     * slot may be 0 (builder run without an expectation), in which case the
+     * entry-wise verified reconstruction stands on its own. */
+    if (!equaliu(p, 3) && typ(expected) == t_INT && !signe(expected))
+    {
+        pari_printf("EMBEDDED_EXPECTED_TENSOR=ABSENT\n");
+        return;
+    }
     if (typ(expected) != t_VEC || glength(expected) != 3)
         fail(NULL, 0, "stored expected tensor is not 3 by 27");
     for (long relation = 1; relation <= 3; ++relation)
@@ -650,8 +684,8 @@ main(int argc, char **argv)
         fail(NULL, 0, "PARI version differs from certificate generator");
 
     GEN p = gel(certificate, CERT_P);
-    if (!equaliu(p, 3))
-        fail(NULL, 0, "certificate prime is not 3");
+    if (!mpodd(p) || !isprime(p))
+        fail(NULL, 0, "certificate prime is not an odd prime");
 
     GEN K = Buchall(
         gel(certificate, CERT_BASE_POLYNOMIAL), nf_FORCE, DEFAULTPREC);
@@ -694,7 +728,7 @@ main(int argc, char **argv)
 
     GEN entries = gel(certificate, CERT_ENTRIES);
     if (typ(entries) != t_VEC || glength(entries) != 18)
-        fail(NULL, 0, "p=3 certificate must contain exactly 18 entries");
+        fail(NULL, 0, "certificate must contain exactly 18 entries");
 
     GEN matrices[6];
     int seen[6][3] = {{0}};
@@ -733,11 +767,11 @@ main(int argc, char **argv)
                 "relative/absolute field models are incompatible");
         GEN Labs =
             nfinit0(gel(entry, ENTRY_ABSOLUTE_POLYNOMIAL), 0, DEFAULTPREC);
-        if (nf_get_degree(Labs) / nf_get_degree(bnf_get_nf(K)) != 3)
-            fail(label, column, "relative degree is not 3");
+        if (nf_get_degree(Labs) / nf_get_degree(bnf_get_nf(K)) != itos(p))
+            fail(label, column, "relative degree does not equal the certificate prime");
         if (!equalii(
                 nf_get_disc(Labs),
-                powiu(nf_get_disc(bnf_get_nf(K)), 3)))
+                powiu(nf_get_disc(bnf_get_nf(K)), itou(p))))
             fail(label, column, "relative discriminant is not trivial");
 
         GEN sigma = gel(entry, ENTRY_SIGMA);
@@ -760,7 +794,7 @@ main(int argc, char **argv)
         I_prime = transformed_ideal(change, I_prime);
         t_AC = transformed_famat(change, t_AC);
 
-        verify_automorphism(Labs, Lrel, K, sigma, label, column);
+        verify_automorphism(Labs, Lrel, K, sigma, itos(p), label, column);
         verify_character_and_normalization(
             Labs, Lrel, K, sigma, character, p, label, column);
         GEN unit_L = idealhnf0(Labs, gen_1, NULL);
@@ -793,10 +827,15 @@ main(int argc, char **argv)
 
         GEN relative_I = rnfidealabstorel(Lrel, I_prime);
         GEN norm_I = rnfidealnormrel(Lrel, relative_I);
-        GEN corrected = idealmul(K, norm_I, J);
+        /* The J-correction of the norm class belongs to p = 3 alone; for
+         * p > 3 the certificate stores the class of N(I') itself, as in the
+         * published p = 5 verifier. */
+        GEN corrected = equaliu(p, 3) ? idealmul(K, norm_I, J) : norm_I;
         GEN coordinates = class_coordinates_mod_p(K, corrected, p);
         if (!gequal(coordinates, gel(entry, ENTRY_NORM_CLASS)))
-            fail(label, column, "J-corrected class coordinates mismatch");
+            fail(label, column, equaliu(p, 3)
+                ? "J-corrected class coordinates mismatch"
+                : "norm-class coordinates mismatch");
         gel(matrices[matrix_index], column) = gcopy(coordinates);
 
         pari_printf(
