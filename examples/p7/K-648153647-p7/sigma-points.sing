@@ -1,0 +1,30 @@
+LIB "primdec.lib";
+ring R = 7,(x,y,z),dp;
+matrix M[3][3] = 3*x*y+3*y*x+6*y*y+6*y*z+6*z*y+1*z*z,3*x*y+4*x*z+3*y*x+6*y*z+4*z*x+6*z*y+3*z*z,4*x*y+5*x*z+4*y*x+2*y*y+1*y*z+5*z*x+1*z*y,1*x*x+4*x*y+5*x*z+4*y*x+1*y*z+5*z*x+1*z*y,1*x*x+6*x*z+4*y*z+6*z*x+4*z*y+5*z*z,6*x*x+6*x*y+4*x*z+6*y*x+2*y*z+4*z*x+2*z*y+5*z*z,3*x*y+3*x*z+3*y*x+5*y*y+3*z*x,6*x*x+2*x*y+2*x*z+2*y*x+6*y*y+1*y*z+2*z*x+1*z*y,4*x*x+2*x*y+2*y*x+3*y*y+1*y*z+1*z*y;
+ideal I = minor(M,2);
+// Karte A: x != 0
+ideal J = subst(I,x,1);
+ring A = 7,(y,z),dp;
+ideal IA = std(imap(R,J));
+if(dim(IA)==0) { list L = primdecGTZ(IA); int i;
+  for(i=1;i<=size(L);i++) {
+    "PT A deg", vdim(std(L[i][2])), "mult", vdim(std(L[i][1]));
+  } } else { "DIM A", dim(IA); }
+// Karte B: x = 0, y != 0
+setring R; ideal J2 = subst(subst(I,x,0),y,1);
+ring B = 7,(z),dp;
+ideal IB = std(imap(R,J2));
+if(dim(IB)<=0) { list L2 = primdecGTZ(IB); int i2;
+  for(i2=1;i2<=size(L2);i2++) {
+    "PT B deg", vdim(std(L2[i2][2])), "mult", vdim(std(L2[i2][1]));
+  } } else { "DIM B", dim(IB); }
+// Karte C: z = 1, nur Komponenten im Ursprung (x=y=0)
+setring R; ideal J3 = subst(I,z,1);
+ring C = 7,(x,y),dp;
+ideal IC = std(imap(R,J3));
+if(dim(IC)==0) { list L3 = primdecGTZ(IC); int i3;
+  for(i3=1;i3<=size(L3);i3++) {
+    if(reduce(x,std(L3[i3][2]))==0 && reduce(y,std(L3[i3][2]))==0) {
+      "PT C deg", vdim(std(L3[i3][2])), "mult", vdim(std(L3[i3][1]));
+    } } } else { "DIM C", dim(IC); }
+exit;

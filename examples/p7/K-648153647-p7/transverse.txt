@@ -1,0 +1,10 @@
+Grad 1: kumuliert 0 Sigma_D-Punkte, 0 transversal (0.00s)
+Grad 2: kumuliert 1 Sigma_D-Punkte, 1 transversal (0.07s)
+Grad 3: kumuliert 1 Sigma_D-Punkte, 1 transversal (2.82s)
+
+Grad 2, Punkt [1, 3*t, 2*t + 5], Rang 1, rk Theta = 2, reduziert isoliert: 1, Anick-Pivots XXZ/XYY/XYZ
+
+ERGEBNIS: 1 transversale(r) Rang-1-Punkt(e) -> Kriterium greift: MILD, cd = 2
+
+ZWEITMEINUNG SINGULAR (0.02s): BESTAETIGT; Punkte ueber Grad 3: [(4, True)]
+GP-Zeit 2.95s
