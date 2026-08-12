@@ -16,9 +16,14 @@ PARI.
 
 ## Files
 
-- `certificate.gp` is a textual, PARI-readable certificate. It contains 18
-  main entries (`a`, `b`, `c`, `a+b`, `a+c`, `b+c`, each at `e1`, `e2`,
-  `e3`) and nine doubled-character entries (`2a`, `2b`, `2c`).
+- `certificate.gp` is a textual, PARI-readable certificate. It contains the
+  18 main entries (`a`, `b`, `c`, `a+b`, `a+c`, `b+c`, each at `e1`, `e2`,
+  `e3`), like every certificate of the collection.  (Until 2026-08-14 this
+  file additionally carried nine doubled-character entries `2a`, `2b`,
+  `2c`; they were removed so that all certificates carry exactly the
+  entries the paper's certificate definition requires.  The removed
+  entries remain in the repository history, and the doubled-character
+  audit is documented with the searches in the paper's appendix.)
 - `secondary-norms.gp` is a small derived data file with the six verified
   secondary-norm matrices in the format of the `result.gp` records,
   regenerated deterministically by `gp -qf tools/export_secondary_norms.gp`;
@@ -65,12 +70,12 @@ polynomials to define the same concrete PARI model: the canonical absolute
 polynomial inside the reconstructed `rnf` must equal the polynomial used to
 construct the absolute `nf`.
 
-The verifier is field-generic.  It accepts certificates with 27 entries
-(nine character labels, as released here) or with 18 entries (the six
-main characters, as exported by the audited example pipeline for further
-fields); each present label/column pair is required exactly once, and
-the doubled-character checks run only when the `2a`, `2b`, `2c` entries
-are present.  The comparison against the published matrices of the
+The verifier is field-generic.  It accepts certificates with the 18 main
+entries (as released throughout the collection) and also tolerates
+additional doubled-character entries (27 in total, the historical form
+of this file); each present label/column pair is required exactly once,
+and the doubled-character checks run only when the `2a`, `2b`, `2c`
+entries are present.  The comparison against the published matrices of the
 paper is performed only when the certified discriminant is the
 principal example's; for any other field the six reconstructed matrices
 are printed, and an optional second command-line argument naming a
@@ -109,7 +114,7 @@ Successful output starts with:
 BASE_BNF_CERTIFIED=PASS
 ```
 
-then reports `AC1=PASS`, `AC2=PASS`, and the norm class for all 27 entries,
+then reports `AC1=PASS`, `AC2=PASS`, and the norm class for all 18 entries,
 only after also reporting
 `FIELD_MODEL_COMPATIBILITY=PASS`, `ARTIN_CHARACTER=PASS`, and
 `SIGMA_NORMALIZATION=PASS`. It is followed by:
