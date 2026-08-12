@@ -1,0 +1,13 @@
+Script started on 2026-08-12 22:57:50+02:00 [COMMAND="python3 experiments/pipeline-konsolidierung/transverse_fast.py experiments/p7-normrel/target/matrices.tsv" <not executed on terminal>]
+Grad 1: kumuliert 1 Sigma_D-Punkte, 1 transversal (0.01s)
+Grad 2: kumuliert 1 Sigma_D-Punkte, 1 transversal (0.07s)
+Grad 3: kumuliert 1 Sigma_D-Punkte, 1 transversal (2.97s)
+
+Grad 1, Punkt [1, 1, 4], Rang 1, rk Theta = 2, reduziert isoliert: 1, Anick-Pivots XXZ/XYY/XYZ
+
+ERGEBNIS: 1 transversale(r) Rang-1-Punkt(e) -> Kriterium greift: MILD, cd = 2
+
+ZWEITMEINUNG SINGULAR (0.05s): BESTAETIGT; Punkte ueber Grad 3: [(5, True)]
+GP-Zeit 3.11s
+
+Script done on 2026-08-12 22:57:54+02:00 [COMMAND_EXIT_CODE="0"]
