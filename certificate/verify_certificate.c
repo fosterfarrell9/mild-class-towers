@@ -510,6 +510,39 @@ main(int argc, char **argv)
         INIT_JMPm | INIT_SIGm | INIT_DFTm | INIT_noIMTm);
     paristack_setsize(1L << 30, 1L << 33);
 
+    /*
+     * Optional extra inputs, recognized by their content: a GP vector
+     * consisting of integers is a factorization-hint file, anything
+     * else a result record for the final matrix comparison.  Hints
+     * are added to PARI's prime table so that the discriminant and
+     * index factorizations inside nfinit and rnfinit find their hard
+     * factors deterministically; every hint must pass the proven
+     * primality test first, so wrong or missing hints can only slow
+     * the run down or lead to rejection, never to a wrong acceptance.
+     */
+    GEN result_record = NULL;
+    long hint_count = 0;
+    for (int argument = 2; argument < argc; ++argument)
+    {
+        GEN input = read_certificate(argv[argument]);
+        int is_hint_vector = typ(input) == t_VEC;
+        for (long i = 1; is_hint_vector && i < lg(input); ++i)
+            if (typ(gel(input, i)) != t_INT)
+                is_hint_vector = 0;
+        if (is_hint_vector)
+        {
+            for (long i = 1; i < lg(input); ++i)
+                if (!isprime(gel(input, i)))
+                    fail(NULL, 0, "factorization hint is not a proven prime");
+            addprimes(input);
+            hint_count += lg(input) - 1;
+        }
+        else
+            result_record = input;
+    }
+    if (hint_count)
+        pari_printf("FACTORIZATION_HINTS=%ld\n", hint_count);
+
     /* Validate the certificate schema and certified base-field conventions. */
     GEN certificate = read_certificate(path);
     if (typ(certificate) != t_VEC || lg(certificate) != 8)
@@ -572,11 +605,10 @@ main(int argc, char **argv)
     pari_printf("BASE_BNF_CERTIFIED=PASS\n\n");
 
     GEN entries = gel(certificate, CERT_ENTRIES);
-    if (typ(entries) != t_VEC
-        || (glength(entries) != 27 && glength(entries) != 18))
-        fail(NULL, 0, "certificate must contain 18 or 27 entries");
-    int has_doubled = glength(entries) == 27;
+    if (typ(entries) != t_VEC || glength(entries) != 18)
+        fail(NULL, 0, "certificate must contain exactly 18 entries");
 
+    GEN cached_rel_pol = NULL, cached_Lrel = NULL, cached_Labs = NULL;
     GEN matrices[9];
     int seen[9][3] = {{0}};
     for (long i = 0; i < 9; ++i)
@@ -604,16 +636,38 @@ main(int argc, char **argv)
             fail(label, column, "duplicate certificate entry");
         seen[matrix_index][column - 1] = 1;
 
-        GEN Lrel = rnfinit(
-            bnf_get_nf(K), gel(entry, ENTRY_RELATIVE_POLYNOMIAL));
-        if (!gequal(
-                rnf_get_polabs(Lrel),
+        /*
+         * Entries sharing one class-field model reuse its
+         * rnfinit/nfinit result instead of recomputing it per
+         * column; the cache key is equality of both stored
+         * polynomials, and every later check is unchanged.
+         */
+        GEN Lrel, Labs;
+        if (cached_rel_pol
+            && gequal(cached_rel_pol, gel(entry, ENTRY_RELATIVE_POLYNOMIAL))
+            && gequal(
+                rnf_get_polabs(cached_Lrel),
                 gel(entry, ENTRY_ABSOLUTE_POLYNOMIAL)))
-            fail(
-                label, column,
-                "relative/absolute field models are incompatible");
-        GEN Labs =
-            nfinit0(gel(entry, ENTRY_ABSOLUTE_POLYNOMIAL), 0, DEFAULTPREC);
+        {
+            Lrel = cached_Lrel;
+            Labs = cached_Labs;
+        }
+        else
+        {
+            Lrel = rnfinit(
+                bnf_get_nf(K), gel(entry, ENTRY_RELATIVE_POLYNOMIAL));
+            if (!gequal(
+                    rnf_get_polabs(Lrel),
+                    gel(entry, ENTRY_ABSOLUTE_POLYNOMIAL)))
+                fail(
+                    label, column,
+                    "relative/absolute field models are incompatible");
+            Labs = nfinit0(
+                gel(entry, ENTRY_ABSOLUTE_POLYNOMIAL), 0, DEFAULTPREC);
+            cached_rel_pol = gel(entry, ENTRY_RELATIVE_POLYNOMIAL);
+            cached_Lrel = Lrel;
+            cached_Labs = Labs;
+        }
         if (nf_get_degree(Labs) / nf_get_degree(bnf_get_nf(K)) != 5)
             fail(label, column, "relative degree is not 5");
         if (!equalii(
@@ -689,7 +743,7 @@ main(int argc, char **argv)
     static const char *all_labels[] = {
         "a", "b", "c", "a+b", "a+c", "b+c", "2a", "2b", "2c"
     };
-    for (long character = 0; character < (has_doubled ? 9 : 6); ++character)
+    for (long character = 0; character < 6; ++character)
         for (long column = 0; column < 3; ++column)
             if (!seen[character][column])
                 fail(
@@ -706,9 +760,9 @@ main(int argc, char **argv)
     for (long matrix = 0; matrix < 6; ++matrix)
         pari_printf("%s=%Ps\n", matrix_labels[matrix], matrices[matrix]);
 
-    if (argc > 2)
+    if (result_record)
     {
-        GEN record = read_certificate(argv[2]);
+        GEN record = result_record;
         GEN samples = NULL;
         if (typ(record) == t_VEC)
             for (long i = 1; i < lg(record); ++i)
@@ -738,24 +792,6 @@ main(int argc, char **argv)
                             "certificate disagrees with result record");
         pari_printf("RESULT_RECORD_MATCH=PASS\n");
     }
-
-    /* Check the three redundant doubled-character homogeneity witnesses. */
-    if (has_doubled)
-        for (long matrix = 0; matrix < 3; ++matrix)
-        {
-            for (long column = 1; column <= 3; ++column)
-                for (long row = 1; row <= 3; ++row)
-                    if (!equalii(
-                            gcoeff(matrices[6 + matrix], row, column),
-                            Fp_mul(
-                                stoi(4),
-                                gcoeff(matrices[matrix], row, column), p)))
-                        fail(NULL, 0, "doubled-character scaling mismatch");
-            pari_printf(
-                "D_(2%s)=4D_%s PASS\n",
-                matrix == 0 ? "a" : matrix == 1 ? "b" : "c",
-                matrix == 0 ? "a" : matrix == 1 ? "b" : "c");
-        }
 
     pari_printf("\nCERTIFICATE VERIFIED\n");
     pari_close();

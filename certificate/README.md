@@ -35,6 +35,15 @@ The optional second argument names a committed `result.gp` record; the
 verifier then cross-checks the reconstructed matrices against its
 `secondary_norm_samples` and reports `RESULT_RECORD_MATCH=PASS`.
 
+A further argument holding a GP vector of integers --- recognized by
+its content, in any position after the certificate --- is read as
+factorization hints: each entry must pass a proven primality test and
+is then added to PARI's prime table, which makes the discriminant and
+index factorizations inside `nfinit` and `rnfinit` deterministic for
+fields on which they would otherwise depend on fortunate ECM draws.
+Wrong or missing hints can only slow a run down or lead to rejection,
+never to a wrong acceptance.
+
 `make check` first verifies `K-2800905-p5/certificate.gp` unchanged and
 then runs `test_rejections.py`, which generates temporary copies of
 that certificate and requires the verifier to reject every one of them
@@ -72,9 +81,8 @@ tests the arrangement above.
 
 ## Scope
 
-The verifier is field-generic: it accepts 18-entry certificates (the six
-main characters, as exported by the pipeline) and the principal
-example's 27-entry certificate with the doubled characters.  The
+The verifier is field-generic and requires the 18-entry certificate of
+the six main characters, as exported by the pipeline.  The
 verification chain and the certificate schema are documented in
 `K-2800905-p5/README.md`; the required PARI 2.17.4 patch is documented
 in `doc/pari-2.17.4-patch.md` at the repository root.

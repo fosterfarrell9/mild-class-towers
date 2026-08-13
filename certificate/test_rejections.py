@@ -119,7 +119,7 @@ def main() -> int:
         raise RuntimeError("entry a/2 does not close with a separator")
     del shortened[1]
     cases["missing_entry"] = (
-        "".join(shortened), "certificate must contain 18 or 27 entries")
+        "".join(shortened), "certificate must contain exactly 18 entries")
 
     records = []
     with tempfile.TemporaryDirectory(prefix="p5-cert-negative-") as temp:

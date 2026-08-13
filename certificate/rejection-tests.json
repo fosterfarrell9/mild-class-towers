@@ -40,7 +40,7 @@
     {
       "case": "missing_entry",
       "status": "PASS",
-      "expected_error": "certificate must contain 18 or 27 entries",
+      "expected_error": "certificate must contain exactly 18 entries",
       "returncode": 1
     }
   ]
