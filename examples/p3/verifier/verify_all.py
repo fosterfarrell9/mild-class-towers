@@ -49,9 +49,13 @@ def verify(directory: Path) -> dict[str, object]:
     discriminant = -int(re.fullmatch(r"K-(\d+)-p3", directory.name).group(1))
     run, log_path = next_log(directory)
     started = time.monotonic()
+    command = [str(VERIFIER), str(certificate)]
+    hints = directory / "hints.gp"
+    if hints.exists():
+        command.append(str(hints))
     try:
         process = subprocess.run(
-            [str(VERIFIER), str(certificate)], cwd=HERE, text=True,
+            command, cwd=HERE, text=True,
             capture_output=True, timeout=TIMEOUT_SECONDS)
         output = process.stdout + process.stderr
         returncode = process.returncode

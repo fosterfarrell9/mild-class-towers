@@ -46,6 +46,5 @@ examples/p3/verifier/verify_certificate examples/p7/K-501510767-p7/certificate.g
 ```
 
 and likewise for the other two directories.  Expected: all 18
-entries verified, the doubled-character identities D_{2x} = 4 D_x,
-the shuffle identities, agreement of the reconstructed tensor with
+entries verified, the shuffle identities, agreement of the reconstructed tensor with
 `matrices.tsv`, and `CERTIFICATE VERIFIED`.

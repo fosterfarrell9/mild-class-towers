@@ -663,9 +663,9 @@ read_certificate(const char *path)
 int
 main(int argc, char **argv)
 {
-    if (argc != 2)
+    if (argc != 2 && argc != 3)
     {
-        fprintf(stderr, "usage: %s certificate.gp\n", argv[0]);
+        fprintf(stderr, "usage: %s certificate.gp [hints.gp]\n", argv[0]);
         return EXIT_FAILURE;
     }
     const char *path = argv[1];
@@ -673,6 +673,29 @@ main(int argc, char **argv)
         1L << 30, 1048576,
         INIT_JMPm | INIT_SIGm | INIT_DFTm | INIT_noIMTm);
     paristack_setsize(1L << 30, 1L << 33);
+
+    /*
+     * Optional factorization hints: a GP vector of primes, added to
+     * PARI's prime table so that the discriminant and index
+     * factorizations inside nfinit and rnfinit find their hard
+     * factors deterministically.  Every hint must pass the proven
+     * primality test first; wrong or missing hints can only slow the
+     * run down or lead to rejection, never to a wrong acceptance.
+     */
+    if (argc == 3)
+    {
+        GEN hints = gp_read_file(argv[2]);
+        if (typ(hints) != t_VEC)
+            fail(NULL, 0, "hints file does not hold a vector");
+        for (long i = 1; i < lg(hints); ++i)
+        {
+            GEN hint = gel(hints, i);
+            if (typ(hint) != t_INT || !isprime(hint))
+                fail(NULL, 0, "factorization hint is not a proven prime");
+        }
+        addprimes(hints);
+        pari_printf("FACTORIZATION_HINTS=%ld\n", lg(hints) - 1);
+    }
 
     /* Validate the certificate schema and certified base-field conventions. */
     GEN certificate = read_certificate(path);
@@ -730,6 +753,7 @@ main(int argc, char **argv)
     if (typ(entries) != t_VEC || glength(entries) != 18)
         fail(NULL, 0, "certificate must contain exactly 18 entries");
 
+    GEN cached_rel_pol = NULL, cached_Lrel = NULL, cached_Labs = NULL;
     GEN matrices[6];
     int seen[6][3] = {{0}};
     for (long i = 0; i < 6; ++i)
@@ -757,16 +781,38 @@ main(int argc, char **argv)
             fail(label, column, "duplicate certificate entry");
         seen[matrix_index][column - 1] = 1;
 
-        GEN Lrel = rnfinit(
-            bnf_get_nf(K), gel(entry, ENTRY_RELATIVE_POLYNOMIAL));
-        if (!gequal(
-                rnf_get_polabs(Lrel),
+        /*
+         * Entries sharing one class-field model reuse its
+         * rnfinit/nfinit result instead of recomputing it per
+         * column; the cache key is equality of both stored
+         * polynomials, and every later check is unchanged.
+         */
+        GEN Lrel, Labs;
+        if (cached_rel_pol
+            && gequal(cached_rel_pol, gel(entry, ENTRY_RELATIVE_POLYNOMIAL))
+            && gequal(
+                rnf_get_polabs(cached_Lrel),
                 gel(entry, ENTRY_ABSOLUTE_POLYNOMIAL)))
-            fail(
-                label, column,
-                "relative/absolute field models are incompatible");
-        GEN Labs =
-            nfinit0(gel(entry, ENTRY_ABSOLUTE_POLYNOMIAL), 0, DEFAULTPREC);
+        {
+            Lrel = cached_Lrel;
+            Labs = cached_Labs;
+        }
+        else
+        {
+            Lrel = rnfinit(
+                bnf_get_nf(K), gel(entry, ENTRY_RELATIVE_POLYNOMIAL));
+            if (!gequal(
+                    rnf_get_polabs(Lrel),
+                    gel(entry, ENTRY_ABSOLUTE_POLYNOMIAL)))
+                fail(
+                    label, column,
+                    "relative/absolute field models are incompatible");
+            Labs = nfinit0(
+                gel(entry, ENTRY_ABSOLUTE_POLYNOMIAL), 0, DEFAULTPREC);
+            cached_rel_pol = gel(entry, ENTRY_RELATIVE_POLYNOMIAL);
+            cached_Lrel = Lrel;
+            cached_Labs = Labs;
+        }
         if (nf_get_degree(Labs) / nf_get_degree(bnf_get_nf(K)) != itos(p))
             fail(label, column, "relative degree does not equal the certificate prime");
         if (!equalii(

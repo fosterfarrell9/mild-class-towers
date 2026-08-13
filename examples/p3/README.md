@@ -67,6 +67,16 @@ alter the container (an unsupported format version, a missing entry,
 a wrong expected tensor).  The outcomes are recorded in
 `results/rejection-tests.json`.
 
+The verifier accepts an optional second argument, a GP vector of
+primes read as factorization hints: each hint must pass a proven
+primality test and is then added to PARI's prime table, which makes
+the discriminant and index factorizations inside `nfinit` and
+`rnfinit` deterministic for fields on which they would otherwise
+depend on fortunate ECM draws.  Wrong or missing hints can only slow
+a run down or lead to rejection, never to a wrong acceptance.  The
+driver `verifier/verify_all.py` passes a `hints.gp` lying next to a
+`certificate.gp` automatically.
+
 ## Rebuilding certificates
 
 The builder under `builder/` regenerates certificates from scratch:
