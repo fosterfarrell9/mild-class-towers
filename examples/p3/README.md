@@ -56,9 +56,16 @@ what is expensive.  With `--engine singular` the same driver computes
 the bases with Singular's Letterplace subsystem instead; every
 recorded verdict was produced by both engines.
 
-The negative tests in `verifier/test_rejections.py` check that
-malformed certificates, missing entries, and wrong expected tensors
-are rejected.
+`make -C verifier check` first verifies the unmodified certificate of
+`K-3640387-p3` and then runs `verifier/test_rejections.py`, which
+generates temporary copies of that certificate and requires the
+verifier to reject every one of them with the expected message: five
+copies alter the arithmetic content --- the character vector, the
+normalized automorphism, the multiplicity of an entry, a norm-class
+vector, and the absolute field model, each separately --- and three
+alter the container (an unsupported format version, a missing entry,
+a wrong expected tensor).  The outcomes are recorded in
+`results/rejection-tests.json`.
 
 ## Rebuilding certificates
 

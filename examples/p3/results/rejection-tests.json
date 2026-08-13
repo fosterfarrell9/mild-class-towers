@@ -2,6 +2,36 @@
   "all_passed": true,
   "records": [
     {
+      "case": "character_vector",
+      "status": "PASS",
+      "expected_error": "character label/vector mismatch",
+      "returncode": 1
+    },
+    {
+      "case": "normalized_automorphism",
+      "status": "PASS",
+      "expected_error": "stored sigma does not fix K",
+      "returncode": 1
+    },
+    {
+      "case": "entry_multiplicity",
+      "status": "PASS",
+      "expected_error": "duplicate certificate entry",
+      "returncode": 1
+    },
+    {
+      "case": "norm_class_vector",
+      "status": "PASS",
+      "expected_error": "J-corrected class coordinates mismatch",
+      "returncode": 1
+    },
+    {
+      "case": "absolute_field_model",
+      "status": "PASS",
+      "expected_error": "relative/absolute field models are incompatible",
+      "returncode": 1
+    },
+    {
       "case": "format_1",
       "status": "PASS",
       "expected_error": "unsupported certificate format",
