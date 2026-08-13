@@ -101,6 +101,9 @@ def verify(directory: Path) -> dict[str, object]:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--field", type=int, action="append")
+    parser.add_argument(
+        "--keep-going", action="store_true",
+        help="record an UNDECIDED field and continue instead of stopping")
     args = parser.parse_args()
     wanted = {abs(value) for value in args.field} if args.field else None
     directories = sorted((CERTIFICATES).glob("K-*-p3"))
@@ -122,7 +125,10 @@ def main() -> int:
               f"seconds={record['seconds']:.3f}", flush=True)
         # A mismatch is a mathematical finding under this protocol.  Do not
         # continue and obscure it with later formatting or finite checks.
-        if record["status"] != "VERIFIED":
+        # With --keep-going the finding is still recorded and the sweep
+        # continues, so that one slow field does not hide the list of
+        # remaining ones.
+        if record["status"] != "VERIFIED" and not args.keep_going:
             break
 
     result_path = next_result()
