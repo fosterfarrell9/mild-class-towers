@@ -8,6 +8,10 @@ verify_certificate: verify_certificate.c
 	$(CC) $(CFLAGS) -I$(PARI)/include -o $@ $< \
 		-Wl,-rpath,$(PARI)/lib -L$(PARI)/lib -lpari -lm
 
-.PHONY: all clean
+.PHONY: all check clean
+check: verify_certificate
+	./verify_certificate K-2800905-p5/certificate.gp
+	python3 test_rejections.py
+
 clean:
 	$(RM) verify_certificate

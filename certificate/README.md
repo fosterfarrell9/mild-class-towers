@@ -35,6 +35,16 @@ The optional second argument names a committed `result.gp` record; the
 verifier then cross-checks the reconstructed matrices against its
 `secondary_norm_samples` and reports `RESULT_RECORD_MATCH=PASS`.
 
+`make check` first verifies `K-2800905-p5/certificate.gp` unchanged and
+then runs `test_rejections.py`, which generates temporary copies of
+that certificate and requires the verifier to reject every one of them
+with the expected message: five copies alter the arithmetic content ---
+the character vector, the normalized automorphism, the multiplicity of
+an entry, a norm-class vector, and the absolute field model, each
+separately --- and two alter the container (an unsupported format
+version, a missing entry).  The outcomes are recorded in
+`rejection-tests.json`.
+
 ## Integral bases
 
 Elements and ideals are stored as coordinates with respect to an integral
