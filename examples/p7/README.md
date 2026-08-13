@@ -16,7 +16,7 @@ Each directory contains:
 
 * `certificate.gp` — the stored arithmetic data: six characters and
   three doubled characters, with class fields, normalized
-  automorphisms, auxiliary pairs, and norm classes.
+  automorphisms, norm witnesses, and norm classes.
 * `matrices.tsv` — the secondary-norm matrices recorded by the
   search, the independent baseline the verifier's reconstruction is
   compared against.
@@ -29,7 +29,7 @@ Each directory contains:
   single point of residue degree at most three has degree two and is
   transverse; for the third it is rational and transverse.
 
-The auxiliary data of the first two fields were found through the
+The norm witnesses of the first two fields were found through the
 degree-14 class-group machinery of PARI; for the third, where a
 single such computation had become impracticable, they were obtained
 from the D_7-norm relations of Biasse--Fieker--Hofmann--Page
