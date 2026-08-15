@@ -23,7 +23,7 @@
 #
 # Afterwards, from the repository root:
 #   make PARI=<PREFIX>
-#   (cd certificate && make PARI=<PREFIX>)
+#   make -C verifier PARI=<PREFIX>
 set -euo pipefail
 
 PREFIX="${1:-$HOME/.local}"
@@ -99,4 +99,4 @@ echo "exported patch symbols: $found of 3"
 [ "$found" -eq 3 ] || { echo "patch symbols missing" >&2; exit 1; }
 echo
 echo "PARI $VERSION installed in $PREFIX"
-echo "next: make PARI=$PREFIX  &&  (cd certificate && make PARI=$PREFIX)"
+echo "next: make PARI=$PREFIX  &&  make -C verifier PARI=$PREFIX"
