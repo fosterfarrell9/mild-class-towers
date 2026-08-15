@@ -47,5 +47,9 @@ verifier/verify_certificate certificates/p7/K-501510767-p7/certificate.gp
 ```
 
 and likewise for the other two directories.  Expected: all 18
-entries verified, the shuffle identities, agreement of the reconstructed tensor with
-`matrices.tsv`, and `CERTIFICATE VERIFIED`.
+entries verified, the shuffle identities, the six reconstructed
+matrices, and `CERTIFICATE VERIFIED`.  The certificate embeds no
+expected tensor (the run reports `EMBEDDED_EXPECTED_TENSOR=ABSENT`);
+`matrices.tsv` holds the matrices as the search recorded them, and
+comparing them with the six matrices the verifier prints is the
+independent cross-check.

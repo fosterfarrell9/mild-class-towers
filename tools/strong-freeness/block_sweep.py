@@ -42,8 +42,9 @@ sys.path[:0] = [str(HERE)]
 
 import strong_freeness as gb  # noqa: E402
 
-RESULTS = HERE.parent / "results"
-TOOLS = HERE.parents[2] / "tools"
+ROOT = HERE.parents[1]
+RESULTS = ROOT / "records" / "p3" / "results"
+TOOLS = HERE.parent
 BLOCK_SIZE = 2497
 SINGULAR = os.environ.get("SINGULAR", "Singular")
 
@@ -283,7 +284,7 @@ def main(argv=None) -> int:
               f"{len(claimed) - disagreements}/{len(claimed)}")
     print(f"seconds={elapsed:.0f}")
     try:
-        shown = output.relative_to(HERE.parents[2])
+        shown = output.relative_to(ROOT)
     except ValueError:
         shown = output
     print(f"RESULT={shown}")

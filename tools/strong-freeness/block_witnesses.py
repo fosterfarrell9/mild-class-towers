@@ -19,6 +19,7 @@ import time
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+ROOT = HERE.parents[1]
 sys.path[:0] = [str(HERE)]
 
 from admissible import find_anick_witness  # noqa: E402
@@ -35,19 +36,19 @@ def latest_verification() -> Path:
     Selected by size, not by date: the results directory also holds the
     twelve-field verifications of the theorem fields.
     """
-    paths = sorted((HERE.parent / "results").glob("verification-*.json"))
+    paths = sorted((ROOT / "records" / "p3" / "results").glob("verification-*.json"))
     for path in reversed(paths):
         data = json.loads(path.read_text())
         if (data.get("all_verified")
                 and data.get("certificates_verified") == BLOCK_SIZE):
             return path
     raise FileNotFoundError(
-        "no complete block verification in results/; run verifier/verify_all.py")
+        "no complete block verification in records/p3/results/; run tools/verify_all_p3.py")
 
 
 def next_result() -> Path:
     number = 1
-    results = HERE.parent / "results"
+    results = ROOT / "records" / "p3" / "results"
     while (results / f"block-witnesses-{number:03d}.json").exists():
         number += 1
     return results / f"block-witnesses-{number:03d}.json"
@@ -107,7 +108,7 @@ def main() -> int:
         "of": len(records),
         "records": records,
     }, indent=2) + "\n")
-    print(f"RESULT={output.relative_to(HERE.parents[2])}")
+    print(f"RESULT={output.relative_to(ROOT)}")
     return 0 if all(r["status"] == "STRONGLY_FREE" for r in records) else 1
 
 

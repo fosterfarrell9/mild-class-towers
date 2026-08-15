@@ -52,10 +52,12 @@ Three drivers read the verified tensors and decide strong freeness of
 the cubic relation space.  None of them recomputes any arithmetic.
 
 ```sh
-python3 strong-freeness/verify_strong_freeness.py     # twelve fields
-python3 strong-freeness/block_witnesses.py            # five block witnesses
-python3 strong-freeness/block_sweep.py --degree-bound 13 --only <D> ...
+python3 tools/strong-freeness/verify_strong_freeness.py   # twelve fields
+python3 tools/strong-freeness/block_witnesses.py          # five block witnesses
+python3 tools/strong-freeness/block_sweep.py --degree-bound 13 --only <D> ...
 ```
+
+(run from the repository root, like every command in this README)
 
 The first confirms the Anick witnesses (rational and over F9 with
 descent) and the terminating Groebner/automaton certificate for the
@@ -76,8 +78,8 @@ subsystem, same degree bound, agreement on all 69); to
 re-derive them,
 
 ```sh
-python3 strong-freeness/block_sweep.py --degree-bound 13 \
-    --recheck ../results/strong-freeness-block-001.json
+python3 tools/strong-freeness/block_sweep.py --degree-bound 13 \
+    --recheck records/p3/results/strong-freeness-block-001.json
 ```
 
 which takes seconds, since a decided field either terminates with a

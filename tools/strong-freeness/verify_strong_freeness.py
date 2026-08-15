@@ -10,7 +10,7 @@ import time
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[2]
+ROOT = HERE.parents[1]
 sys.path[:0] = [str(HERE)]
 
 from admissible import find_anick_witness  # noqa: E402
@@ -33,7 +33,7 @@ def latest_verification() -> Path:
     fields; picking the newest file outright would find that one and fail
     the count test below.
     """
-    paths = sorted((HERE.parent / "results").glob("verification-*.json"))
+    paths = sorted((ROOT / "records" / "p3" / "results").glob("verification-*.json"))
     for path in reversed(paths):
         data = json.loads(path.read_text())
         if data.get("all_verified") and data.get("certificates_verified") == 12:
@@ -44,7 +44,7 @@ def latest_verification() -> Path:
 
 def next_result() -> Path:
     number = 1
-    results = HERE.parent / "results"
+    results = ROOT / "records" / "p3" / "results"
     while (results / f"strong-freeness-{number:03d}.json").exists():
         number += 1
     return results / f"strong-freeness-{number:03d}.json"
