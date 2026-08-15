@@ -15,10 +15,11 @@ proven prime factors that makes their verification deterministic;
 wrong or missing hints can only slow a run down or lead to
 rejection, never to a wrong acceptance.  One field of the
 collection, `K-854919124-p3` (bucket `085`), involves a 189-digit
-composite inside one of its relative-field models; until a hints
-sidecar for it is banked, re-verifying this single field depends on
-fortunate ECM draws inside PARI and can take hours.  Its stored
-values were verified on two machines like every other field's.
+composite inside one of its relative-field models; its two hint
+primes (36 and 60 digits) took an eleven-hour factorization run to
+find, and with the banked sidecar the certificate verifies in a few
+seconds.  Its stored values were verified on two machines like every
+other field's.
 
 Build the verifier and verify the certificates:
 
