@@ -11,11 +11,11 @@
 \\ a checker.
 \\
 \\ Run from the repository root:
-\\   CERT_DIR=certificate/K-<n>-p5 gp -qf tools/certificate_guide.gp
+\\   CERT_DIR=certificates/p5/K-<n>-p5 gp -qf tools/certificate_guide.gp
 \\ then compile certificate-guide.tex with pdflatex.
 
 certdir = getenv("CERT_DIR");
-if (certdir == 0 || #certdir == 0, certdir = "certificate/K-2800905-p5");
+if (certdir == 0 || #certdir == 0, certdir = "certificates/p5/K-2800905-p5");
 certpath = concat(certdir, "/certificate.gp");
 outpath  = concat(certdir, "/certificate-guide.tex");
 
@@ -109,7 +109,7 @@ emit_header() =
   out("\\end{align*}");
   out("Facts marked \\textbf{Checked} are recomputed exactly by the");
   out("generating script; the full verification is performed by the");
-  out("shared verifier \\texttt{certificate/verify\\_certificate.c} as");
+  out("shared verifier \\texttt{certificates/p5/verify\\_certificate.c} as");
   out("described in the README files of the \\texttt{certificate}");
   out("directory.");
   out("\\section*{Notation and conventions}");

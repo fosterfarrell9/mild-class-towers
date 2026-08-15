@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Bockstein-cone criterion at p=3 on the verified source tensors.
 
-For every tensor in examples/p3/source-tensors/, this script computes
+For every tensor in records/p3/source-tensors/, this script computes
 the Bockstein matrix B (the diagonal coefficients), the reduced linear
 cone C_beta = P(ker B), the closed points of the norm-degeneracy scheme
 Sigma_D of residue degree at most three, and, at every rank-one cone
@@ -18,7 +18,7 @@ restricted quartics to vanish identically); the degree-four points of
 the line are then examined exactly like the lower-degree ones.
 
 Everything is exact linear algebra over F_3, F_9, F_27, F_81; the
-script is deterministic and writes examples/p3/cone-criterion/report.txt.
+script is deterministic and writes records/p3/cone-criterion/report.txt.
 """
 
 from __future__ import annotations
@@ -27,8 +27,8 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SRC = ROOT / "examples" / "p3" / "source-tensors"
-OUT = ROOT / "examples" / "p3" / "cone-criterion"
+SRC = ROOT / "records" / "p3" / "source-tensors"
+OUT = ROOT / "records" / "p3" / "cone-criterion"
 
 # ----------------------------------------------------------------------
 # Finite fields F_{3^d} as coefficient tuples modulo a fixed minimal

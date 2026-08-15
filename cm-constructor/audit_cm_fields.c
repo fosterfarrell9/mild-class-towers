@@ -3,7 +3,7 @@
 /* Exact, field-only audit for the experiment's CM output.
  *
  * The Artin-kernel calculation is intentionally the same one used by
- * certificate/verify_certificate.c: rnfcycaut + allauts + cyclicrelfrob on
+ * verifier/verify_certificate.c: rnfcycaut + allauts + cyclicrelfrob on
  * the fixed base-class generators.  No relative class or unit group is used.
  */
 

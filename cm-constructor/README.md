@@ -37,9 +37,9 @@ Example (field of discriminant -106660295):
 
 ```sh
 ./cm_construct 's^2-s+26665074' cm-fields.gp 768
-./audit_cm_fields cm-fields.gp ../certificate/K-106660295-p5/certificate.gp
+./audit_cm_fields cm-fields.gp ../certificates/p5/K-106660295-p5/certificate.gp
 ```
 
 The certificate of the seventeenth census field, D = -109909943, was
 produced through this oracle and is verified by the unchanged
-standalone verifier under `certificate/K-109909943-p5/`.
+standalone verifier under `certificates/p5/K-109909943-p5/`.

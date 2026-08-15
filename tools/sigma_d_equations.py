@@ -13,7 +13,7 @@ polynomial, whose irreducible factors are counted directly; the
 remaining point (1:0:0) is tested by evaluation.
 
 Everything is derived from the committed file
-certificate/K-2800905-p5/secondary-norms.gp.
+certificates/p5/K-2800905-p5/secondary-norms.gp.
 """
 
 from __future__ import annotations
@@ -82,7 +82,7 @@ def factor_univariate(coeffs):
 
 
 def main():
-    text = (ROOT / "certificate/K-2800905-p5/secondary-norms.gp").read_text()
+    text = (ROOT / "certificates/p5/K-2800905-p5/secondary-norms.gp").read_text()
     mats = tro.parse_gp_matrices(text, "secondary_norm_samples")[:6]
     basis, pairs = mats[0:3], mats[3:6]
     Dsym = tro.symbolic_D(basis, pairs)

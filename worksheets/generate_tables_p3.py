@@ -22,7 +22,8 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
-P3 = ROOT / "examples" / "p3"
+CERTS = ROOT / "certificates" / "p3"
+P3 = ROOT / "records" / "p3"
 
 ANICK = {-211248887, -263780072}
 BLOCKS = [
@@ -44,7 +45,7 @@ def load_records(path: Path) -> list[dict]:
 
 
 def class_group(disc: int) -> str:
-    certificate = (P3 / "certificates" / bucket(disc)
+    certificate = (CERTS / bucket(disc)
                    / f"K-{abs(disc)}-p3" / "certificate.gp")
     header = certificate.read_text().splitlines()[0]
     match = re.search(r"\[\[([0-9, ]+)\]", header)
@@ -102,17 +103,17 @@ def main() -> int:
 group, the rank of $\delta$, and the source of mildness; the three
 tables follow the blocks of the computation.  Additional records:
 the Anick witnesses in
-\nolinkurl{examples/p3/results/block-witnesses-002.json}; the
+\nolinkurl{records/p3/results/block-witnesses-002.json}; the
 Gr\"obner verdicts, including the $26$ fields that are provably not
 strongly free and the single field with a rank-two tensor, in
-\nolinkurl{examples/p3/results/strong-freeness-block-001.json},
-\nolinkurl{examples/p3/results/slice2-strong-freeness.json}, and
-\nolinkurl{examples/p3/results/block23-strong-freeness.json} ---
+\nolinkurl{records/p3/results/strong-freeness-block-001.json},
+\nolinkurl{records/p3/results/slice2-strong-freeness.json}, and
+\nolinkurl{records/p3/results/block23-strong-freeness.json} ---
 every decided verdict was produced by both engines (appendix~C.3
 of the paper); the cone-criterion
 reports with the transverse cone point of every criterion field in
-\nolinkurl{examples/p3/cone-criterion/}.  The drivers are
-\nolinkurl{examples/p3/strong-freeness/block_sweep.py},
+\nolinkurl{records/p3/cone-criterion/}.  The drivers are
+\nolinkurl{tools/strong-freeness/block_sweep.py},
 \nolinkurl{tools/strong_freeness_singular.py}, and
 \nolinkurl{tools/p3_cone_criterion.py}.  The exhaustive Anick
 searches over the two subfamilies of Section~5.3 of the paper ran

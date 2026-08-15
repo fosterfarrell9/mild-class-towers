@@ -26,9 +26,9 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 VERIFIER = HERE / "verify_certificate"
-SOURCE_P3 = (HERE.parent / "examples" / "p3" / "certificates"
+SOURCE_P3 = (HERE.parent / "certificates" / "p3"
              / "000" / "K-3640387-p3" / "certificate.gp")
-SOURCE_P5 = HERE.parent / "certificate" / "K-2800905-p5" / "certificate.gp"
+SOURCE_P5 = HERE.parent / "certificates" / "p5" / "K-2800905-p5" / "certificate.gp"
 
 # The only length-3 integral ~-vectors of an entry line are the
 # character vector and the norm-class vector, in this order; the

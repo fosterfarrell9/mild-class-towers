@@ -10,9 +10,9 @@ verify_certificate: verify_certificate.c
 
 .PHONY: all check clean
 check: verify_certificate
-	./verify_certificate ../examples/p3/certificates/000/K-3640387-p3/certificate.gp
-	./verify_certificate ../certificate/K-2800905-p5/certificate.gp
-	./verify_certificate ../examples/p7/K-501510767-p7/certificate.gp
+	./verify_certificate ../certificates/p3/000/K-3640387-p3/certificate.gp
+	./verify_certificate ../certificates/p5/K-2800905-p5/certificate.gp
+	./verify_certificate ../certificates/p7/K-501510767-p7/certificate.gp
 	python3 test_rejections.py
 
 clean:

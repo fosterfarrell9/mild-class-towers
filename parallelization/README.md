@@ -43,11 +43,11 @@ PARI=<prefix>` in the repository root):
 make PARI="$HOME/.local"
 python3 run_parallel.py --polynomial 's^2-s+15260177' \
   --workdir work/D-61040707 \
-  --verify-against ../examples/p5/batch-block0-01/D-61040707/result.gp
+  --verify-against ../records/p5/batch-block0-01/D-61040707/result.gp
 ```
 
 Wall-clock for a field drops to roughly the time of its slowest single
 character (plus the per-process base-field setup, seconds to minutes).
 The `work/` outputs are transient; committed artifacts should continue
-to go through the established layouts (`examples/p5/...`,
-`certificate/K-<n>-p5/`).
+to go through the established layouts (`records/p5/...`,
+`certificates/p5/K-<n>-p5/`).

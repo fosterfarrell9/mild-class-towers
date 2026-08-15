@@ -32,7 +32,7 @@ printf '%s\n' \
 cmp "$test_dir/expected-key.tsv" "$test_dir/imported-key.tsv"
 
 gp -q <<EOF
-r=read("candidates/p5-r3/scan-1-25000000.gp");
+r=read("census/p5-r3/scan-1-25000000.gp");
 c=r[10][2];
 if(#c!=2,error("production scan candidate count"));
 if(c[1][1]!=-11203620 || c[1][3]!=[10,10,10],error("first production candidate"));

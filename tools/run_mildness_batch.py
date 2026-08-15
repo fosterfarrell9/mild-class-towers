@@ -21,7 +21,7 @@ from typing import Callable
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_BATCH = ROOT / "examples" / "p5" / "batch-block0-01"
+DEFAULT_BATCH = ROOT / "records" / "p5" / "batch-block0-01"
 STATE_NAME = "batch-state.json"
 TSV_NAME = "batch.tsv"
 LOG_NAME = "batch.log"

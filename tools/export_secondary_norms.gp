@@ -6,10 +6,10 @@
 \\
 \\ Run from the repository root:
 \\   gp -qf tools/export_secondary_norms.gp
-\\ writes certificate/K-2800905-p5/secondary-norms.gp deterministically.
+\\ writes certificates/p5/K-2800905-p5/secondary-norms.gp deterministically.
 
-certpath = "certificate/K-2800905-p5/certificate.gp";
-outpath  = "certificate/K-2800905-p5/secondary-norms.gp";
+certpath = "certificates/p5/K-2800905-p5/certificate.gp";
+outpath  = "certificates/p5/K-2800905-p5/secondary-norms.gp";
 
 readcert() =
 {

@@ -30,7 +30,7 @@ def result_records(root):
     """Map discriminant to result record, by content: the example directories
     are not named consistently enough to go by path."""
     records = {}
-    for path in root.glob("examples/p5/**/result.gp"):
+    for path in root.glob("records/p5/**/result.gp"):
         match = re.search(
             r'"base_discriminant", *(-?\d+)', path.read_text()[:3000])
         if match:
@@ -40,7 +40,7 @@ def result_records(root):
 
 def main():
     root = Path.cwd()
-    cert_dir = root / "certificate"
+    cert_dir = root / "certificates" / "p5"
     verifier = root / "verifier" / "verify_certificate"
     if not verifier.exists():
         sys.exit("build the verifier first: "

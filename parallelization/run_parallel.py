@@ -14,7 +14,7 @@ Usage, from this directory (repository built, verifier built):
 
   python3 run_parallel.py --polynomial 's^2-s+15260177' \
       --workdir work/D-61040707 [--limit exhaustive] \
-      [--verify-against ../examples/p5/batch-block0-01/D-61040707/result.gp]
+      [--verify-against ../records/p5/batch-block0-01/D-61040707/result.gp]
 
 --verify-against runs the regression comparison: the fresh result must
 reproduce the committed record's verified entries, and the merged
@@ -140,7 +140,7 @@ def verify(certificate, result):
     proc = subprocess.run(
         [str(ROOT / "verifier" / "verify_certificate"),
          str(Path(certificate).resolve()), str(Path(result).resolve())],
-        cwd=ROOT / "certificate", capture_output=True, text=True)
+        cwd=ROOT / "certificates" / "p5", capture_output=True, text=True)
     tail = (proc.stdout + proc.stderr).strip().splitlines()[-3:]
     ok = (proc.returncode == 0
           and any("CERTIFICATE VERIFIED" in l for l in tail)

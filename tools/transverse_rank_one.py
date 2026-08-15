@@ -4,10 +4,10 @@
 For each of the 204 fields of 5-class rank three with |D_K| < 2^30 the
 quadratic secondary-norm family D(u,v,w) is rebuilt by polarization from
 the six verified matrices stored in the repository.  The matrices are
-read from the arithmetic certificate of the field (certificate/K-*-p5/);
+read from the arithmetic certificate of the field (certificates/p5/K-*-p5/);
 for the fields that also carry a committed result.gp record (the 61
 fields with |D_K| < 2^28) or the exported file
-certificate/K-2800905-p5/secondary-norms.gp, both sources are read and
+certificates/p5/K-2800905-p5/secondary-norms.gp, both sources are read and
 must agree, matrix by matrix.  The transverse rank-one
 criterion of the paper,
 
@@ -41,7 +41,7 @@ Internal verification before any certificate is produced:
 Deterministic.  Requires Singular and the gp of the patched PARI
 build (for reading the certificates).  Usage, from the repository root:
     python3 tools/transverse_rank_one.py
-Writes examples/p5/transverse-rank-one/{certificates.json,report.txt}.
+Writes records/p5/transverse-rank-one/{certificates.json,report.txt}.
 """
 
 from __future__ import annotations
@@ -55,7 +55,7 @@ from itertools import product
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-OUTDIR = ROOT / "examples" / "p5" / "transverse-rank-one"
+OUTDIR = ROOT / "records" / "p5" / "transverse-rank-one"
 
 P = 5
 SEED = 20260728
@@ -64,14 +64,14 @@ SIX = [(1, 0, 0), (0, 1, 0), (0, 0, 1), (1, 1, 0), (1, 0, 1), (0, 1, 1)]
 def discover_fields():
     """All 204 census fields: (disc, record path or None, certificate)."""
     records = {}
-    for path in sorted((ROOT / "examples" / "p5").glob("**/result.gp")):
+    for path in sorted((ROOT / "records" / "p5").glob("**/result.gp")):
         match = re.match(r"D-(\d+)$", path.parent.name)
         if match:
             records[-int(match.group(1))] = path
-    principal = ROOT / "certificate/K-2800905-p5/secondary-norms.gp"
+    principal = ROOT / "certificates/p5/K-2800905-p5/secondary-norms.gp"
     records.setdefault(-11203620, principal)
     fields = []
-    for directory in (ROOT / "certificate").glob("K-*-p5"):
+    for directory in (ROOT / "certificates" / "p5").glob("K-*-p5"):
         radicand = int(directory.name[2:-3])
         disc = -radicand if radicand % 4 == 3 else -4 * radicand
         fields.append((disc, records.get(disc),

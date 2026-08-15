@@ -31,7 +31,7 @@ the tag `ahlqvist-final` marks his last commit.
 tools/build-patched-pari.sh            # patched PARI 2.17.4 into ~/.local
 make PARI="$HOME/.local"               # the main program
 make -C verifier PARI="$HOME/.local"
-verifier/verify_certificate certificate/K-2800905-p5/certificate.gp
+verifier/verify_certificate certificates/p5/K-2800905-p5/certificate.gp
 ```
 
 The last command reverifies, by exact arithmetic and without repeating any
@@ -51,12 +51,11 @@ with `pol(s)` a defining polynomial of the number field K in the variable
 |---|---|
 | `src/`, `headers/` | the C program: field construction, Artin symbols, secondary norm operators, Massey tensor, cubic relation space |
 | `verifier/` | the standalone certificate verifier shared by all three primes, with its Makefile and rejection tests |
-| `certificate/` | one directory per certified p = 5 field, with a human-readable guide per certificate |
-| `examples/p5/` | computed results and run logs per field, and the transverse rank-one certificates |
-| `examples/p3/` | the p = 3 collection: certificates and source tensors in discriminant buckets, result records, cone-criterion reports, and drivers |
-| `examples/p7/` | the three p = 7 fields: certificates, matrices, and transversality protocols |
+| `certificates/` | the arithmetic certificates: one collection per prime (`p3/` in discriminant buckets, `p5/`, `p7/`), one directory per field |
+| `records/` | what the searches produced and what follows from the verified matrices: result records and run logs, source tensors, verification and strong-freeness records, cone-criterion reports, transversality certificates |
+| `census/` | the enumeration behind the census: the complete discriminant lists per prime, with the Mosunov--Jacobson provenance |
 | `worksheets/` | the worksheet parts W1--W6 cited by the paper |
-| `tools/` | batch runner, Gröbner and Singular drivers, transverse rank-one certification, class-group table readers, PARI build script |
+| `tools/` | the drivers and generators: verification harnesses, batch runner, Gröbner and Singular engines, transverse rank-one certification, class-group table readers, PARI build script |
 | `parallelization/` | per-character parallel drivers for expensive fields |
 | `tests/` | regression tests |
 | `doc/` | the required one-file PARI patch |

@@ -73,16 +73,16 @@ RESULT_RECORD_MATCH=PASS):
 
 ```sh
 make -C verifier PARI="$HOME/.local"
-verifier/verify_certificate certificate/K-2800905-p5/certificate.gp
-verifier/verify_certificate certificate/K-51213139-p5/certificate.gp \
-  examples/p5/batch-block0-01/D-51213139/result.gp
+verifier/verify_certificate certificates/p5/K-2800905-p5/certificate.gp
+verifier/verify_certificate certificates/p5/K-51213139-p5/certificate.gp \
+  records/p5/batch-block0-01/D-51213139/result.gp
 ```
 
 Export a certificate for a further field by running the audited
 pipeline with the export path set (expensive; it repeats the search):
 
 ```sh
-MASSEY_CERTIFICATE_EXPORT="$PWD/certificate/K-<n>-p5/certificate.gp" \
+MASSEY_CERTIFICATE_EXPORT="$PWD/certificates/p5/K-<n>-p5/certificate.gp" \
 ./build/massey --example-result /tmp/result.gp \
   --strong-search-limit exhaustive 5 '<polynomial>'
 ```
@@ -103,13 +103,13 @@ which rebuilds the quadratic secondary-norm family of each field by
 polarization from the six verified matrices, read from the arithmetic
 certificate of the field; for the 61 fields with |D_K| < 2^28 the
 committed `result.gp` records (and, for the principal example,
-`certificate/K-2800905-p5/secondary-norms.gp`) are read as well and
+`certificates/p5/K-2800905-p5/secondary-norms.gp`) are read as well and
 must agree matrix by matrix.  The script locates the closed points of the norm-degeneracy scheme exactly (Singular
 radical per affine chart, eliminant roots over explicit fields
 F_5[t]/(f)), and certifies `rank(D_x)=1` and `det(B_x)!=0` by direct
 linear algebra over the residue field, with a Jacobian tangent-space
 cross-check at every point.  Results are committed under
-`examples/p5/transverse-rank-one/`.
+`records/p5/transverse-rank-one/`.
 
 ## Pure relation-algebra searches for a stored matrix
 
@@ -141,7 +141,7 @@ Hilbert series of the relation algebra degree by degree when it does not:
 
 ```sh
 python3 tools/strong_freeness_gb.py \
-  --result examples/p5/D-18397407/result.gp --order xyz --max-degree 12
+  --result records/p5/D-18397407/result.gp --order xyz --max-degree 12
 python3 tests/test_strong_freeness_gb.py
 ```
 
@@ -157,7 +157,7 @@ executable; higher degree bounds become practical):
 
 ```sh
 python3 tools/strong_freeness_singular.py \
-  --result examples/p5/D-18397407/result.gp --order xyz --degree-bound 13
+  --result records/p5/D-18397407/result.gp --order xyz --degree-bound 13
 python3 tests/test_strong_freeness_singular.py
 ```
 

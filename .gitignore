@@ -17,7 +17,7 @@ __pycache__/
 *.pyc
 
 verifier/verify_certificate
-examples/p3/certificates/*/*/build-data/
+certificates/p3/*/*/build-data/
 cm-constructor/cm_construct
 cm-constructor/audit_cm_fields
 cm-constructor/cm_character_driver
