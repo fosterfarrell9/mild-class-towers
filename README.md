@@ -1,19 +1,29 @@
-# Massey-pari
+# mild-class-towers
 
-A C program using the [PARI](http://pari.math.u-bordeaux.fr/) library that
-computes Massey products in the étale cohomology of the ring of integers of
-a number field, together with the arithmetic that goes with them.  PARI
-makes it fast for number fields of low degree.
+Companion repository for the paper *Mild p-class tower groups of
+imaginary quadratic fields*.  It is the continuation of Eric
+Ahlqvist's `Massey-pari`; the authorship boundary is recorded in
+`NOTICE` and visible directly in the git history.  It contains
 
-The original program was written by Eric Ahlqvist for the computations in
-Ahlqvist--Carlson, [*Massey products in the étale cohomology of number
-fields*](https://www.degruyter.com/document/doi/10.1515/crelle-2025-0006/html).
-This repository continues that work: it adds prescribed-character secondary
-norm operators, the reconstruction of the complete cubic relation space,
-strong-freeness and mildness tests, and a certificate infrastructure by
-which the arithmetic can be checked independently of the search that
-produced it.  `NOTICE` records the authorship boundary, which is also
-visible directly in the git history.
+- arithmetic certificates for all 12 956 imaginary quadratic fields of
+  odd p-class rank three with |D_K| < 2^30 — 12 749 at p = 3, 204 at
+  p = 5, 3 at p = 7 — and the standalone verifier (`verifier/`) that
+  checks each certificate by exact arithmetic, independently of the
+  search that produced it;
+- the transversality, strong-freeness, and cone-criterion records
+  behind the mildness results, and the worksheet parts W1–W6 cited in
+  the paper;
+- the C/[PARI](http://pari.math.u-bordeaux.fr/) search program that
+  computes Massey products in the étale cohomology of rings of
+  integers of number fields, with prescribed-character secondary norm
+  operators, the reconstruction of the complete cubic relation space,
+  and the strong-freeness and mildness tests.
+
+The original program was written by Eric Ahlqvist for the computations
+in Ahlqvist--Carlson, [*Massey products in the étale cohomology of
+number
+fields*](https://www.degruyter.com/document/doi/10.1515/crelle-2025-0006/html);
+the tag `ahlqvist-final` marks his last commit.
 
 ## Quick start
 
