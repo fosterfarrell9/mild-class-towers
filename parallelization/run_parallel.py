@@ -138,7 +138,7 @@ def merge_certificates(paths, out):
 
 def verify(certificate, result):
     proc = subprocess.run(
-        ["./verify_certificate",
+        [str(ROOT / "verifier" / "verify_certificate"),
          str(Path(certificate).resolve()), str(Path(result).resolve())],
         cwd=ROOT / "certificate", capture_output=True, text=True)
     tail = (proc.stdout + proc.stderr).strip().splitlines()[-3:]

@@ -41,8 +41,8 @@ Verify with the odd-p verifier (the prime is read from the
 certificate):
 
 ```sh
-make -C examples/p3/verifier PARI=/path/to/pari-prefix
-examples/p3/verifier/verify_certificate examples/p7/K-501510767-p7/certificate.gp
+make -C verifier PARI=/path/to/pari-prefix
+verifier/verify_certificate examples/p7/K-501510767-p7/certificate.gp
 ```
 
 and likewise for the other two directories.  Expected: all 18

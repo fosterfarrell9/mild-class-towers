@@ -29,8 +29,8 @@ PARI.
   regenerated deterministically by `gp -qf tools/export_secondary_norms.gp`;
   it lets finite-algebra tools read all computed fields uniformly.
 - The standalone verifier `verify_certificate.c` and its `Makefile` are
-  shared between all certified fields and live one directory up, in
-  `certificate/`.
+  shared between all certified fields of every odd prime and live in
+  `verifier/` at the repository root.
 
 The verifier does not run the search and does not construct a BNF for any
 degree-five relative field \(L_x/K\). In particular, successful verification
@@ -70,12 +70,10 @@ polynomials to define the same concrete PARI model: the canonical absolute
 polynomial inside the reconstructed `rnf` must equal the polynomial used to
 construct the absolute `nf`.
 
-The verifier is field-generic.  It accepts certificates with the 18 main
-entries (as released throughout the collection) and also tolerates
-additional doubled-character entries (27 in total, the historical form
-of this file); each present label/column pair is required exactly once,
-and the doubled-character checks run only when the `2a`, `2b`, `2c`
-entries are present.  The comparison against the published matrices of the
+The verifier is field-generic.  It requires exactly the 18 entries of the
+six stored characters (as released throughout the collection) and rejects
+the historical doubled-character entries `2a`, `2b`, `2c`.  The comparison
+against the published matrices of the
 paper is performed only when the certified discriminant is the
 principal example's; for any other field the six reconstructed matrices
 are printed, and an optional second command-line argument naming a
@@ -94,9 +92,8 @@ PARI 2.17.4 and the corresponding build steps are documented in
 `doc/pari-2.17.4-patch.md` at the repository root. From a clean checkout:
 
 ```sh
-cd certificate
-make PARI=/path/to/pari-prefix
-./verify_certificate K-2800905-p5/certificate.gp
+make -C verifier PARI=/path/to/pari-prefix
+verifier/verify_certificate certificate/K-2800905-p5/certificate.gp
 ```
 
 The patched PARI can be built with `tools/build-patched-pari.sh`, which
@@ -104,8 +101,8 @@ installs it into `$HOME/.local` by default:
 
 ```sh
 tools/build-patched-pari.sh
-cd certificate && make PARI="$HOME/.local"
-./verify_certificate K-2800905-p5/certificate.gp
+make -C verifier PARI="$HOME/.local"
+verifier/verify_certificate certificate/K-2800905-p5/certificate.gp
 ```
 
 Successful output starts with:

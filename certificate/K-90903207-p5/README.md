@@ -28,8 +28,8 @@ Verify with the shared verifier in `certificate/`, cross-checking
 against the committed result record:
 
 ```sh
-cd certificate && make PARI=/path/to/pari-prefix
-./verify_certificate K-90903207-p5/certificate.gp \
+make -C verifier PARI=/path/to/pari-prefix
+verifier/verify_certificate certificate/K-90903207-p5/certificate.gp \
   ../examples/p5/further/D-90903207/result.gp
 ```
 

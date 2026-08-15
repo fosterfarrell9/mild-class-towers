@@ -8,7 +8,7 @@ confirming it.
 
 Run from the repository root, with the verifier built:
 
-    make -C certificate PARI=$HOME/.local
+    make -C verifier PARI=$HOME/.local
     python3 tools/verify_all_certificates.py
 
 Each certificate is given at most TIMEOUT seconds; a run that reaches the
@@ -41,9 +41,10 @@ def result_records(root):
 def main():
     root = Path.cwd()
     cert_dir = root / "certificate"
-    if not (cert_dir / "verify_certificate").exists():
+    verifier = root / "verifier" / "verify_certificate"
+    if not verifier.exists():
         sys.exit("build the verifier first: "
-                 "make -C certificate PARI=<pari-prefix>")
+                 "make -C verifier PARI=<pari-prefix>")
     records = result_records(root)
 
     failures = 0
@@ -62,7 +63,7 @@ def main():
             continue
         record = records.get(match.group(1))
 
-        command = ["timeout", "-k", "10", TIMEOUT, "./verify_certificate",
+        command = ["timeout", "-k", "10", TIMEOUT, str(verifier),
                    f"{directory.name}/certificate.gp"]
         if record:
             command.append(str(Path("..") / record.relative_to(root)))

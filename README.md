@@ -20,8 +20,8 @@ visible directly in the git history.
 ```sh
 tools/build-patched-pari.sh            # patched PARI 2.17.4 into ~/.local
 make PARI="$HOME/.local"               # the main program
-cd certificate && make PARI="$HOME/.local"
-./verify_certificate K-2800905-p5/certificate.gp
+make -C verifier PARI="$HOME/.local"
+verifier/verify_certificate certificate/K-2800905-p5/certificate.gp
 ```
 
 The last command reverifies, by exact arithmetic and without repeating any

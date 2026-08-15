@@ -1,0 +1,110 @@
+{
+  "all_passed": true,
+  "records": [
+    {
+      "fixture": "p3",
+      "case": "character_vector",
+      "status": "PASS",
+      "expected_error": "character label/vector mismatch",
+      "returncode": 1
+    },
+    {
+      "fixture": "p3",
+      "case": "normalized_automorphism",
+      "status": "PASS",
+      "expected_error": "stored sigma does not fix K",
+      "returncode": 1
+    },
+    {
+      "fixture": "p3",
+      "case": "entry_multiplicity",
+      "status": "PASS",
+      "expected_error": "duplicate certificate entry",
+      "returncode": 1
+    },
+    {
+      "fixture": "p3",
+      "case": "norm_class_vector",
+      "status": "PASS",
+      "expected_error": "J-corrected class coordinates mismatch",
+      "returncode": 1
+    },
+    {
+      "fixture": "p3",
+      "case": "absolute_field_model",
+      "status": "PASS",
+      "expected_error": "relative/absolute field models are incompatible",
+      "returncode": 1
+    },
+    {
+      "fixture": "p3",
+      "case": "format",
+      "status": "PASS",
+      "expected_error": "unsupported certificate format",
+      "returncode": 1
+    },
+    {
+      "fixture": "p3",
+      "case": "missing_entry",
+      "status": "PASS",
+      "expected_error": "must contain exactly 18 entries",
+      "returncode": 1
+    },
+    {
+      "fixture": "p3",
+      "case": "wrong_expected_tensor",
+      "status": "PASS",
+      "expected_error": "reconstructed tensor disagrees with expected tensor",
+      "returncode": 1
+    },
+    {
+      "fixture": "p5",
+      "case": "character_vector",
+      "status": "PASS",
+      "expected_error": "character label/vector mismatch",
+      "returncode": 1
+    },
+    {
+      "fixture": "p5",
+      "case": "normalized_automorphism",
+      "status": "PASS",
+      "expected_error": "stored sigma does not fix K",
+      "returncode": 1
+    },
+    {
+      "fixture": "p5",
+      "case": "entry_multiplicity",
+      "status": "PASS",
+      "expected_error": "duplicate certificate entry",
+      "returncode": 1
+    },
+    {
+      "fixture": "p5",
+      "case": "norm_class_vector",
+      "status": "PASS",
+      "expected_error": "norm-class coordinates mismatch",
+      "returncode": 1
+    },
+    {
+      "fixture": "p5",
+      "case": "absolute_field_model",
+      "status": "PASS",
+      "expected_error": "relative/absolute field models are incompatible",
+      "returncode": 1
+    },
+    {
+      "fixture": "p5",
+      "case": "format",
+      "status": "PASS",
+      "expected_error": "unsupported certificate format",
+      "returncode": 1
+    },
+    {
+      "fixture": "p5",
+      "case": "missing_entry",
+      "status": "PASS",
+      "expected_error": "certificate must contain exactly 18 entries",
+      "returncode": 1
+    }
+  ]
+}

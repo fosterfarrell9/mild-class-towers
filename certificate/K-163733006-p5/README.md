@@ -19,8 +19,8 @@ standalone verifier on a second machine.
 Verify:
 
 ```sh
-cd certificate && make PARI=/path/to/pari-prefix
-./verify_certificate K-163733006-p5/certificate.gp
+make -C verifier PARI=/path/to/pari-prefix
+verifier/verify_certificate certificate/K-163733006-p5/certificate.gp
 ```
 
 Expected: `BASE_BNF_CERTIFIED=PASS`, all 18 entry lines with

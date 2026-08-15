@@ -1,23 +1,38 @@
 # p = 3 certificates and standalone verification
 
-This directory contains the arithmetic certificates for all 2497
-imaginary quadratic fields of 3-class rank three with |D_K| < 2^28,
-together with a standalone C verifier and the exact strong-freeness
+This directory contains the arithmetic certificates for all 12749
+imaginary quadratic fields of 3-class rank three with |D_K| < 2^30,
+together with the exact strong-freeness
 checks.  The certificate format is documented in `FORMAT.md`.
+
+The certificates live under `certificates/<bucket>/K-<|D|>-p3/` and
+the reference tensors under `source-tensors/<bucket>/D-<|D|>/`,
+where `<bucket>` is floor(|D|/10^7) as three digits (`000`..`107`);
+the sharding keeps every directory listing below GitHub's rendering
+limit.  A few certificate directories carry a `hints.gp` sidecar of
+proven prime factors that makes their verification deterministic;
+wrong or missing hints can only slow a run down or lead to
+rejection, never to a wrong acceptance.
 
 Build the verifier and verify the certificates:
 
 ```sh
-make -C verifier PARI=/usr/local
-python3 verifier/verify_all.py
+make -C ../../verifier PARI=/usr/local
+python3 verify_all.py
 ```
+
+The verifier is shared between the collections of all three primes and
+lives in `verifier/` at the repository root.
 
 Each certificate is accepted only after exact field, integral-basis,
 Artin, ideal, norm, class-coordinate, reconstruction, and shuffle
 checks; the reconstructed tensor is also compared against the stored
 source tensors under `source-tensors/`.  Results are written to
-`results/`; the complete block verification is
-`results/verification-004.json`.
+`results/`; the verification records of the block
+2^29 <= |D_K| < 2^30 are `results/block23-verification-starthinker.json`
+and `results/block23-verification-independent.json`, its
+strong-freeness verdicts `results/block23-strong-freeness.json` with
+the second-engine record `results/block23-crosscheck-python.json`.
 
 ## Strong freeness
 
@@ -56,8 +71,9 @@ what is expensive.  With `--engine singular` the same driver computes
 the bases with Singular's Letterplace subsystem instead; every
 recorded verdict was produced by both engines.
 
-`make -C verifier check` first verifies the unmodified certificate of
-`K-3640387-p3` and then runs `verifier/test_rejections.py`, which
+`make -C verifier check`, run from the repository root, first verifies
+the unmodified certificates of one field per prime and then runs
+`verifier/test_rejections.py`, which
 generates temporary copies of that certificate and requires the
 verifier to reject every one of them with the expected message: five
 copies alter the arithmetic content --- the character vector, the

@@ -72,11 +72,10 @@ certified matrices against a committed result record, reporting
 RESULT_RECORD_MATCH=PASS):
 
 ```sh
-cd certificate
-make PARI="$HOME/.local"
-./verify_certificate K-2800905-p5/certificate.gp
-./verify_certificate K-51213139-p5/certificate.gp \
-  ../examples/p5/batch-block0-01/D-51213139/result.gp
+make -C verifier PARI="$HOME/.local"
+verifier/verify_certificate certificate/K-2800905-p5/certificate.gp
+verifier/verify_certificate certificate/K-51213139-p5/certificate.gp \
+  examples/p5/batch-block0-01/D-51213139/result.gp
 ```
 
 Export a certificate for a further field by running the audited

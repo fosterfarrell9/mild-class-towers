@@ -20,15 +20,15 @@ since it is derived from data that ships in full.  The guide is
 exposition; the verification chain is implemented solely by
 `verify_certificate.c`.
 
-The verifier is shared and lives here, next to this file.  Build it once
-and point it at any certificate:
+The shared verifier for every odd prime of the repository lives in
+`verifier/` at the top level.  Build it once and point it at any
+certificate:
 
 ```sh
-cd certificate
-make PARI=/path/to/pari-prefix
-./verify_certificate K-2800905-p5/certificate.gp
-./verify_certificate K-51213139-p5/certificate.gp \
-  ../examples/p5/batch-block0-01/D-51213139/result.gp
+make -C verifier PARI=/path/to/pari-prefix
+verifier/verify_certificate certificate/K-2800905-p5/certificate.gp
+verifier/verify_certificate certificate/K-51213139-p5/certificate.gp \
+  examples/p5/batch-block0-01/D-51213139/result.gp
 ```
 
 The optional second argument names a committed `result.gp` record; the
