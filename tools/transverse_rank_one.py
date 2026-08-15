@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
-"""Transverse rank-one certificates for the computed fields.
+"""Transverse rank-one certificates for the p = 5 census.
 
-For each field the quadratic secondary-norm family D(u,v,w) is rebuilt by
-polarization from the six verified matrices stored in the repository (the
-committed result.gp records; for the principal example the file
-certificate/K-2800905-p5/secondary-norms.gp exported from its arithmetic
-certificate by tools/export_secondary_norms.gp).  The transverse rank-one
+For each of the 204 fields of 5-class rank three with |D_K| < 2^30 the
+quadratic secondary-norm family D(u,v,w) is rebuilt by polarization from
+the six verified matrices stored in the repository.  The matrices are
+read from the arithmetic certificate of the field (certificate/K-*-p5/);
+for the fields that also carry a committed result.gp record (the 61
+fields with |D_K| < 2^28) or the exported file
+certificate/K-2800905-p5/secondary-norms.gp, both sources are read and
+must agree, matrix by matrix.  The transverse rank-one
 criterion of the paper,
 
     rank(D_x) = 1   and   det(B_x) != 0,
@@ -24,7 +27,7 @@ and every certificate is direct linear algebra over an explicitly
 presented field k = F_5[t]/(f(t)).
 
 Internal verification before any certificate is produced:
-  * the family reproduces the six stored matrices of every field;
+  * record and certificate matrices agree for every field storing both;
   * the Euler identity x . D_x = 0 holds symbolically (so the family is
     a bundle map E (x) O -> Omega^1(3), and rank D_x <= 2 throughout);
   * for the eight fields whose result record stores the 3 x 27 cubic
@@ -35,7 +38,8 @@ Internal verification before any certificate is produced:
   * PASS/FAIL is checked to be invariant under seeded random changes of
     the kernel and quotient bases.
 
-Deterministic.  Requires Singular.  Usage, from the repository root:
+Deterministic.  Requires Singular and the gp of the patched PARI
+build (for reading the certificates).  Usage, from the repository root:
     python3 tools/transverse_rank_one.py
 Writes examples/p5/transverse-rank-one/{certificates.json,report.txt}.
 """
@@ -57,69 +61,51 @@ P = 5
 SEED = 20260728
 SIX = [(1, 0, 0), (0, 1, 0), (0, 0, 1), (1, 1, 0), (1, 0, 1), (0, 1, 1)]
 
-FIELDS = [
-    (-11203620, ROOT / "certificate/K-2800905-p5/secondary-norms.gp"),
-    (-18397407, ROOT / "examples/p5/D-18397407/result.gp"),
-    (-27960639, ROOT / "examples/p5/batch-block0-01/D-27960639/result.gp"),
-    (-35663739, ROOT / "examples/p5/batch-block0-01/D-35663739/result.gp"),
-    (-51213139, ROOT / "examples/p5/batch-block0-01/D-51213139/result.gp"),
-    (-54319112, ROOT / "examples/p5/batch-block0-01/D-54319112/result.gp"),
-    (-61040707, ROOT / "examples/p5/batch-block0-01/D-61040707/result.gp"),
-    (-65818135, ROOT / "examples/p5/batch-block0-01/D-65818135/result.gp"),
-    (-75949255, ROOT / "examples/p5/batch-block0-01/D-75949255/result.gp"),
-    (-77778287, ROOT / "examples/p5/further/D-77778287/result.gp"),
-    (-89017304, ROOT / "examples/p5/further/D-89017304/result.gp"),
-    (-89218664, ROOT / "examples/p5/further/D-89218664/result.gp"),
-    (-90903207, ROOT / "examples/p5/further/D-90903207/result.gp"),
-    (-93121640, ROOT / "examples/p5/further/D-93121640/result.gp"),
-    (-104545864, ROOT / "examples/p5/further/D-104545864/result.gp"),
-    (-106660295, ROOT / "examples/p5/further/D-106660295/result.gp"),
-    (-109909943, ROOT / "examples/p5/D-109909943/result.gp"),
-    (-123482119, ROOT / "examples/p5/further/D-123482119/result.gp"),
-    (-123779560, ROOT / "examples/p5/further/D-123779560/result.gp"),
-    (-126740891, ROOT / "examples/p5/further/D-126740891/result.gp"),
-    (-129063459, ROOT / "examples/p5/D-129063459/result.gp"),
-    (-130370807, ROOT / "examples/p5/D-130370807/result.gp"),
-    (-134005207, ROOT / "examples/p5/D-134005207/result.gp"),
-    (-145367147, ROOT / "examples/p5/batch-block0-01/D-145367147/result.gp"),
-    (-150535579, ROOT / "examples/p5/D-150535579/result.gp"),
-    (-150679519, ROOT / "examples/p5/D-150679519/result.gp"),
-    (-150752699, ROOT / "examples/p5/D-150752699/result.gp"),
-    (-156145931, ROOT / "examples/p5/D-156145931/result.gp"),
-    (-164995035, ROOT / "examples/p5/D-164995035/result.gp"),
-    (-165570488, ROOT / "examples/p5/D-165570488/result.gp"),
-    (-167094823, ROOT / "examples/p5/D-167094823/result.gp"),
-    (-176386616, ROOT / "examples/p5/D-176386616/result.gp"),
-    (-181738571, ROOT / "examples/p5/D-181738571/result.gp"),
-    (-182240771, ROOT / "examples/p5/D-182240771/result.gp"),
-    (-186243704, ROOT / "examples/p5/D-186243704/result.gp"),
-    (-187160831, ROOT / "examples/p5/D-187160831/result.gp"),
-    (-190572839, ROOT / "examples/p5/D-190572839/result.gp"),
-    (-194080808, ROOT / "examples/p5/D-194080808/result.gp"),
-    (-199674799, ROOT / "examples/p5/D-199674799/result.gp"),
-    (-202331347, ROOT / "examples/p5/D-202331347/result.gp"),
-    (-203145767, ROOT / "examples/p5/D-203145767/result.gp"),
-    (-203437103, ROOT / "examples/p5/D-203437103/result.gp"),
-    (-204909944, ROOT / "examples/p5/D-204909944/result.gp"),
-    (-205996583, ROOT / "examples/p5/D-205996583/result.gp"),
-    (-207666763, ROOT / "examples/p5/batch-block0-01/D-207666763/result.gp"),
-    (-209149784, ROOT / "examples/p5/D-209149784/result.gp"),
-    (-212229543, ROOT / "examples/p5/D-212229543/result.gp"),
-    (-216770467, ROOT / "examples/p5/D-216770467/result.gp"),
-    (-225826216, ROOT / "examples/p5/D-225826216/result.gp"),
-    (-226373428, ROOT / "examples/p5/D-226373428/result.gp"),
-    (-231112315, ROOT / "examples/p5/D-231112315/result.gp"),
-    (-239452895, ROOT / "examples/p5/D-239452895/result.gp"),
-    (-242963687, ROOT / "examples/p5/D-242963687/result.gp"),
-    (-246238555, ROOT / "examples/p5/D-246238555/result.gp"),
-    (-247127879, ROOT / "examples/p5/D-247127879/result.gp"),
-    (-248046051, ROOT / "examples/p5/D-248046051/result.gp"),
-    (-249407767, ROOT / "examples/p5/D-249407767/result.gp"),
-    (-252735992, ROOT / "examples/p5/D-252735992/result.gp"),
-    (-253425979, ROOT / "examples/p5/D-253425979/result.gp"),
-    (-256232447, ROOT / "examples/p5/D-256232447/result.gp"),
-    (-261286872, ROOT / "examples/p5/D-261286872/result.gp"),
-]
+def discover_fields():
+    """All 204 census fields: (disc, record path or None, certificate)."""
+    records = {}
+    for path in sorted((ROOT / "examples" / "p5").glob("**/result.gp")):
+        match = re.match(r"D-(\d+)$", path.parent.name)
+        if match:
+            records[-int(match.group(1))] = path
+    principal = ROOT / "certificate/K-2800905-p5/secondary-norms.gp"
+    records.setdefault(-11203620, principal)
+    fields = []
+    for directory in (ROOT / "certificate").glob("K-*-p5"):
+        radicand = int(directory.name[2:-3])
+        disc = -radicand if radicand % 4 == 3 else -4 * radicand
+        fields.append((disc, records.get(disc),
+                       directory / "certificate.gp"))
+    fields.sort(key=lambda triple: -triple[0])
+    return fields
+
+
+GP_EXPORT = """certpath = "%s";
+{
+my(rl = readstr(certpath), t = "", cert, entries,
+   labels = ["a","b","c","a+b","a+c","b+c"], mats = vector(6));
+for (i = 1, #rl, t = concat(t, rl[i]));
+cert = eval(t);
+entries = cert[7];
+for (q = 1, 6,
+  my(cols = vector(3));
+  for (i = 1, #entries,
+    if (entries[i][1] == labels[q],
+        cols[entries[i][2]] = Col(entries[i][13])));
+  mats[q] = matconcat(cols));
+print(Str([["secondary_norm_samples", mats]]));
+}
+quit
+"""
+
+
+def certificate_matrices(cert_path):
+    run = subprocess.run(["gp", "-qf", "-s", "512M"],
+                         input=GP_EXPORT % cert_path, text=True,
+                         capture_output=True, timeout=600)
+    if run.returncode != 0 or "secondary_norm_samples" not in run.stdout:
+        raise SystemExit(f"gp export failed for {cert_path}:\n{run.stderr}")
+    return parse_gp_matrices(run.stdout, "secondary_norm_samples")[:6]
 
 
 # ------------------------------------------------------------ input parsing
@@ -841,15 +827,21 @@ def main():
     OUTDIR.mkdir(parents=True, exist_ok=True)
 
     all_results = []
-    for disc, path in FIELDS:
-        text = path.read_text()
-        mats = parse_gp_matrices(text, "secondary_norm_samples")[:6]
+    fields = discover_fields()
+    assert len(fields) == 204, len(fields)
+    for disc, record_path, cert_path in fields:
+        mats = certificate_matrices(cert_path)
+        if record_path is not None:
+            recorded = parse_gp_matrices(
+                record_path.read_text(), "secondary_norm_samples")[:6]
+            assert recorded == mats, ("record/certificate mismatch", disc)
         basis, pairs = mats[0:3], mats[3:6]
         for lam, M in zip(SIX, mats):
             assert D_of(basis, pairs, list(lam)) == M, (disc, lam)
         Dsym = symbolic_D(basis, pairs)
         assert euler_check(Dsym), disc
-        stored_T = parse_relation_matrix(text)
+        stored_T = (parse_relation_matrix(record_path.read_text())
+                    if record_path is not None else None)
         if stored_T is not None:
             assert word_matrix(basis, pairs) == stored_T, disc
         minors = minors2(Dsym)
@@ -915,11 +907,20 @@ def main():
               f"{[p['degree'] for p in ext_trans]}, "
               f"mindeg {entry['minimal_degree']}")
 
+    degree_one = sum(1 for e in all_results if e["minimal_degree"] == 1)
+    higher = sum(1 for e in all_results
+                 if e["minimal_degree"] not in (None, 1))
+    without = [e["disc"] for e in all_results
+               if e["minimal_degree"] is None]
+    assert (degree_one, higher, without) == (151, 52, [-781922404]), (
+        degree_one, higher, without)
+
     (OUTDIR / "certificates.json").write_text(
         json.dumps(all_results, indent=1))
 
-    lines = [f"Transverse rank-one certificates for {len(all_results)} "
-             f"computed fields", "=" * 66, "",
+    lines = [f"Transverse rank-one certificates for the "
+             f"{len(all_results)} fields of the p = 5 census "
+             f"(|D_K| < 2^30)", "=" * 66, "",
              "D_K          #rat rk1  #rat transverse  min k-degree  "
              "criterion applies", "-" * 66]
     for e in all_results:

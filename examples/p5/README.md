@@ -1,5 +1,10 @@
 # Computed examples for p = 5
 
+This directory holds the per-field result records and run logs of the
+61 fields of 5-class rank three with |D_K| < 2^28.  The fields of the
+range 2^28 <= |D_K| < 2^30 carry no result records here; their data
+are certified directly in `certificate/` (204 fields in total).
+
 Layout of this directory:
 
 - `D-18397407/` — the second-smallest example, computed individually
@@ -16,7 +21,7 @@ Layout of this directory:
   per-character parallel drivers in `parallelization/`; one
   subdirectory `D<disc>` with `result.gp` and `run.log` each.
 - `transverse-rank-one/` — transverse rank-one certificates for all
-  computed fields (see its README).
+  204 fields of the census (see its README).
 
 The principal example \(K=\mathbf Q(\sqrt{-2800905})\),
 \(D_K=-11203620\), predates the result-record format; its arithmetic is
@@ -45,6 +50,7 @@ rank three below 2^28), the computed examples are
 14  -93121640    (further/)
 15  -104545864   (further/)
 16  -106660295   (further/)
+17  -109909943   (D-109909943/)
 18  -123482119   (further/)
 19  -123779560   (further/)
 20  -126740891   (further/; no F_5 Anick witness -- mild by the
@@ -54,19 +60,17 @@ rank three below 2^28), the computed examples are
 45  -207666763   (batch; likewise)
 ```
 
-Ranks 1 to 16 are exactly the sixteen smallest absolute discriminants;
-beyond that the list is no longer an initial segment.  One field of the
-twenty smallest remains uncomputed: rank 17, D = -109909943, whose
-character processes reached 37.7 GiB and were still running after ten
-hours at a ceiling of 32 GiB.
+Ranks 1 to 20 are exactly the twenty smallest absolute discriminants;
+beyond that the list is no longer an initial segment.
 
 Cost is not governed by h_K.  Rank 16 carries the largest class number
 of the list (h = 11000) and took eleven minutes at 0.7 GiB per
 character; rank 10 with h = 6000 needed 16.75 GiB and nine hours.  Nor
 is it governed by the class groups of the L_x: the six characters of
 rank 10 peak at 17564236, 17563508, 17563328, 17563264, 17563272 and
-17563800 kbytes, a spread of 0.006 %, and the same uniformity holds for
-rank 17 -- yet the L_x differ from character to character.  A
+17563800 kbytes, a spread of 0.006 %, and the same uniformity held for
+rank 17, the most expensive field of the initial segment -- yet the
+L_x differ from character to character.  A
 computation that does not
 depend on the character dominates both the time and the memory, and
 `MASSEY_LOG_LEVEL=2` identifies it: the class group of the auxiliary

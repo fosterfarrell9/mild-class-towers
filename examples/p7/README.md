@@ -14,9 +14,10 @@ names, radicands, and absolute discriminants coincide.
 
 Each directory contains:
 
-* `certificate.gp` — the stored arithmetic data: six characters and
-  three doubled characters, with class fields, normalized
-  automorphisms, norm witnesses, and norm classes.
+* `certificate.gp` — the stored arithmetic data: the six characters
+  (the three coordinate characters and their three pairwise sums),
+  with class fields, normalized automorphisms, norm witnesses, and
+  norm classes.
 * `matrices.tsv` — the secondary-norm matrices recorded by the
   search, the independent baseline the verifier's reconstruction is
   compared against.

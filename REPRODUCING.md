@@ -65,8 +65,8 @@ follows by the reconstruction formula, the exhaustive GL_3(F_5) search
 takes under a minute, and the Groebner tools above re-verify the
 Hilbert evidence in minutes.
 
-The verifier is shared between all certified fields and lives in
-`certificate/`, next to the per-field data directories.  Build it once
+The verifier is shared between all certified fields of all three
+primes and lives in the top-level directory `verifier/`.  Build it once
 and verify a certificate (the optional second argument cross-checks the
 certified matrices against a committed result record, reporting
 RESULT_RECORD_MATCH=PASS):
@@ -87,29 +87,24 @@ MASSEY_CERTIFICATE_EXPORT="$PWD/certificate/K-<n>-p5/certificate.gp" \
   --strong-search-limit exhaustive 5 '<polynomial>'
 ```
 
-Pipeline-exported certificates contain the 18 entries for the six
-characters.  The principal example's certificate additionally contains
-the nine genuinely computed doubled-character entries (27 in total),
-produced by the fixed audit mode described in
-`certificate/K-2800905-p5/README.md`; the verifier accepts both forms
-and performs the doubled-character checks only when the entries are
-present.
+Certificates contain exactly the 18 entries for the six characters
+(three columns each); the verifier rejects any other multiplicity.
 
 ## Transverse rank-one certificates
 
-The transverse rank-one mildness criterion is certified for all nine
-computed fields by
+The transverse rank-one mildness criterion is certified for all 204
+fields of the p = 5 census (|D_K| < 2^30) by
 
 ```sh
 python3 tools/transverse_rank_one.py
 ```
 
 which rebuilds the quadratic secondary-norm family of each field by
-polarization from the six verified matrices (committed `result.gp`
-records; for the principal example
-`certificate/K-2800905-p5/secondary-norms.gp`, exported from the
-arithmetic certificate by `gp -qf tools/export_secondary_norms.gp`),
-locates the closed points of the norm-degeneracy scheme exactly (Singular
+polarization from the six verified matrices, read from the arithmetic
+certificate of the field; for the 61 fields with |D_K| < 2^28 the
+committed `result.gp` records (and, for the principal example,
+`certificate/K-2800905-p5/secondary-norms.gp`) are read as well and
+must agree matrix by matrix.  The script locates the closed points of the norm-degeneracy scheme exactly (Singular
 radical per affine chart, eliminant roots over explicit fields
 F_5[t]/(f)), and certifies `rank(D_x)=1` and `det(B_x)!=0` by direct
 linear algebra over the residue field, with a Jacobian tangent-space

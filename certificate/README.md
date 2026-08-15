@@ -2,8 +2,8 @@
 
 One subdirectory per field, named `K-<|D'|>-p5` after the radicand of the
 defining polynomial.  Each subdirectory contains the data only: the
-textual certificate `certificate.gp` and a README with the field data and
-the exact generation command.
+textual certificate `certificate.gp` and a README with the field data
+and the verification commands.
 
 A human-readable guide `certificate-guide.pdf` restating a certificate
 entry by entry in the notation of the paper is generated from

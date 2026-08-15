@@ -33,6 +33,10 @@ source tensors under `source-tensors/`.  Results are written to
 and `results/block23-verification-independent.json`, its
 strong-freeness verdicts `results/block23-strong-freeness.json` with
 the second-engine record `results/block23-crosscheck-python.json`.
+The metadata inside the result records keep the file and directory
+names of the runs that produced them (unsharded certificate
+paths and names of private working trees included); the published
+locations are the ones listed in this README.
 
 ## Strong freeness
 
@@ -57,7 +61,10 @@ with the strongly free series 1/(1-3z+3z^3).  A field is
 STRONGLY_FREE when the completion terminates by the diamond-lemma
 bound and the series agrees, NOT_STRONGLY_FREE when a coefficient
 deviates, and UNDECIDED otherwise.  Its verdicts for the 69 decided
-fields of the block are `results/strong-freeness-block-001.json`; to
+fields of the block are `results/strong-freeness-block-001.json`,
+with the second-engine record
+`results/block0-crosscheck-singular.json` (Singular's Letterplace
+subsystem, same degree bound, agreement on all 69); to
 re-derive them,
 
 ```sh
@@ -81,7 +88,7 @@ normalized automorphism, the multiplicity of an entry, a norm-class
 vector, and the absolute field model, each separately --- and three
 alter the container (an unsupported format version, a missing entry,
 a wrong expected tensor).  The outcomes are recorded in
-`results/rejection-tests.json`.
+`verifier/rejection-tests.json`.
 
 The verifier accepts an optional second argument, a GP vector of
 primes read as factorization hints: each hint must pass a proven
@@ -90,7 +97,7 @@ the discriminant and index factorizations inside `nfinit` and
 `rnfinit` deterministic for fields on which they would otherwise
 depend on fortunate ECM draws.  Wrong or missing hints can only slow
 a run down or lead to rejection, never to a wrong acceptance.  The
-driver `verifier/verify_all.py` passes a `hints.gp` lying next to a
+driver `examples/p3/verify_all.py` passes a `hints.gp` lying next to a
 `certificate.gp` automatically.
 
 ## Rebuilding certificates

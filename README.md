@@ -40,8 +40,12 @@ with `pol(s)` a defining polynomial of the number field K in the variable
 | Directory | Contents |
 |---|---|
 | `src/`, `headers/` | the C program: field construction, Artin symbols, secondary norm operators, Massey tensor, cubic relation space |
-| `certificate/` | one directory per certified field, plus the shared standalone verifier and a human-readable guide per certificate |
+| `verifier/` | the standalone certificate verifier shared by all three primes, with its Makefile and rejection tests |
+| `certificate/` | one directory per certified p = 5 field, with a human-readable guide per certificate |
 | `examples/p5/` | computed results and run logs per field, and the transverse rank-one certificates |
+| `examples/p3/` | the p = 3 collection: certificates and source tensors in discriminant buckets, result records, cone-criterion reports, and drivers |
+| `examples/p7/` | the three p = 7 fields: certificates, matrices, and transversality protocols |
+| `worksheets/` | the worksheet parts W1--W6 cited by the paper |
 | `tools/` | batch runner, Gröbner and Singular drivers, transverse rank-one certification, class-group table readers, PARI build script |
 | `parallelization/` | per-character parallel drivers for expensive fields |
 | `tests/` | regression tests |
