@@ -1,0 +1,961 @@
+\documentclass[11pt]{article}
+\usepackage[margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable}
+\newcommand{\Fp}{\mathbb F_p}
+\newcommand{\Ffive}{\mathbb F_5}
+\newcommand{\Fnine}{\mathbb F_9}
+\newcommand{\Fthree}{\mathbb F_3}
+\newcommand{\mx}{\mathsf{X}}
+\newcommand{\my}{\mathsf{Y}}
+\newcommand{\mz}{\mathsf{Z}}
+\newcommand{\Cl}{\operatorname{Cl}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Div}{\operatorname{Div}}
+\newcommand{\rk}{\operatorname{rk}}
+\newcommand{\disc}{\operatorname{disc}}
+\usepackage{url}
+\providecommand{\nolinkurl}[1]{\url{#1}}
+\newtheorem{proposition}{Proposition}
+\begin{document}
+
+\begin{center}
+{\Large Worksheet Part W6: the $p=3$ tables}\\[2mm]
+accompanying \emph{Mild $p$-class tower groups of imaginary quadratic
+fields}
+\end{center}
+
+\medskip
+\noindent
+This document is generated from the result records by
+\nolinkurl{generate_tables_p3.py}; references of the form
+Section~6 refer to the paper.
+
+\section*{Part W6: the $p=3$ tables}
+
+The $859$ mild fields at $p=3$ with $|D_K|<2^{30}$, with the class
+group, the rank of $\delta$, and the source of mildness; the three
+tables follow the blocks of the computation.  Additional records:
+the Anick witnesses in
+\nolinkurl{examples/p3/results/block-witnesses-002.json}; the
+Gr\"obner verdicts, including the $26$ fields that are provably not
+strongly free and the single field with a rank-two tensor, in
+\nolinkurl{examples/p3/results/strong-freeness-block-001.json},
+\nolinkurl{examples/p3/results/slice2-strong-freeness.json}, and
+\nolinkurl{examples/p3/results/block23-strong-freeness.json} ---
+every decided verdict was produced by both engines (appendix~C.3
+of the paper); the cone-criterion
+reports with the transverse cone point of every criterion field in
+\nolinkurl{examples/p3/cone-criterion/}.  The drivers are
+\nolinkurl{examples/p3/strong-freeness/block_sweep.py},
+\nolinkurl{tools/strong_freeness_singular.py}, and
+\nolinkurl{tools/p3_cone_criterion.py}.  The exhaustive Anick
+searches over the two subfamilies of Section~6 of the paper ran
+over all $11\,232$ changes of variables over $\Fthree$ and all
+$663\,390$ ordered projective bases over $\Fnine$.
+
+\subsection*{Table 3: the mild fields with $|D_K|<2^{28}$}
+
+\begin{center}\small
+\setlength{\tabcolsep}{5pt}%
+\begin{longtable}{r r l c l}
+\toprule
+& $D_K$ & $\Cl(K)$ & $\rk\delta$ & mild via\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+$1$ & $-4447704$ & $[24,6,6]$ & $3$ & Hilbert series\\
+$2$ & $-4897363$ & $[33,3,3]$ & $3$ & Hilbert series\\
+$3$ & $-11967780$ & $[18,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$4$ & $-16564388$ & $[36,12,3]$ & $2$ & transverse point, degree $1$\\
+$5$ & $-19006932$ & $[18,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$6$ & $-19941763$ & $[72,3,3]$ & $2$ & transverse point, degree $1$\\
+$7$ & $-25680535$ & $[72,6,6]$ & $2$ & transverse point, degree $1$\\
+$8$ & $-29225219$ & $[216,3,3]$ & $2$ & Hilbert series\\
+$9$ & $-33886715$ & $[72,6,3]$ & $2$ & transverse point, degree $1$\\
+$10$ & $-37882679$ & $[396,6,3]$ & $2$ & transverse point, degree $1$\\
+$11$ & $-38295992$ & $[108,6,3]$ & $2$ & transverse point, degree $1$\\
+$12$ & $-42305279$ & $[414,6,3]$ & $2$ & Hilbert series\\
+$13$ & $-45152879$ & $[816,3,3]$ & $3$ & Hilbert series\\
+$14$ & $-48023907$ & $[72,6,3]$ & $2$ & transverse point, degree $1$\\
+$15$ & $-50179656$ & $[84,6,6]$ & $3$ & Hilbert series\\
+$16$ & $-52526399$ & $[990,3,3]$ & $2$ & transverse point, degree $1$\\
+$17$ & $-53209523$ & $[81,9,3]$ & $1$ & transverse point, degree $1$\\
+$18$ & $-67271572$ & $[72,6,3]$ & $2$ & Hilbert series\\
+$19$ & $-68523256$ & $[72,12,3]$ & $2$ & transverse point, degree $1$\\
+$20$ & $-69456767$ & $[819,3,3]$ & $2$ & transverse point, degree $1$\\
+$21$ & $-70164019$ & $[189,3,3]$ & $2$ & transverse point, degree $1$\\
+$22$ & $-70488707$ & $[204,3,3]$ & $3$ & Hilbert series\\
+$23$ & $-78616756$ & $[72,6,6]$ & $2$ & transverse point, degree $1$\\
+$24$ & $-79446183$ & $[618,3,3]$ & $3$ & Hilbert series\\
+$25$ & $-80667656$ & $[408,6,3]$ & $3$ & Hilbert series\\
+$26$ & $-81592963$ & $[117,3,3]$ & $2$ & transverse point, degree $1$\\
+$27$ & $-87155515$ & $[24,12,6]$ & $3$ & Hilbert series\\
+$28$ & $-87893823$ & $[414,6,3]$ & $2$ & Hilbert series\\
+$29$ & $-92956243$ & $[144,3,3]$ & $2$ & transverse point, degree $1$\\
+$30$ & $-98512820$ & $[144,6,6]$ & $2$ & Hilbert series\\
+$31$ & $-101375499$ & $[72,9,3]$ & $1$ & transverse point, degree $1$\\
+$32$ & $-105273787$ & $[144,3,3]$ & $2$ & transverse point, degree $1$\\
+$33$ & $-105274283$ & $[297,3,3]$ & $2$ & Hilbert series\\
+$34$ & $-105569787$ & $[72,6,3]$ & $2$ & transverse point, degree $1$\\
+$35$ & $-106331556$ & $[138,6,3]$ & $3$ & Hilbert series\\
+$36$ & $-107033560$ & $[144,6,3]$ & $2$ & transverse point, degree $1$\\
+$37$ & $-110528935$ & $[150,6,6]$ & $3$ & Hilbert series\\
+$38$ & $-112456564$ & $[126,6,6]$ & $2$ & transverse point, degree $1$\\
+$39$ & $-112596647$ & $[516,3,3]$ & $3$ & Hilbert series\\
+$40$ & $-113167511$ & $[1239,3,3]$ & $3$ & Hilbert series\\
+$41$ & $-115676840$ & $[96,6,6,2]$ & $3$ & Hilbert series\\
+$42$ & $-119808287$ & $[846,3,3]$ & $2$ & transverse point, degree $1$\\
+$43$ & $-120340607$ & $[1026,3,3]$ & $2$ & transverse point, degree $1$\\
+$44$ & $-123939723$ & $[252,3,3]$ & $2$ & transverse point, degree $1$\\
+$45$ & $-124171604$ & $[72,12,6]$ & $2$ & transverse point, degree $1$\\
+$46$ & $-128631659$ & $[444,3,3]$ & $3$ & Hilbert series\\
+$47$ & $-129794180$ & $[432,6,3]$ & $2$ & transverse point, degree $1$\\
+$48$ & $-131071559$ & $[1575,3,3]$ & $2$ & Hilbert series\\
+$49$ & $-132696427$ & $[225,3,3]$ & $2$ & transverse point, degree $1$\\
+$50$ & $-132768840$ & $[126,6,6]$ & $2$ & transverse point, degree $1$\\
+$51$ & $-133858164$ & $[60,6,6,2]$ & $3$ & Hilbert series\\
+$52$ & $-134034647$ & $[90,18,6]$ & $1$ & transverse point, degree $1$\\
+$53$ & $-136185871$ & $[1080,3,3]$ & $2$ & Hilbert series\\
+$54$ & $-137034408$ & $[90,6,6]$ & $2$ & transverse point, degree $1$\\
+$55$ & $-137225371$ & $[396,3,3]$ & $2$ & transverse point, degree $1$\\
+$56$ & $-137752583$ & $[1173,3,3]$ & $3$ & Hilbert series\\
+$57$ & $-138230347$ & $[90,9,3]$ & $1$ & transverse point, degree $1$\\
+$58$ & $-139272611$ & $[207,9,3]$ & $1$ & transverse point, degree $2$\\
+$59$ & $-139854279$ & $[252,12,3]$ & $2$ & transverse point, degree $1$\\
+$60$ & $-140436319$ & $[810,3,3]$ & $2$ & Hilbert series\\
+$61$ & $-141590039$ & $[1854,3,3]$ & $2$ & transverse point, degree $1$\\
+$62$ & $-142082007$ & $[270,6,3]$ & $2$ & Hilbert series\\
+$63$ & $-143978071$ & $[837,3,3]$ & $2$ & transverse point, degree $1$\\
+$64$ & $-147364807$ & $[387,3,3]$ & $2$ & transverse point, degree $1$\\
+$65$ & $-147372692$ & $[186,6,6]$ & $3$ & Hilbert series\\
+$66$ & $-147994487$ & $[432,9,3]$ & $1$ & transverse point, degree $1$\\
+$67$ & $-149548296$ & $[144,6,6]$ & $2$ & transverse point, degree $1$\\
+$68$ & $-157432807$ & $[558,3,3]$ & $2$ & transverse point, degree $1$\\
+$69$ & $-159218551$ & $[798,3,3]$ & $3$ & Hilbert series\\
+$70$ & $-159842587$ & $[165,3,3]$ & $3$ & Hilbert series\\
+$71$ & $-159949967$ & $[756,3,3]$ & $2$ & transverse point, degree $1$\\
+$72$ & $-163004039$ & $[252,18,3]$ & $1$ & transverse point, degree $1$\\
+$73$ & $-164195095$ & $[162,6,6]$ & $2$ & transverse point, degree $1$\\
+$74$ & $-164443092$ & $[84,6,6]$ & $3$ & Hilbert series\\
+$75$ & $-164490995$ & $[96,6,6]$ & $3$ & Hilbert series\\
+$76$ & $-165028287$ & $[252,6,3]$ & $2$ & transverse point, degree $1$\\
+$77$ & $-165939880$ & $[36,6,6,2]$ & $2$ & Hilbert series\\
+$78$ & $-166596251$ & $[279,9,3]$ & $1$ & transverse point, degree $1$\\
+$79$ & $-168380088$ & $[42,6,6,2]$ & $3$ & Hilbert series\\
+$80$ & $-168657416$ & $[324,6,3]$ & $2$ & transverse point, degree $1$\\
+$81$ & $-173453135$ & $[540,6,3]$ & $2$ & transverse point, degree $1$\\
+$82$ & $-177327572$ & $[426,3,3]$ & $3$ & Hilbert series\\
+$83$ & $-177661288$ & $[90,6,6]$ & $2$ & transverse point, degree $1$\\
+$84$ & $-177907703$ & $[1098,3,3]$ & $2$ & transverse point, degree $1$\\
+$85$ & $-177911939$ & $[483,3,3]$ & $3$ & Hilbert series\\
+$86$ & $-179262491$ & $[228,6,3]$ & $3$ & Hilbert series\\
+$87$ & $-181950799$ & $[738,3,3]$ & $2$ & transverse point, degree $1$\\
+$88$ & $-184537012$ & $[138,6,3]$ & $3$ & Hilbert series\\
+$89$ & $-186324791$ & $[924,6,3]$ & $3$ & Hilbert series\\
+$90$ & $-187191391$ & $[843,3,3]$ & $3$ & Hilbert series\\
+$91$ & $-188352419$ & $[840,3,3]$ & $3$ & Hilbert series\\
+$92$ & $-188424655$ & $[180,18,3]$ & $1$ & Hilbert series\\
+$93$ & $-192103243$ & $[126,6,3]$ & $2$ & transverse point, degree $1$\\
+$94$ & $-192928619$ & $[126,6,6]$ & $2$ & Hilbert series\\
+$95$ & $-193481043$ & $[126,6,3]$ & $2$ & transverse point, degree $1$\\
+$96$ & $-193816927$ & $[795,3,3]$ & $3$ & Hilbert series\\
+$97$ & $-194921531$ & $[630,3,3]$ & $2$ & transverse point, degree $1$\\
+$98$ & $-198040904$ & $[396,9,3]$ & $1$ & transverse point, degree $1$\\
+$99$ & $-198494239$ & $[891,3,3]$ & $2$ & transverse point, degree $1$\\
+$100$ & $-198524584$ & $[486,3,3]$ & $2$ & transverse point, degree $1$\\
+$101$ & $-204084679$ & $[828,3,3]$ & $2$ & transverse point, degree $1$\\
+$102$ & $-206568676$ & $[162,6,6]$ & $2$ & Hilbert series\\
+$103$ & $-207079079$ & $[1422,3,3]$ & $2$ & transverse point, degree $1$\\
+$104$ & $-207482084$ & $[720,6,3]$ & $2$ & Hilbert series\\
+$105$ & $-210370495$ & $[90,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$106$ & $-211248887$ & $[1188,3,3]$ & $2$ & Anick witness\\
+$107$ & $-211982516$ & $[414,6,3]$ & $2$ & transverse point, degree $1$\\
+$108$ & $-213255839$ & $[648,6,6]$ & $2$ & Hilbert series\\
+$109$ & $-213954164$ & $[486,6,3]$ & $2$ & transverse point, degree $1$\\
+$110$ & $-214829931$ & $[396,3,3]$ & $2$ & transverse point, degree $1$\\
+$111$ & $-215588015$ & $[1926,3,3]$ & $2$ & transverse point, degree $1$\\
+$112$ & $-220005619$ & $[228,3,3]$ & $3$ & Hilbert series\\
+$113$ & $-221338583$ & $[1134,3,3]$ & $2$ & Hilbert series\\
+$114$ & $-224238388$ & $[234,6,3]$ & $2$ & transverse point, degree $1$\\
+$115$ & $-225512103$ & $[414,6,3]$ & $2$ & transverse point, degree $1$\\
+$116$ & $-226566408$ & $[360,6,3]$ & $2$ & transverse point, degree $1$\\
+$117$ & $-228404408$ & $[180,9,3]$ & $1$ & transverse point, degree $1$\\
+$118$ & $-229531859$ & $[636,3,3]$ & $3$ & Hilbert series\\
+$119$ & $-229988136$ & $[84,6,6,2]$ & $3$ & Hilbert series\\
+$120$ & $-230059147$ & $[258,3,3]$ & $3$ & Hilbert series\\
+$121$ & $-230514583$ & $[342,6,3]$ & $2$ & transverse point, degree $1$\\
+$122$ & $-231693143$ & $[1512,3,3]$ & $2$ & transverse point, degree $1$\\
+$123$ & $-232873860$ & $[72,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$124$ & $-234571683$ & $[72,12,3]$ & $2$ & transverse point, degree $1$\\
+$125$ & $-235997807$ & $[1467,3,3]$ & $2$ & transverse point, degree $1$\\
+$126$ & $-236414323$ & $[384,3,3]$ & $3$ & Hilbert series\\
+$127$ & $-237129972$ & $[216,6,3]$ & $2$ & transverse point, degree $1$\\
+$128$ & $-239565368$ & $[192,12,3]$ & $3$ & Hilbert series\\
+$129$ & $-242115347$ & $[498,3,3]$ & $3$ & Hilbert series\\
+$130$ & $-242584547$ & $[564,3,3]$ & $3$ & Hilbert series\\
+$131$ & $-242722852$ & $[144,6,3]$ & $2$ & transverse point, degree $1$\\
+$132$ & $-243949704$ & $[360,6,3]$ & $2$ & Hilbert series\\
+$133$ & $-245576008$ & $[396,3,3]$ & $2$ & transverse point, degree $1$\\
+$134$ & $-245591416$ & $[126,6,6]$ & $2$ & transverse point, degree $1$\\
+$135$ & $-246038399$ & $[2952,3,3]$ & $2$ & transverse point, degree $1$\\
+$136$ & $-247085519$ & $[456,6,6]$ & $3$ & Hilbert series\\
+$137$ & $-249699611$ & $[666,3,3]$ & $2$ & transverse point, degree $1$\\
+$138$ & $-249851636$ & $[630,6,3]$ & $2$ & transverse point, degree $1$\\
+$139$ & $-250419887$ & $[1053,3,3]$ & $2$ & transverse point, degree $1$\\
+$140$ & $-251244319$ & $[246,6,6]$ & $3$ & Hilbert series\\
+$141$ & $-251525471$ & $[1953,3,3]$ & $2$ & transverse point, degree $1$\\
+$142$ & $-255182655$ & $[126,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$143$ & $-256421332$ & $[414,3,3]$ & $2$ & Hilbert series\\
+$144$ & $-256600003$ & $[198,3,3]$ & $2$ & transverse point, degree $1$\\
+$145$ & $-257735579$ & $[972,3,3]$ & $2$ & transverse point, degree $1$\\
+$146$ & $-263310215$ & $[174,6,6,2]$ & $3$ & Hilbert series\\
+$147$ & $-263329352$ & $[90,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$148$ & $-263780072$ & $[234,6,6]$ & $2$ & Anick witness\\
+$149$ & $-264862580$ & $[456,6,3]$ & $3$ & Hilbert series\\
+$150$ & $-264874404$ & $[282,6,3]$ & $3$ & Hilbert series\\
+$151$ & $-265389256$ & $[288,6,3]$ & $2$ & transverse point, degree $1$\\
+\end{longtable}
+\end{center}
+
+\subsection*{Table 4: the mild fields with $2^{28}\le|D_K|<2^{29}$}
+
+\begin{center}\small
+\setlength{\tabcolsep}{5pt}%
+\begin{longtable}{r r l c l}
+\toprule
+& $D_K$ & $\Cl(K)$ & $\rk\delta$ & mild via\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+$152$ & $-269035079$ & $[2742,3,3]$ & $3$ & Hilbert series\\
+$153$ & $-269442491$ & $[936,3,3]$ & $2$ & transverse point, degree $1$\\
+$154$ & $-270840455$ & $[2100,3,3]$ & $3$ & Hilbert series\\
+$155$ & $-271882751$ & $[558,6,6]$ & $2$ & transverse point, degree $1$\\
+$156$ & $-272531631$ & $[180,18,3]$ & $1$ & transverse point, degree $1$\\
+$157$ & $-273772679$ & $[2412,3,3]$ & $2$ & transverse point, degree $1$\\
+$158$ & $-276000263$ & $[774,6,3]$ & $2$ & transverse point, degree $1$\\
+$159$ & $-276510583$ & $[720,3,3]$ & $2$ & transverse point, degree $1$\\
+$160$ & $-278078212$ & $[72,18,3]$ & $1$ & transverse point, degree $1$\\
+$161$ & $-278248660$ & $[114,6,6]$ & $3$ & Hilbert series\\
+$162$ & $-278854280$ & $[162,18,3]$ & $1$ & transverse point, degree $3$\\
+$163$ & $-281764488$ & $[252,6,3]$ & $2$ & transverse point, degree $1$\\
+$164$ & $-284311556$ & $[252,6,6]$ & $2$ & transverse point, degree $1$\\
+$165$ & $-284471583$ & $[84,6,6,2]$ & $3$ & Hilbert series\\
+$166$ & $-287069012$ & $[1026,3,3]$ & $2$ & transverse point, degree $1$\\
+$167$ & $-287520315$ & $[72,18,3]$ & $1$ & transverse point, degree $1$\\
+$168$ & $-288780756$ & $[102,6,6,2]$ & $3$ & Hilbert series\\
+$169$ & $-289430627$ & $[282,6,3]$ & $3$ & Hilbert series\\
+$170$ & $-289767144$ & $[180,6,6]$ & $2$ & transverse point, degree $1$\\
+$171$ & $-289949683$ & $[207,3,3]$ & $2$ & transverse point, degree $1$\\
+$172$ & $-290892479$ & $[2016,3,3]$ & $2$ & transverse point, degree $1$\\
+$173$ & $-292462495$ & $[162,18,3]$ & $1$ & transverse point, degree $2$\\
+$174$ & $-294047576$ & $[198,18,3]$ & $1$ & transverse point, degree $1$\\
+$175$ & $-296567203$ & $[108,6,3]$ & $2$ & transverse point, degree $1$\\
+$176$ & $-297292999$ & $[1719,3,3]$ & $2$ & Hilbert series\\
+$177$ & $-300555103$ & $[756,3,3]$ & $2$ & transverse point, degree $1$\\
+$178$ & $-301447480$ & $[234,6,3]$ & $2$ & Hilbert series\\
+$179$ & $-303172043$ & $[108,12,3]$ & $2$ & transverse point, degree $1$\\
+$180$ & $-304019767$ & $[675,3,3]$ & $2$ & transverse point, degree $1$\\
+$181$ & $-304716855$ & $[276,6,6]$ & $3$ & Hilbert series\\
+$182$ & $-306171172$ & $[396,3,3]$ & $2$ & transverse point, degree $1$\\
+$183$ & $-309167771$ & $[270,6,6]$ & $2$ & Hilbert series\\
+$184$ & $-309523651$ & $[378,3,3]$ & $2$ & transverse point, degree $1$\\
+$185$ & $-312889363$ & $[276,3,3]$ & $3$ & Hilbert series\\
+$186$ & $-315192871$ & $[582,6,3]$ & $3$ & Hilbert series\\
+$187$ & $-315388527$ & $[642,6,3]$ & $3$ & Hilbert series\\
+$188$ & $-315578903$ & $[783,9,3]$ & $1$ & transverse point, degree $1$\\
+$189$ & $-316179640$ & $[162,6,6]$ & $2$ & Hilbert series\\
+$190$ & $-316236695$ & $[648,9,3]$ & $1$ & transverse point, degree $1$\\
+$191$ & $-317103719$ & $[180,36,3]$ & $1$ & transverse point, degree $1$\\
+$192$ & $-319277695$ & $[234,6,6]$ & $2$ & Hilbert series\\
+$193$ & $-320017411$ & $[114,6,6]$ & $3$ & Hilbert series\\
+$194$ & $-320230023$ & $[846,3,3]$ & $2$ & transverse point, degree $1$\\
+$195$ & $-320873055$ & $[414,6,6]$ & $2$ & transverse point, degree $1$\\
+$196$ & $-321821807$ & $[1863,3,3]$ & $2$ & transverse point, degree $1$\\
+$197$ & $-321969236$ & $[774,6,3]$ & $2$ & transverse point, degree $1$\\
+$198$ & $-322368555$ & $[54,18,3]$ & $1$ & transverse point, degree $1$\\
+$199$ & $-326265215$ & $[2394,3,3]$ & $2$ & transverse point, degree $1$\\
+$200$ & $-327730987$ & $[252,3,3]$ & $2$ & Hilbert series\\
+$201$ & $-328127039$ & $[2082,3,3]$ & $3$ & Hilbert series\\
+$202$ & $-328260664$ & $[468,3,3]$ & $2$ & transverse point, degree $1$\\
+$203$ & $-328455255$ & $[450,6,3]$ & $2$ & Hilbert series\\
+$204$ & $-329114036$ & $[306,6,6]$ & $2$ & transverse point, degree $1$\\
+$205$ & $-329492855$ & $[1422,6,3]$ & $2$ & transverse point, degree $1$\\
+$206$ & $-330550647$ & $[216,6,6]$ & $2$ & Hilbert series\\
+$207$ & $-333047959$ & $[1710,3,3]$ & $2$ & transverse point, degree $1$\\
+$208$ & $-333351412$ & $[378,3,3]$ & $2$ & transverse point, degree $1$\\
+$209$ & $-334299103$ & $[1149,3,3]$ & $3$ & Hilbert series\\
+$210$ & $-335378399$ & $[1392,6,3]$ & $3$ & Hilbert series\\
+$211$ & $-337706651$ & $[810,3,3]$ & $2$ & transverse point, degree $1$\\
+$212$ & $-338981272$ & $[72,6,6]$ & $2$ & Hilbert series\\
+$213$ & $-340431839$ & $[1032,6,3]$ & $3$ & Hilbert series\\
+$214$ & $-340736027$ & $[144,9,3]$ & $1$ & transverse point, degree $1$\\
+$215$ & $-342388799$ & $[1899,3,3]$ & $2$ & transverse point, degree $1$\\
+$216$ & $-343225819$ & $[522,3,3]$ & $2$ & transverse point, degree $1$\\
+$217$ & $-343795435$ & $[54,18,3]$ & $1$ & Hilbert series\\
+$218$ & $-345822859$ & $[531,3,3]$ & $2$ & Hilbert series\\
+$219$ & $-345910216$ & $[72,18,3]$ & $1$ & transverse point, degree $1$\\
+$220$ & $-346173311$ & $[1296,6,3]$ & $2$ & Hilbert series\\
+$221$ & $-349147803$ & $[168,6,3]$ & $3$ & Hilbert series\\
+$222$ & $-351541032$ & $[162,6,6]$ & $2$ & Hilbert series\\
+$223$ & $-352228711$ & $[558,6,3]$ & $2$ & Hilbert series\\
+$224$ & $-353213668$ & $[90,6,6]$ & $2$ & transverse point, degree $1$\\
+$225$ & $-353453432$ & $[792,3,3]$ & $2$ & transverse point, degree $1$\\
+$226$ & $-354407531$ & $[198,6,6]$ & $2$ & transverse point, degree $1$\\
+$227$ & $-355084468$ & $[72,6,6]$ & $2$ & transverse point, degree $1$\\
+$228$ & $-355823027$ & $[702,3,3]$ & $2$ & Hilbert series\\
+$229$ & $-357386612$ & $[162,6,6]$ & $2$ & transverse point, degree $1$\\
+$230$ & $-357593707$ & $[261,3,3]$ & $2$ & transverse point, degree $1$\\
+$231$ & $-359247935$ & $[1854,3,3]$ & $2$ & transverse point, degree $1$\\
+$232$ & $-361883812$ & $[306,6,3]$ & $2$ & transverse point, degree $1$\\
+$233$ & $-362801240$ & $[270,6,6]$ & $2$ & Hilbert series\\
+$234$ & $-362841123$ & $[180,6,3]$ & $2$ & transverse point, degree $1$\\
+$235$ & $-363298004$ & $[1242,3,3]$ & $2$ & Hilbert series\\
+$236$ & $-363463435$ & $[342,3,3]$ & $2$ & Hilbert series\\
+$237$ & $-364435991$ & $[387,9,9]$ & $0$ & transverse point, degree $1$\\
+$238$ & $-368906059$ & $[315,3,3]$ & $2$ & transverse point, degree $1$\\
+$239$ & $-369006184$ & $[408,6,3]$ & $3$ & Hilbert series\\
+$240$ & $-373392228$ & $[90,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$241$ & $-373612983$ & $[630,6,3]$ & $2$ & transverse point, degree $1$\\
+$242$ & $-376723499$ & $[990,3,3]$ & $2$ & Hilbert series\\
+$243$ & $-377080952$ & $[378,6,6]$ & $2$ & transverse point, degree $1$\\
+$244$ & $-379723327$ & $[675,3,3]$ & $2$ & Hilbert series\\
+$245$ & $-380426767$ & $[516,6,3]$ & $3$ & Hilbert series\\
+$246$ & $-384651719$ & $[1848,3,3]$ & $3$ & Hilbert series\\
+$247$ & $-385739807$ & $[2532,3,3]$ & $3$ & Hilbert series\\
+$248$ & $-387053719$ & $[1692,3,3]$ & $2$ & Hilbert series\\
+$249$ & $-388794099$ & $[180,6,3]$ & $2$ & Hilbert series\\
+$250$ & $-391022655$ & $[144,6,6,2]$ & $2$ & Hilbert series\\
+$251$ & $-391370664$ & $[288,6,6]$ & $2$ & transverse point, degree $1$\\
+$252$ & $-392235755$ & $[318,6,3]$ & $3$ & Hilbert series\\
+$253$ & $-392418863$ & $[396,9,3]$ & $1$ & transverse point, degree $1$\\
+$254$ & $-392551903$ & $[348,6,3]$ & $3$ & Hilbert series\\
+$255$ & $-393305243$ & $[576,3,3]$ & $2$ & Hilbert series\\
+$256$ & $-393832203$ & $[330,3,3]$ & $3$ & Hilbert series\\
+$257$ & $-396117535$ & $[36,18,6,2]$ & $1$ & transverse point, degree $1$\\
+$258$ & $-397450612$ & $[108,6,6]$ & $2$ & Hilbert series\\
+$259$ & $-397620967$ & $[684,3,3]$ & $2$ & Hilbert series\\
+$260$ & $-398472692$ & $[420,6,3]$ & $3$ & Hilbert series\\
+$261$ & $-402426383$ & $[1332,3,3]$ & $2$ & transverse point, degree $1$\\
+$262$ & $-405220571$ & $[420,6,3]$ & $3$ & Hilbert series\\
+$263$ & $-405289839$ & $[468,12,3]$ & $2$ & transverse point, degree $1$\\
+$264$ & $-405618691$ & $[396,3,3]$ & $2$ & transverse point, degree $1$\\
+$265$ & $-405868619$ & $[702,3,3]$ & $2$ & Hilbert series\\
+$266$ & $-406709967$ & $[612,6,3]$ & $2$ & transverse point, degree $1$\\
+$267$ & $-406844851$ & $[222,6,3]$ & $3$ & Hilbert series\\
+$268$ & $-407054247$ & $[702,6,3]$ & $2$ & Hilbert series\\
+$269$ & $-407737032$ & $[192,6,6]$ & $3$ & Hilbert series\\
+$270$ & $-409562659$ & $[126,6,6]$ & $2$ & transverse point, degree $1$\\
+$271$ & $-411135668$ & $[240,6,6]$ & $3$ & Hilbert series\\
+$272$ & $-411492291$ & $[120,6,6]$ & $3$ & Hilbert series\\
+$273$ & $-411605576$ & $[324,9,3]$ & $1$ & transverse point, degree $1$\\
+$274$ & $-412074548$ & $[360,6,3]$ & $2$ & transverse point, degree $1$\\
+$275$ & $-412229751$ & $[1242,6,3]$ & $2$ & Hilbert series\\
+$276$ & $-412411215$ & $[468,6,6]$ & $2$ & Hilbert series\\
+$277$ & $-412626459$ & $[252,6,3]$ & $2$ & transverse point, degree $1$\\
+$278$ & $-413263288$ & $[54,18,3]$ & $1$ & transverse point, degree $1$\\
+$279$ & $-413771887$ & $[243,9,3]$ & $1$ & transverse point, degree $1$\\
+$280$ & $-414248323$ & $[240,3,3]$ & $3$ & Hilbert series\\
+$281$ & $-415404760$ & $[126,6,6]$ & $2$ & transverse point, degree $1$\\
+$282$ & $-415460063$ & $[1674,3,3]$ & $2$ & transverse point, degree $1$\\
+$283$ & $-415865399$ & $[3474,3,3]$ & $2$ & transverse point, degree $1$\\
+$284$ & $-418003771$ & $[72,18,3]$ & $1$ & transverse point, degree $1$\\
+$285$ & $-418220231$ & $[726,6,6]$ & $3$ & Hilbert series\\
+$286$ & $-418591263$ & $[918,6,3]$ & $2$ & transverse point, degree $1$\\
+$287$ & $-419498659$ & $[252,6,3]$ & $2$ & Hilbert series\\
+$288$ & $-423547912$ & $[456,3,3]$ & $3$ & Hilbert series\\
+$289$ & $-426349551$ & $[378,6,6]$ & $2$ & transverse point, degree $1$\\
+$290$ & $-426397188$ & $[24,12,6,2,2]$ & $3$ & Hilbert series\\
+$291$ & $-429673999$ & $[1062,6,3]$ & $2$ & transverse point, degree $1$\\
+$292$ & $-429704363$ & $[288,6,3]$ & $2$ & transverse point, degree $1$\\
+$293$ & $-429817539$ & $[144,12,3]$ & $2$ & Hilbert series\\
+$294$ & $-432285639$ & $[198,18,3]$ & $1$ & transverse point, degree $1$\\
+$295$ & $-433041755$ & $[192,12,3]$ & $3$ & Hilbert series\\
+$296$ & $-433265239$ & $[1332,3,3]$ & $2$ & transverse point, degree $1$\\
+$297$ & $-434995336$ & $[288,12,3]$ & $2$ & transverse point, degree $1$\\
+$298$ & $-435537911$ & $[3204,3,3]$ & $2$ & transverse point, degree $1$\\
+$299$ & $-437458168$ & $[48,12,6]$ & $3$ & Hilbert series\\
+$300$ & $-438001735$ & $[660,6,3]$ & $3$ & Hilbert series\\
+$301$ & $-439077883$ & $[435,3,3]$ & $3$ & Hilbert series\\
+$302$ & $-439993003$ & $[252,3,3]$ & $2$ & transverse point, degree $1$\\
+$303$ & $-441621695$ & $[882,6,3]$ & $2$ & transverse point, degree $1$\\
+$304$ & $-442137480$ & $[72,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$305$ & $-443078148$ & $[390,6,3]$ & $3$ & Hilbert series\\
+$306$ & $-443567667$ & $[396,3,3]$ & $2$ & transverse point, degree $1$\\
+$307$ & $-444251239$ & $[1485,3,3]$ & $2$ & transverse point, degree $1$\\
+$308$ & $-445630168$ & $[342,3,3]$ & $2$ & transverse point, degree $1$\\
+$309$ & $-445727263$ & $[684,3,3]$ & $2$ & transverse point, degree $1$\\
+$310$ & $-448664599$ & $[1440,3,3]$ & $2$ & transverse point, degree $1$\\
+$311$ & $-450225779$ & $[396,9,3]$ & $1$ & transverse point, degree $1$\\
+$312$ & $-452043935$ & $[468,6,6]$ & $2$ & transverse point, degree $1$\\
+$313$ & $-452315803$ & $[54,18,3]$ & $1$ & transverse point, degree $1$\\
+$314$ & $-452708443$ & $[132,6,3]$ & $3$ & Hilbert series\\
+$315$ & $-453787663$ & $[1314,3,3]$ & $2$ & transverse point, degree $1$\\
+$316$ & $-453940115$ & $[234,6,6]$ & $2$ & transverse point, degree $1$\\
+$317$ & $-455141263$ & $[456,6,3]$ & $3$ & Hilbert series\\
+$318$ & $-455500919$ & $[2727,3,3]$ & $2$ & transverse point, degree $1$\\
+$319$ & $-456031591$ & $[990,3,3]$ & $2$ & Hilbert series\\
+$320$ & $-456392723$ & $[819,3,3]$ & $2$ & transverse point, degree $1$\\
+$321$ & $-456750443$ & $[594,3,3]$ & $2$ & transverse point, degree $1$\\
+$322$ & $-457209563$ & $[666,3,3]$ & $2$ & transverse point, degree $1$\\
+$323$ & $-458005971$ & $[144,12,3]$ & $2$ & Hilbert series\\
+$324$ & $-461217256$ & $[186,6,6]$ & $3$ & Hilbert series\\
+$325$ & $-462746308$ & $[576,3,3]$ & $2$ & transverse point, degree $1$\\
+$326$ & $-464748707$ & $[531,3,3]$ & $2$ & Hilbert series\\
+$327$ & $-465578067$ & $[132,12,3]$ & $3$ & Hilbert series\\
+$328$ & $-471807499$ & $[369,3,3]$ & $2$ & transverse point, degree $1$\\
+$329$ & $-473656199$ & $[2505,3,3]$ & $3$ & Hilbert series\\
+$330$ & $-474132487$ & $[1062,3,3]$ & $2$ & Hilbert series\\
+$331$ & $-474619503$ & $[546,6,3]$ & $3$ & Hilbert series\\
+$332$ & $-475603723$ & $[144,6,3]$ & $2$ & transverse point, degree $1$\\
+$333$ & $-476261771$ & $[1086,3,3]$ & $3$ & Hilbert series\\
+$334$ & $-488080687$ & $[432,9,3]$ & $1$ & transverse point, degree $1$\\
+$335$ & $-491257927$ & $[477,9,3]$ & $1$ & transverse point, degree $1$\\
+$336$ & $-491588315$ & $[150,6,6]$ & $3$ & Hilbert series\\
+$337$ & $-492588391$ & $[324,12,3]$ & $2$ & transverse point, degree $1$\\
+$338$ & $-493065527$ & $[1815,3,3]$ & $3$ & Hilbert series\\
+$339$ & $-493089688$ & $[114,6,6]$ & $3$ & Hilbert series\\
+$340$ & $-493620899$ & $[1056,3,3]$ & $3$ & Hilbert series\\
+$341$ & $-496813127$ & $[2049,3,3]$ & $3$ & Hilbert series\\
+$342$ & $-499897432$ & $[228,6,3]$ & $3$ & Hilbert series\\
+$343$ & $-500454835$ & $[216,6,3]$ & $2$ & transverse point, degree $1$\\
+$344$ & $-501362803$ & $[318,3,3]$ & $3$ & Hilbert series\\
+$345$ & $-502048363$ & $[270,3,3]$ & $2$ & transverse point, degree $1$\\
+$346$ & $-502995268$ & $[288,9,3]$ & $1$ & transverse point, degree $1$\\
+$347$ & $-503888863$ & $[864,3,3]$ & $2$ & transverse point, degree $1$\\
+$348$ & $-508498783$ & $[432,6,3]$ & $2$ & transverse point, degree $1$\\
+$349$ & $-508572472$ & $[198,6,3]$ & $2$ & Hilbert series\\
+$350$ & $-508661864$ & $[810,6,3]$ & $2$ & Hilbert series\\
+$351$ & $-508992367$ & $[426,6,3]$ & $3$ & Hilbert series\\
+$352$ & $-509395507$ & $[360,3,3]$ & $2$ & transverse point, degree $1$\\
+$353$ & $-509943391$ & $[1575,3,3]$ & $2$ & transverse point, degree $1$\\
+$354$ & $-509992863$ & $[1530,3,3]$ & $2$ & transverse point, degree $1$\\
+$355$ & $-510075451$ & $[360,3,3]$ & $2$ & transverse point, degree $1$\\
+$356$ & $-511192643$ & $[390,6,3]$ & $3$ & Hilbert series\\
+$357$ & $-512094407$ & $[1878,3,3]$ & $3$ & Hilbert series\\
+$358$ & $-512450420$ & $[360,6,6]$ & $2$ & transverse point, degree $1$\\
+$359$ & $-513440036$ & $[1464,3,3]$ & $3$ & Hilbert series\\
+$360$ & $-515085123$ & $[48,12,6]$ & $3$ & Hilbert series\\
+$361$ & $-517651224$ & $[378,6,6]$ & $2$ & Hilbert series\\
+$362$ & $-519460644$ & $[342,6,6]$ & $2$ & transverse point, degree $1$\\
+$363$ & $-519470164$ & $[396,6,3]$ & $2$ & Hilbert series\\
+$364$ & $-519793739$ & $[972,3,3]$ & $2$ & transverse point, degree $1$\\
+$365$ & $-520681447$ & $[288,6,6]$ & $2$ & transverse point, degree $1$\\
+$366$ & $-522900139$ & $[501,3,3]$ & $3$ & Hilbert series\\
+$367$ & $-523483639$ & $[252,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$368$ & $-523819956$ & $[108,6,6,2]$ & $2$ & Hilbert series\\
+$369$ & $-525023563$ & $[324,3,3]$ & $2$ & transverse point, degree $1$\\
+$370$ & $-525305391$ & $[306,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$371$ & $-526209032$ & $[288,12,3]$ & $2$ & transverse point, degree $1$\\
+$372$ & $-526255239$ & $[2520,3,3]$ & $2$ & transverse point, degree $1$\\
+$373$ & $-526633655$ & $[900,6,3]$ & $2$ & transverse point, degree $1$\\
+$374$ & $-527192591$ & $[540,18,3]$ & $1$ & transverse point, degree $1$\\
+$375$ & $-528544712$ & $[492,6,3]$ & $3$ & Hilbert series\\
+$376$ & $-530384824$ & $[900,3,3]$ & $2$ & transverse point, degree $1$\\
+$377$ & $-534599480$ & $[666,6,3]$ & $2$ & transverse point, degree $1$\\
+$378$ & $-536670899$ & $[954,3,3]$ & $2$ & transverse point, degree $1$\\
+\end{longtable}
+\end{center}
+
+\subsection*{Table 5: the mild fields with $2^{29}\le|D_K|<2^{30}$}
+
+\begin{center}\small
+\setlength{\tabcolsep}{5pt}%
+\begin{longtable}{r r l c l}
+\toprule
+& $D_K$ & $\Cl(K)$ & $\rk\delta$ & mild via\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+$379$ & $-538147807$ & $[945,3,3]$ & $2$ & transverse point, degree $1$\\
+$380$ & $-539009431$ & $[1548,3,3]$ & $2$ & transverse point, degree $1$\\
+$381$ & $-540428171$ & $[324,6,6]$ & $2$ & Hilbert series\\
+$382$ & $-541059691$ & $[120,12,3]$ & $3$ & Hilbert series\\
+$383$ & $-541580119$ & $[1476,3,3]$ & $2$ & transverse point, degree $1$\\
+$384$ & $-542332731$ & $[180,6,6]$ & $2$ & transverse point, degree $1$\\
+$385$ & $-542809283$ & $[540,3,3]$ & $2$ & transverse point, degree $1$\\
+$386$ & $-543159940$ & $[108,6,6]$ & $2$ & transverse point, degree $1$\\
+$387$ & $-545496884$ & $[168,12,6]$ & $3$ & Hilbert series\\
+$388$ & $-547116856$ & $[108,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$389$ & $-548762852$ & $[630,6,3]$ & $2$ & transverse point, degree $1$\\
+$390$ & $-549112567$ & $[1602,3,3]$ & $2$ & Hilbert series\\
+$391$ & $-549284331$ & $[180,6,6]$ & $2$ & transverse point, degree $1$\\
+$392$ & $-549458023$ & $[747,3,3]$ & $2$ & transverse point, degree $1$\\
+$393$ & $-550697703$ & $[468,6,6]$ & $2$ & transverse point, degree $1$\\
+$394$ & $-551456968$ & $[252,9,3]$ & $1$ & transverse point, degree $1$\\
+$395$ & $-552775816$ & $[504,6,3]$ & $2$ & transverse point, degree $1$\\
+$396$ & $-555251699$ & $[1071,3,3]$ & $2$ & transverse point, degree $1$\\
+$397$ & $-555417368$ & $[264,6,6]$ & $3$ & Hilbert series\\
+$398$ & $-556104647$ & $[2214,3,3]$ & $2$ & transverse point, degree $1$\\
+$399$ & $-556726019$ & $[1026,3,3]$ & $2$ & Hilbert series\\
+$400$ & $-556906884$ & $[558,6,3]$ & $2$ & Hilbert series\\
+$401$ & $-560647559$ & $[2160,6,3]$ & $2$ & transverse point, degree $1$\\
+$402$ & $-561736139$ & $[1566,3,3]$ & $2$ & transverse point, degree $1$\\
+$403$ & $-562794355$ & $[324,3,3]$ & $2$ & transverse point, degree $1$\\
+$404$ & $-565043620$ & $[120,6,6]$ & $3$ & Hilbert series\\
+$405$ & $-565310859$ & $[162,6,6]$ & $2$ & transverse point, degree $1$\\
+$406$ & $-566354147$ & $[576,3,3]$ & $2$ & transverse point, degree $1$\\
+$407$ & $-566841559$ & $[1143,3,3]$ & $2$ & transverse point, degree $1$\\
+$408$ & $-567454319$ & $[1197,9,3]$ & $1$ & transverse point, degree $1$\\
+$409$ & $-569586523$ & $[144,6,3]$ & $2$ & transverse point, degree $1$\\
+$410$ & $-570111719$ & $[2514,3,3]$ & $3$ & Hilbert series\\
+$411$ & $-571348343$ & $[1236,6,3]$ & $3$ & Hilbert series\\
+$412$ & $-573853055$ & $[1008,6,6]$ & $2$ & transverse point, degree $1$\\
+$413$ & $-578304815$ & $[1194,6,3]$ & $3$ & Hilbert series\\
+$414$ & $-579285583$ & $[945,3,3]$ & $2$ & transverse point, degree $1$\\
+$415$ & $-581519384$ & $[552,6,6]$ & $3$ & Hilbert series\\
+$416$ & $-582201155$ & $[468,6,3]$ & $2$ & transverse point, degree $1$\\
+$417$ & $-582400767$ & $[576,6,3]$ & $2$ & transverse point, degree $1$\\
+$418$ & $-582767719$ & $[1836,3,3]$ & $2$ & transverse point, degree $1$\\
+$419$ & $-583911928$ & $[162,6,6]$ & $2$ & transverse point, degree $1$\\
+$420$ & $-584344648$ & $[366,6,3]$ & $3$ & Hilbert series\\
+$421$ & $-584876263$ & $[108,18,6]$ & $1$ & transverse point, degree $1$\\
+$422$ & $-584926724$ & $[612,6,3]$ & $2$ & transverse point, degree $1$\\
+$423$ & $-586070587$ & $[216,3,3]$ & $2$ & transverse point, degree $1$\\
+$424$ & $-586375892$ & $[198,6,6]$ & $2$ & transverse point, degree $1$\\
+$425$ & $-588233347$ & $[126,6,3]$ & $2$ & Hilbert series\\
+$426$ & $-588952667$ & $[756,3,3]$ & $2$ & Hilbert series\\
+$427$ & $-589010495$ & $[522,18,3]$ & $1$ & transverse point, degree $1$\\
+$428$ & $-589454483$ & $[864,3,3]$ & $2$ & transverse point, degree $1$\\
+$429$ & $-589708996$ & $[144,18,3]$ & $1$ & transverse point, degree $1$\\
+$430$ & $-589729223$ & $[2772,3,3]$ & $2$ & transverse point, degree $1$\\
+$431$ & $-590180503$ & $[780,6,3]$ & $3$ & Hilbert series\\
+$432$ & $-590306243$ & $[684,3,3]$ & $2$ & transverse point, degree $1$\\
+$433$ & $-590495624$ & $[252,18,3]$ & $1$ & transverse point, degree $1$\\
+$434$ & $-591719304$ & $[108,12,6]$ & $2$ & transverse point, degree $1$\\
+$435$ & $-591883679$ & $[708,6,6]$ & $3$ & Hilbert series\\
+$436$ & $-593164648$ & $[396,6,3]$ & $2$ & transverse point, degree $1$\\
+$437$ & $-593273543$ & $[1314,3,3]$ & $2$ & Hilbert series\\
+$438$ & $-594933207$ & $[324,6,6]$ & $2$ & transverse point, degree $1$\\
+$439$ & $-595046728$ & $[54,18,6]$ & $1$ & transverse point, degree $1$\\
+$440$ & $-596018563$ & $[396,3,3]$ & $2$ & transverse point, degree $1$\\
+$441$ & $-596239727$ & $[2538,3,3]$ & $2$ & Hilbert series\\
+$442$ & $-598362628$ & $[612,3,3]$ & $2$ & transverse point, degree $1$\\
+$443$ & $-598791155$ & $[606,6,3]$ & $3$ & Hilbert series\\
+$444$ & $-602801288$ & $[1224,3,3]$ & $2$ & transverse point, degree $1$\\
+$445$ & $-603099411$ & $[450,6,3]$ & $2$ & transverse point, degree $1$\\
+$446$ & $-603653304$ & $[234,6,6]$ & $2$ & transverse point, degree $1$\\
+$447$ & $-603926879$ & $[4419,3,3]$ & $2$ & transverse point, degree $1$\\
+$448$ & $-606184607$ & $[288,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$449$ & $-607204759$ & $[774,6,3]$ & $2$ & Hilbert series\\
+$450$ & $-607818756$ & $[810,6,3]$ & $2$ & transverse point, degree $1$\\
+$451$ & $-609433203$ & $[360,3,3]$ & $2$ & transverse point, degree $1$\\
+$452$ & $-610318823$ & $[948,6,3]$ & $3$ & Hilbert series\\
+$453$ & $-612458328$ & $[36,18,6,2]$ & $1$ & transverse point, degree $1$\\
+$454$ & $-612522823$ & $[612,6,3]$ & $2$ & transverse point, degree $1$\\
+$455$ & $-613537363$ & $[666,3,3]$ & $2$ & transverse point, degree $1$\\
+$456$ & $-614414487$ & $[252,6,6]$ & $2$ & transverse point, degree $1$\\
+$457$ & $-615896659$ & $[342,6,3]$ & $2$ & Hilbert series\\
+$458$ & $-615935752$ & $[360,6,3]$ & $2$ & Hilbert series\\
+$459$ & $-616055359$ & $[2250,3,3]$ & $2$ & transverse point, degree $1$\\
+$460$ & $-619044292$ & $[126,18,3]$ & $1$ & transverse point, degree $1$\\
+$461$ & $-620223727$ & $[426,6,3]$ & $3$ & Hilbert series\\
+$462$ & $-622806280$ & $[108,6,6,2]$ & $2$ & Hilbert series\\
+$463$ & $-622848507$ & $[108,6,6]$ & $2$ & transverse point, degree $1$\\
+$464$ & $-623067051$ & $[234,6,6]$ & $2$ & transverse point, degree $1$\\
+$465$ & $-623333571$ & $[108,18,3]$ & $1$ & transverse point, degree $1$\\
+$466$ & $-626418851$ & $[819,3,3]$ & $2$ & transverse point, degree $1$\\
+$467$ & $-627264152$ & $[306,9,3]$ & $1$ & transverse point, degree $1$\\
+$468$ & $-629270635$ & $[204,6,3]$ & $3$ & Hilbert series\\
+$469$ & $-629586376$ & $[234,6,6]$ & $2$ & transverse point, degree $1$\\
+$470$ & $-631349144$ & $[360,18,3]$ & $1$ & transverse point, degree $1$\\
+$471$ & $-632524391$ & $[2763,3,3]$ & $2$ & transverse point, degree $1$\\
+$472$ & $-636278484$ & $[276,6,6]$ & $3$ & Hilbert series\\
+$473$ & $-638319943$ & $[252,6,6]$ & $2$ & transverse point, degree $1$\\
+$474$ & $-638912699$ & $[1866,3,3]$ & $3$ & Hilbert series\\
+$475$ & $-639333595$ & $[306,6,3]$ & $2$ & transverse point, degree $1$\\
+$476$ & $-639626183$ & $[2160,3,3]$ & $2$ & transverse point, degree $1$\\
+$477$ & $-640083183$ & $[1638,3,3]$ & $2$ & Hilbert series\\
+$478$ & $-641853995$ & $[1152,3,3]$ & $2$ & transverse point, degree $1$\\
+$479$ & $-642624107$ & $[366,6,3]$ & $3$ & Hilbert series\\
+$480$ & $-642728355$ & $[162,6,6]$ & $2$ & transverse point, degree $1$\\
+$481$ & $-644204067$ & $[144,6,6]$ & $2$ & Hilbert series\\
+$482$ & $-645752935$ & $[546,6,3]$ & $3$ & Hilbert series\\
+$483$ & $-646183723$ & $[531,3,3]$ & $2$ & transverse point, degree $1$\\
+$484$ & $-646460239$ & $[684,6,6]$ & $2$ & transverse point, degree $1$\\
+$485$ & $-647131751$ & $[846,6,6]$ & $2$ & transverse point, degree $1$\\
+$486$ & $-648197087$ & $[2544,3,3]$ & $3$ & Hilbert series\\
+$487$ & $-649489967$ & $[2220,3,3]$ & $3$ & Hilbert series\\
+$488$ & $-650365131$ & $[420,6,3]$ & $3$ & Hilbert series\\
+$489$ & $-651979671$ & $[360,18,3]$ & $1$ & transverse point, degree $2$\\
+$490$ & $-653047188$ & $[144,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$491$ & $-653158196$ & $[762,6,3]$ & $3$ & Hilbert series\\
+$492$ & $-653360392$ & $[360,6,3]$ & $2$ & transverse point, degree $1$\\
+$493$ & $-655073411$ & $[1371,3,3]$ & $3$ & Hilbert series\\
+$494$ & $-655606731$ & $[252,6,6]$ & $2$ & Hilbert series\\
+$495$ & $-655803967$ & $[258,6,6]$ & $3$ & Hilbert series\\
+$496$ & $-660615467$ & $[729,3,3]$ & $2$ & transverse point, degree $1$\\
+$497$ & $-660726139$ & $[456,6,3]$ & $3$ & Hilbert series\\
+$498$ & $-660951079$ & $[2790,3,3]$ & $2$ & transverse point, degree $1$\\
+$499$ & $-662332312$ & $[294,6,3]$ & $3$ & Hilbert series\\
+$500$ & $-664436296$ & $[300,6,6]$ & $3$ & Hilbert series\\
+$501$ & $-665037607$ & $[576,6,3]$ & $2$ & transverse point, degree $1$\\
+$502$ & $-665326111$ & $[1740,3,3]$ & $3$ & Hilbert series\\
+$503$ & $-669387876$ & $[288,6,6]$ & $2$ & transverse point, degree $1$\\
+$504$ & $-670028199$ & $[990,6,3]$ & $2$ & transverse point, degree $1$\\
+$505$ & $-672590931$ & $[402,6,3]$ & $3$ & Hilbert series\\
+$506$ & $-673612863$ & $[402,6,6]$ & $3$ & Hilbert series\\
+$507$ & $-673720247$ & $[1980,3,3]$ & $2$ & transverse point, degree $1$\\
+$508$ & $-674482279$ & $[1197,3,3]$ & $2$ & transverse point, degree $1$\\
+$509$ & $-674607191$ & $[3222,3,3]$ & $2$ & transverse point, degree $1$\\
+$510$ & $-674609739$ & $[750,3,3]$ & $3$ & Hilbert series\\
+$511$ & $-674709524$ & $[750,6,3]$ & $3$ & Hilbert series\\
+$512$ & $-675775092$ & $[198,6,6]$ & $2$ & transverse point, degree $1$\\
+$513$ & $-679039211$ & $[468,6,3]$ & $2$ & transverse point, degree $1$\\
+$514$ & $-679146583$ & $[144,12,6]$ & $2$ & transverse point, degree $1$\\
+$515$ & $-681151172$ & $[36,36,6]$ & $1$ & transverse point, degree $3$\\
+$516$ & $-681248212$ & $[90,18,3]$ & $1$ & Hilbert series\\
+$517$ & $-683842911$ & $[1218,6,3]$ & $3$ & Hilbert series\\
+$518$ & $-685598327$ & $[1764,3,3]$ & $2$ & transverse point, degree $1$\\
+$519$ & $-686393823$ & $[1584,3,3]$ & $2$ & Hilbert series\\
+$520$ & $-689234820$ & $[234,6,6]$ & $2$ & transverse point, degree $1$\\
+$521$ & $-690659467$ & $[348,3,3]$ & $3$ & Hilbert series\\
+$522$ & $-692207831$ & $[2304,6,3]$ & $2$ & Hilbert series\\
+$523$ & $-694555192$ & $[234,6,3]$ & $2$ & transverse point, degree $1$\\
+$524$ & $-695080164$ & $[594,6,3]$ & $2$ & transverse point, degree $1$\\
+$525$ & $-695710291$ & $[750,3,3]$ & $3$ & Hilbert series\\
+$526$ & $-696082631$ & $[6246,3,3]$ & $2$ & transverse point, degree $1$\\
+$527$ & $-697298584$ & $[882,3,3]$ & $2$ & Hilbert series\\
+$528$ & $-697776247$ & $[540,6,3]$ & $2$ & transverse point, degree $1$\\
+$529$ & $-698376451$ & $[228,6,3]$ & $3$ & Hilbert series\\
+$530$ & $-698512335$ & $[216,18,6]$ & $1$ & transverse point, degree $1$\\
+$531$ & $-699322991$ & $[1260,9,3]$ & $1$ & transverse point, degree $1$\\
+$532$ & $-702931343$ & $[2025,3,3]$ & $2$ & Hilbert series\\
+$533$ & $-707872340$ & $[396,6,6]$ & $2$ & transverse point, degree $1$\\
+$534$ & $-708009391$ & $[918,6,3]$ & $2$ & Hilbert series\\
+$535$ & $-708486555$ & $[84,6,6,2]$ & $3$ & Hilbert series\\
+$536$ & $-708504087$ & $[288,6,6]$ & $2$ & transverse point, degree $1$\\
+$537$ & $-709828724$ & $[1134,6,3]$ & $2$ & transverse point, degree $1$\\
+$538$ & $-711826520$ & $[714,6,3]$ & $3$ & Hilbert series\\
+$539$ & $-711937967$ & $[750,6,6]$ & $3$ & Hilbert series\\
+$540$ & $-713100295$ & $[762,6,3]$ & $3$ & Hilbert series\\
+$541$ & $-718532983$ & $[300,6,6]$ & $3$ & Hilbert series\\
+$542$ & $-719510727$ & $[96,24,6]$ & $3$ & Hilbert series\\
+$543$ & $-720630164$ & $[252,6,6]$ & $2$ & transverse point, degree $1$\\
+$544$ & $-720832888$ & $[744,3,3]$ & $3$ & Hilbert series\\
+$545$ & $-723430003$ & $[72,18,3]$ & $1$ & transverse point, degree $1$\\
+$546$ & $-723927455$ & $[936,12,3]$ & $2$ & transverse point, degree $1$\\
+$547$ & $-724731016$ & $[1044,3,3]$ & $2$ & transverse point, degree $1$\\
+$548$ & $-725027347$ & $[72,6,6]$ & $2$ & transverse point, degree $1$\\
+$549$ & $-725086463$ & $[1470,6,3]$ & $3$ & Hilbert series\\
+$550$ & $-726343847$ & $[2250,3,3]$ & $2$ & transverse point, degree $1$\\
+$551$ & $-726726664$ & $[936,3,3]$ & $2$ & transverse point, degree $1$\\
+$552$ & $-728416228$ & $[114,6,6]$ & $3$ & Hilbert series\\
+$553$ & $-730240987$ & $[360,3,3]$ & $2$ & Hilbert series\\
+$554$ & $-730666335$ & $[108,12,6,2]$ & $2$ & transverse point, degree $1$\\
+$555$ & $-732213499$ & $[702,3,3]$ & $2$ & transverse point, degree $1$\\
+$556$ & $-732837460$ & $[474,6,3]$ & $3$ & Hilbert series\\
+$557$ & $-733551863$ & $[648,9,3]$ & $1$ & transverse point, degree $1$\\
+$558$ & $-734298683$ & $[1116,3,3]$ & $2$ & Hilbert series\\
+$559$ & $-734596971$ & $[894,3,3]$ & $3$ & Hilbert series\\
+$560$ & $-736341671$ & $[3720,3,3]$ & $3$ & Hilbert series\\
+$561$ & $-736765115$ & $[288,6,3]$ & $2$ & Hilbert series\\
+$562$ & $-740326179$ & $[504,6,3]$ & $2$ & transverse point, degree $1$\\
+$563$ & $-741516071$ & $[1728,6,3]$ & $2$ & transverse point, degree $1$\\
+$564$ & $-745768216$ & $[342,6,3]$ & $2$ & transverse point, degree $1$\\
+$565$ & $-748007967$ & $[108,18,6]$ & $1$ & transverse point, degree $1$\\
+$566$ & $-749863803$ & $[24,24,6,2]$ & $3$ & Hilbert series\\
+$567$ & $-750933947$ & $[756,3,3]$ & $2$ & transverse point, degree $1$\\
+$568$ & $-751355191$ & $[720,6,3]$ & $2$ & transverse point, degree $1$\\
+$569$ & $-755910424$ & $[630,6,3]$ & $2$ & Hilbert series\\
+$570$ & $-759227539$ & $[108,18,3]$ & $1$ & transverse point, degree $1$\\
+$571$ & $-759821259$ & $[324,6,3]$ & $2$ & transverse point, degree $1$\\
+$572$ & $-760729272$ & $[234,6,6]$ & $2$ & transverse point, degree $1$\\
+$573$ & $-761422303$ & $[576,6,3]$ & $2$ & Hilbert series\\
+$574$ & $-762124872$ & $[90,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$575$ & $-765135831$ & $[630,6,6]$ & $2$ & transverse point, degree $1$\\
+$576$ & $-768942712$ & $[624,3,3]$ & $3$ & Hilbert series\\
+$577$ & $-769937051$ & $[504,6,3]$ & $2$ & transverse point, degree $1$\\
+$578$ & $-771069203$ & $[777,3,3]$ & $3$ & Hilbert series\\
+$579$ & $-771182936$ & $[2826,3,3]$ & $2$ & transverse point, degree $1$\\
+$580$ & $-771299727$ & $[396,6,6]$ & $2$ & transverse point, degree $1$\\
+$581$ & $-772911623$ & $[270,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$582$ & $-773638367$ & $[2979,3,3]$ & $2$ & transverse point, degree $1$\\
+$583$ & $-775458116$ & $[1980,3,3]$ & $2$ & transverse point, degree $1$\\
+$584$ & $-778031531$ & $[1359,3,3]$ & $2$ & transverse point, degree $1$\\
+$585$ & $-778953811$ & $[342,6,3]$ & $2$ & transverse point, degree $1$\\
+$586$ & $-783466579$ & $[108,18,3]$ & $1$ & transverse point, degree $2$\\
+$587$ & $-783960323$ & $[1188,3,3]$ & $2$ & transverse point, degree $1$\\
+$588$ & $-785550055$ & $[1074,6,3]$ & $3$ & Hilbert series\\
+$589$ & $-785841556$ & $[1098,3,3]$ & $2$ & transverse point, degree $1$\\
+$590$ & $-785924839$ & $[1746,3,3]$ & $2$ & Hilbert series\\
+$591$ & $-788351492$ & $[648,6,3]$ & $2$ & transverse point, degree $1$\\
+$592$ & $-788960767$ & $[1152,3,3]$ & $2$ & transverse point, degree $1$\\
+$593$ & $-789064916$ & $[1026,9,3]$ & $1$ & transverse point, degree $1$\\
+$594$ & $-789854052$ & $[162,6,6]$ & $2$ & Hilbert series\\
+$595$ & $-789952120$ & $[450,6,3]$ & $2$ & transverse point, degree $1$\\
+$596$ & $-792178219$ & $[378,6,3]$ & $2$ & transverse point, degree $1$\\
+$597$ & $-792487615$ & $[342,18,3]$ & $1$ & transverse point, degree $1$\\
+$598$ & $-792648523$ & $[378,3,3]$ & $2$ & Hilbert series\\
+$599$ & $-795627047$ & $[2880,3,3]$ & $2$ & Hilbert series\\
+$600$ & $-796267759$ & $[1152,6,3]$ & $2$ & transverse point, degree $1$\\
+$601$ & $-798215295$ & $[492,6,6]$ & $3$ & Hilbert series\\
+$602$ & $-800435347$ & $[630,3,3]$ & $2$ & transverse point, degree $1$\\
+$603$ & $-801070567$ & $[192,12,6]$ & $3$ & Hilbert series\\
+$604$ & $-804156287$ & $[390,6,6,2]$ & $3$ & Hilbert series\\
+$605$ & $-806556583$ & $[396,6,6]$ & $2$ & transverse point, degree $1$\\
+$606$ & $-811197064$ & $[126,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$607$ & $-811864852$ & $[72,12,6]$ & $2$ & transverse point, degree $1$\\
+$608$ & $-814101592$ & $[444,6,3]$ & $3$ & Hilbert series\\
+$609$ & $-814472911$ & $[972,6,3]$ & $2$ & Hilbert series\\
+$610$ & $-816157667$ & $[1512,3,3]$ & $2$ & transverse point, degree $1$\\
+$611$ & $-816373823$ & $[2016,3,3]$ & $2$ & transverse point, degree $1$\\
+$612$ & $-816626404$ & $[270,6,6]$ & $2$ & transverse point, degree $1$\\
+$613$ & $-818179147$ & $[168,6,3]$ & $3$ & Hilbert series\\
+$614$ & $-819773807$ & $[1404,6,3]$ & $2$ & Hilbert series\\
+$615$ & $-820565059$ & $[750,3,3]$ & $3$ & Hilbert series\\
+$616$ & $-822463583$ & $[2844,3,3]$ & $2$ & transverse point, degree $1$\\
+$617$ & $-822507019$ & $[396,6,3]$ & $2$ & transverse point, degree $1$\\
+$618$ & $-822602091$ & $[192,12,3]$ & $3$ & Hilbert series\\
+$619$ & $-823444211$ & $[624,6,3]$ & $3$ & Hilbert series\\
+$620$ & $-824605267$ & $[441,3,3]$ & $2$ & transverse point, degree $1$\\
+$621$ & $-825374623$ & $[1344,3,3]$ & $3$ & Hilbert series\\
+$622$ & $-825722095$ & $[144,18,6]$ & $1$ & transverse point, degree $1$\\
+$623$ & $-826619807$ & $[288,18,6]$ & $1$ & transverse point, degree $1$\\
+$624$ & $-827307048$ & $[432,6,3]$ & $2$ & Hilbert series\\
+$625$ & $-828762168$ & $[270,6,6]$ & $2$ & transverse point, degree $1$\\
+$626$ & $-829340372$ & $[642,6,3]$ & $3$ & Hilbert series\\
+$627$ & $-829597099$ & $[396,3,3]$ & $2$ & Hilbert series\\
+$628$ & $-829823515$ & $[630,3,3]$ & $2$ & transverse point, degree $1$\\
+$629$ & $-831273524$ & $[378,6,6]$ & $2$ & Hilbert series\\
+$630$ & $-832714399$ & $[2574,3,3]$ & $2$ & transverse point, degree $1$\\
+$631$ & $-834267559$ & $[1782,3,3]$ & $2$ & transverse point, degree $1$\\
+$632$ & $-837424228$ & $[252,6,3]$ & $2$ & transverse point, degree $1$\\
+$633$ & $-839209668$ & $[36,18,6,2]$ & $1$ & transverse point, degree $2$\\
+$634$ & $-842323307$ & $[828,3,3]$ & $2$ & Hilbert series\\
+$635$ & $-842441028$ & $[36,6,6,2,2]$ & $2$ & Hilbert series\\
+$636$ & $-842775135$ & $[1032,6,3]$ & $3$ & Hilbert series\\
+$637$ & $-843898852$ & $[780,3,3]$ & $3$ & Hilbert series\\
+$638$ & $-846639971$ & $[945,3,3]$ & $2$ & transverse point, degree $1$\\
+$639$ & $-846895907$ & $[372,6,3]$ & $3$ & Hilbert series\\
+$640$ & $-849391991$ & $[702,18,3]$ & $1$ & transverse point, degree $1$\\
+$641$ & $-851365747$ & $[387,3,3]$ & $2$ & transverse point, degree $1$\\
+$642$ & $-853280563$ & $[270,3,3]$ & $2$ & Hilbert series\\
+$643$ & $-854139439$ & $[2466,3,3]$ & $2$ & transverse point, degree $1$\\
+$644$ & $-859143515$ & $[414,6,6]$ & $2$ & Hilbert series\\
+$645$ & $-859748420$ & $[108,18,6]$ & $1$ & transverse point, degree $1$\\
+$646$ & $-860453071$ & $[810,6,3]$ & $2$ & transverse point, degree $1$\\
+$647$ & $-861423983$ & $[750,6,6]$ & $3$ & Hilbert series\\
+$648$ & $-861957847$ & $[1053,3,3]$ & $2$ & Hilbert series\\
+$649$ & $-864637511$ & $[4236,3,3]$ & $3$ & Hilbert series\\
+$650$ & $-865955480$ & $[198,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$651$ & $-866819204$ & $[414,18,3]$ & $1$ & transverse point, degree $1$\\
+$652$ & $-867636788$ & $[1302,3,3]$ & $3$ & Hilbert series\\
+$653$ & $-868946824$ & $[324,6,3]$ & $2$ & Hilbert series\\
+$654$ & $-870960360$ & $[162,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$655$ & $-871079403$ & $[216,6,6]$ & $2$ & transverse point, degree $1$\\
+$656$ & $-872161415$ & $[1404,6,3]$ & $2$ & Hilbert series\\
+$657$ & $-872231387$ & $[1089,3,3]$ & $2$ & transverse point, degree $1$\\
+$658$ & $-872315727$ & $[180,18,6]$ & $1$ & transverse point, degree $1$\\
+$659$ & $-873843855$ & $[162,18,6]$ & $1$ & transverse point, degree $1$\\
+$660$ & $-875684371$ & $[525,3,3]$ & $3$ & Hilbert series\\
+$661$ & $-876279355$ & $[144,6,6]$ & $2$ & transverse point, degree $1$\\
+$662$ & $-876543479$ & $[3654,3,3]$ & $2$ & transverse point, degree $1$\\
+$663$ & $-876839307$ & $[126,6,6]$ & $2$ & transverse point, degree $1$\\
+$664$ & $-877831315$ & $[234,6,3]$ & $2$ & Hilbert series\\
+$665$ & $-879833011$ & $[126,6,6]$ & $2$ & Hilbert series\\
+$666$ & $-880539011$ & $[1230,3,3]$ & $3$ & Hilbert series\\
+$667$ & $-880815284$ & $[2394,3,3]$ & $2$ & transverse point, degree $1$\\
+$668$ & $-881682260$ & $[198,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$669$ & $-881750327$ & $[3906,3,3]$ & $2$ & transverse point, degree $1$\\
+$670$ & $-882451635$ & $[162,6,6]$ & $2$ & Hilbert series\\
+$671$ & $-885509283$ & $[360,6,3]$ & $2$ & transverse point, degree $1$\\
+$672$ & $-886125263$ & $[2160,3,3]$ & $2$ & transverse point, degree $1$\\
+$673$ & $-888506792$ & $[1710,3,3]$ & $2$ & transverse point, degree $1$\\
+$674$ & $-890096335$ & $[468,6,6]$ & $2$ & Hilbert series\\
+$675$ & $-890712164$ & $[2280,3,3]$ & $3$ & Hilbert series\\
+$676$ & $-891065239$ & $[1890,3,3]$ & $2$ & transverse point, degree $1$\\
+$677$ & $-895131912$ & $[372,6,3]$ & $3$ & Hilbert series\\
+$678$ & $-895160795$ & $[378,6,3]$ & $2$ & transverse point, degree $1$\\
+$679$ & $-895288379$ & $[1452,3,3]$ & $3$ & Hilbert series\\
+$680$ & $-895776664$ & $[1386,3,3]$ & $2$ & transverse point, degree $1$\\
+$681$ & $-896808856$ & $[630,6,3]$ & $2$ & transverse point, degree $1$\\
+$682$ & $-898256712$ & $[252,6,6]$ & $2$ & Hilbert series\\
+$683$ & $-899610063$ & $[96,6,6,2,2]$ & $3$ & Hilbert series\\
+$684$ & $-900179915$ & $[1098,3,3]$ & $2$ & Hilbert series\\
+$685$ & $-900388443$ & $[720,3,3]$ & $2$ & transverse point, degree $1$\\
+$686$ & $-901313832$ & $[306,6,6]$ & $2$ & transverse point, degree $1$\\
+$687$ & $-901724603$ & $[144,12,6]$ & $2$ & transverse point, degree $1$\\
+$688$ & $-901902427$ & $[180,6,6]$ & $2$ & transverse point, degree $1$\\
+$689$ & $-902554711$ & $[1530,3,3]$ & $2$ & transverse point, degree $1$\\
+$690$ & $-902577363$ & $[582,3,3]$ & $3$ & Hilbert series\\
+$691$ & $-903509987$ & $[837,3,3]$ & $2$ & transverse point, degree $1$\\
+$692$ & $-904362344$ & $[486,6,6]$ & $2$ & transverse point, degree $1$\\
+$693$ & $-906122271$ & $[1620,6,3]$ & $2$ & Hilbert series\\
+$694$ & $-906447907$ & $[432,3,3]$ & $2$ & transverse point, degree $1$\\
+$695$ & $-906597332$ & $[1134,3,3]$ & $2$ & transverse point, degree $1$\\
+$696$ & $-906694639$ & $[630,6,3]$ & $2$ & transverse point, degree $1$\\
+$697$ & $-909897027$ & $[162,6,6]$ & $2$ & transverse point, degree $1$\\
+$698$ & $-910686679$ & $[714,6,3]$ & $3$ & Hilbert series\\
+$699$ & $-912502543$ & $[1404,3,3]$ & $2$ & transverse point, degree $1$\\
+$700$ & $-913028251$ & $[450,3,3]$ & $2$ & transverse point, degree $1$\\
+$701$ & $-914307179$ & $[1035,3,3]$ & $2$ & transverse point, degree $1$\\
+$702$ & $-914602987$ & $[348,3,3]$ & $3$ & Hilbert series\\
+$703$ & $-916939039$ & $[2295,3,3]$ & $2$ & Hilbert series\\
+$704$ & $-917378648$ & $[522,9,3]$ & $1$ & transverse point, degree $1$\\
+$705$ & $-918800087$ & $[2691,3,3]$ & $2$ & Hilbert series\\
+$706$ & $-919417391$ & $[2070,6,3]$ & $2$ & transverse point, degree $1$\\
+$707$ & $-920474615$ & $[2250,3,3]$ & $2$ & transverse point, degree $1$\\
+$708$ & $-921782059$ & $[342,6,3]$ & $2$ & transverse point, degree $1$\\
+$709$ & $-922355704$ & $[1008,3,3]$ & $2$ & transverse point, degree $1$\\
+$710$ & $-923341735$ & $[2070,3,3]$ & $2$ & Hilbert series\\
+$711$ & $-924164891$ & $[810,6,3]$ & $2$ & transverse point, degree $1$\\
+$712$ & $-925408599$ & $[3114,3,3]$ & $2$ & transverse point, degree $1$\\
+$713$ & $-925454072$ & $[450,6,3]$ & $2$ & Hilbert series\\
+$714$ & $-929588079$ & $[342,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$715$ & $-929605967$ & $[3012,3,3]$ & $3$ & Hilbert series\\
+$716$ & $-929844059$ & $[1104,3,3]$ & $3$ & Hilbert series\\
+$717$ & $-930000020$ & $[540,6,6]$ & $2$ & transverse point, degree $1$\\
+$718$ & $-930520488$ & $[36,18,6,2]$ & $1$ & transverse point, degree $1$\\
+$719$ & $-932181799$ & $[3570,3,3]$ & $3$ & Hilbert series\\
+$720$ & $-932317784$ & $[1890,3,3]$ & $2$ & Hilbert series\\
+$721$ & $-932439635$ & $[480,6,3]$ & $3$ & Hilbert series\\
+$722$ & $-933287907$ & $[324,6,3]$ & $2$ & transverse point, degree $1$\\
+$723$ & $-934032728$ & $[720,6,3]$ & $2$ & Hilbert series\\
+$724$ & $-934518423$ & $[486,6,6]$ & $2$ & transverse point, degree $1$\\
+$725$ & $-935150431$ & $[3120,3,3]$ & $3$ & Hilbert series\\
+$726$ & $-935512679$ & $[4662,3,3]$ & $2$ & transverse point, degree $1$\\
+$727$ & $-935648952$ & $[126,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$728$ & $-937321928$ & $[108,36,3]$ & $1$ & transverse point, degree $2$\\
+$729$ & $-937544376$ & $[414,6,6]$ & $2$ & transverse point, degree $1$\\
+$730$ & $-937829323$ & $[378,3,3]$ & $2$ & transverse point, degree $1$\\
+$731$ & $-938134479$ & $[3276,3,3]$ & $2$ & transverse point, degree $1$\\
+$732$ & $-938543784$ & $[990,6,3]$ & $2$ & transverse point, degree $1$\\
+$733$ & $-939923167$ & $[468,9,3]$ & $1$ & transverse point, degree $1$\\
+$734$ & $-942396139$ & $[690,3,3]$ & $3$ & Hilbert series\\
+$735$ & $-942905291$ & $[1773,3,3]$ & $2$ & transverse point, degree $1$\\
+$736$ & $-943693627$ & $[405,3,3]$ & $2$ & Hilbert series\\
+$737$ & $-944523967$ & $[1632,3,3]$ & $3$ & Hilbert series\\
+$738$ & $-944584727$ & $[2187,3,3]$ & $2$ & Hilbert series\\
+$739$ & $-946849796$ & $[756,9,3]$ & $1$ & transverse point, degree $1$\\
+$740$ & $-947292868$ & $[504,3,3]$ & $2$ & Hilbert series\\
+$741$ & $-947830627$ & $[402,3,3]$ & $3$ & Hilbert series\\
+$742$ & $-948669647$ & $[3360,3,3]$ & $3$ & Hilbert series\\
+$743$ & $-951022831$ & $[1260,6,3]$ & $2$ & Hilbert series\\
+$744$ & $-951746036$ & $[2970,3,3]$ & $2$ & transverse point, degree $1$\\
+$745$ & $-952091527$ & $[1467,3,3]$ & $2$ & transverse point, degree $1$\\
+$746$ & $-952672676$ & $[1548,3,3]$ & $2$ & transverse point, degree $1$\\
+$747$ & $-953110803$ & $[270,6,3]$ & $2$ & transverse point, degree $1$\\
+$748$ & $-953814180$ & $[126,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$749$ & $-953883192$ & $[252,6,6]$ & $2$ & Hilbert series\\
+$750$ & $-954731983$ & $[738,6,3]$ & $2$ & transverse point, degree $1$\\
+$751$ & $-955389796$ & $[408,6,3]$ & $3$ & Hilbert series\\
+$752$ & $-956474999$ & $[4428,3,3]$ & $2$ & transverse point, degree $1$\\
+$753$ & $-956653156$ & $[300,12,3]$ & $3$ & Hilbert series\\
+$754$ & $-958975876$ & $[648,6,3]$ & $2$ & transverse point, degree $1$\\
+$755$ & $-959093848$ & $[510,3,3]$ & $3$ & Hilbert series\\
+$756$ & $-961008520$ & $[294,6,6]$ & $3$ & Hilbert series\\
+$757$ & $-961025860$ & $[348,6,3]$ & $3$ & Hilbert series\\
+$758$ & $-961042267$ & $[603,3,3]$ & $2$ & transverse point, degree $1$\\
+$759$ & $-961500783$ & $[1872,3,3]$ & $2$ & transverse point, degree $1$\\
+$760$ & $-965853247$ & $[1458,3,3]$ & $2$ & transverse point, degree $1$\\
+$761$ & $-967493236$ & $[144,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$762$ & $-970522843$ & $[180,9,3]$ & $1$ & transverse point, degree $3$\\
+$763$ & $-970584215$ & $[2604,6,3]$ & $3$ & Hilbert series\\
+$764$ & $-971993703$ & $[360,12,3]$ & $2$ & transverse point, degree $1$\\
+$765$ & $-972649108$ & $[630,3,3]$ & $2$ & Hilbert series\\
+$766$ & $-973135903$ & $[1842,3,3]$ & $3$ & Hilbert series\\
+$767$ & $-973935939$ & $[162,6,6]$ & $2$ & transverse point, degree $1$\\
+$768$ & $-974310351$ & $[216,18,6]$ & $1$ & Hilbert series\\
+$769$ & $-975833899$ & $[963,3,3]$ & $2$ & transverse point, degree $1$\\
+$770$ & $-977295032$ & $[504,6,6]$ & $2$ & Hilbert series\\
+$771$ & $-977751763$ & $[252,6,3]$ & $2$ & transverse point, degree $1$\\
+$772$ & $-978293815$ & $[144,6,6,2]$ & $2$ & Hilbert series\\
+$773$ & $-978803096$ & $[2418,3,3]$ & $3$ & Hilbert series\\
+$774$ & $-980593267$ & $[666,3,3]$ & $2$ & transverse point, degree $1$\\
+$775$ & $-980738611$ & $[981,3,3]$ & $2$ & transverse point, degree $1$\\
+$776$ & $-980934248$ & $[144,12,6]$ & $2$ & transverse point, degree $1$\\
+$777$ & $-981013595$ & $[234,6,6]$ & $2$ & transverse point, degree $1$\\
+$778$ & $-981765208$ & $[558,3,3]$ & $2$ & transverse point, degree $1$\\
+$779$ & $-986772392$ & $[180,18,3]$ & $1$ & transverse point, degree $1$\\
+$780$ & $-986921828$ & $[180,12,6]$ & $2$ & transverse point, degree $1$\\
+$781$ & $-988369231$ & $[1998,3,3]$ & $2$ & Hilbert series\\
+$782$ & $-993741127$ & $[1065,3,3]$ & $3$ & Hilbert series\\
+$783$ & $-994746859$ & $[342,6,3]$ & $2$ & transverse point, degree $1$\\
+$784$ & $-995364811$ & $[396,6,3]$ & $2$ & Hilbert series\\
+$785$ & $-996002407$ & $[414,9,3]$ & $1$ & Hilbert series\\
+$786$ & $-996499447$ & $[1296,3,3]$ & $2$ & transverse point, degree $1$\\
+$787$ & $-997947967$ & $[1161,3,3]$ & $2$ & transverse point, degree $1$\\
+$788$ & $-998653971$ & $[252,6,6]$ & $2$ & transverse point, degree $1$\\
+$789$ & $-998965739$ & $[1548,3,3]$ & $2$ & transverse point, degree $1$\\
+$790$ & $-998967559$ & $[2205,3,3]$ & $2$ & Hilbert series\\
+$791$ & $-999342347$ & $[1026,3,3]$ & $2$ & transverse point, degree $1$\\
+$792$ & $-1000456323$ & $[198,6,6]$ & $2$ & Hilbert series\\
+$793$ & $-1001085428$ & $[216,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$794$ & $-1002362164$ & $[576,6,3]$ & $2$ & transverse point, degree $1$\\
+$795$ & $-1003146459$ & $[336,6,6]$ & $3$ & Hilbert series\\
+$796$ & $-1003296127$ & $[1260,3,3]$ & $2$ & Hilbert series\\
+$797$ & $-1003540907$ & $[1092,3,3]$ & $3$ & Hilbert series\\
+$798$ & $-1004929123$ & $[180,6,3]$ & $2$ & transverse point, degree $1$\\
+$799$ & $-1005144324$ & $[72,12,6,2]$ & $2$ & Hilbert series\\
+$800$ & $-1006635703$ & $[1782,3,3]$ & $2$ & transverse point, degree $1$\\
+$801$ & $-1007402063$ & $[3366,3,3]$ & $2$ & transverse point, degree $1$\\
+$802$ & $-1008400479$ & $[1098,6,3]$ & $2$ & transverse point, degree $1$\\
+$803$ & $-1008625160$ & $[390,6,6]$ & $3$ & Hilbert series\\
+$804$ & $-1008939124$ & $[1110,3,3]$ & $3$ & Hilbert series\\
+$805$ & $-1009099160$ & $[162,18,6]$ & $1$ & transverse point, degree $1$\\
+$806$ & $-1009688359$ & $[1962,3,3]$ & $2$ & transverse point, degree $1$\\
+$807$ & $-1009888676$ & $[684,12,3]$ & $2$ & transverse point, degree $1$\\
+$808$ & $-1011816031$ & $[828,6,3]$ & $2$ & transverse point, degree $1$\\
+$809$ & $-1012004371$ & $[324,6,3]$ & $2$ & Hilbert series\\
+$810$ & $-1012260327$ & $[108,18,6]$ & $1$ & transverse point, degree $1$\\
+$811$ & $-1012754308$ & $[72,12,6]$ & $2$ & Hilbert series\\
+$812$ & $-1016764760$ & $[180,6,6,2]$ & $2$ & transverse point, degree $1$\\
+$813$ & $-1017120219$ & $[552,6,3]$ & $3$ & Hilbert series\\
+$814$ & $-1017752264$ & $[1080,6,3]$ & $2$ & transverse point, degree $1$\\
+$815$ & $-1021429963$ & $[342,3,3]$ & $2$ & Hilbert series\\
+$816$ & $-1022274003$ & $[540,3,3]$ & $2$ & Hilbert series\\
+$817$ & $-1022896259$ & $[252,6,6]$ & $2$ & transverse point, degree $1$\\
+$818$ & $-1023173287$ & $[720,6,3]$ & $2$ & transverse point, degree $1$\\
+$819$ & $-1023193151$ & $[1890,6,3]$ & $2$ & transverse point, degree $1$\\
+$820$ & $-1024644260$ & $[1356,6,3]$ & $3$ & Hilbert series\\
+$821$ & $-1024671972$ & $[216,6,6]$ & $2$ & transverse point, degree $1$\\
+$822$ & $-1025033991$ & $[1146,6,3]$ & $3$ & Hilbert series\\
+$823$ & $-1027948487$ & $[3528,3,3]$ & $2$ & transverse point, degree $1$\\
+$824$ & $-1028562439$ & $[1710,3,3]$ & $2$ & transverse point, degree $1$\\
+$825$ & $-1029470763$ & $[90,6,6,2]$ & $2$ & Hilbert series\\
+$826$ & $-1031406467$ & $[210,6,6]$ & $3$ & Hilbert series\\
+$827$ & $-1031533460$ & $[1062,6,3]$ & $2$ & transverse point, degree $1$\\
+$828$ & $-1032596116$ & $[288,6,6]$ & $2$ & transverse point, degree $1$\\
+$829$ & $-1034434343$ & $[3918,3,3]$ & $3$ & Hilbert series\\
+$830$ & $-1034712331$ & $[414,6,3]$ & $2$ & transverse point, degree $1$\\
+$831$ & $-1036968351$ & $[792,6,6]$ & $2$ & transverse point, degree $1$\\
+$832$ & $-1038242891$ & $[378,6,6]$ & $2$ & Hilbert series\\
+$833$ & $-1039681211$ & $[738,6,3]$ & $2$ & transverse point, degree $1$\\
+$834$ & $-1040255140$ & $[72,6,6,2]$ & $2$ & Hilbert series\\
+$835$ & $-1040277647$ & $[648,18,3]$ & $1$ & transverse point, degree $1$\\
+$836$ & $-1041157911$ & $[990,6,6]$ & $2$ & transverse point, degree $1$\\
+$837$ & $-1042799395$ & $[144,6,6]$ & $2$ & transverse point, degree $1$\\
+$838$ & $-1043141871$ & $[432,18,3]$ & $1$ & transverse point, degree $1$\\
+$839$ & $-1043327171$ & $[1926,3,3]$ & $2$ & Hilbert series\\
+$840$ & $-1044224151$ & $[1260,6,3]$ & $2$ & transverse point, degree $1$\\
+$841$ & $-1044500543$ & $[1782,3,3]$ & $2$ & transverse point, degree $1$\\
+$842$ & $-1044751207$ & $[522,9,3]$ & $1$ & transverse point, degree $1$\\
+$843$ & $-1045579683$ & $[300,6,3]$ & $3$ & Hilbert series\\
+$844$ & $-1045737779$ & $[162,18,3]$ & $1$ & transverse point, degree $1$\\
+$845$ & $-1047870328$ & $[648,3,3]$ & $2$ & Hilbert series\\
+$846$ & $-1048542511$ & $[2061,3,3]$ & $2$ & transverse point, degree $1$\\
+$847$ & $-1048916351$ & $[2160,6,3]$ & $2$ & transverse point, degree $1$\\
+$848$ & $-1049736280$ & $[282,6,6]$ & $3$ & Hilbert series\\
+$849$ & $-1050029320$ & $[180,6,6]$ & $2$ & transverse point, degree $1$\\
+$850$ & $-1052055787$ & $[756,3,3]$ & $2$ & transverse point, degree $1$\\
+$851$ & $-1053059604$ & $[540,6,3]$ & $2$ & Hilbert series\\
+$852$ & $-1053105979$ & $[378,6,3]$ & $2$ & Hilbert series\\
+$853$ & $-1053430883$ & $[1008,3,3]$ & $2$ & transverse point, degree $1$\\
+$854$ & $-1055080867$ & $[429,3,3]$ & $3$ & Hilbert series\\
+$855$ & $-1057139896$ & $[1116,3,3]$ & $2$ & transverse point, degree $1$\\
+$856$ & $-1057857783$ & $[1818,3,3]$ & $2$ & transverse point, degree $1$\\
+$857$ & $-1061717636$ & $[216,12,6]$ & $2$ & transverse point, degree $1$\\
+$858$ & $-1065673715$ & $[846,3,3]$ & $2$ & transverse point, degree $1$\\
+$859$ & $-1066760571$ & $[180,6,6]$ & $2$ & transverse point, degree $1$\\
+\end{longtable}
+\end{center}
+
+\end{document}
