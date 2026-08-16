@@ -30,6 +30,11 @@ PREFIX="${1:-$HOME/.local}"
 SRC="${PARI_SRC:-$HOME/src}"
 VERSION=2.17.4
 TARBALL="pari-${VERSION}.tar.gz"
+# Pinned upstream digest.  The patch below rewrites three declarations by
+# exact string match, so it is worth knowing that the source tree is the
+# one those patterns were read from rather than a truncated download or a
+# mirror serving a different file.
+SHA256=02651d99c391007d384b3fadbc20abc6916b77036f9e496c99e9ce8688ca4b53
 
 echo "=== prerequisites"
 missing=""
@@ -53,6 +58,17 @@ if [ ! -f "$TARBALL" ]; then
     wget -q "https://pari.math.u-bordeaux.fr/pub/pari/unix/$TARBALL" \
       || wget -q "https://pari.math.u-bordeaux.fr/pub/pari/OLD/2.17/$TARBALL"
 fi
+# Checked on every run, not only after a fetch: the copy in $SRC may be
+# left over from an earlier run that was interrupted mid-download.
+digest=$(sha256sum "$TARBALL" | cut -d' ' -f1)
+if [ "$digest" != "$SHA256" ]; then
+    echo "checksum mismatch for $SRC/$TARBALL" >&2
+    echo "  expected $SHA256" >&2
+    echo "  found    $digest" >&2
+    echo "delete the file and rerun to fetch it again" >&2
+    exit 1
+fi
+echo "checksum ok ($SHA256)"
 rm -rf "pari-$VERSION"
 tar xf "$TARBALL"
 cd "pari-$VERSION"
