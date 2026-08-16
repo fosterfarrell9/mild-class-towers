@@ -3,7 +3,7 @@
 Every computation in this repository that touches Artin symbols relies
 on this patch: the original Artin-symbol implementation, the audited
 rank-three pipeline, and the standalone certificate verifier in
-`certificates/p5/`.
+`verifier/`.
 
 `Massey-pari` uses three internal PARI functions from
 `src/modules/algebras.c`:
