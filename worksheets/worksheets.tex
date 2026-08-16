@@ -354,11 +354,11 @@ $y^{10}-2y^9-2053y^8-65684y^7-174901y^6+64171174y^5
 +2665457137y^4+66051314232y^3+1091726153376y^2
 +9461326049280y+31436965969920$ over $\mathbb Q$\\[2pt]
 $B_L$ &
-ten elements of $\mathbb Q[\theta]$, $\theta$ the class of $y$
-in the absolute model, each written as a rational number or a
+ten elements of $\mathbb Q[\theta]$, $\theta$ the image of $y$
+in $\mathbb Q[y]/(f_{\mathrm{abs}})$, each written as a rational number or a
 polynomial in $\theta$; the basis of $K$ is stored once in the
 certificate header\\[2pt]
-$\sigma$ &
+$w$ &
 the coordinate vector $(0,-1,0,0,0,0,0,0,-1,0)$ with respect to
 $B_L$\\[2pt]
 $a'$, $J$ &
@@ -390,8 +390,9 @@ On these data the verifier decides:
   derived from $f_{\mathrm{rel}}$, the extension $L_x\mid K$ is
   of degree $5$ and unramified everywhere, and the exact Artin
   kernel check identifies $L_x$ as the fixed field of $\ker x$;
-\item the element denoted by $\sigma$ is an automorphism of exact
-  order $5$ fixing $K$, normalized to $x$ as in (P.22) through
+\item the element with coordinate vector $w$ is the image of the
+  primitive element under an automorphism of exact order $5$
+  fixing $K$, normalized to $x$ as in (P.22) through
   exact Artin exponents;
 \item $(a')J^5=\mathcal O_K$ --- the condition in (P.4) written
   multiplicatively --- and $[J]$ represents $e_2$;

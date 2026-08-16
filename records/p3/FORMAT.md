@@ -225,7 +225,7 @@ standalone verifier accepts an entry only after checking:
 
 1. the format identifier, prime 3, PARI representation version, and complete schemas;
 2. `bnfcertify(K)`, the base discriminant, class group, unit data, and basis;
-3. equality of relative and absolute field models, relative degree three,
+3. equality of the relative and absolute defining polynomials, relative degree three,
    and `disc(L_x)=disc(K)^3`;
 4. exact Artin kernel identification and exact `sigma_x` normalization;
 5. the two integral-basis audits;
