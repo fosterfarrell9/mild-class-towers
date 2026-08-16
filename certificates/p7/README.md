@@ -53,3 +53,15 @@ expected tensor (the run reports `EMBEDDED_EXPECTED_TENSOR=ABSENT`);
 `matrices.tsv` holds the matrices as the search recorded them, and
 comparing them with the six matrices the verifier prints is the
 independent cross-check.
+
+`sigma-dimension.json` records the Krull dimension of the minor
+ideal of the matrix family over `F_7` for each of the three fields,
+computed by `tools/sigma_d_dimension.py --tsv <directory> --prime 7`
+from `matrices.tsv`.  All three values are 1: each norm-degeneracy
+scheme is zero-dimensional, with finitely many closed points, in
+agreement with the `sigma-points.sing` certificates where those
+exist.  `sigma-dimension-crosscheck-singular.json` recomputes the
+three dimensions with Singular (`dim(groebner(I))` over `F_7`) and
+documents the agreement of the two engines; the two share the
+construction of the minor generators, so the crosscheck covers the
+Groebner and dimension step.

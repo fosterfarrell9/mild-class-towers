@@ -1,0 +1,27 @@
+{
+ "summary": {
+  "total": 3,
+  "claim_holds": true,
+  "tool": "tools/sigma_d_dimension.py --tsv <dir> --prime 7"
+ },
+ "fields": [
+  {
+   "field": "K-501510767-p7",
+   "dim": 1,
+   "status": "OK",
+   "ms": 37
+  },
+  {
+   "field": "K-648153647-p7",
+   "dim": 1,
+   "status": "OK",
+   "ms": 535
+  },
+  {
+   "field": "K-931506071-p7",
+   "dim": 1,
+   "status": "OK",
+   "ms": 314
+  }
+ ]
+}

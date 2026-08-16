@@ -1,0 +1,7 @@
+{
+ "engine": "Singular, dim(groebner(I)) over F_p",
+ "total": 3,
+ "agree": 3,
+ "disagreements": [],
+ "missing_from_singular_output": []
+}
