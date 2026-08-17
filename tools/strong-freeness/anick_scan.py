@@ -39,6 +39,28 @@ sys.path[:0] = [str(HERE)]
 
 from admissible import find_anick_witness  # noqa: E402
 
+
+def tensor_rank_mod3(tensor: list[list[int]]) -> int:
+    rows = [[value % 3 for value in row] for row in tensor]
+    rank = 0
+    for column in range(27):
+        pivot = next((r for r in range(rank, len(rows))
+                      if rows[r][column] % 3), None)
+        if pivot is None:
+            continue
+        rows[rank], rows[pivot] = rows[pivot], rows[rank]
+        inverse = 1 if rows[rank][column] % 3 == 1 else 2
+        rows[rank] = [(value * inverse) % 3 for value in rows[rank]]
+        for r in range(len(rows)):
+            if r != rank and rows[r][column] % 3:
+                factor = rows[r][column]
+                rows[r] = [(rows[r][i] - factor * rows[rank][i]) % 3
+                           for i in range(27)]
+        rank += 1
+        if rank == len(rows):
+            break
+    return rank
+
 TENSOR_SOURCES = (
     "records/p3/results/verification.json",
     "records/p3/results/verification-001.json",
@@ -97,6 +119,19 @@ def scan(targets: list[int], tensors: dict[int, list[list[int]]],
     started = time.monotonic()
     for index, discriminant in enumerate(targets, 1):
         field_started = time.monotonic()
+        rank = tensor_rank_mod3(tensors[discriminant])
+        if rank < 3:
+            records.append({
+                "discriminant": discriminant,
+                "found": False,
+                "tested": 0,
+                "tensor_rank": rank,
+                "note": "tensor rank below three, no Anick witness possible",
+                "seconds": time.monotonic() - field_started,
+            })
+            print(f"RANK-DEFECT D={discriminant} rank={rank}, skipped",
+                  flush=True)
+            continue
         witness = find_anick_witness(tensors[discriminant])
         record: dict[str, object] = {
             "discriminant": discriminant,
