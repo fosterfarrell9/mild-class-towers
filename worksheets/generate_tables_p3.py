@@ -116,9 +116,9 @@ reports with the transverse cone point of every criterion field in
 \nolinkurl{tools/strong-freeness/block_sweep.py},
 \nolinkurl{tools/strong_freeness_singular.py}, and
 \nolinkurl{tools/p3_cone_criterion.py}.  The exhaustive Anick
-searches over the two subfamilies of Section~5.3 of the paper ran
-over all $11\,232$ changes of variables over $\Fthree$ and all
-$663\,390$ ordered projective bases over $\Fnine$."""
+searches ran over all $11\,232$ changes of variables over
+$\Fthree$ and all $663\,390$ ordered projective bases over
+$\Fnine$."""
 
     table_head = (
         "\\begin{center}\\small\n"
@@ -144,8 +144,7 @@ $663\,390$ ordered projective bases over $\Fnine$."""
         "quadratic\nfields}\n\\end{center}\n\n"
         "\\medskip\n\\noindent\n"
         "This document is generated from the result records by\n"
-        "\\nolinkurl{generate_tables_p3.py}; references of the form\n"
-        "Section~5.3 refer to the paper.\n\n"
+        "\\nolinkurl{generate_tables_p3.py}.\n\n"
         + body + "\n\\end{document}\n")
     (HERE / "tables-p3.tex").write_text(document)
     print(f"tables-p3.tex written: {total} fields, "
