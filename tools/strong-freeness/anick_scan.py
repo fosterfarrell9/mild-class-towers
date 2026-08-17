@@ -38,6 +38,7 @@ ROOT = HERE.parents[1]
 sys.path[:0] = [str(HERE)]
 
 from admissible import find_anick_witness  # noqa: E402
+from extension_search import FiniteField, coset_anick_search  # noqa: E402
 
 
 def tensor_rank_mod3(tensor: list[list[int]]) -> int:
@@ -80,6 +81,8 @@ CRITERION_SOURCES = (
 
 EXPECTED_TARGETS = 12244
 GL3_SIZE = 11232
+F9_COSETS = 663390
+F9_MODULUS = (1, 0, 1)
 
 
 def load_tensors() -> dict[int, list[list[int]]]:
@@ -114,8 +117,10 @@ def load_targets() -> list[int]:
 
 
 def scan(targets: list[int], tensors: dict[int, list[list[int]]],
-         label: str) -> list[dict[str, object]]:
+         label: str, f9: bool = False) -> list[dict[str, object]]:
     records: list[dict[str, object]] = []
+    field = FiniteField(F9_MODULUS) if f9 else None
+    search_size = F9_COSETS if f9 else GL3_SIZE
     started = time.monotonic()
     for index, discriminant in enumerate(targets, 1):
         field_started = time.monotonic()
@@ -132,7 +137,10 @@ def scan(targets: list[int], tensors: dict[int, list[list[int]]],
             print(f"RANK-DEFECT D={discriminant} rank={rank}, skipped",
                   flush=True)
             continue
-        witness = find_anick_witness(tensors[discriminant])
+        if f9:
+            witness = coset_anick_search(tensors[discriminant], field)
+        else:
+            witness = find_anick_witness(tensors[discriminant])
         record: dict[str, object] = {
             "discriminant": discriminant,
             "found": witness["found"],
@@ -140,10 +148,14 @@ def scan(targets: list[int], tensors: dict[int, list[list[int]]],
             "seconds": time.monotonic() - field_started,
         }
         if witness["found"]:
-            record["matrix"] = witness["matrix"]
+            if f9:
+                record["matrix_packed"] = witness["matrix_packed"]
+                record["matrix_polynomial"] = witness["matrix_polynomial"]
+            else:
+                record["matrix"] = witness["matrix"]
             record["leaders"] = witness["leaders"]
             print(f"WITNESS D={discriminant} after {witness['tested']} "
-                  f"of {GL3_SIZE}", flush=True)
+                  f"of {search_size}", flush=True)
         records.append(record)
         if index % 25 == 0 or index == len(targets):
             print(f"{label}: {index}/{len(targets)} scanned, "
@@ -158,17 +170,24 @@ def merge(pattern: str, out: Path) -> int:
         raise RuntimeError(f"no shard files match {pattern}")
     by_discriminant: dict[int, dict[str, object]] = {}
     of = None
+    modes = set()
     for path in shards:
         shard = json.loads(Path(path).read_text())
         of = shard["of"]
+        modes.add(shard.get("mode", "f3"))
+    if len(modes) > 1:
+        raise RuntimeError(f"mixed scan modes in shards: {sorted(modes)}")
+    for path in shards:
+        shard = json.loads(Path(path).read_text())
         for record in shard["records"]:
             by_discriminant[record["discriminant"]] = record
     records = [by_discriminant[d] for d in sorted(by_discriminant, key=abs)]
     witnesses = [r for r in records if r["found"]]
+    mode = modes.pop()
     summary = {
         "engine": "python",
-        "routine": "admissible.find_anick_witness",
-        "gl3_size": GL3_SIZE,
+        "mode": mode,
+        "search_size": F9_COSETS if mode == "f9" else GL3_SIZE,
         "shards": len(shards),
         "shards_expected": of,
         "fields": len(records),
@@ -194,6 +213,9 @@ def main() -> int:
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--merge", type=str,
                         help="glob of shard files to merge; no scanning")
+    parser.add_argument("--f9", action="store_true",
+                        help="search ordered projective F9 frames instead "
+                             "of GL_3(F_3)")
     args = parser.parse_args()
 
     if args.merge:
@@ -220,13 +242,15 @@ def main() -> int:
                     if i % args.shards == args.shard]
         label = f"shard {args.shard}/{args.shards}"
 
-    records = scan(selected, tensors, label)
+    records = scan(selected, tensors, label, f9=args.f9)
     out = args.out.expanduser()
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps({
         "engine": "python",
-        "routine": "admissible.find_anick_witness",
-        "gl3_size": GL3_SIZE,
+        "mode": "f9" if args.f9 else "f3",
+        "routine": ("extension_search.coset_anick_search" if args.f9
+                    else "admissible.find_anick_witness"),
+        "search_size": F9_COSETS if args.f9 else GL3_SIZE,
         "shard": args.shard if not args.only else None,
         "of": args.shards if not args.only else None,
         "only": args.only,
