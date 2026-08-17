@@ -68,7 +68,7 @@ the cubic relation space.  None of them recomputes any arithmetic.
 
 ```sh
 python3 tools/strong-freeness/verify_strong_freeness.py   # twelve fields
-python3 tools/strong-freeness/block_witnesses.py          # five block witnesses
+python3 tools/strong-freeness/block_witnesses.py          # five block witnesses + one exhausted search
 python3 tools/strong-freeness/block_sweep.py --degree-bound 13 --only <D> ...
 ```
 
@@ -78,7 +78,11 @@ The first confirms the Anick witnesses (rational and over F9 with
 descent) and the terminating Groebner/automaton certificate for the
 twelve fields of `results/verification-002.json`; the pilot field
 `D = -3640387` remains UNDECIDED.  The second recomputes the five
-witnesses that lie beyond the cone criterion.
+witnesses that lie beyond the cone criterion, and records the
+exhausted search over all 11232 elements of GL_3(F_3) for
+`D = -4447704`: the field has no rational Anick witness, and only
+its terminating Groebner completion decides it
+(`results/block-witnesses-003.json`).
 
 `block_sweep.py` completes the two-sided Groebner basis of the cubic
 relation ideal to a degree bound and compares the normal word counts

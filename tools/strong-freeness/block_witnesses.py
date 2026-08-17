@@ -7,7 +7,9 @@ strong-freeness witness: two have a rational Anick witness at a
 degenerate cone point, and three have a terminating Gröbner
 completion.  This driver recomputes all five witnesses from the
 C-verifier tensors of the latest complete block verification and
-writes ``results/block-witnesses-<n>.json``.
+writes ``results/block-witnesses-<n>.json``, together with the
+exhausted negative search over GL_3(F_3) for the field -4447704,
+which has no rational Anick witness.
 """
 
 from __future__ import annotations
@@ -26,6 +28,7 @@ from admissible import find_anick_witness  # noqa: E402
 from hilbert_depth import measured_comparison  # noqa: E402
 
 RATIONAL_ANICK = (-211248887, -263780072)
+NO_WITNESS = (-4447704,)
 GROEBNER = (-4447704, -192928619, -263310215)
 BLOCK_SIZE = 2497
 
@@ -78,6 +81,17 @@ def main() -> int:
             "witness": witness,
             "seconds": time.monotonic() - started,
         })
+    for discriminant in NO_WITNESS:
+        started = time.monotonic()
+        witness = find_anick_witness(tensors[discriminant])
+        records.append({
+            "discriminant": discriminant,
+            "certificate": "ANICK_F3_EXHAUSTED",
+            "status": ("NO_RATIONAL_WITNESS" if not witness["found"]
+                       else "UNEXPECTED_WITNESS"),
+            "witness": witness,
+            "seconds": time.monotonic() - started,
+        })
     for discriminant in GROEBNER:
         started = time.monotonic()
         witness = measured_comparison(tensors[discriminant], 10,
@@ -109,7 +123,11 @@ def main() -> int:
         "records": records,
     }, indent=2) + "\n")
     print(f"RESULT={output.relative_to(ROOT)}")
-    return 0 if all(r["status"] == "STRONGLY_FREE" for r in records) else 1
+    expected = {"ANICK_F3": "STRONGLY_FREE",
+                "ANICK_F3_EXHAUSTED": "NO_RATIONAL_WITNESS",
+                "TERMINATING_GROEBNER": "STRONGLY_FREE"}
+    return 0 if all(r["status"] == expected[r["certificate"]]
+                    for r in records) else 1
 
 
 if __name__ == "__main__":
