@@ -19,8 +19,8 @@
     "build_pilot": "results/build-costs-006.json",
     "build_theorem_fields": "results/build-costs-005.json",
     "verification": "results/verification-002.json",
-    "strong_freeness": "results/strong-freeness-002.json",
-    "negative_tests": "results/rejection-tests.json"
+    "strong_freeness": "results/strong-freeness-001.json",
+    "negative_tests": "verifier/rejection-tests.json"
   },
   "fields": [
     {

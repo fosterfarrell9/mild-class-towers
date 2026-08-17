@@ -24,3 +24,4 @@ cm-constructor/cm_character_driver
 verifier/check.out
 worksheets/*.aux
 worksheets/*.log
+compile_commands.json

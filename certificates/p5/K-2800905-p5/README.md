@@ -1,8 +1,7 @@
 # Arithmetic certificate for \(K=\mathbf Q(\sqrt{-2800905})\), \(p=5\)
 
 This directory contains the public arithmetic certificate for the explicit
-example in *Secondary Norms, Triple Massey Products, and Mild Unramified
-\(p\)-Class Tower Groups*. It supports the six secondary-norm matrices for
+example in *Mild \(p\)-Class Tower Groups of Imaginary Quadratic Fields*. It supports the six secondary-norm matrices for
 
 ```text
 p = 5

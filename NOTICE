@@ -46,14 +46,17 @@ src/candidate_scanner.c   headers/candidate_scanner.h
 and the following directories in their entirety:
 
 ```text
-certificate/       standalone arithmetic certificates and their verifier
-examples/          computed results, run logs, transverse certificates
-tools/             batch runner, Groebner and Singular drivers,
+certificates/      the stored arithmetic certificates
+verifier/          the standalone verifier and its rejection tests
+records/           result records, run logs, transverse certificates
+census/            the discriminant lists and their provenance
+tools/             batch runners, Groebner and Singular drivers,
                    transverse rank-one certification, table readers
+cm-constructor/    the CM class-field constructor
 parallelization/   per-character parallel drivers
+worksheets/        the worksheet parts W1--W6
 tests/             regression tests
 doc/               the PARI patch documentation
-candidates/        candidate scans
 REPRODUCING.md
 ```
 

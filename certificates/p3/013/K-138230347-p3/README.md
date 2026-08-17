@@ -1,13 +1,13 @@
 # Certificate for D = -138230347
 
-Imaginary quadratic field of discriminant `-138230347`, class group ``,
+Imaginary quadratic field of discriminant `-138230347`, class group `[90,9,3]`,
 prime `p = 3`.  Role: `theorem_7_1`.
 
-Verify with the standalone verifier (see `../../FORMAT.md` for the
-format and `../../README.md` for the workflow):
+Verify with the standalone verifier (see `../../../../records/p3/FORMAT.md` for the
+format and `../../../../records/p3/README.md` for the workflow):
 
 ```sh
-make -C ../../verifier PARI=/usr/local
+make -C ../../../../verifier PARI=/usr/local
 verifier/verify_certificate certificates/p3/013/K-138230347-p3/certificate.gp   # from the repository root
 ```
 

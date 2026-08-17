@@ -38,6 +38,12 @@ from the D_7-norm relations of Biasse--Fieker--Hofmann--Page
 certificate format and the verification are identical in all three
 cases.
 
+The `transverse.txt` protocols in these directories are in German:
+`Grad` is the residue degree of the closed point, `reduziert
+isoliert` records whether it is reduced and isolated, `ERGEBNIS` is
+the verdict, and `ZWEITMEINUNG SINGULAR: BESTAETIGT` records that
+Singular confirmed it.
+
 Verify with the odd-p verifier (the prime is read from the
 certificate):
 
