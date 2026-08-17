@@ -6,7 +6,7 @@ discriminant, the class group (from the certified certificate
 header), the rank of delta (from the cone-criterion summaries), and
 the source of mildness: a transverse cone point with its degree, an
 Anick witness, or a terminating Hilbert-series computation.  The
-script asserts the published counts (151 + 227 + 481 = 859) and
+script asserts the published counts (151 + 229 + 484 = 864) and
 fails on any inconsistency between the records.
 
 Run from the repository root or from worksheets/:
@@ -25,13 +25,13 @@ ROOT = HERE.parent
 CERTS = ROOT / "certificates" / "p3"
 P3 = ROOT / "records" / "p3"
 
-ANICK = {-211248887, -263780072}
+ANICK_SCAN = P3 / "results" / "anick-scan-f3.json"
 BLOCKS = [
     ("Table 3: the mild fields with $|D_K|<2^{28}$", 0, 2**28, 151),
     ("Table 4: the mild fields with $2^{28}\\le|D_K|<2^{29}$",
-     2**28, 2**29, 227),
+     2**28, 2**29, 229),
     ("Table 5: the mild fields with $2^{29}\\le|D_K|<2^{30}$",
-     2**29, 2**30, 481),
+     2**29, 2**30, 484),
 ]
 
 
@@ -56,6 +56,8 @@ def class_group(disc: int) -> str:
 
 
 def main() -> int:
+    anick = set(json.loads(ANICK_SCAN.read_text())["witness_discriminants"])
+
     cone: dict[int, dict] = {}
     for name in ("cone-criterion/summary.json",
                  "cone-criterion/summary-slice2.json",
@@ -81,7 +83,7 @@ def main() -> int:
             degree = record["min_transverse_cone_degree"]
             if degree is not None:
                 mild.append((disc, f"transverse point, degree ${degree}$"))
-            elif disc in ANICK:
+            elif disc in anick:
                 mild.append((disc, "Anick witness"))
             elif disc in strongly_free:
                 mild.append((disc, "Hilbert series"))
@@ -97,12 +99,14 @@ def main() -> int:
                         f"${rank}$ & {source}\\\\")
         rows_by_block.append(rows)
         total += len(mild)
-    assert total == 859, total
+    assert total == 864, total
 
-    intro = r"""The $859$ mild fields at $p=3$ with $|D_K|<2^{30}$, with the class
+    intro = r"""The $864$ mild fields at $p=3$ with $|D_K|<2^{30}$, with the class
 group, the rank of $\delta$, and the source of mildness; the three
 tables follow the blocks of the computation.  Additional records:
 the Anick witnesses in
+\nolinkurl{records/p3/results/anick-scan-f3.json}, the two
+below $2^{28}$ also in
 \nolinkurl{records/p3/results/block-witnesses-002.json}; the
 Gr\"obner verdicts, including the $26$ fields that are provably not
 strongly free and the single field with a rank-two tensor, in
@@ -116,9 +120,13 @@ reports with the transverse cone point of every criterion field in
 \nolinkurl{tools/strong-freeness/block_sweep.py},
 \nolinkurl{tools/strong_freeness_singular.py}, and
 \nolinkurl{tools/p3_cone_criterion.py}.  The exhaustive Anick
-searches ran over all $11\,232$ changes of variables over
-$\Fthree$ and all $663\,390$ ordered projective bases over
-$\Fnine$."""
+searches over all $11\,232$ changes of variables over $\Fthree$
+and over all $663\,390$ ordered projective bases over $\Fnine$,
+carried out for each of the $12\,244$ fields on which the cone
+criterion is silent, are recorded in
+\nolinkurl{records/p3/results/anick-scan-f3.json} and
+\nolinkurl{records/p3/results/anick-scan-f9.json}; both searches
+produce witnesses for exactly seven fields."""
 
     table_head = (
         "\\begin{center}\\small\n"

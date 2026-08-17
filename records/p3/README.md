@@ -84,6 +84,21 @@ exhausted search over all 11232 elements of GL_3(F_3) for
 its terminating Groebner completion decides it
 (`results/block-witnesses-003.json`).
 
+`results/anick-scan-f3.json` and `results/anick-scan-f9.json` hold
+the exhaustive Anick searches over the 12244 fields on which the
+cone criterion is silent, computed from the verified tensors by
+`tools/strong-freeness/anick_scan.py`.  The first exhausts all 11232
+elements of GL_3(F_3) per field, the second all 663390 ordered
+projective bases over F9; one field of the 12244 carries
+`tested = 0`, namely `D = -873204895`, whose source tensor has rank
+two over F_3, and a tensor of rank below three admits no Anick
+witness.  Both records list witnesses for the same seven fields:
+`D = -211248887` and `D = -263780072`, which also appear in
+`results/block-witnesses-002.json`, and `D = -435714452`,
+`-459350555`, `-622080024`, `-639273539`, and `-746301223`, which
+the Groebner records leave UNDECIDED and which are mild by their
+witnesses alone.
+
 `block_sweep.py` completes the two-sided Groebner basis of the cubic
 relation ideal to a degree bound and compares the normal word counts
 with the strongly free series 1/(1-3z+3z^3).  A field is
