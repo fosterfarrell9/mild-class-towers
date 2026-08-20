@@ -88,7 +88,9 @@ relative fields.  A successful run ends with `CERTIFICATE VERIFIED`.
 
 Building the verifier requires the same patched PARI; the patch makes three
 internal routines non-static and is documented in
-`doc/pari-2.17.4-patch.md`.  No PARI source is redistributed here.
+`doc/pari-2.17.4-patch.md`.  No PARI source is redistributed here.  A single
+certificate can be checked without that build, in unmodified PARI/GP, with
+`tools/verify_certificate.gp`; see `REPRODUCING.md`.
 
 ## License
 

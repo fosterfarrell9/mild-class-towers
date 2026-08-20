@@ -90,6 +90,24 @@ MASSEY_CERTIFICATE_EXPORT="$PWD/certificates/p5/K-<n>-p5/certificate.gp" \
 Certificates contain exactly the 18 entries for the six characters
 (three columns each); the verifier rejects any other multiplicity.
 
+A single certificate can also be checked in unmodified PARI/GP, without
+building anything:
+
+```sh
+CERT_DIR=certificates/p5/K-2800905-p5 gp -q tools/verify_certificate.gp
+```
+
+This is a second, independent implementation of the same checks.  It replaces
+the three patched routines by `galoisinit` on the absolute class field and by
+the definition of the Frobenius, tested on the integral basis.  It reports the
+same verdict, and the six secondary norm matrices and the 3 by 27 tensor agree
+with the C verifier entry by entry.  After the run the objects stay in the
+session: `K`, the matrices `D`, the tensor, the polarization, and `Dx(v)`
+evaluating the operator at an arbitrary character.
+
+The script is for one certificate at a time; the sweep over all certificates
+uses the C verifier, which the patched PARI is still required for.
+
 ## Transverse rank-one certificates
 
 The transverse rank-one mildness criterion is certified for all 204
