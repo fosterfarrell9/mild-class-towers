@@ -25,6 +25,19 @@ number
 fields*](https://www.degruyter.com/document/doi/10.1515/crelle-2025-0006/html);
 the tag `ahlqvist-final` marks his last commit.
 
+## Relation to the published paper
+
+The paper cites version **v1.0.0**, archived at
+[doi:10.5281/zenodo.21982734](https://doi.org/10.5281/zenodo.21982734).  Every
+number and every claim there refers to that tag.  The certificates, the records
+and the results are unchanged since.
+
+The current state differs from that tag in the following respects:
+
+- A single certificate can be checked in unmodified PARI/GP, with
+  `tools/verify_certificate.gp`.  The patched PARI is needed only for the
+  sweep over all certificates.
+
 ## Quick start
 
 ```sh
