@@ -37,6 +37,11 @@ The current state differs from that tag in the following respects:
 - A single certificate can be checked in unmodified PARI/GP, with
   `tools/verify_certificate.gp`.  The patched PARI is needed only for the
   sweep over all certificates.
+- `records/p3/rank-four-653329427/` records the single field of the range
+  with 3-class rank four, reported as undecided in Section 5.5 of the
+  paper: the ten secondary norm operators, the Bockstein matrix of rank
+  four and the empty cone, with the pure-GP scripts and an independent
+  second run.
 
 ## Quick start
 

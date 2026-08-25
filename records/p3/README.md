@@ -4,7 +4,11 @@ This directory holds the computation records for all 12749 imaginary
 quadratic fields of 3-class rank three with |D_K| < 2^30: the source
 tensors of the searches, the verification records, the
 strong-freeness verdicts with their second-engine crosschecks, and
-the cone-criterion reports.  The arithmetic certificates themselves
+the cone-criterion reports.  The single field of the range with
+3-class rank four, D_K = -653329427, lies outside this rank-three
+scope; its record, behind the "remains undecided" report of
+Section 5.5 of the paper, is `rank-four-653329427/` with its own
+README.  The arithmetic certificates themselves
 live at the repository root under
 `certificates/p3/<bucket>/K-<|D|>-p3/`, the reference tensors here
 under `source-tensors/<bucket>/D-<|D|>/`, where `<bucket>` is
