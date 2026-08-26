@@ -1,0 +1,64 @@
+[0;31m  ***   Warning: new stack size = 6000000000 (5722.046 Mbytes).[0m
+[0;31m  ***   Warning: new maximum stack size = 20000002048 (19073.488 Mbytes).[0m
+ohne Zertifikat, freier Lauf
+p = 3   Grundkoerper y^2 - y + 3036244875
+bnfinit(K)  7 ms   cyc = [1278, 3, 3, 3]   h = 34506
+p-Rang = 4   relevante Erzeuger [1, 2, 3, 4]
+Normen der J_j: [12569, 1515, 18265, 41729]
+
+Untergruppen vom Index 3: 40
+  s= 1  canon=[0, 0, 1, 2]  bnfinit(L)  1103 ms  gesamt  1365 ms
+  s= 2  canon=[0, 1, 1, 1]  bnfinit(L)  2116 ms  gesamt  2261 ms
+  s= 3  canon=[0, 2, 0, 1]  bnfinit(L)  1042 ms  gesamt  1265 ms
+  s= 4  canon=[1, 2, 2, 1]  bnfinit(L)  3206 ms  gesamt  3329 ms
+  s= 5  canon=[2, 0, 2, 2]  bnfinit(L)  1372 ms  gesamt  1482 ms
+  s= 6  canon=[2, 2, 0, 2]  bnfinit(L)  1470 ms  gesamt  1609 ms
+  s= 7  canon=[2, 1, 2, 1]  bnfinit(L)  1251 ms  gesamt  1418 ms
+  s= 8  canon=[1, 1, 2, 2]  bnfinit(L)  1502 ms  gesamt  1641 ms
+  s= 9  canon=[2, 0, 0, 1]  bnfinit(L)  1266 ms  gesamt  1448 ms
+  s=10  canon=[1, 0, 1, 2]  bnfinit(L)  1232 ms  gesamt  1441 ms
+  s=11  canon=[1, 2, 2, 2]  bnfinit(L)  2024 ms  gesamt  2194 ms
+  s=12  canon=[2, 2, 0, 1]  bnfinit(L)   896 ms  gesamt  1001 ms
+  s=13  canon=[0, 1, 1, 2]  bnfinit(L)  1038 ms  gesamt  1222 ms
+  s=14  canon=[0, 0, 1, 1]  bnfinit(L)  1143 ms  gesamt  1299 ms
+  s=15  canon=[0, 2, 0, 2]  bnfinit(L)  1193 ms  gesamt  1356 ms
+  s=16  canon=[1, 1, 2, 1]  bnfinit(L)  1689 ms  gesamt  1867 ms
+  s=17  canon=[1, 2, 1, 1]  bnfinit(L)  1234 ms  gesamt  1397 ms
+  s=18  canon=[2, 0, 0, 2]  bnfinit(L)  2673 ms  gesamt  2784 ms
+  s=19  canon=[2, 0, 1, 2]  bnfinit(L)  2062 ms  gesamt  2230 ms
+  s=20  canon=[1, 1, 1, 1]  bnfinit(L)  1110 ms  gesamt  1271 ms
+  s=21  canon=[1, 2, 0, 1]  bnfinit(L)  4314 ms  gesamt  4545 ms
+  s=22  canon=[2, 2, 2, 1]  bnfinit(L)   912 ms  gesamt  1089 ms
+  s=23  canon=[1, 0, 2, 2]  bnfinit(L)  1743 ms  gesamt  1896 ms
+  s=24  canon=[2, 1, 0, 1]  bnfinit(L)  1263 ms  gesamt  1393 ms
+  s=25  canon=[0, 2, 1, 2]  bnfinit(L)  1166 ms  gesamt  1337 ms
+  s=26  canon=[0, 1, 2, 2]  bnfinit(L)  1937 ms  gesamt  2113 ms
+  s=27  canon=[0, 0, 0, 1]  bnfinit(L)   817 ms  gesamt   996 ms
+  s=28  canon=[0, 2, 1, 0]  bnfinit(L)  1146 ms  gesamt  1405 ms
+  s=29  canon=[1, 1, 1, 0]  bnfinit(L)  1355 ms  gesamt  1540 ms
+  s=30  canon=[1, 0, 2, 0]  bnfinit(L)  2112 ms  gesamt  2247 ms
+  s=31  canon=[1, 1, 2, 0]  bnfinit(L)  1174 ms  gesamt  1324 ms
+  s=32  canon=[0, 2, 2, 0]  bnfinit(L)   964 ms  gesamt  1087 ms
+  s=33  canon=[1, 0, 1, 0]  bnfinit(L)  2356 ms  gesamt  2573 ms
+  s=34  canon=[2, 1, 2, 0]  bnfinit(L)  2337 ms  gesamt  2457 ms
+  s=35  canon=[1, 2, 2, 0]  bnfinit(L)  4494 ms  gesamt  4615 ms
+  s=36  canon=[0, 0, 2, 0]  bnfinit(L)   900 ms  gesamt  1194 ms
+  s=37  canon=[2, 1, 0, 0]  bnfinit(L)  5884 ms  gesamt  6057 ms
+  s=38  canon=[2, 2, 0, 0]  bnfinit(L)  1392 ms  gesamt  1623 ms
+  s=39  canon=[0, 1, 0, 0]  bnfinit(L)   808 ms  gesamt  1008 ms
+  s=40  canon=[2, 0, 0, 0]  bnfinit(L)  3961 ms  gesamt  4118 ms
+
+berechnete Charaktere: 80
+
+[1, 0, 0, 0]  ->  [0, 0, 0, 0; 0, 2, 1, 0; 1, 1, 0, 0; 0, 2, 1, 0]
+[0, 1, 0, 0]  ->  [2, 0, 1, 2; 0, 1, 0, 0; 1, 2, 0, 2; 0, 2, 1, 2]
+[0, 0, 1, 0]  ->  [0, 1, 1, 2; 2, 1, 1, 1; 0, 0, 1, 0; 2, 2, 0, 0]
+[0, 0, 0, 1]  ->  [2, 2, 0, 1; 0, 0, 2, 2; 2, 0, 1, 1; 0, 0, 0, 1]
+[1, 1, 0, 0]  ->  [2, 1, 0, 2; 1, 0, 0, 1; 0, 0, 1, 0; 2, 0, 2, 2]
+[1, 0, 1, 0]  ->  [2, 0, 1, 2; 0, 0, 2, 0; 1, 0, 0, 1; 1, 0, 0, 2]
+[1, 0, 0, 1]  ->  [2, 0, 2, 1; 1, 0, 0, 2; 1, 2, 2, 1; 1, 0, 1, 0]
+[0, 1, 1, 0]  ->  [0, 1, 1, 1; 1, 0, 1, 2; 2, 1, 0, 1; 1, 2, 2, 2]
+[0, 1, 0, 1]  ->  [1, 2, 1, 0; 0, 2, 1, 0; 1, 2, 0, 2; 0, 2, 2, 1]
+[0, 0, 1, 1]  ->  [2, 0, 1, 1; 2, 0, 0, 1; 0, 1, 2, 1; 0, 2, 2, 0]
+
+geschrieben: D-matrizen.txt

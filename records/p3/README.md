@@ -8,7 +8,10 @@ the cone-criterion reports.  The single field of the range with
 3-class rank four, D_K = -653329427, lies outside this rank-three
 scope; its record, behind the "remains undecided" report of
 Section 5.5 of the paper, is `rank-four-653329427/` with its own
-README.  The arithmetic certificates themselves
+README.  Three further rank-four records, for the fields beyond the
+range of the paper that are reported mild at a preliminary level
+(see the repository README), are `rank-four-12144979499/`,
+`rank-four-18191474648/`, and `rank-four-18561189299/`.  The arithmetic certificates themselves
 live at the repository root under
 `certificates/p3/<bucket>/K-<|D|>-p3/`, the reference tensors here
 under `source-tensors/<bucket>/D-<|D|>/`, where `<bucket>` is

@@ -1,0 +1,7 @@
+d = 4, Matrizen: 10
+Bockstein-Matrix: Rang 3, Kegel P(ker B) projektive Dimension 0
+TRANSVERSAL: e = 1, Kegelkoordinaten t = [1]
+  x = [1, 0, 0, 0]
+  rk D_x = 2,  Theta-Matrix = [1, 2; 1, 0; 1, 0]
+e=1: 1 Punkte, davon rk=d-2: 1, rk<d-2: 0, transversal: 1
+VERDIKT: TRANSVERSALES ELEMENT GEFUNDEN => mild (Kriterium, d >= 3)

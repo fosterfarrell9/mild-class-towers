@@ -1,0 +1,8 @@
+d = 4, Matrizen: 10
+aeussere Umkehr: True   zyklisch: True
+erwartet: [1, 4, 16, 60, 224, 832, 3088, 11456, 42496]
+Grad   dim A_n   Spann  dim I_n  dim (A/I)_n  erwartet  ok
+   3        64       4        4           60        60  JA
+   4       256      32       32          224       224  JA
+   5      1024     192      192          832       832  JA
+   6      4096    1024     1008         3088      3088  JA

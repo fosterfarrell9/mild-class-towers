@@ -1,0 +1,9 @@
+Groebnerbasis bis Grad  10 :  6  Elemente
+Grade:  3,3,3,3,4,4
+Kopfterme:
+x(4)*x(2)*x(1)
+x(3)*x(2)*x(1)
+x(4)*x(1)*x(1)
+x(2)*x(1)*x(1)
+x(3)*x(3)*x(1)*x(1)
+x(2)*x(3)*x(1)*x(1)
