@@ -9,7 +9,7 @@ the cone-criterion reports.  The single field of the range with
 scope; its record, behind the "remains undecided" report of
 Section 5.5 of the paper, is `rank-four-653329427/` with its own
 README.  Three further rank-four records, for the fields beyond the
-range of the paper that are reported mild at a preliminary level
+range of the paper that are reported mild and certified
 (see the repository README), are `rank-four-12144979499/`,
 `rank-four-18191474648/`, and `rank-four-18561189299/`.  The arithmetic certificates themselves
 live at the repository root under

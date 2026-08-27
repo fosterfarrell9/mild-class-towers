@@ -1,4 +1,4 @@
-# A mild field of 3-class rank four (preliminary)
+# A mild field of 3-class rank four (certified)
 
 The imaginary quadratic field with D_K = -12144979499 has class group of
 invariants [1278, 3, 3, 3], class number 34506, and elementary quotient of
@@ -13,18 +13,23 @@ Theta matrix = [1, 1; 0, 0; 0, 1],  rank 2  (surjective)
 
 The point is a transverse element over F_3 itself, so by the
 transversality criterion of the paper the 3-class tower group of
-the field is mild, of cohomological dimension 2 --- subject to the
-status below.  This is one of three such fields found on
+the field is mild, of cohomological dimension 2; see the status below.  This is one of three such fields found on
 26 August 2026; see the repository README.
 
 ## Status
 
-These are preliminary data.  The transversality verdict is exact
-linear algebra over class-group data computed with PARI's bnfinit
-under GRH; the run was reproduced from scratch with byte-identical
-results, and three independent probes confirm it.  The field has
-not yet passed the certification layer that backs every result of
-the paper.
+Certified 27 August 2026.  `certificate.gp` is an arithmetic
+certificate in the sense of the paper's verification appendix,
+extended to rank four: the standard character family x_i, x_i+x_j,
+with 40 entries carrying explicit norm witnesses (t, I').
+`verification.log` records its check by
+`tools/verify_certificate_general.gp`, an independent pure-GP
+verifier (812 checks; ideal arithmetic plus the base class group
+made unconditional with bnfcertify -- the only certified class
+group the chain needs).  The reconstructed tensor agrees entry for
+entry with `D-matrizen.txt`.  Before certification the runs had
+been reproduced from scratch with byte-identical results and
+confirmed by the three independent probes below.
 
 ## Contents
 
@@ -47,8 +52,15 @@ the paper.
 - `mild.log` --- the Hilbert-series probe: dimensions match
   1/(1 - 4z + 4z^3) exactly through degree 6.
 - `gb.log` --- a truncated Groebner basis to degree 10: 6 elements, of degrees 3, 3, 3, 3, 4, 4.
+- `certificate.gp` --- the arithmetic certificate: for each of the
+  ten standard characters and each of the four torsion columns the
+  field model, sigma, the pair (a', J), the norm witness (t, I'), a
+  sign-fixing prime, and the norm class.  Built by
+  `tools/build_witness_certificate.gp`.
+- `build.log`, `verification.log` --- the certificate build run and
+  the full verifier report.
 - `pre.gp`, `orakel-capped-red.gp`, `kriterium.gp` --- the scripts
-  that produced the data; they run in unmodified PARI/GP.
+  that produced the search data; they run in unmodified PARI/GP.
 
 The logs are kept verbatim as produced, including their German
 labels; the verdict line "TRANSVERSALES ELEMENT GEFUNDEN => mild"
@@ -65,4 +77,9 @@ gp -q kriterium.gp
 
 The oracle writes `D-matrizen.txt` into the working directory and
 needs a few minutes and a few gigabytes of PARI stack; the
-criterion step reads the file from there.
+criterion step reads the file from there.  To recheck the
+certificate:
+
+```sh
+CERT_DIR=. gp -q ../../../tools/verify_certificate_general.gp
+```

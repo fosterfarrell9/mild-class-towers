@@ -43,9 +43,10 @@ The current state differs from that tag in the following respects:
   four and the empty cone, with the pure-GP scripts and an independent
   second run.
 - Three fields of 3-class rank four beyond the range of the paper are
-  reported mild at a preliminary level; see the next section.
+  reported mild, with arithmetic certificates extending the paper's
+  verification layer to rank four; see the next section.
 
-## 🎉 Beyond the paper: three mild fields of 3-class rank four (announced 26 August 2026; certification pending)
+## 🎉 Beyond the paper: three mild fields of 3-class rank four (announced 26 August 2026; certified 27 August 2026)
 
 A sweep of the fields of 3-class rank four with |D_K| < 20294967296,
 run with the arithmetic of Section 4 of the paper adapted to rank
@@ -61,16 +62,22 @@ Bockstein cone, over F_3 itself:
 
 By the criterion (Theorem B of the paper, stated for any rank
 d >= 3) each of these groups is mild and has cohomological
-dimension 2.  They would be the first mild p-class tower groups of
-p-class rank four.
+dimension 2.  To our knowledge, they are the first mild p-class
+tower groups of p-class rank four.
 
-These are preliminary findings.  The transversality verdicts are
-exact linear algebra over class-group data computed with PARI's
-bnfinit under GRH; each was reproduced from scratch with
-byte-identical results, and three independent probes (Anick's
-criterion, the Hilbert series, a truncated Groebner basis) confirm
-them.  The three fields have not yet passed the certification layer
-that backs every result of the paper.
+Each field carries an arithmetic certificate in the sense of the
+paper's verification appendix, extended to rank four: the standard
+character family with explicit norm witnesses, 40 entries per
+field, built by `tools/build_witness_certificate.gp` and checked by
+the independent pure-GP verifier
+`tools/verify_certificate_general.gp` (812 checks per field; ideal
+arithmetic plus the base class group made unconditional with
+bnfcertify).  The reconstructed tensors agree entry for entry with
+the announced records, and the transversality verdicts on them are
+exact linear algebra over F_3.  Each computation was also
+reproduced from scratch with byte-identical results and confirmed
+by three independent probes (Anick's criterion, the Hilbert series,
+a truncated Groebner basis).
 
 The full data --- tensors, criterion runs, crosscheck runs, probe
 logs, and the scripts, which run in unmodified PARI/GP --- are in
