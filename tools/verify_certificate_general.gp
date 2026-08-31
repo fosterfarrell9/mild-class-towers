@@ -1,6 +1,6 @@
 \\ Pure-GP verifier for a single arithmetic certificate, GENERAL RANK
-\ (standard character family x_i, x_i+x_j; NOT the p=3 rank-3 family
-\ with the sum character -- those certificates keep the original tool).
+\\ (standard character family x_i, x_i+x_j; NOT the p=3 rank-3 family
+\\ with the sum character -- those certificates keep the original tool).
 \\
 \\ An independent second implementation of the checks carried out by
 \\ verifier/verify_certificate.c.  It needs no patched PARI: the Artin
