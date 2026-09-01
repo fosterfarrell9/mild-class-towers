@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate Part W6 (tables-p3.tex) from the result records.
+"""Generate Part W6 (W6-tables-p3.tex) from the result records.
 
 For every mild field of the range |D_K| < 2^30 the tables list the
 discriminant, the class group (from the certified certificate
@@ -154,8 +154,8 @@ produce witnesses for exactly seven fields."""
         "This document is generated from the result records by\n"
         "\\nolinkurl{generate_tables_p3.py}.\n\n"
         + body + "\n\\end{document}\n")
-    (HERE / "tables-p3.tex").write_text(document)
-    print(f"tables-p3.tex written: {total} fields, "
+    (HERE / "W6-tables-p3.tex").write_text(document)
+    print(f"W6-tables-p3.tex written: {total} fields, "
           f"{sum(len(r) for r in rows_by_block)} rows")
     return 0
 
