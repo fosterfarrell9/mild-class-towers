@@ -153,7 +153,7 @@ with `pol(s)` a defining polynomial of the number field K in the variable
 | `records/p3/flag-certificates-rank-four/` | Part W7 (rank four): the certificate for the rank-four field D = -653329427; its witness certificate, verification log and tensor are under `records/p3/rank-four-653329427/` |
 | `records/p3/rank-four-census/` | the rank-four census through 2 * 10^10 plus the next field D = -20217903567: manifest and, per field, the relation tensor, the flag certificate, the witness certificate and its verification log |
 | `census/` | the enumeration behind the census: the complete discriminant lists per prime, with the Mosunov--Jacobson provenance |
-| `worksheets/` | the worksheet parts W1--W6 cited by the paper |
+| `worksheets/` | the worksheet parts W1--W6 cited by the paper, and `part-W7.tsv`, the index of the fields decided after the paper, one line per field with a pointer to its certificate |
 | `tools/` | the drivers and generators: verification harnesses, batch runner, Gröbner and Singular engines, transverse rank-one certification, class-group table readers, PARI build script |
 | `parallelization/` | per-character parallel drivers for expensive fields |
 | `tests/` | regression tests |
