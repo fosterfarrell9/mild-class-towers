@@ -1,0 +1,878 @@
+[0;31m  ***   Warning: new stack size = 800000000 (762.939 Mbytes).[0m
+[0;31m  ***   Warning: new maximum stack size = 8000000000 (7629.395 Mbytes).[0m
+certificate: ./certificate.gp
+p = 3   base = y^2 - y + 3145754438   disc = -12583017751
+Cl(K) = [3594, 3, 3, 3]   h = 97038
+p-class rank = 4
+
+base  e0  class group invariants               PASS
+base  e0  class number                         PASS
+base  e0  class group generators               PASS
+base  e0  torsion unit order is two            PASS
+base  e0  torsion unit generator is -1         PASS
+base  e0  unit rank is zero                    PASS
+base  e0  integral basis                       PASS
+base  e0  p-class rank at least three          PASS
+
+x3+x4 e1  character label and vector           PASS
+x3+x4 e1  absolute model matches relative      PASS
+x3+x4 e1  relative degree equals p             PASS
+x3+x4 e1  unramified: disc = disc_K^p          PASS
+x3+x4 e1  stored basis integral and unimodular PASS
+x3+x4 e1  sigma fixes the base field           PASS
+x3+x4 e1  sigma has order exactly p            PASS
+x3+x4 e1  Gal(L|K) has order p                 PASS
+x3+x4 e1  sigma is a power of the generator    PASS
+x3+x4 e1  base p-rank matches                  PASS
+x3+x4 e1  Artin character cuts out ker(x)      PASS
+x3+x4 e1  sigma normalization matches x        PASS
+x3+x4 e1  (a') J^p = O_K                       PASS
+x3+x4 e1  [J] is the labelled torsion class    PASS
+x3+x4 e1  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x3+x4 e1  AC2: N(t)/a' generates O_K           PASS
+x3+x4 e1  stored prime lies above ell          PASS
+x3+x4 e1  AC2 factors are units at q           PASS
+x3+x4 e1  N(t)/a' is +1 modulo q               PASS
+x3+x4 e1  norm-class coordinates               PASS
+
+x3+x4 e2  character label and vector           PASS
+x3+x4 e2  absolute model matches relative      PASS
+x3+x4 e2  relative degree equals p             PASS
+x3+x4 e2  unramified: disc = disc_K^p          PASS
+x3+x4 e2  stored basis integral and unimodular PASS
+x3+x4 e2  sigma fixes the base field           PASS
+x3+x4 e2  sigma has order exactly p            PASS
+x3+x4 e2  Gal(L|K) has order p                 PASS
+x3+x4 e2  sigma is a power of the generator    PASS
+x3+x4 e2  base p-rank matches                  PASS
+x3+x4 e2  Artin character cuts out ker(x)      PASS
+x3+x4 e2  sigma normalization matches x        PASS
+x3+x4 e2  (a') J^p = O_K                       PASS
+x3+x4 e2  [J] is the labelled torsion class    PASS
+x3+x4 e2  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x3+x4 e2  AC2: N(t)/a' generates O_K           PASS
+x3+x4 e2  stored prime lies above ell          PASS
+x3+x4 e2  AC2 factors are units at q           PASS
+x3+x4 e2  N(t)/a' is +1 modulo q               PASS
+x3+x4 e2  norm-class coordinates               PASS
+
+x3+x4 e3  character label and vector           PASS
+x3+x4 e3  absolute model matches relative      PASS
+x3+x4 e3  relative degree equals p             PASS
+x3+x4 e3  unramified: disc = disc_K^p          PASS
+x3+x4 e3  stored basis integral and unimodular PASS
+x3+x4 e3  sigma fixes the base field           PASS
+x3+x4 e3  sigma has order exactly p            PASS
+x3+x4 e3  Gal(L|K) has order p                 PASS
+x3+x4 e3  sigma is a power of the generator    PASS
+x3+x4 e3  base p-rank matches                  PASS
+x3+x4 e3  Artin character cuts out ker(x)      PASS
+x3+x4 e3  sigma normalization matches x        PASS
+x3+x4 e3  (a') J^p = O_K                       PASS
+x3+x4 e3  [J] is the labelled torsion class    PASS
+x3+x4 e3  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x3+x4 e3  AC2: N(t)/a' generates O_K           PASS
+x3+x4 e3  stored prime lies above ell          PASS
+x3+x4 e3  AC2 factors are units at q           PASS
+x3+x4 e3  N(t)/a' is +1 modulo q               PASS
+x3+x4 e3  norm-class coordinates               PASS
+
+x3+x4 e4  character label and vector           PASS
+x3+x4 e4  absolute model matches relative      PASS
+x3+x4 e4  relative degree equals p             PASS
+x3+x4 e4  unramified: disc = disc_K^p          PASS
+x3+x4 e4  stored basis integral and unimodular PASS
+x3+x4 e4  sigma fixes the base field           PASS
+x3+x4 e4  sigma has order exactly p            PASS
+x3+x4 e4  Gal(L|K) has order p                 PASS
+x3+x4 e4  sigma is a power of the generator    PASS
+x3+x4 e4  base p-rank matches                  PASS
+x3+x4 e4  Artin character cuts out ker(x)      PASS
+x3+x4 e4  sigma normalization matches x        PASS
+x3+x4 e4  (a') J^p = O_K                       PASS
+x3+x4 e4  [J] is the labelled torsion class    PASS
+x3+x4 e4  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x3+x4 e4  AC2: N(t)/a' generates O_K           PASS
+x3+x4 e4  stored prime lies above ell          PASS
+x3+x4 e4  AC2 factors are units at q           PASS
+x3+x4 e4  N(t)/a' is +1 modulo q               PASS
+x3+x4 e4  norm-class coordinates               PASS
+
+x2+x4 e1  character label and vector           PASS
+x2+x4 e1  absolute model matches relative      PASS
+x2+x4 e1  relative degree equals p             PASS
+x2+x4 e1  unramified: disc = disc_K^p          PASS
+x2+x4 e1  stored basis integral and unimodular PASS
+x2+x4 e1  sigma fixes the base field           PASS
+x2+x4 e1  sigma has order exactly p            PASS
+x2+x4 e1  Gal(L|K) has order p                 PASS
+x2+x4 e1  sigma is a power of the generator    PASS
+x2+x4 e1  base p-rank matches                  PASS
+x2+x4 e1  Artin character cuts out ker(x)      PASS
+x2+x4 e1  sigma normalization matches x        PASS
+x2+x4 e1  (a') J^p = O_K                       PASS
+x2+x4 e1  [J] is the labelled torsion class    PASS
+x2+x4 e1  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x2+x4 e1  AC2: N(t)/a' generates O_K           PASS
+x2+x4 e1  stored prime lies above ell          PASS
+x2+x4 e1  AC2 factors are units at q           PASS
+x2+x4 e1  N(t)/a' is +1 modulo q               PASS
+x2+x4 e1  norm-class coordinates               PASS
+
+x2+x4 e2  character label and vector           PASS
+x2+x4 e2  absolute model matches relative      PASS
+x2+x4 e2  relative degree equals p             PASS
+x2+x4 e2  unramified: disc = disc_K^p          PASS
+x2+x4 e2  stored basis integral and unimodular PASS
+x2+x4 e2  sigma fixes the base field           PASS
+x2+x4 e2  sigma has order exactly p            PASS
+x2+x4 e2  Gal(L|K) has order p                 PASS
+x2+x4 e2  sigma is a power of the generator    PASS
+x2+x4 e2  base p-rank matches                  PASS
+x2+x4 e2  Artin character cuts out ker(x)      PASS
+x2+x4 e2  sigma normalization matches x        PASS
+x2+x4 e2  (a') J^p = O_K                       PASS
+x2+x4 e2  [J] is the labelled torsion class    PASS
+x2+x4 e2  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x2+x4 e2  AC2: N(t)/a' generates O_K           PASS
+x2+x4 e2  stored prime lies above ell          PASS
+x2+x4 e2  AC2 factors are units at q           PASS
+x2+x4 e2  N(t)/a' is +1 modulo q               PASS
+x2+x4 e2  norm-class coordinates               PASS
+
+x2+x4 e3  character label and vector           PASS
+x2+x4 e3  absolute model matches relative      PASS
+x2+x4 e3  relative degree equals p             PASS
+x2+x4 e3  unramified: disc = disc_K^p          PASS
+x2+x4 e3  stored basis integral and unimodular PASS
+x2+x4 e3  sigma fixes the base field           PASS
+x2+x4 e3  sigma has order exactly p            PASS
+x2+x4 e3  Gal(L|K) has order p                 PASS
+x2+x4 e3  sigma is a power of the generator    PASS
+x2+x4 e3  base p-rank matches                  PASS
+x2+x4 e3  Artin character cuts out ker(x)      PASS
+x2+x4 e3  sigma normalization matches x        PASS
+x2+x4 e3  (a') J^p = O_K                       PASS
+x2+x4 e3  [J] is the labelled torsion class    PASS
+x2+x4 e3  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x2+x4 e3  AC2: N(t)/a' generates O_K           PASS
+x2+x4 e3  stored prime lies above ell          PASS
+x2+x4 e3  AC2 factors are units at q           PASS
+x2+x4 e3  N(t)/a' is +1 modulo q               PASS
+x2+x4 e3  norm-class coordinates               PASS
+
+x2+x4 e4  character label and vector           PASS
+x2+x4 e4  absolute model matches relative      PASS
+x2+x4 e4  relative degree equals p             PASS
+x2+x4 e4  unramified: disc = disc_K^p          PASS
+x2+x4 e4  stored basis integral and unimodular PASS
+x2+x4 e4  sigma fixes the base field           PASS
+x2+x4 e4  sigma has order exactly p            PASS
+x2+x4 e4  Gal(L|K) has order p                 PASS
+x2+x4 e4  sigma is a power of the generator    PASS
+x2+x4 e4  base p-rank matches                  PASS
+x2+x4 e4  Artin character cuts out ker(x)      PASS
+x2+x4 e4  sigma normalization matches x        PASS
+x2+x4 e4  (a') J^p = O_K                       PASS
+x2+x4 e4  [J] is the labelled torsion class    PASS
+x2+x4 e4  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x2+x4 e4  AC2: N(t)/a' generates O_K           PASS
+x2+x4 e4  stored prime lies above ell          PASS
+x2+x4 e4  AC2 factors are units at q           PASS
+x2+x4 e4  N(t)/a' is +1 modulo q               PASS
+x2+x4 e4  norm-class coordinates               PASS
+
+x1+x4 e1  character label and vector           PASS
+x1+x4 e1  absolute model matches relative      PASS
+x1+x4 e1  relative degree equals p             PASS
+x1+x4 e1  unramified: disc = disc_K^p          PASS
+x1+x4 e1  stored basis integral and unimodular PASS
+x1+x4 e1  sigma fixes the base field           PASS
+x1+x4 e1  sigma has order exactly p            PASS
+x1+x4 e1  Gal(L|K) has order p                 PASS
+x1+x4 e1  sigma is a power of the generator    PASS
+x1+x4 e1  base p-rank matches                  PASS
+x1+x4 e1  Artin character cuts out ker(x)      PASS
+x1+x4 e1  sigma normalization matches x        PASS
+x1+x4 e1  (a') J^p = O_K                       PASS
+x1+x4 e1  [J] is the labelled torsion class    PASS
+x1+x4 e1  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x1+x4 e1  AC2: N(t)/a' generates O_K           PASS
+x1+x4 e1  stored prime lies above ell          PASS
+x1+x4 e1  AC2 factors are units at q           PASS
+x1+x4 e1  N(t)/a' is +1 modulo q               PASS
+x1+x4 e1  norm-class coordinates               PASS
+
+x1+x4 e2  character label and vector           PASS
+x1+x4 e2  absolute model matches relative      PASS
+x1+x4 e2  relative degree equals p             PASS
+x1+x4 e2  unramified: disc = disc_K^p          PASS
+x1+x4 e2  stored basis integral and unimodular PASS
+x1+x4 e2  sigma fixes the base field           PASS
+x1+x4 e2  sigma has order exactly p            PASS
+x1+x4 e2  Gal(L|K) has order p                 PASS
+x1+x4 e2  sigma is a power of the generator    PASS
+x1+x4 e2  base p-rank matches                  PASS
+x1+x4 e2  Artin character cuts out ker(x)      PASS
+x1+x4 e2  sigma normalization matches x        PASS
+x1+x4 e2  (a') J^p = O_K                       PASS
+x1+x4 e2  [J] is the labelled torsion class    PASS
+x1+x4 e2  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x1+x4 e2  AC2: N(t)/a' generates O_K           PASS
+x1+x4 e2  stored prime lies above ell          PASS
+x1+x4 e2  AC2 factors are units at q           PASS
+x1+x4 e2  N(t)/a' is +1 modulo q               PASS
+x1+x4 e2  norm-class coordinates               PASS
+
+x1+x4 e3  character label and vector           PASS
+x1+x4 e3  absolute model matches relative      PASS
+x1+x4 e3  relative degree equals p             PASS
+x1+x4 e3  unramified: disc = disc_K^p          PASS
+x1+x4 e3  stored basis integral and unimodular PASS
+x1+x4 e3  sigma fixes the base field           PASS
+x1+x4 e3  sigma has order exactly p            PASS
+x1+x4 e3  Gal(L|K) has order p                 PASS
+x1+x4 e3  sigma is a power of the generator    PASS
+x1+x4 e3  base p-rank matches                  PASS
+x1+x4 e3  Artin character cuts out ker(x)      PASS
+x1+x4 e3  sigma normalization matches x        PASS
+x1+x4 e3  (a') J^p = O_K                       PASS
+x1+x4 e3  [J] is the labelled torsion class    PASS
+x1+x4 e3  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x1+x4 e3  AC2: N(t)/a' generates O_K           PASS
+x1+x4 e3  stored prime lies above ell          PASS
+x1+x4 e3  AC2 factors are units at q           PASS
+x1+x4 e3  N(t)/a' is +1 modulo q               PASS
+x1+x4 e3  norm-class coordinates               PASS
+
+x1+x4 e4  character label and vector           PASS
+x1+x4 e4  absolute model matches relative      PASS
+x1+x4 e4  relative degree equals p             PASS
+x1+x4 e4  unramified: disc = disc_K^p          PASS
+x1+x4 e4  stored basis integral and unimodular PASS
+x1+x4 e4  sigma fixes the base field           PASS
+x1+x4 e4  sigma has order exactly p            PASS
+x1+x4 e4  Gal(L|K) has order p                 PASS
+x1+x4 e4  sigma is a power of the generator    PASS
+x1+x4 e4  base p-rank matches                  PASS
+x1+x4 e4  Artin character cuts out ker(x)      PASS
+x1+x4 e4  sigma normalization matches x        PASS
+x1+x4 e4  (a') J^p = O_K                       PASS
+x1+x4 e4  [J] is the labelled torsion class    PASS
+x1+x4 e4  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x1+x4 e4  AC2: N(t)/a' generates O_K           PASS
+x1+x4 e4  stored prime lies above ell          PASS
+x1+x4 e4  AC2 factors are units at q           PASS
+x1+x4 e4  N(t)/a' is +1 modulo q               PASS
+x1+x4 e4  norm-class coordinates               PASS
+
+x4    e1  character label and vector           PASS
+x4    e1  absolute model matches relative      PASS
+x4    e1  relative degree equals p             PASS
+x4    e1  unramified: disc = disc_K^p          PASS
+x4    e1  stored basis integral and unimodular PASS
+x4    e1  sigma fixes the base field           PASS
+x4    e1  sigma has order exactly p            PASS
+x4    e1  Gal(L|K) has order p                 PASS
+x4    e1  sigma is a power of the generator    PASS
+x4    e1  base p-rank matches                  PASS
+x4    e1  Artin character cuts out ker(x)      PASS
+x4    e1  sigma normalization matches x        PASS
+x4    e1  (a') J^p = O_K                       PASS
+x4    e1  [J] is the labelled torsion class    PASS
+x4    e1  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x4    e1  AC2: N(t)/a' generates O_K           PASS
+x4    e1  stored prime lies above ell          PASS
+x4    e1  AC2 factors are units at q           PASS
+x4    e1  N(t)/a' is +1 modulo q               PASS
+x4    e1  norm-class coordinates               PASS
+
+x4    e2  character label and vector           PASS
+x4    e2  absolute model matches relative      PASS
+x4    e2  relative degree equals p             PASS
+x4    e2  unramified: disc = disc_K^p          PASS
+x4    e2  stored basis integral and unimodular PASS
+x4    e2  sigma fixes the base field           PASS
+x4    e2  sigma has order exactly p            PASS
+x4    e2  Gal(L|K) has order p                 PASS
+x4    e2  sigma is a power of the generator    PASS
+x4    e2  base p-rank matches                  PASS
+x4    e2  Artin character cuts out ker(x)      PASS
+x4    e2  sigma normalization matches x        PASS
+x4    e2  (a') J^p = O_K                       PASS
+x4    e2  [J] is the labelled torsion class    PASS
+x4    e2  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x4    e2  AC2: N(t)/a' generates O_K           PASS
+x4    e2  stored prime lies above ell          PASS
+x4    e2  AC2 factors are units at q           PASS
+x4    e2  N(t)/a' is +1 modulo q               PASS
+x4    e2  norm-class coordinates               PASS
+
+x4    e3  character label and vector           PASS
+x4    e3  absolute model matches relative      PASS
+x4    e3  relative degree equals p             PASS
+x4    e3  unramified: disc = disc_K^p          PASS
+x4    e3  stored basis integral and unimodular PASS
+x4    e3  sigma fixes the base field           PASS
+x4    e3  sigma has order exactly p            PASS
+x4    e3  Gal(L|K) has order p                 PASS
+x4    e3  sigma is a power of the generator    PASS
+x4    e3  base p-rank matches                  PASS
+x4    e3  Artin character cuts out ker(x)      PASS
+x4    e3  sigma normalization matches x        PASS
+x4    e3  (a') J^p = O_K                       PASS
+x4    e3  [J] is the labelled torsion class    PASS
+x4    e3  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x4    e3  AC2: N(t)/a' generates O_K           PASS
+x4    e3  stored prime lies above ell          PASS
+x4    e3  AC2 factors are units at q           PASS
+x4    e3  N(t)/a' is +1 modulo q               PASS
+x4    e3  norm-class coordinates               PASS
+
+x4    e4  character label and vector           PASS
+x4    e4  absolute model matches relative      PASS
+x4    e4  relative degree equals p             PASS
+x4    e4  unramified: disc = disc_K^p          PASS
+x4    e4  stored basis integral and unimodular PASS
+x4    e4  sigma fixes the base field           PASS
+x4    e4  sigma has order exactly p            PASS
+x4    e4  Gal(L|K) has order p                 PASS
+x4    e4  sigma is a power of the generator    PASS
+x4    e4  base p-rank matches                  PASS
+x4    e4  Artin character cuts out ker(x)      PASS
+x4    e4  sigma normalization matches x        PASS
+x4    e4  (a') J^p = O_K                       PASS
+x4    e4  [J] is the labelled torsion class    PASS
+x4    e4  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x4    e4  AC2: N(t)/a' generates O_K           PASS
+x4    e4  stored prime lies above ell          PASS
+x4    e4  AC2 factors are units at q           PASS
+x4    e4  N(t)/a' is +1 modulo q               PASS
+x4    e4  norm-class coordinates               PASS
+
+x2+x3 e1  character label and vector           PASS
+x2+x3 e1  absolute model matches relative      PASS
+x2+x3 e1  relative degree equals p             PASS
+x2+x3 e1  unramified: disc = disc_K^p          PASS
+x2+x3 e1  stored basis integral and unimodular PASS
+x2+x3 e1  sigma fixes the base field           PASS
+x2+x3 e1  sigma has order exactly p            PASS
+x2+x3 e1  Gal(L|K) has order p                 PASS
+x2+x3 e1  sigma is a power of the generator    PASS
+x2+x3 e1  base p-rank matches                  PASS
+x2+x3 e1  Artin character cuts out ker(x)      PASS
+x2+x3 e1  sigma normalization matches x        PASS
+x2+x3 e1  (a') J^p = O_K                       PASS
+x2+x3 e1  [J] is the labelled torsion class    PASS
+x2+x3 e1  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x2+x3 e1  AC2: N(t)/a' generates O_K           PASS
+x2+x3 e1  stored prime lies above ell          PASS
+x2+x3 e1  AC2 factors are units at q           PASS
+x2+x3 e1  N(t)/a' is +1 modulo q               PASS
+x2+x3 e1  norm-class coordinates               PASS
+
+x2+x3 e2  character label and vector           PASS
+x2+x3 e2  absolute model matches relative      PASS
+x2+x3 e2  relative degree equals p             PASS
+x2+x3 e2  unramified: disc = disc_K^p          PASS
+x2+x3 e2  stored basis integral and unimodular PASS
+x2+x3 e2  sigma fixes the base field           PASS
+x2+x3 e2  sigma has order exactly p            PASS
+x2+x3 e2  Gal(L|K) has order p                 PASS
+x2+x3 e2  sigma is a power of the generator    PASS
+x2+x3 e2  base p-rank matches                  PASS
+x2+x3 e2  Artin character cuts out ker(x)      PASS
+x2+x3 e2  sigma normalization matches x        PASS
+x2+x3 e2  (a') J^p = O_K                       PASS
+x2+x3 e2  [J] is the labelled torsion class    PASS
+x2+x3 e2  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x2+x3 e2  AC2: N(t)/a' generates O_K           PASS
+x2+x3 e2  stored prime lies above ell          PASS
+x2+x3 e2  AC2 factors are units at q           PASS
+x2+x3 e2  N(t)/a' is +1 modulo q               PASS
+x2+x3 e2  norm-class coordinates               PASS
+
+x2+x3 e3  character label and vector           PASS
+x2+x3 e3  absolute model matches relative      PASS
+x2+x3 e3  relative degree equals p             PASS
+x2+x3 e3  unramified: disc = disc_K^p          PASS
+x2+x3 e3  stored basis integral and unimodular PASS
+x2+x3 e3  sigma fixes the base field           PASS
+x2+x3 e3  sigma has order exactly p            PASS
+x2+x3 e3  Gal(L|K) has order p                 PASS
+x2+x3 e3  sigma is a power of the generator    PASS
+x2+x3 e3  base p-rank matches                  PASS
+x2+x3 e3  Artin character cuts out ker(x)      PASS
+x2+x3 e3  sigma normalization matches x        PASS
+x2+x3 e3  (a') J^p = O_K                       PASS
+x2+x3 e3  [J] is the labelled torsion class    PASS
+x2+x3 e3  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x2+x3 e3  AC2: N(t)/a' generates O_K           PASS
+x2+x3 e3  stored prime lies above ell          PASS
+x2+x3 e3  AC2 factors are units at q           PASS
+x2+x3 e3  N(t)/a' is +1 modulo q               PASS
+x2+x3 e3  norm-class coordinates               PASS
+
+x2+x3 e4  character label and vector           PASS
+x2+x3 e4  absolute model matches relative      PASS
+x2+x3 e4  relative degree equals p             PASS
+x2+x3 e4  unramified: disc = disc_K^p          PASS
+x2+x3 e4  stored basis integral and unimodular PASS
+x2+x3 e4  sigma fixes the base field           PASS
+x2+x3 e4  sigma has order exactly p            PASS
+x2+x3 e4  Gal(L|K) has order p                 PASS
+x2+x3 e4  sigma is a power of the generator    PASS
+x2+x3 e4  base p-rank matches                  PASS
+x2+x3 e4  Artin character cuts out ker(x)      PASS
+x2+x3 e4  sigma normalization matches x        PASS
+x2+x3 e4  (a') J^p = O_K                       PASS
+x2+x3 e4  [J] is the labelled torsion class    PASS
+x2+x3 e4  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x2+x3 e4  AC2: N(t)/a' generates O_K           PASS
+x2+x3 e4  stored prime lies above ell          PASS
+x2+x3 e4  AC2 factors are units at q           PASS
+x2+x3 e4  N(t)/a' is +1 modulo q               PASS
+x2+x3 e4  norm-class coordinates               PASS
+
+x1+x3 e1  character label and vector           PASS
+x1+x3 e1  absolute model matches relative      PASS
+x1+x3 e1  relative degree equals p             PASS
+x1+x3 e1  unramified: disc = disc_K^p          PASS
+x1+x3 e1  stored basis integral and unimodular PASS
+x1+x3 e1  sigma fixes the base field           PASS
+x1+x3 e1  sigma has order exactly p            PASS
+x1+x3 e1  Gal(L|K) has order p                 PASS
+x1+x3 e1  sigma is a power of the generator    PASS
+x1+x3 e1  base p-rank matches                  PASS
+x1+x3 e1  Artin character cuts out ker(x)      PASS
+x1+x3 e1  sigma normalization matches x        PASS
+x1+x3 e1  (a') J^p = O_K                       PASS
+x1+x3 e1  [J] is the labelled torsion class    PASS
+x1+x3 e1  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x1+x3 e1  AC2: N(t)/a' generates O_K           PASS
+x1+x3 e1  stored prime lies above ell          PASS
+x1+x3 e1  AC2 factors are units at q           PASS
+x1+x3 e1  N(t)/a' is +1 modulo q               PASS
+x1+x3 e1  norm-class coordinates               PASS
+
+x1+x3 e2  character label and vector           PASS
+x1+x3 e2  absolute model matches relative      PASS
+x1+x3 e2  relative degree equals p             PASS
+x1+x3 e2  unramified: disc = disc_K^p          PASS
+x1+x3 e2  stored basis integral and unimodular PASS
+x1+x3 e2  sigma fixes the base field           PASS
+x1+x3 e2  sigma has order exactly p            PASS
+x1+x3 e2  Gal(L|K) has order p                 PASS
+x1+x3 e2  sigma is a power of the generator    PASS
+x1+x3 e2  base p-rank matches                  PASS
+x1+x3 e2  Artin character cuts out ker(x)      PASS
+x1+x3 e2  sigma normalization matches x        PASS
+x1+x3 e2  (a') J^p = O_K                       PASS
+x1+x3 e2  [J] is the labelled torsion class    PASS
+x1+x3 e2  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x1+x3 e2  AC2: N(t)/a' generates O_K           PASS
+x1+x3 e2  stored prime lies above ell          PASS
+x1+x3 e2  AC2 factors are units at q           PASS
+x1+x3 e2  N(t)/a' is +1 modulo q               PASS
+x1+x3 e2  norm-class coordinates               PASS
+
+x1+x3 e3  character label and vector           PASS
+x1+x3 e3  absolute model matches relative      PASS
+x1+x3 e3  relative degree equals p             PASS
+x1+x3 e3  unramified: disc = disc_K^p          PASS
+x1+x3 e3  stored basis integral and unimodular PASS
+x1+x3 e3  sigma fixes the base field           PASS
+x1+x3 e3  sigma has order exactly p            PASS
+x1+x3 e3  Gal(L|K) has order p                 PASS
+x1+x3 e3  sigma is a power of the generator    PASS
+x1+x3 e3  base p-rank matches                  PASS
+x1+x3 e3  Artin character cuts out ker(x)      PASS
+x1+x3 e3  sigma normalization matches x        PASS
+x1+x3 e3  (a') J^p = O_K                       PASS
+x1+x3 e3  [J] is the labelled torsion class    PASS
+x1+x3 e3  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x1+x3 e3  AC2: N(t)/a' generates O_K           PASS
+x1+x3 e3  stored prime lies above ell          PASS
+x1+x3 e3  AC2 factors are units at q           PASS
+x1+x3 e3  N(t)/a' is +1 modulo q               PASS
+x1+x3 e3  norm-class coordinates               PASS
+
+x1+x3 e4  character label and vector           PASS
+x1+x3 e4  absolute model matches relative      PASS
+x1+x3 e4  relative degree equals p             PASS
+x1+x3 e4  unramified: disc = disc_K^p          PASS
+x1+x3 e4  stored basis integral and unimodular PASS
+x1+x3 e4  sigma fixes the base field           PASS
+x1+x3 e4  sigma has order exactly p            PASS
+x1+x3 e4  Gal(L|K) has order p                 PASS
+x1+x3 e4  sigma is a power of the generator    PASS
+x1+x3 e4  base p-rank matches                  PASS
+x1+x3 e4  Artin character cuts out ker(x)      PASS
+x1+x3 e4  sigma normalization matches x        PASS
+x1+x3 e4  (a') J^p = O_K                       PASS
+x1+x3 e4  [J] is the labelled torsion class    PASS
+x1+x3 e4  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x1+x3 e4  AC2: N(t)/a' generates O_K           PASS
+x1+x3 e4  stored prime lies above ell          PASS
+x1+x3 e4  AC2 factors are units at q           PASS
+x1+x3 e4  N(t)/a' is +1 modulo q               PASS
+x1+x3 e4  norm-class coordinates               PASS
+
+x3    e1  character label and vector           PASS
+x3    e1  absolute model matches relative      PASS
+x3    e1  relative degree equals p             PASS
+x3    e1  unramified: disc = disc_K^p          PASS
+x3    e1  stored basis integral and unimodular PASS
+x3    e1  sigma fixes the base field           PASS
+x3    e1  sigma has order exactly p            PASS
+x3    e1  Gal(L|K) has order p                 PASS
+x3    e1  sigma is a power of the generator    PASS
+x3    e1  base p-rank matches                  PASS
+x3    e1  Artin character cuts out ker(x)      PASS
+x3    e1  sigma normalization matches x        PASS
+x3    e1  (a') J^p = O_K                       PASS
+x3    e1  [J] is the labelled torsion class    PASS
+x3    e1  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x3    e1  AC2: N(t)/a' generates O_K           PASS
+x3    e1  stored prime lies above ell          PASS
+x3    e1  AC2 factors are units at q           PASS
+x3    e1  N(t)/a' is +1 modulo q               PASS
+x3    e1  norm-class coordinates               PASS
+
+x3    e2  character label and vector           PASS
+x3    e2  absolute model matches relative      PASS
+x3    e2  relative degree equals p             PASS
+x3    e2  unramified: disc = disc_K^p          PASS
+x3    e2  stored basis integral and unimodular PASS
+x3    e2  sigma fixes the base field           PASS
+x3    e2  sigma has order exactly p            PASS
+x3    e2  Gal(L|K) has order p                 PASS
+x3    e2  sigma is a power of the generator    PASS
+x3    e2  base p-rank matches                  PASS
+x3    e2  Artin character cuts out ker(x)      PASS
+x3    e2  sigma normalization matches x        PASS
+x3    e2  (a') J^p = O_K                       PASS
+x3    e2  [J] is the labelled torsion class    PASS
+x3    e2  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x3    e2  AC2: N(t)/a' generates O_K           PASS
+x3    e2  stored prime lies above ell          PASS
+x3    e2  AC2 factors are units at q           PASS
+x3    e2  N(t)/a' is +1 modulo q               PASS
+x3    e2  norm-class coordinates               PASS
+
+x3    e3  character label and vector           PASS
+x3    e3  absolute model matches relative      PASS
+x3    e3  relative degree equals p             PASS
+x3    e3  unramified: disc = disc_K^p          PASS
+x3    e3  stored basis integral and unimodular PASS
+x3    e3  sigma fixes the base field           PASS
+x3    e3  sigma has order exactly p            PASS
+x3    e3  Gal(L|K) has order p                 PASS
+x3    e3  sigma is a power of the generator    PASS
+x3    e3  base p-rank matches                  PASS
+x3    e3  Artin character cuts out ker(x)      PASS
+x3    e3  sigma normalization matches x        PASS
+x3    e3  (a') J^p = O_K                       PASS
+x3    e3  [J] is the labelled torsion class    PASS
+x3    e3  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x3    e3  AC2: N(t)/a' generates O_K           PASS
+x3    e3  stored prime lies above ell          PASS
+x3    e3  AC2 factors are units at q           PASS
+x3    e3  N(t)/a' is +1 modulo q               PASS
+x3    e3  norm-class coordinates               PASS
+
+x3    e4  character label and vector           PASS
+x3    e4  absolute model matches relative      PASS
+x3    e4  relative degree equals p             PASS
+x3    e4  unramified: disc = disc_K^p          PASS
+x3    e4  stored basis integral and unimodular PASS
+x3    e4  sigma fixes the base field           PASS
+x3    e4  sigma has order exactly p            PASS
+x3    e4  Gal(L|K) has order p                 PASS
+x3    e4  sigma is a power of the generator    PASS
+x3    e4  base p-rank matches                  PASS
+x3    e4  Artin character cuts out ker(x)      PASS
+x3    e4  sigma normalization matches x        PASS
+x3    e4  (a') J^p = O_K                       PASS
+x3    e4  [J] is the labelled torsion class    PASS
+x3    e4  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x3    e4  AC2: N(t)/a' generates O_K           PASS
+x3    e4  stored prime lies above ell          PASS
+x3    e4  AC2 factors are units at q           PASS
+x3    e4  N(t)/a' is +1 modulo q               PASS
+x3    e4  norm-class coordinates               PASS
+
+x1+x2 e1  character label and vector           PASS
+x1+x2 e1  absolute model matches relative      PASS
+x1+x2 e1  relative degree equals p             PASS
+x1+x2 e1  unramified: disc = disc_K^p          PASS
+x1+x2 e1  stored basis integral and unimodular PASS
+x1+x2 e1  sigma fixes the base field           PASS
+x1+x2 e1  sigma has order exactly p            PASS
+x1+x2 e1  Gal(L|K) has order p                 PASS
+x1+x2 e1  sigma is a power of the generator    PASS
+x1+x2 e1  base p-rank matches                  PASS
+x1+x2 e1  Artin character cuts out ker(x)      PASS
+x1+x2 e1  sigma normalization matches x        PASS
+x1+x2 e1  (a') J^p = O_K                       PASS
+x1+x2 e1  [J] is the labelled torsion class    PASS
+x1+x2 e1  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x1+x2 e1  AC2: N(t)/a' generates O_K           PASS
+x1+x2 e1  stored prime lies above ell          PASS
+x1+x2 e1  AC2 factors are units at q           PASS
+x1+x2 e1  N(t)/a' is +1 modulo q               PASS
+x1+x2 e1  norm-class coordinates               PASS
+
+x1+x2 e2  character label and vector           PASS
+x1+x2 e2  absolute model matches relative      PASS
+x1+x2 e2  relative degree equals p             PASS
+x1+x2 e2  unramified: disc = disc_K^p          PASS
+x1+x2 e2  stored basis integral and unimodular PASS
+x1+x2 e2  sigma fixes the base field           PASS
+x1+x2 e2  sigma has order exactly p            PASS
+x1+x2 e2  Gal(L|K) has order p                 PASS
+x1+x2 e2  sigma is a power of the generator    PASS
+x1+x2 e2  base p-rank matches                  PASS
+x1+x2 e2  Artin character cuts out ker(x)      PASS
+x1+x2 e2  sigma normalization matches x        PASS
+x1+x2 e2  (a') J^p = O_K                       PASS
+x1+x2 e2  [J] is the labelled torsion class    PASS
+x1+x2 e2  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x1+x2 e2  AC2: N(t)/a' generates O_K           PASS
+x1+x2 e2  stored prime lies above ell          PASS
+x1+x2 e2  AC2 factors are units at q           PASS
+x1+x2 e2  N(t)/a' is +1 modulo q               PASS
+x1+x2 e2  norm-class coordinates               PASS
+
+x1+x2 e3  character label and vector           PASS
+x1+x2 e3  absolute model matches relative      PASS
+x1+x2 e3  relative degree equals p             PASS
+x1+x2 e3  unramified: disc = disc_K^p          PASS
+x1+x2 e3  stored basis integral and unimodular PASS
+x1+x2 e3  sigma fixes the base field           PASS
+x1+x2 e3  sigma has order exactly p            PASS
+x1+x2 e3  Gal(L|K) has order p                 PASS
+x1+x2 e3  sigma is a power of the generator    PASS
+x1+x2 e3  base p-rank matches                  PASS
+x1+x2 e3  Artin character cuts out ker(x)      PASS
+x1+x2 e3  sigma normalization matches x        PASS
+x1+x2 e3  (a') J^p = O_K                       PASS
+x1+x2 e3  [J] is the labelled torsion class    PASS
+x1+x2 e3  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x1+x2 e3  AC2: N(t)/a' generates O_K           PASS
+x1+x2 e3  stored prime lies above ell          PASS
+x1+x2 e3  AC2 factors are units at q           PASS
+x1+x2 e3  N(t)/a' is +1 modulo q               PASS
+x1+x2 e3  norm-class coordinates               PASS
+
+x1+x2 e4  character label and vector           PASS
+x1+x2 e4  absolute model matches relative      PASS
+x1+x2 e4  relative degree equals p             PASS
+x1+x2 e4  unramified: disc = disc_K^p          PASS
+x1+x2 e4  stored basis integral and unimodular PASS
+x1+x2 e4  sigma fixes the base field           PASS
+x1+x2 e4  sigma has order exactly p            PASS
+x1+x2 e4  Gal(L|K) has order p                 PASS
+x1+x2 e4  sigma is a power of the generator    PASS
+x1+x2 e4  base p-rank matches                  PASS
+x1+x2 e4  Artin character cuts out ker(x)      PASS
+x1+x2 e4  sigma normalization matches x        PASS
+x1+x2 e4  (a') J^p = O_K                       PASS
+x1+x2 e4  [J] is the labelled torsion class    PASS
+x1+x2 e4  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x1+x2 e4  AC2: N(t)/a' generates O_K           PASS
+x1+x2 e4  stored prime lies above ell          PASS
+x1+x2 e4  AC2 factors are units at q           PASS
+x1+x2 e4  N(t)/a' is +1 modulo q               PASS
+x1+x2 e4  norm-class coordinates               PASS
+
+x2    e1  character label and vector           PASS
+x2    e1  absolute model matches relative      PASS
+x2    e1  relative degree equals p             PASS
+x2    e1  unramified: disc = disc_K^p          PASS
+x2    e1  stored basis integral and unimodular PASS
+x2    e1  sigma fixes the base field           PASS
+x2    e1  sigma has order exactly p            PASS
+x2    e1  Gal(L|K) has order p                 PASS
+x2    e1  sigma is a power of the generator    PASS
+x2    e1  base p-rank matches                  PASS
+x2    e1  Artin character cuts out ker(x)      PASS
+x2    e1  sigma normalization matches x        PASS
+x2    e1  (a') J^p = O_K                       PASS
+x2    e1  [J] is the labelled torsion class    PASS
+x2    e1  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x2    e1  AC2: N(t)/a' generates O_K           PASS
+x2    e1  stored prime lies above ell          PASS
+x2    e1  AC2 factors are units at q           PASS
+x2    e1  N(t)/a' is +1 modulo q               PASS
+x2    e1  norm-class coordinates               PASS
+
+x2    e2  character label and vector           PASS
+x2    e2  absolute model matches relative      PASS
+x2    e2  relative degree equals p             PASS
+x2    e2  unramified: disc = disc_K^p          PASS
+x2    e2  stored basis integral and unimodular PASS
+x2    e2  sigma fixes the base field           PASS
+x2    e2  sigma has order exactly p            PASS
+x2    e2  Gal(L|K) has order p                 PASS
+x2    e2  sigma is a power of the generator    PASS
+x2    e2  base p-rank matches                  PASS
+x2    e2  Artin character cuts out ker(x)      PASS
+x2    e2  sigma normalization matches x        PASS
+x2    e2  (a') J^p = O_K                       PASS
+x2    e2  [J] is the labelled torsion class    PASS
+x2    e2  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x2    e2  AC2: N(t)/a' generates O_K           PASS
+x2    e2  stored prime lies above ell          PASS
+x2    e2  AC2 factors are units at q           PASS
+x2    e2  N(t)/a' is +1 modulo q               PASS
+x2    e2  norm-class coordinates               PASS
+
+x2    e3  character label and vector           PASS
+x2    e3  absolute model matches relative      PASS
+x2    e3  relative degree equals p             PASS
+x2    e3  unramified: disc = disc_K^p          PASS
+x2    e3  stored basis integral and unimodular PASS
+x2    e3  sigma fixes the base field           PASS
+x2    e3  sigma has order exactly p            PASS
+x2    e3  Gal(L|K) has order p                 PASS
+x2    e3  sigma is a power of the generator    PASS
+x2    e3  base p-rank matches                  PASS
+x2    e3  Artin character cuts out ker(x)      PASS
+x2    e3  sigma normalization matches x        PASS
+x2    e3  (a') J^p = O_K                       PASS
+x2    e3  [J] is the labelled torsion class    PASS
+x2    e3  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x2    e3  AC2: N(t)/a' generates O_K           PASS
+x2    e3  stored prime lies above ell          PASS
+x2    e3  AC2 factors are units at q           PASS
+x2    e3  N(t)/a' is +1 modulo q               PASS
+x2    e3  norm-class coordinates               PASS
+
+x2    e4  character label and vector           PASS
+x2    e4  absolute model matches relative      PASS
+x2    e4  relative degree equals p             PASS
+x2    e4  unramified: disc = disc_K^p          PASS
+x2    e4  stored basis integral and unimodular PASS
+x2    e4  sigma fixes the base field           PASS
+x2    e4  sigma has order exactly p            PASS
+x2    e4  Gal(L|K) has order p                 PASS
+x2    e4  sigma is a power of the generator    PASS
+x2    e4  base p-rank matches                  PASS
+x2    e4  Artin character cuts out ker(x)      PASS
+x2    e4  sigma normalization matches x        PASS
+x2    e4  (a') J^p = O_K                       PASS
+x2    e4  [J] is the labelled torsion class    PASS
+x2    e4  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x2    e4  AC2: N(t)/a' generates O_K           PASS
+x2    e4  stored prime lies above ell          PASS
+x2    e4  AC2 factors are units at q           PASS
+x2    e4  N(t)/a' is +1 modulo q               PASS
+x2    e4  norm-class coordinates               PASS
+
+x1    e1  character label and vector           PASS
+x1    e1  absolute model matches relative      PASS
+x1    e1  relative degree equals p             PASS
+x1    e1  unramified: disc = disc_K^p          PASS
+x1    e1  stored basis integral and unimodular PASS
+x1    e1  sigma fixes the base field           PASS
+x1    e1  sigma has order exactly p            PASS
+x1    e1  Gal(L|K) has order p                 PASS
+x1    e1  sigma is a power of the generator    PASS
+x1    e1  base p-rank matches                  PASS
+x1    e1  Artin character cuts out ker(x)      PASS
+x1    e1  sigma normalization matches x        PASS
+x1    e1  (a') J^p = O_K                       PASS
+x1    e1  [J] is the labelled torsion class    PASS
+x1    e1  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x1    e1  AC2: N(t)/a' generates O_K           PASS
+x1    e1  stored prime lies above ell          PASS
+x1    e1  AC2 factors are units at q           PASS
+x1    e1  N(t)/a' is +1 modulo q               PASS
+x1    e1  norm-class coordinates               PASS
+
+x1    e2  character label and vector           PASS
+x1    e2  absolute model matches relative      PASS
+x1    e2  relative degree equals p             PASS
+x1    e2  unramified: disc = disc_K^p          PASS
+x1    e2  stored basis integral and unimodular PASS
+x1    e2  sigma fixes the base field           PASS
+x1    e2  sigma has order exactly p            PASS
+x1    e2  Gal(L|K) has order p                 PASS
+x1    e2  sigma is a power of the generator    PASS
+x1    e2  base p-rank matches                  PASS
+x1    e2  Artin character cuts out ker(x)      PASS
+x1    e2  sigma normalization matches x        PASS
+x1    e2  (a') J^p = O_K                       PASS
+x1    e2  [J] is the labelled torsion class    PASS
+x1    e2  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x1    e2  AC2: N(t)/a' generates O_K           PASS
+x1    e2  stored prime lies above ell          PASS
+x1    e2  AC2 factors are units at q           PASS
+x1    e2  N(t)/a' is +1 modulo q               PASS
+x1    e2  norm-class coordinates               PASS
+
+x1    e3  character label and vector           PASS
+x1    e3  absolute model matches relative      PASS
+x1    e3  relative degree equals p             PASS
+x1    e3  unramified: disc = disc_K^p          PASS
+x1    e3  stored basis integral and unimodular PASS
+x1    e3  sigma fixes the base field           PASS
+x1    e3  sigma has order exactly p            PASS
+x1    e3  Gal(L|K) has order p                 PASS
+x1    e3  sigma is a power of the generator    PASS
+x1    e3  base p-rank matches                  PASS
+x1    e3  Artin character cuts out ker(x)      PASS
+x1    e3  sigma normalization matches x        PASS
+x1    e3  (a') J^p = O_K                       PASS
+x1    e3  [J] is the labelled torsion class    PASS
+x1    e3  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x1    e3  AC2: N(t)/a' generates O_K           PASS
+x1    e3  stored prime lies above ell          PASS
+x1    e3  AC2 factors are units at q           PASS
+x1    e3  N(t)/a' is +1 modulo q               PASS
+x1    e3  norm-class coordinates               PASS
+
+x1    e4  character label and vector           PASS
+x1    e4  absolute model matches relative      PASS
+x1    e4  relative degree equals p             PASS
+x1    e4  unramified: disc = disc_K^p          PASS
+x1    e4  stored basis integral and unimodular PASS
+x1    e4  sigma fixes the base field           PASS
+x1    e4  sigma has order exactly p            PASS
+x1    e4  Gal(L|K) has order p                 PASS
+x1    e4  sigma is a power of the generator    PASS
+x1    e4  base p-rank matches                  PASS
+x1    e4  Artin character cuts out ker(x)      PASS
+x1    e4  sigma normalization matches x        PASS
+x1    e4  (a') J^p = O_K                       PASS
+x1    e4  [J] is the labelled torsion class    PASS
+x1    e4  AC1: (1-s)^2 I' (t) i(J) = O_L       PASS
+x1    e4  AC2: N(t)/a' generates O_K           PASS
+x1    e4  stored prime lies above ell          PASS
+x1    e4  AC2 factors are units at q           PASS
+x1    e4  N(t)/a' is +1 modulo q               PASS
+x1    e4  norm-class coordinates               PASS
+
+all   e0  all entries present                  PASS
+all   e0  outer-reversal shuffle identity      PASS
+all   e0  cyclic shuffle identity              PASS
+all   e0  embedded expected tensor             PASS
+
+D_x1 = [1, 0, 0, 0; 2, 1, 2, 2; 1, 1, 0, 0; 0, 1, 0, 1]
+D_x2 = [2, 1, 1, 0; 0, 1, 0, 0; 0, 0, 0, 2; 0, 2, 2, 0]
+D_x3 = [2, 1, 1, 2; 1, 0, 1, 2; 0, 0, 1, 0; 2, 2, 2, 1]
+D_x4 = [0, 0, 2, 0; 2, 0, 2, 2; 1, 1, 0, 2; 0, 0, 0, 1]
+D_x1+x2 = [1, 0, 2, 1; 0, 1, 1, 2; 1, 1, 0, 0; 2, 2, 0, 0]
+D_x1+x3 = [2, 0, 1, 2; 1, 0, 1, 2; 2, 0, 0, 1; 2, 2, 2, 1]
+D_x1+x4 = [1, 2, 2, 2; 0, 0, 0, 2; 0, 2, 2, 0; 0, 1, 1, 2]
+D_x2+x3 = [0, 0, 1, 0; 1, 1, 1, 0; 2, 0, 0, 0; 0, 1, 2, 1]
+D_x2+x4 = [1, 0, 0, 0; 2, 2, 0, 2; 0, 1, 1, 1; 1, 2, 0, 2]
+D_x3+x4 = [1, 2, 1, 2; 0, 0, 1, 1; 2, 2, 2, 1; 1, 1, 2, 0]
+
+TENSOR = [[1, 2, 1, 0, 2, 2, 2, 1, 1, 0, 2, 2, 0, 1, 0, 0, 2, 2, 1, 1, 2, 0, 0, 0, 0, 0, 1, 1, 1, 0, 2, 2, 1, 1, 2, 1, 2, 0, 1, 0, 2, 1, 0, 2, 0, 2, 2, 1, 0, 1, 1, 0, 1, 0, 0, 2, 2, 1, 2, 1, 0, 2, 1, 0], [0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 2, 1, 1, 1, 0, 2, 0, 0, 0, 0, 1, 2, 0, 0, 1, 2, 1, 2, 1, 0, 0, 0, 1, 0, 0, 2, 1, 0, 2, 1, 1, 1, 2, 0, 1, 2, 0, 0, 0, 0, 2, 1, 0, 0, 1, 0], [0, 2, 0, 0, 2, 1, 2, 1, 0, 0, 1, 1, 0, 2, 0, 2, 2, 1, 1, 0, 1, 0, 0, 2, 0, 0, 1, 2, 2, 2, 2, 2, 0, 1, 1, 2, 2, 0, 1, 2, 1, 1, 1, 2, 0, 2, 2, 0, 0, 0, 2, 2, 1, 2, 2, 2, 1, 2, 2, 0, 2, 2, 0, 0], [0, 2, 0, 1, 2, 0, 2, 2, 0, 2, 2, 2, 1, 1, 1, 0, 2, 0, 2, 0, 0, 0, 2, 0, 2, 2, 2, 0, 1, 0, 0, 2, 0, 2, 2, 0, 2, 2, 2, 0, 2, 2, 0, 1, 1, 0, 1, 2, 1, 0, 0, 0, 2, 0, 0, 2, 2, 0, 1, 2, 0, 2, 2, 1]]
+=================================================
+CERTIFICATE VERIFIED   (812 checks, 40 entries)
+
+session holds:  D  (the matrices),  Dlabels,  tensor,  K,
+                and for the last entry Lrel, Labs, sig, tAC, Iprime, JJ.

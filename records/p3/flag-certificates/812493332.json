@@ -1,0 +1,88 @@
+{
+ "discriminant": -812493332,
+ "field": {
+  "q": 27,
+  "degree": 3,
+  "modulus_low_to_high": [
+   1,
+   2,
+   0,
+   1
+  ]
+ },
+ "basis": [
+  [
+   [
+    1,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    0
+   ]
+  ],
+  [
+   [
+    2,
+    0,
+    1
+   ],
+   [
+    1,
+    1,
+    1
+   ],
+   [
+    0,
+    1,
+    2
+   ]
+  ],
+  [
+   [
+    0,
+    2,
+    2
+   ],
+   [
+    1,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    0
+   ]
+  ]
+ ],
+ "head_words": [
+  "111",
+  "112",
+  "113",
+  "1213",
+  "1223",
+  "1232",
+  "12123",
+  "12213",
+  "12223",
+  "122123",
+  "1222123",
+  "12221323"
+ ],
+ "proper_prefixes": 15,
+ "search": {
+  "source": "W0-regular flag found by exhaustive flag enumeration over F_27 with the cell checker",
+  "truncation_degree": 8,
+  "order": "Dp"
+ },
+ "alternatives": 0,
+ "claim": "After the linear change of variables given by 'basis' (rows: phi(X_i) = sum_a basis[i][a] X_a, entries in the stated field), the cubic relation ideal has a finite Groebner basis in the Dp order (degree, then X_1 > X_2 > X_3) whose head words are exactly 'head_words'. The number of words of degree n with no factor in 'head_words' equals the coefficient of z^n in 1/(1-3z+3z^3) for every n (both sequences satisfy linear recurrences of bounded order, so finitely many degrees settle the comparison; 'proper_prefixes' is the number s of proper prefixes of the head words, the empty word included). Hence the relations are strongly free and the 3-class tower group of the field is mild of cohomological dimension 2."
+}

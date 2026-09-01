@@ -1,0 +1,24 @@
+2026-08-10 15:01:25  START D=-781922404 pol=s^2+195480601 h=9000
+2026-08-10 15:01:25  Stufe 1: cm_construct (Sicherheitsrand 768 bit)
+2026-08-10 15:11:45  Stufe 1 fertig
+2026-08-10 15:11:45  Stufe 1b: audit_cm_fields
+2026-08-10 15:11:45  Stufe 1b fertig (6/6)
+2026-08-10 15:11:45  Stufe 2: Charakter 1
+2026-08-10 15:11:52  Charakter 1 fertig
+2026-08-10 15:11:52  Stufe 2: Charakter 2
+2026-08-10 15:11:57  Charakter 2 fertig
+2026-08-10 15:11:57  Stufe 2: Charakter 3
+2026-08-10 15:12:02  Charakter 3 fertig
+2026-08-10 15:12:02  Stufe 2: Charakter 4
+2026-08-10 15:12:09  Charakter 4 fertig
+2026-08-10 15:12:09  Stufe 2: Charakter 5
+2026-08-10 15:12:16  Charakter 5 fertig
+2026-08-10 15:12:16  Stufe 2: Charakter 6
+2026-08-10 15:12:22  Charakter 6 fertig
+2026-08-10 15:12:22  Stufe 3: assemble_certificate
+MERGED_CERTIFICATE entries=18 output=results/D-195480601/certificate.gp
+2026-08-10 15:12:22  Stufe 4: finish_driver exhaustive
+2026-08-10 15:12:40  Stufe 4 fertig
+2026-08-10 15:12:40  Stufe 5: verify_certificate
+CERTIFICATE VERIFIED
+2026-08-10 15:12:55  FERTIG D=-781922404 VERIFIED

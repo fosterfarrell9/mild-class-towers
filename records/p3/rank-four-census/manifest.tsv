@@ -1,0 +1,64 @@
+D	cone (sweep)	route	records
+-653329427	Kegel leer (elementar)	flag (degree bound 9)	../rank-four-653329427/ and ../flag-certificates-rank-four/
+-1876623871	Kegel leer (elementar)	flag (degree bound 9)	K-1876623871/
+-2520963512	Kegel leer (elementar)	flag (degree bound 9)	K-2520963512/
+-2676277123	Kegel leer (elementar)	flag (degree bound 9)	K-2676277123/
+-3146813128	Kegelpunkt, Theta defizient	flag (degree bound 9)	K-3146813128/
+-3972542271	Kegelpunkt, Rangbedingung scheitert	flag (degree bound 9)	K-3972542271/
+-4724490703	Kegel leer (elementar)	flag (degree bound 9)	K-4724490703/
+-5252241199	Kegelpunkt, Theta defizient	flag (degree bound 9)	K-5252241199/
+-5288116947	Kegelpunkt, Rangbedingung scheitert	flag (degree bound 9)	K-5288116947/
+-5866841451	Kegelpunkt, Rangbedingung scheitert	flag (degree bound 9)	K-5866841451/
+-6127792087	Kegel leer (elementar)	flag (degree bound 9)	K-6127792087/
+-6223830596	Kegel leer (elementar)	flag (degree bound 9)	K-6223830596/
+-6903777631	Kegel leer (elementar)	flag (degree bound 9)	K-6903777631/
+-6905985272	Kegel leer (elementar)	flag (degree bound 11)	K-6905985272/
+-7189850292	Kegel leer (elementar)	flag (degree bound 9)	K-7189850292/
+-7309564084	Kegel leer (elementar)	flag (degree bound 11)	K-7309564084/
+-7311232679	Kegel leer (elementar)	flag (degree bound 9)	K-7311232679/
+-7592829611	Kegelpunkt, Rangbedingung scheitert	flag (degree bound 9)	K-7592829611/
+-7993105123	Kegelpunkt, Rangbedingung scheitert	flag (degree bound 9)	K-7993105123/
+-8308370723	Kegelpunkt, Rangbedingung scheitert	flag (degree bound 9)	K-8308370723/
+-8417780779	Kegel leer (elementar)	flag (degree bound 9)	K-8417780779/
+-8418280523	Kegelpunkt, Rangbedingung scheitert	flag (degree bound 9)	K-8418280523/
+-8624990111	Kegel leer (elementar)	flag (degree bound 9)	K-8624990111/
+-9552870967	Kegel leer (elementar)	flag (degree bound 9)	K-9552870967/
+-9775810067	Kegel leer (elementar)	flag (degree bound 9)	K-9775810067/
+-9906365947	Kegel leer (elementar)	flag (degree bound 9)	K-9906365947/
+-10501776635	Kegelpunkt, Rangbedingung scheitert	flag (degree bound 9)	K-10501776635/
+-10647173399	Kegel leer (elementar)	flag (degree bound 9)	K-10647173399/
+-11451958228	Kegelpunkt, Rangbedingung scheitert	flag (degree bound 9)	K-11451958228/
+-11890688307	Kegel leer (elementar)	flag (degree bound 9)	K-11890688307/
+-12144979499	Kegelpunkt transversal	transversality criterion	../rank-four-12144979499/
+-12397711531	Kegelpunkt, Rangbedingung scheitert	flag (degree bound 9)	K-12397711531/
+-12583017751	Kegel leer (elementar)	flag (degree bound 9)	K-12583017751/
+-12890331624	Kegelpunkt, Rangbedingung scheitert	flag (degree bound 9)	K-12890331624/
+-13090590347	Kegel leer (elementar)	flag (degree bound 9)	K-13090590347/
+-13116019171	Kegelpunkt, Rangbedingung scheitert	flag (degree bound 9)	K-13116019171/
+-13220215784	Kegel leer (elementar)	flag (degree bound 9)	K-13220215784/
+-13443721231	Kegel leer (elementar)	flag (degree bound 9)	K-13443721231/
+-13897880131	Kegelpunkt, Rangbedingung scheitert	flag (degree bound 9)	K-13897880131/
+-14029454371	Kegelpunkt, Rangbedingung scheitert	flag (degree bound 9)	K-14029454371/
+-14432736523	Kegelpunkt, Rangbedingung scheitert	flag (degree bound 9)	K-14432736523/
+-14658626339	Kegelpunkt, Rangbedingung scheitert	flag (degree bound 9)	K-14658626339/
+-15395030967	Kegel leer (elementar)	flag (degree bound 9)	K-15395030967/
+-15513899079	Kegel leer (elementar)	flag (degree bound 9)	K-15513899079/
+-15717958951	Kegel leer (elementar)	flag (degree bound 9)	K-15717958951/
+-16257083528	Kegelpunkt, Rangbedingung scheitert (Ex-Timeout)	flag (degree bound 9)	K-16257083528/
+-16347832699	Kegel leer (elementar)	flag (degree bound 9)	K-16347832699/
+-16499018903	Kegel leer (elementar)	flag (degree bound 9)	K-16499018903/
+-17127861191	Kegel leer (elementar)	flag (degree bound 9)	K-17127861191/
+-17346090376	Kegelpunkt, Rangbedingung scheitert	flag (degree bound 9)	K-17346090376/
+-17585855272	Kegelpunkt, Rangbedingung scheitert	flag (degree bound 9)	K-17585855272/
+-17789200568	Kegelpunkt, Rangbedingung scheitert	flag (degree bound 9)	K-17789200568/
+-17832312728	Kegel leer (elementar)	flag (degree bound 9)	K-17832312728/
+-18191474648	Kegelpunkt transversal	transversality criterion	../rank-four-18191474648/
+-18290690707	Kegel leer (elementar)	flag (degree bound 9)	K-18290690707/
+-18561189299	Kegelpunkt transversal	transversality criterion	../rank-four-18561189299/
+-18606631611	Kegelpunkt, Rangbedingung scheitert	flag (degree bound 9)	K-18606631611/
+-18710747944	Kegelpunkt, Rangbedingung scheitert	flag (degree bound 9)	K-18710747944/
+-19060684807	Kegel leer (elementar)	flag (degree bound 9)	K-19060684807/
+-19250306324	Kegel leer (elementar)	flag (degree bound 9)	K-19250306324/
+-19288632407	Kegelpunkt TRANSVERSAL — Kriterium greift ebenfalls (Ex-Timeout)	flag (degree bound 9)	K-19288632407/
+-19330689667	Kegel leer (elementar)	flag (degree bound 9)	K-19330689667/
+-20217903567	Kegel leer (elementar)	flag (degree bound 9)	K-20217903567/

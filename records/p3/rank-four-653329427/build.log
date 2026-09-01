@@ -1,0 +1,20 @@
+[0;31m  ***   Warning: new stack size = 6000000000 (5722.046 Mbytes).[0m
+[0;31m  ***   Warning: new maximum stack size = 20000002048 (19073.488 Mbytes).[0m
+Zeugen-Orakel   p = 3   Grundkoerper y^2 - y + 163332357
+bnfinit(K)  4 ms   cyc = [210, 3, 3, 3]   h = 5670
+bnfcertify(K)  23 ms   UNBEDINGT
+p-Rang = 4
+J_n und a'_n stehen
+Untergruppen vom Index 3: 40
+  s=14 k=1  x3+x4     bnfinit   370 ms  gesamt    493 ms
+  s=15 k=2  x2+x4     bnfinit   475 ms  gesamt    679 ms
+  s=18 k=1  x1+x4     bnfinit   606 ms  gesamt    794 ms
+  s=27 k=1  x4        bnfinit   378 ms  gesamt    523 ms
+  s=32 k=2  x2+x3     bnfinit   645 ms  gesamt    809 ms
+  s=33 k=1  x1+x3     bnfinit   548 ms  gesamt    718 ms
+  s=36 k=1  x3        bnfinit   369 ms  gesamt    602 ms
+  s=38 k=2  x1+x2     bnfinit   473 ms  gesamt    695 ms
+  s=39 k=1  x2        bnfinit   440 ms  gesamt    613 ms
+  s=40 k=2  x1        bnfinit  1719 ms  gesamt   2054 ms
+alle 10 Charaktere mit Zeugen exportiert
+geschrieben: certificate.gp (40 Eintraege)

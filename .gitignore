@@ -25,3 +25,5 @@ verifier/check.out
 worksheets/*.aux
 worksheets/*.log
 compile_commands.json
+texput.log
+.singularhistory
