@@ -1,6 +1,6 @@
 # Part W7: the fields decided after the paper, one line per field.
 # Columns: discriminant, prime p, p-class rank, coefficient field q of the change of variables, certificate file.
-# The certificate records the change of variables and the head words of the completed basis; see records/p3/flag-certificates/FORMAT.md.
+# The certificate records the change of variables and the high terms of the completed basis; see records/p3/flag-certificates/FORMAT.md.
 discriminant	p	rank	q	certificate
 -3321607	3	3	3	records/p3/flag-certificates/3321607.json
 -3640387	3	3	3	records/p3/flag-certificates/3640387.json

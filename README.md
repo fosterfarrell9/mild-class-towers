@@ -106,13 +106,13 @@ field the paper left open, D = -781922404, so Theorem D holds for all
 (`records/p5/flag-certificates/`).
 
 **Rank four.**  The field D = -653329427, the only field of the range
-with 3-class rank four, has a mild 3-class tower group: a change of
-variables in GL_4(F_3) gives a finite Groebner basis with twelve head
-words, counted by 1/(1-4z+4z^3).  To our knowledge it is the first
-mild p-class tower group of rank four in the range of the paper, and
-the first obtained without the transversality criterion, which cannot
-apply to it.  The same method decides every field of 3-class rank four
-in the range we have searched: all 62 fields with |D_K| < 2 * 10^10
+with 3-class rank four, has a mild 3-class tower group.  Its Bockstein
+cone is empty, so the transversality criterion cannot apply.  Instead,
+after a change of variables in GL_4(F_3) the Groebner completion of
+the four cubic initial forms terminates, and the word counts match
+1/(1-4z+4z^3), which proves the forms strongly free and the group
+mild.  The fields of 3-class rank four beyond the range are decided by
+the same two routes: all 62 fields with |D_K| < 2 * 10^10
 (and the next one, D = -20217903567) are mild --- four by the
 transversality criterion, the rest by flag certificates --- and each
 carries an arithmetic witness certificate checked by
@@ -148,7 +148,7 @@ with `pol(s)` a defining polynomial of the number field K in the variable
 | `verifier/` | the standalone certificate verifier shared by all three primes, with its Makefile and rejection tests |
 | `certificates/` | the arithmetic certificates: one collection per prime (`p3/` in discriminant buckets, `p5/`, `p7/`), one directory per field |
 | `records/` | what the searches produced and what follows from the verified matrices: result records and run logs, source tensors, verification and strong-freeness records, cone-criterion reports, transversality certificates |
-| `records/p3/flag-certificates/` | Part W7 of the paper (rank three, p = 3): one certificate per field decided after the paper: the change of variables, the coefficient field, the head words; format note, worked examples, index |
+| `records/p3/flag-certificates/` | Part W7 of the paper (rank three, p = 3): one certificate per field decided after the paper: the change of variables, the coefficient field, the high terms; format note, worked examples, index |
 | `records/p5/flag-certificates/` | Part W7 (p = 5): the certificate for the field D = -781922404, with its relation tensor under `records/p5/D-781922404/` |
 | `records/p3/flag-certificates-rank-four/` | Part W7 (rank four): the certificate for the rank-four field D = -653329427; its witness certificate, verification log and tensor are under `records/p3/rank-four-653329427/` |
 | `records/p3/rank-four-census/` | the rank-four census through 2 * 10^10 plus the next field D = -20217903567: manifest and, per field, the relation tensor, the flag certificate, the witness certificate and its verification log |
