@@ -108,6 +108,24 @@ evaluating the operator at an arbitrary character.
 The script is for one certificate at a time; the sweep over all certificates
 uses the C verifier, which the patched PARI is still required for.
 
+To read a certificate without verifying it, use `tools/load_certificate.gp`.
+It parses the stored data and leaves it in the session under the same names,
+but performs no checks and builds no field:
+
+```sh
+CERT_DIR=certificates/p3/000/K-3321607-p3 gp -q tools/load_certificate.gp
+```
+
+After the run the session holds `p`, `basepol`, `basedisc`, the stored base
+data `Clcyc`, `h`, `clgen`, `torsion`, `zk`, the raw `entries`, the six
+matrices `D` with `Dlabels`, the polarization `B11`, ..., `B23`, and the 3 by
+27 `tensor`, all read directly from the certificate.  The functions `Dx(v)`
+evaluates the operator at an arbitrary character, `ent(n)` shows the n-th
+entry with its fields named, and `Kbnf()` builds `bnfinit(basepol)` on demand.
+On any certificate the matrices and tensor it loads are identical to the ones
+`verify_certificate.gp` reconstructs; the difference is only that nothing is
+proved.
+
 ## Transverse rank-one certificates
 
 The transverse rank-one mildness criterion is certified for all 204
